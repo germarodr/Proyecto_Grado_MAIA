@@ -17,7 +17,7 @@ Recuperación semántica y clasificación de la función de citas académicas en
 
 - **Organización:** Grupo de investigación FLAG — TICSW, Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes.
 - **Experto de dominio:** PhD. Juan Camilo Sanguino — Machine Learning Engineer and AI Researcher, Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes.
-- **Rol de acompañamiento:** asesoramiento en la definición del problema a resolver y la expectativa de resultados; orientación en la bibliografía y desarrollos similares, con validación de las decisiones clave a lo largo del proyecto.
+- **Rol de acompañamiento:** asesoramiento en la definición del problema a resolver, estrategia del proyecto, y resultados esperados; orientación en la bibliografía, validación de las decisiones clave a lo largo del proyecto.
 
 ---
 
@@ -25,7 +25,7 @@ Recuperación semántica y clasificación de la función de citas académicas en
 
 ## a. Situación actual
 
-La producción científica ha alcanzado una escala en la que su seguimiento manual es inviable: solo el repositorio arXiv supera los **3,1 millones de artículos** acumulados (más de 3,16 M de envíos a septiembre de 2026), con un crecimiento sostenido de decenas de miles de trabajos nuevos cada mes, y el subdominio de Computer Science es uno de los de mayor volumen. En este escenario, la cita —el mecanismo con que un artículo se conecta con el conocimiento previo— se ha vuelto el principal instrumento para organizar, evaluar y navegar la literatura.
+La producción científica ha alcanzado una escala en la que su seguimiento manual es inviable: solo el repositorio arXiv supera los **3,1 millones de artículos** acumulados, con un crecimiento sostenido de decenas de miles de trabajos nuevos cada mes, y el subdominio de Computer Science es uno de los de mayor volumen con aproximadamente **1 millón de artículos**. En este escenario, la cita —el mecanismo con que un artículo se conecta con el conocimiento previo— se ha vuelto el principal instrumento para organizar, evaluar y navegar la literatura.
 
 Sin embargo, la práctica dominante en bibliometría reduce la cita a un **conteo**: se cuentan cuántas veces se cita un trabajo, tratando por igual una cita que sienta la base metodológica de un estudio, una que solo lo menciona como lectura complementaria y una que lo critica o lo señala como limitación. Esta homogeneización es una simplificación reconocida como problemática, pues las prácticas de citación dependen del campo y del propósito del autor, y los conteos no capturan *por qué* se cita. La información que sí distingue esos matices —la **función retórica** de la cita— está latente en el texto: en el contexto de cita del artículo citante y en el contenido del artículo citado, distribuida en secciones y párrafos específicos.
 
@@ -38,7 +38,6 @@ Hoy no existe una forma automática y confiable de determinar **qué función cu
 - **Ausencia de datos:** no se dispone de un dataset balanceado y documentado de funciones de cita en Computer Science que permita entrenar y evaluar modelos.
 - **Evidencia dispersa en el artículo citado:** dado un contexto de cita, la información que justifica su función se encuentra distribuida en secciones y párrafos específicos del artículo citado, sin estar localizada ni alineada con dicho contexto.
 - **Ambigüedad de la clasificación:** una cita puede cumplir más de una función y los contextos suelen ser breves; el proyecto se enfoca en asignar la **función más relevante** (una sola clase), lo que exige criterios consistentes para resolver los casos ambiguos.
-
 
 ## c. Impacto esperado
 
@@ -62,11 +61,6 @@ Desarrollar un sistema de PLN que, para un contexto de cita en inglés, recupere
 4. **Comparar el desempeño de clasificadores supervisados** basados en SciBERT/SPECTER, utilizando como entrada el contexto y los fragmentos recuperados, con y sin título, abstract y sección retórica, mediante Precision, Recall y F1 macro/micro.
 5. **Determinar el desempeño comparativo de modelos de lenguaje** open-weight y comerciales frente a los clasificadores supervisados, mediante configuraciones zero-shot y few-shot y prompts específicos y genéricos.
 6. **Desplegar una aplicación web** que integre la recuperación del Top-3 y la clasificación de la función de cita, permita seleccionar el modelo y visualice la función predicha con su confianza.
-
-### Criterios de formulación y cumplimiento
-
-Los objetivos se formularon como resultados verificables, con un verbo principal y un alcance delimitado por población (artículos de Computer Science en inglés), producto (corpus, dataset, recuperador, clasificadores y aplicación) y criterios de evaluación (Top-3, 9 categorías, 2.000 ejemplos por categoría, validación humana del 15% y Precision, Recall y F1). La alcanzabilidad y el plazo se establecerán de manera gradual: primero se verificará la línea base de datos, disponibilidad de texto completo y recursos computacionales; después se fijarán los valores finales del cronograma y de las metas comparativas, dentro del periodo académico del proyecto. Esta aplicación sigue la recomendación de no imponer de manera mecánica todos los criterios SMART antes de contar con la información necesaria para justificar metas realistas.
-
 
 ---
 
@@ -226,5 +220,4 @@ flowchart TB
 - **Evaluación:** scikit-learn (Precision, Recall, F1, matrices de confusión) y métricas de acuerdo interanotador (Cohen/Fleiss Kappa, Krippendorff Alpha).
 - **MLOps:** Git, DVC (remoto S3), MLflow (servidor en EC2), FastAPI, PostgreSQL, Docker.
 - **Aplicación web:** Next.js / React / TypeScript.
-
 
