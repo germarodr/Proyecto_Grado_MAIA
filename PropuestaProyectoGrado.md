@@ -6,10 +6,7 @@ Recuperación semántica y clasificación de la función de citas académicas en
 
 # Integrantes del equipo
 
-- Camilo Bejarano — c.bejaranoc@uniandes.edu.co
-- German Rodriguez — gm.rodriguez@uniandes.edu.co
-- Jose Arteaga — j.arteagac@uniandes.edu.co
-- Sebastian Toro — s.torod@uniandes.edu.co
+Camilo Bejarano, German Rodriguez, Jose Arteaga, Sebastian Toro
 
 ---
 
@@ -17,7 +14,7 @@ Recuperación semántica y clasificación de la función de citas académicas en
 
 - **Organización:** Grupo de investigación FLAG — TICSW, Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes.
 - **Experto de dominio:** PhD. Juan Camilo Sanguino — Machine Learning Engineer and AI Researcher, Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes.
-- **Rol de acompañamiento:** asesoramiento en la definición del problema a resolver, estrategia del proyecto, y resultados esperados; orientación en la bibliografía, validación de las decisiones clave a lo largo del proyecto.
+- **Rol de acompañamiento:** asesoramiento en la definición del problema a resolver, estrategia del proyecto, y resultados esperados; orientación en la bibliografía, validación de las decisiones clave.
 
 ---
 
@@ -25,15 +22,15 @@ Recuperación semántica y clasificación de la función de citas académicas en
 
 ## a. Situación actual
 
-La producción científica ha alcanzado una escala en la que su seguimiento manual es inviable: solo el repositorio arXiv supera los **3,1 millones de artículos** acumulados, con un crecimiento sostenido de decenas de miles de trabajos nuevos cada mes, y el subdominio de Computer Science es uno de los de mayor volumen con aproximadamente **1 millón de artículos**. En este escenario, la cita —el mecanismo con que un artículo se conecta con el conocimiento previo— se ha vuelto el principal instrumento para organizar, evaluar y navegar la literatura.
+La producción científica ha alcanzado una escala en la que su seguimiento manual es inviable: solo arXiv supera los **3,1 millones de artículos** acumulados, con decenas de miles de trabajos nuevos cada mes, y Computer Science es uno de los subdominios de mayor volumen. En este escenario, la cita —el mecanismo con que un artículo se conecta con el conocimiento previo— es el principal instrumento para organizar, evaluar y navegar la literatura.
 
-Sin embargo, la práctica dominante en bibliometría reduce la cita a un **conteo**: se cuentan cuántas veces se cita un trabajo, tratando por igual una cita que sienta la base metodológica de un estudio, una que solo lo menciona como lectura complementaria y una que lo critica o lo señala como limitación. Esta homogeneización es una simplificación reconocida como problemática, pues las prácticas de citación dependen del campo y del propósito del autor, y los conteos no capturan *por qué* se cita. La información que sí distingue esos matices —la **función retórica** de la cita— está latente en el texto: en el contexto de cita del artículo citante y en el contenido del artículo citado, distribuida en secciones y párrafos específicos.
+Sin embargo, la práctica dominante en bibliometría reduce la cita a un **conteo**, tratando por igual una que sienta la base metodológica de un estudio, una que solo lo menciona como lectura complementaria y una que lo critica. Esta homogeneización es una simplificación problemática, pues las prácticas de citación dependen del campo y del propósito del autor, y los conteos no capturan *por qué* se cita. La información que distingue esos matices —la **función retórica** de la cita— está latente en el texto, distribuida en secciones y párrafos específicos del artículo citado.
 
-El Procesamiento del Lenguaje Natural (PLN) aplicado a textos académicos ofrece herramientas para recuperar esa señal mediante dos tareas complementarias: la **recomendación local de citas** (*Local Citation Recommendation*), que alinea un contexto de cita con los fragmentos relevantes del artículo citado, y la **clasificación de la función de la cita** (*Citation Function Classification*), que caracteriza su propósito discursivo. Ambas son insumos para la revisión automática de literatura, el análisis bibliométrico cualitativo y la verificación de afirmaciones. Pese a la abundancia de corpus en inglés —idioma que concentra la mayor parte de la producción científica—, identificar con precisión la función de una cita sigue siendo un reto abierto.
+El Procesamiento del Lenguaje Natural (PLN) aplicado a textos académicos ofrece herramientas para recuperar esa señal mediante dos tareas complementarias: la **recomendación local de citas** (*Local Citation Recommendation*), que alinea un contexto de cita con los fragmentos relevantes del artículo citado, y la **clasificación de la función de la cita** (*Citation Function Classification*), que caracteriza su propósito discursivo. Pese a la abundancia de corpus en inglés, identificar con precisión la función de una cita sigue siendo un reto abierto.
 
 ## b. Problema
 
-Hoy no existe una forma automática y confiable de determinar **qué función cumple una cita** dentro de un artículo científico de Computer Science. Los enfoques predominantes tratan todas las citas como equivalentes, y la señal que distingue su propósito no está en el marcador de cita, sino dispersa en el cuerpo del artículo citado, lo que hace la tarea ambigua y difícil de automatizar. Este problema general se descompone en tres sub-problemas:
+Hoy no existe una forma automática y confiable de determinar **qué función cumple una cita** dentro de un artículo científico. Este problema es particularmente relevante en el área de Computer Science, que constituye el dominio de estudio de este proyecto. Los enfoques predominantes tratan todas las citas como equivalentes, y la señal que distingue su propósito no está en el marcador de cita, sino dispersa en el cuerpo del artículo citado, lo que hace la tarea ambigua y difícil de automatizar. Este problema general se descompone en tres sub-problemas:
 
 - **Ausencia de datos:** no se dispone de un dataset balanceado y documentado de funciones de cita en Computer Science que permita entrenar y evaluar modelos.
 - **Evidencia dispersa en el artículo citado:** dado un contexto de cita, la información que justifica su función se encuentra distribuida en secciones y párrafos específicos del artículo citado, sin estar localizada ni alineada con dicho contexto.
@@ -41,8 +38,8 @@ Hoy no existe una forma automática y confiable de determinar **qué función cu
 
 ## c. Impacto esperado
 
-- **Recurso de datos reutilizable:** un dataset balanceado y trazable de funciones de cita en Computer Science, con guía de anotación y métricas de acuerdo interanotador, transferible a la comunidad.
-- **Evidencia metodológica:** medición cuantificada del aporte de las distintas fuentes de información del artículo citado (fragmentos recuperados y metadatos) a la clasificación, comparando *encoders* especializados y LLMs.
+- **Recurso de datos:** un dataset balanceado y trazable de funciones de cita en Computer Science, con guía de anotación y métricas de acuerdo interanotador, transferible a la comunidad.
+- **Evidencia metodológica:** medición cuantificada del aporte de los fragmentos recuperados del artículo citado a la clasificación, comparando un clasificador supervisado y un modelo de lenguaje.
 - **Aplicaciones:** apoyo a revisiones sistemáticas de literatura, análisis de impacto bibliométrico cualitativo, verificación de afirmaciones y herramientas de escritura académica asistida.
 
 ---
@@ -51,16 +48,15 @@ Hoy no existe una forma automática y confiable de determinar **qué función cu
 
 ## Objetivo General
 
-Desarrollar un sistema de PLN que, para un contexto de cita en inglés, recupere los fragmentos más relevantes del artículo citado y clasifique la función de la cita en una de nueve categorías —*Background, Gap, Basis, Comparison, Application, Improvement/Modification, Evidence, Identification of the Originator y Further Reading*—, con el propósito de determinar el aporte de los fragmentos recuperados y los metadatos al desempeño de la clasificación.
+Desarrollar un sistema de PLN que, para un contexto de cita en inglés dentro del área de Computer Science, recupere los fragmentos más relevantes del artículo citado y clasifique la función de la cita en una de nueve categorías —*Background, Gap, Basis, Comparison, Application, Improvement/Modification, Evidence, Identification of the Originator y Further Reading*—, evaluando el aporte de los fragmentos recuperados al desempeño de la clasificación.
 
 ## Objetivos Específicos
 
-1. **Obtener un corpus procesado** de artículos de Computer Science desde unarXive, con contextos de cita identificados, artículos citados resolubles y fragmentos segmentados por oración y sección.
-2. **Construir un dataset balanceado y documentado** de funciones de cita en Computer Science, con al menos 2.000 ejemplos por cada una de las 9 categorías, guía de anotación, validación humana del 15% y acuerdo interanotador; el pre-etiquetado con modelos de pesos abiertos se utilizará como apoyo para seleccionar candidatos.
+1. **Obtener un corpus** de artículos de Computer Science desde unarXive, con contextos de cita identificados, artículos citados resolubles y fragmentos segmentados por oración y sección.
+2. **Construir un dataset balanceado** de funciones de cita en Computer Science, con al menos 2.000 ejemplos por cada una de las 9 categorías, guía de anotación, etiquetado inicial del conjunto completo mediante modelos de pesos abiertos, validación humana del 15% y acuerdo interanotador.
 3. **Implementar la recuperación densa** basada en SciBERT para obtener, por cada contexto de cita, el Top-3 de fragmentos más similares del artículo citado y su sección retórica.
-4. **Comparar el desempeño de clasificadores supervisados** basados en SciBERT/SPECTER, utilizando como entrada el contexto y los fragmentos recuperados, con y sin título, abstract y sección retórica, mediante Precision, Recall y F1 macro/micro.
-5. **Determinar el desempeño comparativo de modelos de lenguaje** open-weight y comerciales frente a los clasificadores supervisados, mediante configuraciones zero-shot y few-shot y prompts específicos y genéricos.
-6. **Desplegar una aplicación web** que integre la recuperación del Top-3 y la clasificación de la función de cita, permita seleccionar el modelo y visualice la función predicha con su confianza.
+4. **Comparar el desempeño de un clasificador supervisado** basado en SciBERT bajo dos configuraciones de entrada —contexto de cita con el título y el abstract del artículo citado, frente a contexto de cita con la sección retórica y los fragmentos Top-3 recuperados—, y contrastarlo con un modelo de lenguaje comercial de frontera, para determinar si los fragmentos recuperados mejoran la clasificación de la función de cita.
+5. **Desplegar una aplicación web** que integre la recuperación del Top-3 y la clasificación de la función de cita, permita seleccionar el clasificador entre un encoder fine-tuned (SciBERT), un modelo open-weight (1–8B) y un modelo comercial vía API, y visualice la función con su confianza.
 
 ---
 
@@ -68,13 +64,13 @@ Desarrollar un sistema de PLN que, para un contexto de cita en inglés, recupere
 
 El análisis de citas ha migrado del **conteo** hacia la **caracterización semántica** de por qué se cita. Esta sección revisa cuatro frentes —taxonomías de función de cita, conjuntos de datos anotados, métodos de clasificación y recuperación, y el uso emergente de modelos de lenguaje— y contrasta sus límites con la propuesta del grupo.
 
-**Taxonomías de función de cita.** Lyu, Ruan, Xie y Cheng (2021) realizaron una meta-síntesis de 38 estudios primarios y consolidaron 35 conceptos en 13 temas, agrupados en dos grandes categorías: *motivaciones científicas* (de naturaleza retórica y detectables en el texto) y *motivaciones tácticas* (sociales o de conveniencia, no capturables por análisis textual). Este trabajo unifica taxonomías históricamente fragmentadas y ofrece un esquema de anotación de referencia. Su límite es que se trata de un marco conceptual, no de un recurso computable: no provee datos etiquetados ni modelos. La propuesta del grupo operacionaliza precisamente su rama de motivaciones científicas en las **nueve funciones** definidas, y construye el dataset que la meta-síntesis no ofrece.
+**Taxonomías de función de cita.** Lyu, Ruan, Xie y Cheng (2021) realizaron una meta-síntesis de 38 estudios y consolidaron 35 conceptos en 13 temas, agrupados en *motivaciones científicas* (retóricas y detectables en el texto) y *motivaciones tácticas* (sociales, no capturables por análisis textual). Su límite es que es un marco conceptual, no un recurso computable: no provee datos etiquetados ni modelos. La propuesta operacionaliza su rama de motivaciones científicas en las **nueve funciones** definidas y construye el dataset que la meta-síntesis no ofrece.
 
-**Conjuntos de datos anotados.** Cohan et al. (2019) introdujeron *SciCite*, un dataset multidominio de intención de cita más de cinco veces mayor que los previos, pero reducido a **tres clases** (*background, method, result*), insuficientes para el matiz de nueve funciones. Lauscher et al. (2022) propusieron *MultiCite* (12,6K contextos de 1,2K artículos de lingüística computacional), aportando dos ideas clave que este proyecto adopta: los contextos de cita pueden abarcar **varias oraciones** y expresar **varias intenciones a la vez** (multietiqueta). Su limitación es el dominio estrecho (solo *computational linguistics*) y la ausencia de vínculo con el texto completo del artículo citado. Frente a ambos, la propuesta cubre las nueve funciones sobre Computer Science y enriquece cada instancia con evidencia recuperada del artículo citado.
+**Conjuntos de datos anotados.** Cohan et al. (2019) introdujeron *SciCite*, un dataset multidominio de intención de cita reducido a **tres clases** (*background, method, result*), insuficientes para el matiz de nueve funciones. Lauscher et al. (2022) propusieron *MultiCite*, aportando dos ideas que este proyecto adopta: los contextos pueden abarcar **varias oraciones** y expresar **varias intenciones a la vez** (multietiqueta); su límite es el dominio estrecho (*computational linguistics*) y la ausencia de vínculo con el texto completo del citado. Frente a ambos, la propuesta cubre las nueve funciones sobre Computer Science y enriquece cada instancia con evidencia recuperada del artículo citado.
 
-**Métodos de clasificación y recuperación.** Beltagy, Lo y Cohan (2019) presentaron *SciBERT*, un modelo preentrenado sobre texto científico que sigue siendo un *backbone* competitivo para tareas académicas y es la base tanto del *retrieval* como de los clasificadores de este proyecto. En recuperación local de citas, Gu et al. (2022) combinaron un codificador jerárquico con un *reranking* basado en SciBERT para recuperar el artículo a citar dado un contexto; su objetivo es *qué* citar, mientras que este proyecto invierte el problema: dado un par citante–citado, recupera los fragmentos del citado que **explican** la cita para clasificar su función. La limitación transversal de estos métodos supervisados es su dependencia de datos etiquetados costosos, que aquí se mitiga con pre-etiquetado asistido y validación humana.
+**Métodos de clasificación y recuperación.** Beltagy, Lo y Cohan (2019) presentaron *SciBERT*, un modelo preentrenado sobre texto científico que es la base tanto del *retrieval* como de los clasificadores de este proyecto. En recuperación local de citas, Gu et al. (2022) combinaron un codificador jerárquico con un *reranking* basado en SciBERT para recuperar *qué* citar; este proyecto invierte el problema: dado un par citante–citado, recupera los fragmentos del citado que **explican** la cita para clasificar su función. Estos métodos supervisados dependen de datos etiquetados costosos, lo que aquí se mitiga con pre-etiquetado asistido y validación humana.
 
-**Modelos de lenguaje y corpus.** El corpus *unarXive 2022* (Saier, Krause y Färber, 2023) provee texto completo estructurado de arXiv con la red de citas resuelta a identificadores reales, habilitando tanto la recuperación de fragmentos como el enriquecimiento con metadatos; es la fuente base del proyecto. Paralelamente, los modelos de lenguaje de frontera permiten la clasificación de intención de cita sin reentrenamiento, con la ventaja de no requerir datos etiquetados pero con retos de consistencia de formato, costo y sesgo; el proyecto los incorpora en dos roles —jueces para el pre-etiquetado y línea de comparación en inferencia— en lugar de asumirlos como solución única.
+**Modelos de lenguaje y corpus.** El corpus *unarXive 2022* (Saier, Krause y Färber, 2023) provee texto completo estructurado de arXiv con la red de citas resuelta, y es la fuente base del proyecto. Los modelos de lenguaje de frontera permiten clasificar la intención de cita sin reentrenamiento; el proyecto los usa como jueces para el pre-etiquetado y como línea de comparación en inferencia.
 
 ---
 
@@ -82,31 +78,48 @@ El análisis de citas ha migrado del **conteo** hacia la **caracterización sem�
 
 ## Enfoque técnico
 
-La solución es un pipeline de dos componentes encadenados sobre artículos en inglés de Computer Science:
+La solución es un pipeline de dos componentes encadenados sobre artículos en Computer Science:
 
 1. **Recuperación semántica (retrieval):** el artículo citado se segmenta en fragmentos (*chunks*) de ≤300 palabras o ≤2 párrafos, respetando límites de oración y sección, y, mediante *embeddings* de **SciBERT** y similitud coseno, se recuperan los **Top-3** fragmentos más cercanos a cada contexto de cita, conservando su sección retórica de origen.
-2. **Clasificación de la función de cita:** clasificadores que asignan una de las **9 funciones**. Se comparan dos familias: *encoders* científicos ajustados por *fine-tuning* (**SciBERT/SPECTER**) con cabeza de clasificación y pérdida de entropía cruzada, y modelos de lenguaje (open-weight y comerciales) en modo inferencia con *prompting*.
+2. **Clasificación de la función de cita:** modelos que asignan una de las **9 funciones**. Se evalúa un clasificador supervisado basado en **SciBERT**, ajustado mediante *fine-tuning* con una cabeza de clasificación y pérdida de entropía cruzada, bajo dos configuraciones de entrada: (a) contexto de cita con el título y el abstract del artículo citado y (b) contexto de cita con la sección retórica y los fragmentos Top-3 recuperados. Como comparación adicional, se evalúa un modelo comercial de lenguaje de frontera sobre la información del artículo citado.
 
-**Justificación (alineación con los objetivos):** SciBERT/SPECTER están preentrenados sobre texto científico en inglés, lo que se ajusta al dominio; la recuperación densa aporta evidencia del artículo citado más allá del título y el abstract, insumo directo de la pregunta de investigación; y contrastar *encoders* frente a LLMs permite evaluar costo-beneficio.
+**Justificación:** SciBERT está preentrenado sobre texto científico en inglés, lo que se ajusta al dominio; comparar una entrada con solo el título y el abstract frente a otra que incorpora la sección retórica y los fragmentos recuperados permite medir directamente el aporte de la recuperación densa, insumo central de la pregunta de investigación; y contrastar el clasificador supervisado frente a un modelo de lenguaje comercial ofrece una línea de comparación adicional.
 
 ## Fases del Proyecto
 
 El desarrollo es incremental y cada fase produce artefactos versionados y reutilizables:
 
 - **F1 — Extracción, segmentación y recuperación de fragmentos.** Procesar arXiv (unarXive) para obtener texto plano en inglés, identificar marcadores y contextos de cita, segmentar el artículo citado en fragmentos y asociar con SciBERT los 3 fragmentos más similares por contexto de cita, con su sección de origen. 
-- **F2 — Pre-etiquetado asistido (sistema de jueces).** Modelos open-weight (Qwen3.5 9B, Gemma 4 E4B, Ministral 3 8B) asignan la(s) función(es) de cita como primera instancia; un esquema de varios jueces contrasta respuestas y produce una pre-etiqueta de mayor confianza para acelerar la conformación de candidatos.
-- **F3 — Construcción del dataset y validación humana.** Estructurar el dataset balanceado (2.000 por clase), validar manualmente el 15% seleccionado por categoría, construir la guía de anotación, reportar acuerdo interanotador (Kappa/Alpha) y dividir en train/validation/test con aislamiento estricto por documento.
-- **F4 — Clasificadores supervisados (fine-tuning).** Ajustar SciBERT/SPECTER sobre una entrada base que concatena el contexto de cita y los fragmentos del Top-3 del artículo citado, evaluando el aporte de features adicionales (título, abstract y sección retórica); en todas las configuraciones se usa un token especial de separación y una cabeza de clasificación sobre las 9 categorías.
-- **F5 — Evaluación con modelos comerciales.** Evaluar GPT-4o/5 y Gemini en inferencia, comparando *prompting* zero-shot vs. few-shot y prompts específicos vs. genéricos; salida de puntaje 0.0–1.0 por categoría para parseo automático.
-- **F6 — Evaluación comparativa.** Comparar todos los modelos sobre el test validado por humanos con Precision, Recall y F1 (macro y micro) y matrices de confusión para identificar funciones ambiguas.
-- **F7 — Eficiencia, latencia y costos.** Contrastar costo de *fine-tuning* vs. costo por tokens de API, latencia por inferencia, estabilidad de formato y tasa de errores de parseo.
-- **F8 — Despliegue.** Aplicación web que integra el flujo completo: ingreso de un contexto de cita, recuperación y visualización del Top-3 con su sección, selección del clasificador (encoder fine-tuned / open-weight 1–8B / comercial vía API) y presentación de la función predicha con su confianza.
+- **F2 — Etiquetado asistido (sistema de jueces).** Modelos open-weight (Qwen3.5 9B, Gemma 4 E4B, Ministral 3 8B) asignan una única función de cita a cada registro del conjunto completo. Un esquema de varios jueces contrasta sus respuestas y produce una etiqueta inicial para apoyar la conformación del dataset.
+- **F3 — Construcción del dataset y validación humana.** Estructurar el dataset balanceado (2.000 por clase) a partir del etiquetado inicial, validar manualmente una muestra del 15% seleccionada por categoría, corregir las etiquetas cuando sea necesario, reportar acuerdo interanotador (Kappa/Alpha) y dividir en train/validation/test con aislamiento estricto por documento.
+- **F4 — Clasificador supervisado (fine-tuning).** Ajustar un único modelo base (SciBERT) probando dos configuraciones de entrada: (a) el título y el abstract del artículo citado y (b) la sección retórica y los fragmentos Top-3 recuperados. En ambas, la entrada concatena el contexto de cita con la información del artículo citado mediante un token especial de separación, con una cabeza de clasificación sobre las 9 categorías y pérdida de entropía cruzada.
+- **F5 — Evaluación con un modelo de lenguaje.** Evaluar un único modelo comercial de lenguaje de frontera (por ejemplo, GPT-4o) en inferencia sobre la información del artículo citado, comparando dos estrategias de *prompting* (*zero-shot* y *few-shot*). El modelo entregará un puntaje entre 0.0 y 1.0 por cada una de las 9 categorías para facilitar el parseo automático, estableciendo una línea de comparación frente al clasificador supervisado.
+- **F6 — Evaluación comparativa.** Comparar el clasificador supervisado y el modelo de lenguaje sobre el test validado por humanos con Precision, Recall y F1 (macro y micro), además de matrices de confusión para identificar funciones ambiguas.
+- **F7 — Despliegue.** Aplicación web que integra el flujo completo: ingreso de un contexto de cita, recuperación y visualización del Top-3 con su sección, selección del clasificador entre tres opciones —encoder fine-tuned (SciBERT), modelo open-weight (1–8B) y modelo comercial vía API— y presentación de la función predicha con su confianza.
 
 ## Plan de validación
 
-La validación cubre tres niveles: (i) **dataset**, con acuerdo interanotador sobre el 15% validado por humanos, concordancia del pre-etiquetado frente a esa validación y verificación de balance de clases y no-*leakage*; (ii) **recuperación**, con *precision@3* sobre una muestra anotada por el equipo y coherencia de la sección retórica; y (iii) **clasificación** (experimento central): partiendo de una línea base —encoder SciBERT con contexto de cita + Top-3 fragmentos— se comparan alternativas en tres ejes: *features* de entrada (título, abstract, sección retórica), familia de modelo (encoder fine-tuned vs. LLM open-weight vs. comercial) y estrategias de *prompting* (zero/few-shot, específicos vs. genéricos). El detalle de métricas se presenta en la sección *Evaluación y métricas*.
+La validación cubre tres niveles: (i) **dataset**, con acuerdo interanotador sobre el 15% validado por humanos, comparación entre las etiquetas iniciales de los modelos y las etiquetas humanas, y verificación de balance de clases y no-*leakage*; (ii) **recuperación**, con *precision@3* sobre una muestra anotada por el equipo. Un fragmento se considera relevante cuando contiene evidencia directamente relacionada con la función de la cita; dos anotadores evaluarán los fragmentos recuperados y reportarán su acuerdo, además de la proporción de fragmentos relevantes en el Top-3; y (iii) **clasificación** (experimento central): SciBERT bajo dos configuraciones de entrada —título y abstract, frente a sección retórica y fragmentos Top-3—, y un modelo comercial de lenguaje de frontera con estrategias *zero-shot* y *few-shot* sobre la información del artículo citado.
 
-La arquitectura del pipeline se resume en el **Apéndice A** (diagrama de la solución) y el detalle de herramientas en el **Apéndice B**.
+### Arquitectura del pipeline
+
+La arquitectura del pipeline se resume en el siguiente diagrama:
+
+```mermaid
+flowchart LR
+    CITANTE[Citante] --> CTX[Contexto de cita]
+    CITADO[Citado] --> SEG[Fragmentos]
+    CTX --> RET[Retrieval SciBERT]
+    SEG --> RET
+    RET --> TOP3[Top-3 + sección]
+    CTX --> CLF[Clasificador]
+    TOP3 --> CLF
+    META[Título, abstract, sección] --> CLF
+    CLF --> OUT[Función 1/9 + confianza]
+    OUT --> DEMO[App web]
+```
+
+El detalle de herramientas se presenta en el **Apéndice**.
 
 ---
 
@@ -168,13 +181,13 @@ Se trabaja con literatura pública; no hay datos personales sensibles. Se respet
 # Evaluación y métricas
 
 - **Clasificación de función de cita:** Precision, Recall y **F1 macro y micro** sobre el test validado por humanos (15%); matrices de confusión para identificar funciones ambiguas.
-- **Configuración base y comparación:** la base incluye el contexto de cita y los Top-3 fragmentos recuperados; se evalúa el aporte incremental de features adicionales (título, abstract y sección retórica). El éxito se define como (i) una mejora consistente del **F1 macro** al añadir features sobre la base y (ii) un desempeño claramente superior a la línea de azar (1/9 ≈ 11,1% en 9 clases balanceadas); la meta cuantitativa concreta se afinará con el experto según la dificultad observada.
-- **Comparación de modelos:** *encoder* fine-tuned vs. LLM open-weight vs. LLM comercial (zero/few-shot).
+- **Configuraciones de entrada y comparación:** se compara SciBERT con el título y el abstract del artículo citado frente a SciBERT con la sección retórica y los fragmentos Top-3 recuperados. El éxito se define como una mejora consistente del **F1 macro** de la configuración con fragmentos recuperados sobre la de solo título y abstract, y un desempeño claramente superior a la línea de azar (1/9 ≈ 11,1% en 9 clases balanceadas); la meta cuantitativa concreta se afinará con el experto según la dificultad observada.
+- **Comparación de modelos:** la mejor configuración de SciBERT se compara con un modelo comercial de lenguaje de frontera (*zero-shot* y *few-shot*), utilizando la misma información del artículo citado y métricas cuando sea técnicamente posible.
 - **Calidad de la anotación:** acuerdo interanotador (Cohen/Fleiss Kappa o Krippendorff Alpha).
 - **Recuperación (retrieval):** al no existir *ground-truth* de relevancia, se evalúa mediante *precision@3* sobre una muestra anotada por el equipo y la coherencia de la sección retórica de los fragmentos recuperados; su utilidad final se refleja en el desempeño de clasificación que alimenta.
-- **Eficiencia:** costo de fine-tuning vs. costo por tokens (API), latencia por inferencia y tasa de errores de formato/parseo (F7).
+- **Eficiencia:** costo de fine-tuning frente al costo por tokens del modelo de lenguaje, latencia por inferencia y tasa de errores de formato/parseo (F7).
 
-**Referencia previa (contexto propio):** en el microproyecto CiteScope (tarea distinta: subárea `cs.*`, 8 clases), SciBERT Plus alcanzó Macro F1 0,6716 en test, lo que valida el pipeline técnico que se reutiliza aquí.
+**Experiencia previa del equipo:** en el microproyecto CiteScope, sobre clasificación de funciones de cita en la subárea `cs.*`, SciBERT Plus alcanzó un Macro F1 de 0,68 en el conjunto de prueba. Este resultado constituye un antecedente técnico para el uso de modelos científicos en el proyecto actual.
 
 ---
 
@@ -196,28 +209,12 @@ Se trabaja con literatura pública; no hay datos personales sensibles. Se respet
 
 # Apéndices
 
-## Apéndice A — Diagrama de la solución
-
-```mermaid
-flowchart TB
-    CITANTE[Artículo citante] --> CTX[Contexto de cita]
-    CITADO[Artículo citado] --> SEG[Segmentación en fragmentos]
-    CTX --> RET[Recuperación densa con SciBERT]
-    SEG --> RET
-    RET --> TOP3[Top-3 fragmentos del artículo citado + sección retórica]
-    CTX --> CLF[Clasificador de función de cita]
-    TOP3 --> CLF
-    FEAT[Features adicionales del artículo citado: título, abstract, sección] --> CLF
-    CLF --> OUT[Función de cita 1 de 9 + confianza]
-    OUT --> DEMO[Aplicación web]
-```
-
-## Apéndice B — Herramientas
+## Apéndice — Herramientas
 
 - **Datos / corpus:** unarXive 2022, OpenAlex, arXiv; Python (pandas, NumPy).
-- **Recuperación y modelado:** PyTorch, Hugging Face Transformers (SciBERT `allenai/scibert_scivocab_uncased`, SPECTER); similitud coseno (FAISS opcional) para la recuperación.
-- **LLMs:** open-weight (Qwen3.5 9B, Gemma 4 E4B, Ministral 3 8B) vía Ollama/local; comerciales (GPT-4o/5, Gemini) vía API.
+- **Recuperación y modelado:** PyTorch, Hugging Face Transformers (SciBERT `allenai/scibert_scivocab_uncased`); similitud coseno (FAISS opcional) para la recuperación.
+- **Modelos de lenguaje:** un modelo comercial de lenguaje de frontera vía API (evaluado con *zero-shot* y *few-shot*) y un modelo open-weight (1–8B) disponible en el demostrador.
 - **Evaluación:** scikit-learn (Precision, Recall, F1, matrices de confusión) y métricas de acuerdo interanotador (Cohen/Fleiss Kappa, Krippendorff Alpha).
 - **MLOps:** Git, DVC (remoto S3), MLflow (servidor en EC2), FastAPI, PostgreSQL, Docker.
-- **Aplicación web:** Next.js / React / TypeScript.
+- **Aplicación web:** Next.js / React / TypeScript, integrada con las tres opciones de clasificación del demostrador.
 
