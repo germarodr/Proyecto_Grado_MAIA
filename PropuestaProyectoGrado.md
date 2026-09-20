@@ -107,16 +107,47 @@ La arquitectura del pipeline se resume en el siguiente diagrama:
 
 ```mermaid
 flowchart LR
-    CITANTE[Citante] --> CTX[Contexto de cita]
-    CITADO[Citado] --> SEG[Fragmentos]
-    CTX --> RET[Retrieval SciBERT]
-    SEG --> RET
-    RET --> TOP3[Top-3 + sección]
-    CTX --> CLF[Clasificador]
+    subgraph IN[Entradas]
+        direction TB
+        CITANTE[Artículo citante]
+        CITADO[Artículo citado]
+    end
+    CITANTE --> CTX[Contexto de cita]
+    CITADO --> SEG[Segmentación en fragmentos<br/>≤300 palabras / ≤2 párrafos]
+
+    subgraph RETR[Recuperación semántica]
+        direction TB
+        EMB[Embeddings SciBERT<br/>+ similitud coseno]
+        TOP3[Top-3 fragmentos<br/>+ sección retórica]
+        EMB --> TOP3
+    end
+    CTX --> EMB
+    SEG --> EMB
+
+    META[Título, abstract y sección<br/>del citado] --> CLF
+
+    subgraph CLASIF[Clasificación de función]
+        direction TB
+        CLF{Clasificador}
+        SCIBERT[SciBERT fine-tuned]
+        OPEN[Open-weight 1–8B]
+        LLM[LLM comercial API]
+        CLF --> SCIBERT
+        CLF --> OPEN
+        CLF --> LLM
+    end
+    CTX --> CLF
     TOP3 --> CLF
-    META[Título, abstract, sección] --> CLF
-    CLF --> OUT[Función 1/9 + confianza]
-    OUT --> DEMO[App web]
+
+    CLASIF --> OUT[Función predicha 1/9<br/>+ confianza por categoría]
+    OUT --> DEMO[Aplicación web<br/>Next.js / React]
+
+    classDef src fill:#e3f2fd,stroke:#1565c0,color:#0d47a1;
+    classDef proc fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;
+    classDef out fill:#fff3e0,stroke:#ef6c00,color:#e65100;
+    class CITANTE,CITADO,CTX,SEG,META src;
+    class EMB,TOP3,CLF,SCIBERT,OPEN,LLM proc;
+    class OUT,DEMO out;
 ```
 
 El detalle de herramientas se presenta en el **Apéndice**.
