@@ -98,7 +98,7 @@ S1–S3 reflejan lo ejecutado según el informe de avance. Semana actual: **S4**
 | H2 | Prompt v11.1 y jueces congelados | S2 (13-oct) | Cumplido |
 | H3 | Calibración aprobada para iniciar A3 (calib2) | S3 (18-oct) | Cumplido |
 | H4 | Pool ampliado (38.780) + informe de avance | S3 (23-oct) | Cumplido |
-| H5 | Validación manual terminada | S4 (25-oct) | Por confirmar |
+| H5 | Validación manual de la ronda 1 terminada | S4 (25-oct) | Cumplido |
 | H6 | Adjudicación + gold T_B + IAA consolidados; **cierre del trabajo conjunto** | S4 (31-oct) | Pendiente |
 | H7 | Aislamiento elegido y partición train/val lista | S5 (2-nov) | Pendiente |
 | H8 | SciBERT base v0 liberado para integración con la aplicación | S5 (4-nov) | Pendiente |
@@ -120,7 +120,7 @@ S1–S3 reflejan lo ejecutado según el informe de avance. Semana actual: **S4**
 ### 5.2 Pendientes
 
 - Antes del 31-oct: congelar ronda 2 y recibir artefactos del G14.
-- Variante de aislamiento (V0/V1/V2) y corte temporal de la partición.
+- Variante de aislamiento (V0/V1/V2).
 - Modelo comercial y qué información del citado recibe.
 - Modelo open-weight para la demo.
 
@@ -136,11 +136,11 @@ Tareas en orden cronológico; las fechas son propuestas.
 
 | # | Tarea | Actividad | Responsable | Fecha fin | Estado |
 |---|-------|-----------|-------------|-----------|--------|
-| 1 | Congelar muestreo y ejecutar la ronda 2 | A3 | ALL | 31-oct | Pendiente |
+| 1 | Ejecutar la ronda 2 (Basis, Improvement/Modification, Further Reading; inició 26-oct) | A3 | ALL | 31-oct | En curso |
 | 2 | Adjudicar desacuerdos y liberar reservas por déficit | A3 | ALL | 31-oct | Pendiente |
 | 3 | Consolidar `test_set_gold.jsonl`, `exclusion_list.jsonl` e `iaa_report.md` | A3 | ALL | 31-oct | Pendiente |
-| 4 | Recibir y versionar (DVC) los artefactos del G14 | A3 | ALL | 31-oct | Pendiente |
-| 5 | Elegir variante de aislamiento y corte temporal; construir train/val | A4 | GR, ST | 2-nov | Pendiente |
+| 4 | Recibir y versionar (DVC) los artefactos del G14, incluida la lista de las 521 instancias con licencia permisiva para la demo | A3 | ALL | 31-oct | Pendiente |
+| 5 | Elegir variante de aislamiento (V0/V1/V2); construir train/val | A4 | GR, ST | 2-nov | Pendiente |
 | 6 | Entrenar y liberar SciBERT base v0 + contrato de API (entrada/salida) | A4 | GR, ST | 4-nov | Pendiente |
 | 7 | Definir cómo ajustar la entrada "con fragmentos" al límite de 512 tokens | A4 | GR, ST | 6-nov | Pendiente |
 | 8 | Elegir modelo comercial y preparar prompts zero-/few-shot | A5 | GR, ST | 7-nov | Pendiente |
@@ -152,7 +152,7 @@ Tareas en orden cronológico; las fechas son propuestas.
 | 14 | Ejecutar evaluación del LLM comercial sobre T_B | A5 | GR, ST | 14-nov | Pendiente |
 | 15 | Fine-tuning SciBERT con fragmentos (versión final) | A4 | GR, ST | 15-nov | Pendiente |
 | 16 | Backend: integrar modelos finales, open-weight y API comercial | A8 | CB | 18-nov | Pendiente |
-| 17 | Métricas, matrices de confusión y comparación base vs. con fragmentos | A6 | GR, ST | 21-nov | Pendiente |
+| 17 | Métricas, matrices de confusión y comparación base vs. con fragmentos (si V0: F1 por citados vistos / no vistos) | A6 | GR, ST | 21-nov | Pendiente |
 | 18 | Medir costos, latencia y errores de formato | A7 | GR, ST | 21-nov | Pendiente |
 | 19 | Frontend: versión final con visualización de resultados | A8 | ST | 21-nov | Pendiente |
 | 20 | Desplegar la aplicación en AWS | A8 | JA | 21-nov | Pendiente |
