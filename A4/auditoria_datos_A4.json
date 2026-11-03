@@ -1,0 +1,158 @@
+{
+  "review_date": "2026-10-29",
+  "group": "G15",
+  "training_rows_v0": 31265,
+  "unique_training_keys": 31265,
+  "unique_citing_train": 21516,
+  "unique_cited_train": 10693,
+  "labels_v0": {
+    "Evidence": 3027,
+    "Background": 12214,
+    "Comparison": 3157,
+    "Gap": 2807,
+    "Application": 4243,
+    "Basis": 2606,
+    "Identification of the Originator": 1312,
+    "Improvement/Modification": 545,
+    "Further Reading": 1354
+  },
+  "source_batches_v0": {
+    "pool_cue_eg": 9271,
+    "pool_cue_cmp": 4038,
+    "pool_cue_rare": 2371,
+    "pilot_random_1500": 1232,
+    "pool_single_7000": 5810,
+    "pool_cue_yield": 676,
+    "pool_cue_basis": 4493,
+    "pool_ext_cue_rare": 3374
+  },
+  "own_test_ids": 3510,
+  "own_test_status": {
+    "active": 2970,
+    "buffer": 270,
+    "reserve": 270
+  },
+  "source_calibration_unique": 115,
+  "test_citing_extra_in_exclusions": [
+    "1904.09569",
+    "2103.10428"
+  ],
+  "variants": {
+    "V0": {
+      "before_split": 31265,
+      "train": 28039,
+      "validation": 3226,
+      "removed_to_isolate_validation": 0,
+      "class_counts": {
+        "train": {
+          "Background": 10957,
+          "Gap": 2522,
+          "Basis": 2346,
+          "Comparison": 2840,
+          "Application": 3776,
+          "Improvement/Modification": 487,
+          "Evidence": 2715,
+          "Identification of the Originator": 1175,
+          "Further Reading": 1221
+        },
+        "validation": {
+          "Background": 1257,
+          "Gap": 285,
+          "Basis": 260,
+          "Comparison": 317,
+          "Application": 467,
+          "Improvement/Modification": 58,
+          "Evidence": 312,
+          "Identification of the Originator": 137,
+          "Further Reading": 133
+        }
+      },
+      "split_hashes": {
+        "train": "4cb6df67e1eb5c0400b5e0edb550a76e1687808c0646a68820efbe4f60567e54",
+        "validation": "75cfd9681fb319f19f5e2432b3b44becaa744ae2b27b915d868966f9f9050d1c"
+      }
+    },
+    "V1": {
+      "before_split": 16564,
+      "train": 12119,
+      "validation": 1662,
+      "removed_to_isolate_validation": 2783,
+      "class_counts": {
+        "train": {
+          "Background": 5266,
+          "Gap": 1288,
+          "Basis": 879,
+          "Comparison": 1263,
+          "Application": 945,
+          "Improvement/Modification": 147,
+          "Evidence": 1318,
+          "Identification of the Originator": 320,
+          "Further Reading": 693
+        },
+        "validation": {
+          "Background": 742,
+          "Gap": 169,
+          "Basis": 111,
+          "Comparison": 177,
+          "Application": 143,
+          "Improvement/Modification": 20,
+          "Evidence": 164,
+          "Identification of the Originator": 58,
+          "Further Reading": 78
+        }
+      },
+      "split_hashes": {
+        "train": "2c2f3d7985952bddf8c7b820f1dd34028748a1e861a3b2afb912c60d0b3d762e",
+        "validation": "b9fb6bc46f9f3584016f9ca619aada70c51afbdc1b1a06615abdff47bc76ace4"
+      }
+    },
+    "V2": {
+      "before_split": 15349,
+      "train": 11015,
+      "validation": 1539,
+      "removed_to_isolate_validation": 2795,
+      "class_counts": {
+        "train": {
+          "Background": 4801,
+          "Gap": 1152,
+          "Basis": 805,
+          "Comparison": 1119,
+          "Application": 820,
+          "Improvement/Modification": 129,
+          "Evidence": 1226,
+          "Identification of the Originator": 304,
+          "Further Reading": 659
+        },
+        "validation": {
+          "Background": 688,
+          "Gap": 157,
+          "Basis": 101,
+          "Comparison": 162,
+          "Application": 132,
+          "Improvement/Modification": 19,
+          "Evidence": 152,
+          "Identification of the Originator": 53,
+          "Further Reading": 75
+        }
+      },
+      "split_hashes": {
+        "train": "c59163bb009ae0f27c8ccc138f821771a277a726c4ef322ad21b99902634db02",
+        "validation": "d879a1c7316bbdf7169a026494eec4671e75f1eb6109acdf218ae413ea4b29e3"
+      }
+    }
+  },
+  "gold_available_locally": false,
+  "batch_schema_verified": true,
+  "training_on_a100_executed": false,
+  "input_hashes": {
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\training_v1_G15.jsonl": "b5019d58bb631360826dfce7389e321747abf04ff4d33d777dfba9c158bddf5b",
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\test_set_ids_G15.jsonl": "96513833027ac30333c7a818fb56080062f6590f4993b3c515f2391f73bc43c7",
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\exclusion_list_G15_V0.jsonl": "2c797e12fdc4749174ac8294d87861bea74ad3c68b3223341df35c0e01220836",
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\exclusion_list_G15_V1.jsonl": "b029e5bc118d643007b28018649c1b49c3c09eec30b1bea2c5abee5051522120",
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\exclusion_list_G15_V2.jsonl": "ca9ac880777d4ed463a77afc2b026f09f94196e75c83774348bfdf6bd0ad7169",
+    "C:\\Source\\Maestria\\Tesis\\code\\Proyecto_Grado_MAIA\\Folder_trabajo_Equipos_14_y_15\\TrainingData_Grupo15\\manifest_training_v1_G15.json": "b166f003062c95cba8a26826e5ea34f39268aef746f1ac1b6d5f9f2e3a348ad9"
+  },
+  "text_audit_file": "auditoria_textos_A4.json",
+  "verified_required_text_rows": 34775,
+  "local_verification_tests_passed": 6
+}

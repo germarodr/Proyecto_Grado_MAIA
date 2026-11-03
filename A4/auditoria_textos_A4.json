@@ -1,0 +1,136 @@
+{
+  "review_date": "2026-10-29",
+  "group": "G15",
+  "batch_schema_verified": true,
+  "required_train_v0": 31265,
+  "required_test_ids": 3510,
+  "batches": {
+    "pilot_random_1500": {
+      "file_rows": 1500,
+      "sha256": "6ec2511d1d7d354396cd082f5dcb7325ffc33a840bd50b0b32b3a92ad637ce43"
+    },
+    "pool_cue_basis": {
+      "file_rows": 5539,
+      "sha256": "0dadc2022f71e8b569c27583e2b7a6c3f9b181d997134133571742e4194deba2"
+    },
+    "pool_cue_cmp": {
+      "file_rows": 5000,
+      "sha256": "64e3fe248f6c72acffb78d1670f80b808cf2be2b50a11c5cfed5144570b016ae"
+    },
+    "pool_cue_eg": {
+      "file_rows": 11653,
+      "sha256": "49c3640e878b73e44a6a7221409fc77afc5649211ce09f581cf95cb48e0624f0"
+    },
+    "pool_cue_rare": {
+      "file_rows": 3400,
+      "sha256": "f8a768d7bc15c732097ef712ec4ec3900aa1cf3149c7cefecdb3f384f28e522b"
+    },
+    "pool_cue_yield": {
+      "file_rows": 900,
+      "sha256": "0b9a3cfbca8810b4533c0630b5ae97415bc5eb4d4de470e660cd696ec0192a0d"
+    },
+    "pool_ext_cue_rare": {
+      "file_rows": 3905,
+      "sha256": "243e0222dfd043141d9ac8bdf3e85be5817d27e6699bc64f4dfa2a9600a47428"
+    },
+    "pool_single_7000": {
+      "file_rows": 7000,
+      "sha256": "c5cf38cc818c5e785a928a57b2d7535e130ad90aa72fa726f2b7c13cedc6e8e3"
+    }
+  },
+  "text_quality": {
+    "train_val_v0": {
+      "rows": 31265,
+      "rows_with_missing_section": 541,
+      "chunks_with_missing_section": 917,
+      "empty_context_title_abstract_or_chunk_text": 0,
+      "invalid_target_marker_count": 0
+    },
+    "test_ids": {
+      "rows": 3510,
+      "rows_with_missing_section": 52,
+      "chunks_with_missing_section": 90,
+      "empty_context_title_abstract_or_chunk_text": 0,
+      "invalid_target_marker_count": 0
+    }
+  },
+  "tokenizer_audit": {
+    "original_vocab_size": 31090,
+    "extended_vocab_size": 31095,
+    "vocab_sha256": "f0a650346e51ede8996710f79ba65d83fdb8da05b159f17037b74ba4e3a36c6f",
+    "examples_per_config": 34775,
+    "max_total_tokens": 512,
+    "target_preserved_all": true,
+    "max_length": 512,
+    "context_budget": 192,
+    "mean_by_config_split": [
+      {
+        "config": "base",
+        "split": "test_ids",
+        "total_tokens": 383.8985754985755,
+        "context_original": 173.6937321937322,
+        "context_kept": 147.0960113960114,
+        "evidence_original": 235.6908831908832,
+        "evidence_kept": 233.8025641025641,
+        "context_truncated": 0.3564102564102564,
+        "evidence_truncated": 0.04957264957264957
+      },
+      {
+        "config": "base",
+        "split": "train",
+        "total_tokens": 386.547665751275,
+        "context_original": 174.2362067120796,
+        "context_kept": 148.22796818716787,
+        "evidence_original": 237.63222654160276,
+        "evidence_kept": 235.31969756410714,
+        "context_truncated": 0.3537929312742965,
+        "evidence_truncated": 0.05139270302079247
+      },
+      {
+        "config": "base",
+        "split": "validation",
+        "total_tokens": 386.9296342219467,
+        "context_original": 174.31928084314941,
+        "context_kept": 148.1633601983881,
+        "evidence_original": 238.3676379417235,
+        "evidence_kept": 235.7662740235586,
+        "context_truncated": 0.35709857408555484,
+        "evidence_truncated": 0.05765654060756355
+      },
+      {
+        "config": "fragmentos",
+        "split": "test_ids",
+        "total_tokens": 502.3139601139601,
+        "context_original": 173.6937321937322,
+        "context_kept": 147.0960113960114,
+        "evidence_original": 638.8384615384615,
+        "evidence_kept": 352.21794871794873,
+        "context_truncated": 0.3564102564102564,
+        "evidence_truncated": 0.8962962962962963
+      },
+      {
+        "config": "fragmentos",
+        "split": "train",
+        "total_tokens": 504.02888833410606,
+        "context_original": 174.2362067120796,
+        "context_kept": 148.22796818716787,
+        "evidence_original": 640.433360676201,
+        "evidence_kept": 352.8009201469382,
+        "context_truncated": 0.3537929312742965,
+        "evidence_truncated": 0.9097685366810514
+      },
+      {
+        "config": "fragmentos",
+        "split": "validation",
+        "total_tokens": 504.00929944203347,
+        "context_original": 174.31928084314941,
+        "context_kept": 148.1633601983881,
+        "evidence_original": 641.3952262864228,
+        "evidence_kept": 352.8459392436454,
+        "context_truncated": 0.35709857408555484,
+        "evidence_truncated": 0.9091754494730316
+      }
+    ]
+  },
+  "reconstructed_rows": 34775
+}
