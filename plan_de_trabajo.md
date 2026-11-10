@@ -1,160 +1,93 @@
 # Plan de Trabajo
 ### Recuperación semántica y clasificación de la función de citas académicas en Computer Science
 
-> **Equipo:** Grupo 15 (conjunto de prueba **T_B**).
-> - **A1–A3:** trabajo conjunto con el Grupo 14 (T_A) bajo un contrato de datos compartido.
-> - **A4 en adelante:** el Grupo 15 trabaja de forma **autónoma**.
+> **Equipo:** Grupo 15 (conjunto de prueba **T_B**). A1–A3 se hicieron con el Grupo 14; desde A4 trabajamos solos.
 >
-> **Calendario:** 8 semanas, del **4-oct-2026** al **28-nov-2026**.
+> **Quedan 2 semanas:** del 9 al 27-nov-2026.
+>
+> **Entregas finales (Coursera, 11:55 p. m. hora Colombia):**
+>
+> | Entrega | Fecha límite | Peso |
+> |---|---|---|
+> | Informe final | 23-nov | 55% |
+> | Despliegue de la aplicación | 26-nov | 15% |
+> | Sustentación | 27-nov | 15% |
 
-## 1. Objetivo del proyecto
+## 1. Qué tenemos que entregar
 
-Objetivo general (resumido de la propuesta, §2.1):
+| Entrega | Mínimo que debe contener | Responsable |
+|---|---|---|
+| **Informe final** (23-nov) | Artículo científico en formato IEEE (`Informes/Informe Final/Plantilla_Articulo.docx`): título, autores, resumen de 200–300 palabras con 3–5 palabras clave, introducción, estado del arte, metodología (datos, ciclo de ML, arquitectura y despliegue), resultados (métricas y matrices de confusión), discusión, conclusiones y trabajo futuro, referencias y enlaces a los repositorios | GR (borrador); cada uno escribe su parte |
+| **Despliegue** (26-nov) | Aplicación web en AWS: ingresar un contexto de cita → ver el Top-3 con su sección → elegir clasificador (SciBERT, open-weight, API comercial) → ver la función predicha y su confianza | CB (backend), ST (frontend) |
+| **Sustentación** (27-nov) | Presentación con demo en vivo | Todos |
 
-> Desarrollar un sistema de PLN que, para un contexto de cita en inglés dentro del área de Computer Science, recupere los fragmentos más relevantes del artículo citado y clasifique la función de la cita en una de nueve categorías, evaluando el aporte de los fragmentos recuperados al desempeño de la clasificación.
+## 2. Punto de partida (9-nov)
 
-## 2. Entregables principales
+- **Hecho:** A0–A3 completos al 9-nov, con todos sus artefactos (gold de T_B, métricas de anotación, lista de exclusión y artefactos del G14). Partición V0 lista (28.039 train / 3.226 val). Notebook de A4 con MLflow listo para Colab A100.
+- **Por confirmar:** SciBERT base v0 entrenado.
 
-| # | Entregable | Descripción breve |
-|---|------------|-------------------|
-| E1 | Corpus procesado | Subconjunto CS de unarXive 2022 con contextos de cita auto-referenciales y citados segmentados |
-| E2 | Módulo de recuperación | Top-3 fragmentos por contexto + sección de origen |
-| E3 | Dataset etiquetado | Pool pre-etiquetado (38.780 instancias), test T_B validado (≥2.700, 300/clase), guía rev3.1, acuerdo interanotador, `test_set_gold.jsonl`, `exclusion_list.jsonl`, `iaa_report.md` |
-| E4 | Clasificador SciBERT | Fine-tuning en 2 configuraciones: **base** (contexto + título + abstract del citado) y **con fragmentos** (contexto + sección + Top-3) |
-| E5 | Evaluación LLM comercial | Zero-shot vs. few-shot con puntaje 0–1 por categoría |
-| E6 | Informe comparativo | F1 macro/micro, matrices de confusión, eficiencia, latencia y costos |
-| E7 | Aplicación web | Flujo completo con selección de clasificador (SciBERT, open-weight 1–8B, API comercial) |
-| E8 | Informe final | Documento y sustentación |
+## 3. Alcance congelado
 
-## 3. Actividades
+**Lo que sí hacemos (mínimo para entregar):**
 
-Se usa una sola nomenclatura, **A0–A8**, alineada con las actividades A1–A7 de la universidad y con el contrato G14/G15. A0 (planeación) y A8 (despliegue y cierre) son propias del plan.
+1. SciBERT en 2 configuraciones: **base** (contexto + título + abstract) y **con fragmentos** (contexto + sección + Top-3), evaluado en T_B.
+2. Un LLM comercial, **zero-shot y few-shot**, con contexto + título + abstract y puntaje 0–1 por clase.
+3. Precision, Recall y F1 macro/micro; matrices de confusión; tabla comparativa de los modelos.
+4. Costo y latencia por modelo; tasa de errores de formato del LLM.
+5. Aplicación desplegada con los 3 clasificadores.
+6. Informe y sustentación.
 
-| Actividad | Tareas principales | Entregable | Depende de | Modalidad | Estado |
-|------|------------------------|------------|------------|-----------|--------|
-| A0. Planeación y definiciones | Propuesta, contrato de datos con Grupo 14, roles, infraestructura (Git, DVC/S3, MLflow) | Propuesta + contrato | – | Conjunta G14/G15 | Completada |
-| A1. Extracción, segmentación y retrieval | Filtro CS en unarXive, contextos de cita, restricción auto-referencial, limpieza, chunking (≤300 palabras / ≤2 párrafos), embeddings SciBERT + coseno, Top-3 con sección | E1, E2 | A0 | Conjunta G14/G15 | Completada |
-| A2. Etiquetado asistido (jueces) | Prompt v11.1 congelado; jueces Qwen3.8-27B, Gemma-4-26B-A4B, Mistral-Small-3.2-24B; voto mayoritario; ampliación del pool para clases escasas | Pool de pre-etiquetas | A1 | Conjunta G14/G15 | Completada |
-| A3. Dataset y validación humana | Calibraciones, anotación cruzada G14/G15 (rondas 1 y 2), adjudicación, liberación de reservas por déficit, consolidación de gold T_B e IAA | E3 | A2 | Conjunta G14/G15 | En curso |
-| A4. Clasificador supervisado | Elección de aislamiento (V0/V1/V2), partición train/val por citante, **liberación temprana de SciBERT base v0** para integrar la aplicación, SciBERT fine-tuned (CE, 9 clases) en configuraciones **base** (título+abstract) y **con fragmentos** (sección+Top-3) | E4 | A1, A3 | Autónoma G15 | Por iniciar |
-| A5. Evaluación con LLM comercial | Un modelo de frontera (p. ej. GPT-4o), zero-shot vs. few-shot, salida con puntaje 0–1 por categoría | E5 | A3 | Autónoma G15 | Por iniciar |
-| A6. Evaluación comparativa | Precision/Recall/F1 macro y micro, matrices de confusión, aporte del Top-3 | E6 | A4, A5 | Autónoma G15 | Por iniciar |
-| A7. Eficiencia, latencia y costos | Costo de fine-tuning vs. tokens de API, latencia por inferencia, tasa de errores de formato | E6 | A4, A5 | Autónoma G15 | Por iniciar |
-| A8. Despliegue y cierre | Aplicación web (Next.js/React + FastAPI) con 3 clasificadores; informe final y sustentación | E7, E8 | A1, A4, A5, A6 | Autónoma G15 | Por iniciar |
+**Solo si sobra tiempo (después del 19-nov):** prompts específicos por categoría vs. genérico; P@3 manual del retrieval en una muestra pequeña; F1 por citados vistos/no vistos; más semillas.
 
-### Vista de dependencias
+**Fuera de alcance:** SPECTER, multietiqueta, variantes V1/V2, nuevas rondas de anotación.
 
-```mermaid
-flowchart LR
-    subgraph CONJ[Conjunta G14/G15]
-        A0[A0 Planeación] --> A1[A1 Extracción + retrieval]
-        A1 --> A2[A2 Jueces]
-        A2 --> A3[A3 Dataset + validación]
-    end
-    subgraph AUTO[Autónoma G15]
-        A4[A4 SciBERT fine-tuning]
-        A5[A5 LLM comercial]
-        A6[A6 Evaluación comparativa]
-        A7[A7 Eficiencia y costos]
-        A8[A8 Despliegue + cierre]
-    end
-    A1 --> A4
-    A3 --> A4
-    A3 --> A5
-    A4 --> A6
-    A5 --> A6
-    A4 --> A7
-    A5 --> A7
-    A6 --> A8
-    A7 --> A8
-    A4 --> A8
-    A5 --> A8
-```
+## 4. Tareas por persona
 
-### Cronograma (8 semanas: 4-oct → 28-nov-2026)
+| Responsable | Entregable | Fecha | Estado |
+|---|---|---|---|
+| **ST** (A4) | SciBERT base v0 a CB: pesos + contrato de entrada/salida | 11-nov | Pendiente |
+| | SciBERT base final + predicciones sobre T_B | 12-nov | Pendiente |
+| | SciBERT con fragmentos final + predicciones sobre T_B | 13-nov | Pendiente |
+| **ST** (frontend) | Versión 1 conectada al backend | 14-nov | Pendiente |
+| | Versión final con visualización de resultados | 20-nov | Pendiente |
+| **JA** (A5) | Modelo comercial elegido + prompts zero-/few-shot | 10-nov | Pendiente |
+| | Predicciones sobre T_B (zero y few-shot) con tokens, costo y latencia por llamada | 13-nov | Pendiente |
+| **CB** (backend) | Modelo open-weight elegido; API con Top-3 + SciBERT v0 | 13-nov | Pendiente |
+| | API con los 3 clasificadores | 18-nov | Pendiente |
+| **CB + ST** | Aplicación desplegada en AWS (URL pública) | 21-nov | Pendiente |
+| **GR** (A6, A7, informe) | Script de métricas probado sobre validación + esqueleto del informe en la plantilla | 12-nov | Pendiente |
+| | Resultados finales (A6 + A7): tabla P/R/F1 macro-micro de los 4 modelos, F1 por clase, matrices de confusión, base vs. con fragmentos, costos, latencia y errores de formato del LLM | 16-nov (festivo) | Pendiente |
+| | Borrador completo del informe (único editor; integra insumos y sugerencias) | 21-nov | Pendiente |
+| **Todos** | Insumos para el informe según la tabla "Qué entrega cada uno" de `Informes/Informe Final/Borrador_v0_Informe_Final.md` | 13–21-nov | Pendiente |
+| | Comentarios sobre el PDF del informe: v1 (19-nov) y final (22-nov) | 22-nov | Pendiente |
+| | Diapositivas y ensayo de la sustentación con demo | 25-nov | Pendiente |
 
-| Actividad | S1<br/>4–10 oct | S2<br/>11–17 oct | S3<br/>18–24 oct | S4<br/>25–31 oct | S5<br/>1–7 nov | S6<br/>8–14 nov | S7<br/>15–21 nov | S8<br/>22–28 nov |
-|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| A1 Extracción + retrieval | ● | ● | ● |  |  |  |  |  |
-| A2 Jueces |  | ● | ● |  |  |  |  |  |
-| A3 Validación + adjudicación |  | ● | ● | ● |  |  |  |  |
-| **Fin del trabajo conjunto** |  |  |  | ◆ |  |  |  |  |
-| A4 SciBERT base y con fragmentos |  |  |  |  | ● | ● | ● |  |
-| **Liberación SciBERT base v0** |  |  |  |  | ◆ |  |  |  |
-| A5 LLM comercial |  |  |  |  | ● | ● |  |  |
-| A6 Evaluación comparativa |  |  |  |  |  |  | ● |  |
-| A7 Eficiencia y costos |  |  |  |  |  |  | ● |  |
-| A8 Plataforma AWS |  |  |  |  | ● | ● | ● |  |
-| A8 Backend y frontend |  |  |  |  | ● | ● | ● |  |
-| A8 Informe final + sustentación |  |  |  |  |  |  | ● | ● |
+**Formato común de predicciones** (ST y JA entregan a GR un CSV por modelo y configuración): `inst_key`, `pred_label`, un `score_<clase>` por cada una de las 9 clases, `latency_ms`.
 
-S1–S3 reflejan lo ejecutado según el informe de avance. Semana actual: **S4**.
+## 5. Puntos de control
 
-## 4. Hitos
+| Fecha | Debe estar listo |
+|---|---|
+| Vie 13-nov | **A4 y A5 terminados:** todas las predicciones sobre T_B entregadas; API con SciBERT v0 |
+| Lun 16-nov (festivo) | Resultados finales (A6 + A7) |
+| Mié 18-nov | API con los 3 clasificadores |
+| Sáb 21-nov | Aplicación desplegada + borrador del informe |
+| **Lun 23-nov** | **Entrega del informe** |
+| **Jue 26-nov** | **Entrega del despliegue** |
+| **Vie 27-nov** | **Sustentación** |
 
-| Hito | Criterio de cumplimiento | Fecha objetivo | Estado |
-|------|--------------------------|----------------|--------|
-| H1 | Propuesta y contrato de datos G14/G15 | S1 (10-oct) | Cumplido |
-| H2 | Prompt v11.1 y jueces congelados | S2 (13-oct) | Cumplido |
-| H3 | Calibración aprobada para iniciar A3 (calib2) | S3 (18-oct) | Cumplido |
-| H4 | Pool ampliado (38.780) + informe de avance | S3 (23-oct) | Cumplido |
-| H5 | Validación manual de la ronda 1 terminada | S4 (25-oct) | Cumplido |
-| H6 | Adjudicación + gold T_B + IAA consolidados; **cierre del trabajo conjunto** | S4 (31-oct) | Pendiente |
-| H7 | Aislamiento elegido y partición train/val lista | S5 (2-nov) | Pendiente |
-| H8 | SciBERT base v0 liberado para integración con la aplicación | S5 (4-nov) | Pendiente |
-| H9 | SciBERT base y con fragmentos finales y LLM comercial evaluado | S7 (15-nov) | Pendiente |
-| H10 | Evaluación comparativa completa y aplicación desplegada | S7 (21-nov) | Pendiente |
-| H11 | Informe final y sustentación | S8 (28-nov) | Pendiente |
+Regla: si una tarea se atrasa más de un día, se avisa al grupo y se recorta de lo opcional, nunca del mínimo.
 
-## 5. Decisiones
+## 6. Decisiones vigentes
 
-### 5.1 Vigentes
+- 9 clases, etiqueta única.
+- Aislamiento V0; train/val separado por citante; test = gold de T_B.
+- Éxito: F1 macro de la configuración con fragmentos frente a la base.
+- El LLM comercial recibe contexto + título + abstract, como pide el enunciado.
+- El modelo open-weight (1–8B) solo se usa en la demo.
 
-- **Clasificación:** 9 clases, etiqueta única.
-- **Modelos evaluados:** SciBERT (base y con fragmentos) y un LLM comercial (zero-/few-shot). El open-weight 1–8B solo en la demo.
-- **Éxito:** F1 macro de la configuración con fragmentos frente a la base.
-- **Test:** T_B validado por humanos (meta 300/clase).
-- **Entrenamiento:** pre-etiquetas + T_A, train/val agrupado por citante.
-- **Clases minoritarias:** metas diferenciadas con el suministro disponible.
+## 7. Limitaciones a declarar en el informe
 
-### 5.2 Pendientes
-
-- Antes del 31-oct: congelar ronda 2 y recibir artefactos del G14.
-- Variante de aislamiento (V0/V1/V2).
-- Modelo comercial y qué información del citado recibe.
-- Modelo open-weight para la demo.
-
-## 6. Siguientes pasos
-
-Equipo G15 y focos:
-- **CB** (Camilo Bejarano): backend.
-- **GR** (German Rodriguez): modelos.
-- **JA** (Jose Arteaga): plataforma AWS para la demo.
-- **ST** (Sebastian Toro): frontend y modelos.
-
-Tareas en orden cronológico; las fechas son propuestas.
-
-| # | Tarea | Actividad | Responsable | Fecha fin | Estado |
-|---|-------|-----------|-------------|-----------|--------|
-| 1 | Ejecutar la ronda 2 (Basis, Improvement/Modification, Further Reading; inició 26-oct) | A3 | ALL | 31-oct | En curso |
-| 2 | Adjudicar desacuerdos y liberar reservas por déficit | A3 | ALL | 31-oct | Pendiente |
-| 3 | Consolidar `test_set_gold.jsonl`, `exclusion_list.jsonl` e `iaa_report.md` | A3 | ALL | 31-oct | Pendiente |
-| 4 | Recibir y versionar (DVC) los artefactos del G14, incluida la lista de las 521 instancias con licencia permisiva para la demo | A3 | ALL | 31-oct | Pendiente |
-| 5 | Elegir variante de aislamiento (V0/V1/V2); construir train/val | A4 | GR, ST | 2-nov | Pendiente |
-| 6 | Entrenar y liberar SciBERT base v0 + contrato de API (entrada/salida) | A4 | GR, ST | 4-nov | Pendiente |
-| 7 | Definir cómo ajustar la entrada "con fragmentos" al límite de 512 tokens | A4 | GR, ST | 6-nov | Pendiente |
-| 8 | Elegir modelo comercial y preparar prompts zero-/few-shot | A5 | GR, ST | 7-nov | Pendiente |
-| 9 | Elegir modelo open-weight 1–8B para la demo | A8 | GR, ST | 7-nov | Pendiente |
-| 10 | Preparar plataforma AWS para la demo | A8 | JA | 7-nov | Pendiente |
-| 11 | Backend (FastAPI): recuperación Top-3 + SciBERT base v0 | A8 | CB | 10-nov | Pendiente |
-| 12 | Fine-tuning SciBERT base (versión final) | A4 | GR, ST | 11-nov | Pendiente |
-| 13 | Frontend (Next.js): primera versión conectada al backend | A8 | ST | 12-nov | Pendiente |
-| 14 | Ejecutar evaluación del LLM comercial sobre T_B | A5 | GR, ST | 14-nov | Pendiente |
-| 15 | Fine-tuning SciBERT con fragmentos (versión final) | A4 | GR, ST | 15-nov | Pendiente |
-| 16 | Backend: integrar modelos finales, open-weight y API comercial | A8 | CB | 18-nov | Pendiente |
-| 17 | Métricas, matrices de confusión y comparación base vs. con fragmentos (si V0: F1 por citados vistos / no vistos) | A6 | GR, ST | 21-nov | Pendiente |
-| 18 | Medir costos, latencia y errores de formato | A7 | GR, ST | 21-nov | Pendiente |
-| 19 | Frontend: versión final con visualización de resultados | A8 | ST | 21-nov | Pendiente |
-| 20 | Desplegar la aplicación en AWS | A8 | JA | 21-nov | Pendiente |
-| 21 | Informe final | A8 | ALL | 28-nov | Pendiente |
-| 22 | Preparar sustentación | A8 | ALL | 28-nov | Pendiente |
+- Las clases escasas quedan por debajo de los 2.000 ejemplos que pide el enunciado.
+- T_B se tomó solo de pre-etiquetas de alta confianza (≥2 votos), lo que puede inflar el F1.
+- Los anotadores veían la pre-etiqueta del modelo, lo que puede inflar el acuerdo (κ).
