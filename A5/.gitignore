@@ -1,0 +1,9 @@
+# Los datos y respuestas científicas se conservan en el almacenamiento del proyecto.
+data/
+outputs/
+__pycache__/
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+*.log
