@@ -167,6 +167,8 @@ if REQUIRE_A100 and "A100" not in GPU_NAME:
 USE_BF16 = torch.cuda.is_bf16_supported()
 torch.backends.cuda.matmul.allow_tf32 = False
 torch.backends.cudnn.allow_tf32 = False
+if RESUME and {"base", "fragmentos"} <= set(CONFIGS) and not (OUTPUT_ROOT / "base/TRAINING_COMPLETE.json").is_file():
+    raise FileNotFoundError("No está la exportación base terminada de este RUN_ID. Revisa Drive antes de continuar con fragmentos.")
 OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 def save_json(path, value):
@@ -278,7 +280,14 @@ print(f"V0: {len(train_v0):,} filas; paquetes propios excluidos: {len(test_ids):
 ''')
 
 step(r'''
-## 4. Cuantificar V0/V1/V2 y aplicar el aislamiento elegido
+## 4. EDA breve: distribución de clases e impacto del aislamiento
+
+La gráfica muestra las **preetiquetas de A2** de G15 antes de separar train/val:
+una torta de la variante seleccionada y barras con los conteos de V0 como referencia.
+El total es el conjunto disponible después de las exclusiones, **no el pool completo
+ni el test humano**. V0/V1/V2 indican aislamiento; el archivo de origen sigue siendo
+`training_v1_G15.jsonl`. Dos líneas resumen el tamaño y el desbalance observado.
+La figura y los conteos se conservan en los resultados para documentar cada corrida.
 
 Se interpretan literalmente las listas por `role`: `citing` comprueba el citante y
 `cited` el citado. V2 ya contiene las reglas para ambos papeles. No se simplifica a
@@ -317,6 +326,47 @@ save_json(OUTPUT_ROOT / "isolation_summary.json", {
     "removed_to_v0": manifest["rows_removed"], "v0_rows": len(train_v0),
     "removed_beyond_v0": len(train_v0) - len(eligible), "eligible_rows": len(eligible),
 })
+
+import matplotlib.pyplot as plt
+
+eda_counts = impact.loc[LABELS, ["V0"] if VARIANT == "V0" else ["V0", VARIANT]].copy()
+eda_counts.index.name = "label"
+eda_root = OUTPUT_ROOT  # los reportes de MLflow incluyen PNG/CSV de esta raíz
+eda_root.mkdir(parents=True, exist_ok=True)
+eda_counts.to_csv(eda_root / "eda_class_distribution.csv")
+selected_counts = eda_counts[VARIANT]
+eda_total = int(selected_counts.sum())
+colors = plt.get_cmap("tab10")(np.arange(len(LABELS)))
+fig, (pie_ax, bar_ax) = plt.subplots(1, 2, figsize=(17, 6))
+wedges, _, _ = pie_ax.pie(selected_counts, colors=colors, startangle=90,
+    autopct=lambda pct: f"{pct:.1f}%" if pct >= 3 else "",
+    pctdistance=0.78, wedgeprops={"width": 0.42, "edgecolor": "white"})
+pie_ax.text(0, 0, f"{eda_total:,}\nejemplos", ha="center", va="center", fontsize=15)
+pie_ax.set_title(f"Distribución de clases · {VARIANT}")
+pie_ax.legend(wedges, [f"{label}: {int(n):,} ({n / eda_total:.1%})"
+    for label, n in selected_counts.items()], loc="upper center",
+    bbox_to_anchor=(0.5, -0.02), fontsize=8, ncol=2)
+eda_counts.plot.barh(ax=bar_ax, color=["#8fa6be", "#16877c"][:len(eda_counts.columns)])
+bar_ax.invert_yaxis()
+bar_ax.set(xlabel="Número de ejemplos", ylabel="", title="Conteos antes del split train/val")
+for container in bar_ax.containers:
+    bar_ax.bar_label(container, fmt="%.0f", padding=3, fontsize=8)
+bar_ax.set_xlim(0, int(eda_counts.max().max()) * 1.22)
+bar_ax.grid(axis="x", alpha=0.2)
+fig.suptitle(f"EDA G15 · origen training v1 · aislamiento {VARIANT} · preetiquetas A2")
+fig.tight_layout()
+fig.savefig(eda_root / "eda_class_distribution.png", dpi=160, bbox_inches="tight")
+plt.show()
+plt.close(fig)
+eda_majority = selected_counts.idxmax()
+eda_minority = selected_counts.idxmin()
+print(f"1. {VARIANT}: {eda_total:,} ejemplos en {(selected_counts > 0).sum()} clases; "
+      f"se conserva {eda_total / len(train_v0):.1%} de V0 antes de separar train/val.")
+eda_min_count = int(selected_counts.min())
+eda_ratio = f"{selected_counts.max() / eda_min_count:.1f} veces" if eda_min_count else "no calculable (clase vacía)"
+print(f"2. Mayoritaria: {eda_majority} ({selected_counts.max() / eda_total:.1%}); "
+      f"minoritaria: {eda_minority} ({eda_min_count:,}); razón mayor/menor: {eda_ratio}. "
+      "Son preetiquetas, no resultados contra gold humano.")
 ''')
 
 step(r'''
@@ -781,7 +831,7 @@ class CitationClassifier:
         self.policy = json.loads((self.root / "input_policy.json").read_text(encoding="utf-8"))
         self.tokenizer = AutoTokenizer.from_pretrained(self.root, local_files_only=True)
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = AutoModelForSequenceClassification.from_pretrained(self.root, local_files_only=True).to(self.device).eval()
+        self.model = AutoModelForSequenceClassification.from_pretrained(self.root, local_files_only=True, attn_implementation="eager").to(self.device).eval()
 
     def predict(self, example):
         features, stats = encode_example(example, self.policy["config"], self.tokenizer,
@@ -887,43 +937,55 @@ display(pd.DataFrame(validation_results).drop(columns=["train_metrics"]))
 step(r'''
 ## 12. Comprobar la exportación y guardar predicciones de validación
 
-Se recarga el artefacto desde disco con su módulo de inferencia y se verifica que las
-predicciones coincidan con la entrada tokenizada usada al entrenar. Las predicciones
-se guardan por `inst_key`, sin texto, con probabilidades para las nueve clases.
+La evaluación final usa **FP32 y atención eager** para ambos modelos. Se compara toda la validación
+entre el checkpoint seleccionado y su exportación en la misma precisión; además,
+Trainer vuelve a predecir en BF16/FP16 para medir diferencias de precisión.
+Esta comprobación no entrena ni modifica los modelos existentes. Si falta el
+checkpoint, se informa que la comprobación de exportación queda pendiente.
+
+Cada ejecución crea `evaluations/v2_fp32_<id>/`, sin sobrescribir reportes anteriores,
+y un hijo de tipo `evaluation` en MLflow. La selección de épocas sigue usando las
+métricas originales de Trainer; `validation_fp32_*` identifica la evaluación final.
+Se muestran también precisión, recall y F1 por clase y ejemplos de error por clave,
+sin publicar los textos. No hay calibración de probabilidades.
 
 Solo se procesa validación aquí. Sus matrices de confusión y métricas por clase
 permiten revisar si el desbalance afecta a las minoritarias. Para un resultado final
 sobre funciones de cita hace falta el gold humano de T_B.
-''', r'''
+''', Path(__file__).with_name("evaluation_runtime.py").read_text(encoding="utf-8") + r'''
 import importlib.util
 import matplotlib.pyplot as plt
+
+EVALUATION_ROOT = OUTPUT_ROOT / "evaluations" / ("v2_fp32_" + uuid.uuid4().hex[:12])
+EVALUATION_ROOT.mkdir(parents=True, exist_ok=False)
 
 def load_export(config):
     root = OUTPUT_ROOT / config / "model"
     spec = importlib.util.spec_from_file_location(f"a4_inference_{config}", root / "inference.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.CitationClassifier(root)
+    classifier = module.CitationClassifier(root)
+    # Las exportaciones de la primera corrida dejaban la atención en automático.
+    # Homogeneizarla en memoria, sin modificar inference.py ni los pesos guardados.
+    if classifier.model.config._attn_implementation != "eager":
+        del classifier.model
+        classifier.model = AutoModelForSequenceClassification.from_pretrained(
+            root, local_files_only=True, attn_implementation="eager").float().to(classifier.device).eval()
+    return classifier
 
 def predict_encoded(classifier, data):
-    collator = DataCollatorWithPadding(classifier.tokenizer, pad_to_multiple_of=8)
-    probabilities = []
-    for start in range(0, len(data), EVAL_BATCH):
-        items = [{k: v for k, v in data[i].items() if k != "labels"}
-                 for i in range(start, min(start + EVAL_BATCH, len(data)))]
-        batch = {k: v.to(classifier.device) for k, v in collator(items).items()}
-        with torch.inference_mode():
-            probabilities.extend(classifier.model(**batch).logits.float().softmax(-1).cpu().tolist())
-    return np.asarray(probabilities)
+    return predict_export_fp32(classifier, data, EVAL_BATCH)
 
-def report_predictions(config, split, rows, probs):
+def report_predictions(config, split, rows, probs, evaluation_run):
     y = np.asarray([LABEL2ID[r["label"]] for r in rows])
     pred = probs.argmax(-1)
     report = classification_report(y, pred, labels=list(ID2LABEL), target_names=LABELS,
                                    output_dict=True, zero_division=0)
-    root = OUTPUT_ROOT / config
+    root = EVALUATION_ROOT / config
+    root.mkdir(parents=True, exist_ok=True)
     save_json(root / f"{split}_classification_report.json", report)
     metrics = {"config": config, "split": split, "n": len(rows),
+               "evaluation_policy": "v2_fp32", "precision": "fp32",
                **compute_metrics(type("Prediction", (), {"predictions": probs, "label_ids": y})())}
     save_json(root / f"{split}_scores.json", metrics)
     frame = pd.DataFrame({"inst_key": [r["inst_key"] for r in rows],
@@ -933,6 +995,13 @@ def report_predictions(config, split, rows, probs):
     for i, label in ID2LABEL.items():
         frame[f"p_{label}"] = probs[:, i]
     frame.to_csv(root / f"{split}_predictions.csv", index=False)
+    frame.loc[frame.gold_or_prelabel != frame.predicted_label].to_csv(root / f"{split}_errors.csv", index=False)
+    per_class = pd.DataFrame([{"label": label, **report[label]} for label in LABELS])
+    per_class.to_csv(root / f"{split}_per_class.csv", index=False)
+    display(per_class)
+    for index, label in ID2LABEL.items():
+        tracking.metrics(evaluation_run, {f"{split}/class_{index}/{key}": value
+            for key, value in report[label].items()})
     cm = confusion_matrix(y, pred, labels=list(ID2LABEL))
     pd.DataFrame(cm, index=LABELS, columns=LABELS).to_csv(root / f"{split}_confusion.csv")
     short = ["BG", "Gap", "Basis", "Comp", "App", "I/M", "Evid", "Origin", "FR"]
@@ -949,23 +1018,51 @@ def report_predictions(config, split, rows, probs):
     fig.savefig(root / f"{split}_confusion.png", dpi=160)
     plt.show()
     plt.close(fig)
-    tracking.metrics(tracking.parent(config), {f"{split}_{k}": v for k, v in metrics.items()})
-    tracking.reports(config)
-    tracking.backup(force=True)
+    tracking.metrics(evaluation_run, {f"{split}_fp32_{k}": v for k, v in metrics.items()})
+    tracking.metrics(tracking.parent(config), {f"{split}_fp32_{k}": v for k, v in metrics.items()})
     return metrics
 
 val_summary = []
 for config in CONFIGS:
-    clf = load_export(config)
-    sample = clf.predict(texts[val_rows[0]["inst_key"]])
-    single = predict_encoded(clf, encoded[config]["validation"].select([0]))[0]
-    assert np.allclose(single, [sample["scores"][k] for k in LABELS], atol=2e-5)
-    probs = predict_encoded(clf, encoded[config]["validation"])
-    val_summary.append(report_predictions(config, "validation", val_rows, probs))
-    del clf
-    gc.collect()
-    torch.cuda.empty_cache()
-pd.DataFrame(val_summary).to_csv(OUTPUT_ROOT / "validation_comparison.csv", index=False)
+    evaluation_dir = EVALUATION_ROOT / config
+    evaluation_dir.mkdir()
+    with tracking.evaluation(config, evaluation_dir) as evaluation_run:
+        clf = load_export(config)
+        try:
+            sample = clf.predict(texts[val_rows[0]["inst_key"]])
+            single = predict_encoded(clf, encoded[config]["validation"].select([0]))[0]
+            assert np.allclose(single, [sample["scores"][k] for k in LABELS], atol=2e-5)
+            training_metrics = json.loads((OUTPUT_ROOT / config / "validation_metrics.json").read_text())
+            precision = "bf16" if USE_BF16 else "fp16"
+            probs, trainer_probs, audit = audit_export(clf, encoded[config]["validation"],
+                [r["inst_key"] for r in val_rows], training_metrics.get("best_checkpoint"),
+                evaluation_dir, EVAL_BATCH, SEED, precision)
+            replayed = probability_metrics([LABEL2ID[r["label"]] for r in val_rows], trainer_probs)
+            audit.update({"run_id": RUN_ID, "config": config, "model_id": MODEL_ID,
+                "model_revision": MODEL_REVISION, "split_hashes": split_hashes, "labels": LABELS,
+                "label_sources": dict(collections.Counter(r["label_source"] for r in val_rows)),
+                "training_complete_sha256": sha256(OUTPUT_ROOT / config / "TRAINING_COMPLETE.json"),
+                "recorded_training_f1_macro": training_metrics.get("eval_f1_macro"),
+                "replayed_trainer_metrics": replayed})
+            save_json(evaluation_dir / "export_precision_audit.json", audit)
+            tracking.client.set_tag(evaluation_run, "export_check", audit["export_check"])
+            tracking.client.set_tag(evaluation_run, "trainer_precision", precision)
+            tracking.client.set_tag(evaluation_run, "selected_checkpoint", str(training_metrics.get("best_checkpoint")))
+            tracking.client.set_tag(evaluation_run, "model_revision", MODEL_REVISION)
+            tracking.metrics(evaluation_run, {f"validation_trainer_replay_{k}": v for k, v in replayed.items()})
+            tracking.metrics(evaluation_run, {"precision_label_disagreements": audit["trainer_vs_export_fp32"]["label_disagreements"]})
+            val_summary.append(report_predictions(config, "validation", val_rows, probs, evaluation_run))
+            print("Auditoría:", audit["export_check"], "cambios de etiqueta por precisión:",
+                  audit["trainer_vs_export_fp32"]["label_disagreements"])
+        finally:
+            del clf
+            gc.collect()
+            torch.cuda.empty_cache()
+pd.DataFrame(val_summary).to_csv(EVALUATION_ROOT / "validation_comparison.csv", index=False)
+if {"base", "fragmentos"} <= {row["config"] for row in val_summary}:
+    scores = {row["config"]: row["f1_macro"] for row in val_summary}
+    print("Delta F1 macro de validación (fragmentos - base):", scores["fragmentos"] - scores["base"])
+print("Evaluación versionada:", EVALUATION_ROOT)
 display(pd.DataFrame(val_summary))
 ''')
 
@@ -989,26 +1086,27 @@ if not RUN_TEST:
 else:
     train_cited = {r["cited_paper_id"] for r in train_rows}
     for config in CONFIGS:
-        clf = load_export(config)
-        probs = predict_encoded(clf, encoded[config]["test"])
-        test_probabilities[config] = probs
-        test_summary.append(report_predictions(config, "test", test_rows, probs))
-        subgroup_metrics = {}
-        for seen in (True, False):
-            idx = [i for i, r in enumerate(test_rows) if (r["cited_paper_id"] in train_cited) == seen]
-            if not idx:
-                subgroup_metrics[str(seen)] = {"n": 0, "f1_macro": None}
-                continue
-            y = np.array([LABEL2ID[test_rows[i]["label"]] for i in idx])
-            pred = probs[idx].argmax(-1)
-            subgroup_metrics[str(seen)] = {"n": len(idx), "f1_macro": f1_score(
-                y, pred, labels=list(ID2LABEL), average="macro", zero_division=0)}
-        save_json(OUTPUT_ROOT / config / "test_cited_seen_unseen.json", subgroup_metrics)
-        del clf
-        gc.collect()
-        torch.cuda.empty_cache()
+        with tracking.evaluation(config, EVALUATION_ROOT / config) as test_run:
+            clf = load_export(config)
+            probs = predict_encoded(clf, encoded[config]["test"])
+            test_probabilities[config] = probs
+            test_summary.append(report_predictions(config, "test", test_rows, probs, test_run))
+            subgroup_metrics = {}
+            for seen in (True, False):
+                idx = [i for i, r in enumerate(test_rows) if (r["cited_paper_id"] in train_cited) == seen]
+                if not idx:
+                    subgroup_metrics[str(seen)] = {"n": 0, "f1_macro": None}
+                    continue
+                y = np.array([LABEL2ID[test_rows[i]["label"]] for i in idx])
+                pred = probs[idx].argmax(-1)
+                subgroup_metrics[str(seen)] = {"n": len(idx), "f1_macro": f1_score(
+                    y, pred, labels=list(ID2LABEL), average="macro", zero_division=0)}
+            save_json(EVALUATION_ROOT / config / "test_cited_seen_unseen.json", subgroup_metrics)
+            del clf
+            gc.collect()
+            torch.cuda.empty_cache()
     display(pd.DataFrame(test_summary))
-    pd.DataFrame(test_summary).to_csv(OUTPUT_ROOT / "test_comparison.csv", index=False)
+    pd.DataFrame(test_summary).to_csv(EVALUATION_ROOT / "test_comparison.csv", index=False)
 ''')
 
 step(r'''
@@ -1049,16 +1147,21 @@ if RUN_TEST and {"base", "fragmentos"} <= test_probabilities.keys():
     comparison = {"delta_macro_f1": score(y, p1) - score(y, p0),
                   "cluster_bootstrap_95_ci": np.quantile(deltas, [0.025, 0.975]).tolist(),
                   "cluster_unit": "citing_paper_id", "replicates": 1000, "seed": SEED}
-    save_json(OUTPUT_ROOT / "paired_test_comparison.json", comparison)
+    save_json(EVALUATION_ROOT / "paired_test_comparison.json", comparison)
     print(comparison)
 for config in CONFIGS:
     model_dir = OUTPUT_ROOT / config / "model"
-    archive = shutil.make_archive(str(OUTPUT_ROOT / f"scibert_g15_{config}"), "zip", model_dir)
+    archive = OUTPUT_ROOT / f"scibert_g15_{config}.zip"
+    if not archive.exists():
+        archive = shutil.make_archive(str(archive.with_suffix("")), "zip", model_dir)
     print("Modelo:", archive)
 print("Artefactos privados:", OUTPUT_ROOT)
 for config in CONFIGS:
     tracking.reports(config)
     tracking.client.set_tag(tracking.parent(config), "model_zip_drive", str(OUTPUT_ROOT / f"scibert_g15_{config}.zip"))
+    tracking.client.set_tag(tracking.parent(config), "latest_evaluation_drive", str(EVALUATION_ROOT / config))
+    for path in sorted(EVALUATION_ROOT.glob("*.csv")) + sorted(EVALUATION_ROOT.glob("*.json")):
+        tracking.client.log_artifact(tracking.parent(config), str(path), artifact_path="evaluation_comparisons/" + EVALUATION_ROOT.name)
 tracking.backup(force=True)
 print("A4 entrenado; la evaluación final solo está completa si RUN_TEST=True y el gold pasó los controles.")
 ''')

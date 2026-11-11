@@ -172,3 +172,220 @@ El contrato de datos compartido [3] es el documento rector del procedimiento, la
 - **[11]** Lyu, D., Ruan, X., Xie, J., y Cheng, Y. (2021). The classification of citing motivations: A meta-synthesis. *Scientometrics, 126*(4), 3243–3264.
 - **[12]** Saier, T., Krause, J., y Färber, M. (2023). unarXive 2022: All arXiv publications pre-processed for NLP, including structured full-text and citation network. *Proceedings of JCDL 2023*.
 - **[13]** Grupo 15. Actualización del avance de validación manual y de la meta conjunta de los equipos 14 y 15. Comunicación del 23 de octubre de 2026, con aclaración del calendario y validación de las 885 instancias de `pool_cue_yield` y la cuota final de 300 etiquetas válidas por categoría el 24 de octubre para este informe.
+
+
+---
+
+## Notas internas de revisión y continuidad
+
+**Fecha de incorporación:** 3 de noviembre de 2026. **Uso:** seguimiento del equipo y preparación de las siguientes entregas.
+
+Estas notas se incorporan después de la evaluación de la primera entrega y no forman parte del documento originalmente presentado. Los apartados 1–5 y sus referencias conservan el corte del 23 de octubre de 2026. Las aclaraciones siguientes distinguen lo documentado para ese corte, el desarrollo posterior registrado en A4 y los puntos que todavía requieren evidencia. La fecha de incorporación de estas notas no actualiza automáticamente los resultados históricos del informe.
+
+La revisión otorgó 81/100 puntos. La mayor oportunidad de mejora corresponde a la explicación de la construcción de los modelos: 20/35 puntos, equivalentes a 15 de los 19 puntos descontados. El propósito de este registro es vincular las decisiones de preparación y anotación con el experimento central de clasificación, y responder las preguntas metodológicas de la evaluación.
+
+**Origen de las aclaraciones:** [Observaciones de la primera entrega](observacionesentrega1.md#retroalimentación-por-criterio). Cada apartado identifica el criterio que motivó su inclusión.
+
+<a id="ni-aporte"></a>
+
+### NI.1. Aporte diferenciador y pregunta que organiza el proyecto
+
+*Según las observaciones de la revisión, criterio «Descripción breve de la propuesta de solución», se requiere sintetizar el aporte diferenciador y sus beneficios.*
+
+El aporte que se busca evaluar consiste en incorporar evidencia del contenido del artículo citado a la clasificación de la función de una cita. Para ello se comparan dos configuraciones de un mismo modelo base, SciBERT: una recibe el contexto citante junto con el título y el resumen del citado; la otra recibe el contexto citante junto con las secciones de origen y los tres fragmentos recuperados del citado. La pregunta central es si esta segunda configuración mejora el F1 macro de clasificación respecto de la primera. El modelo comercial constituye una comparación adicional prevista en la propuesta. [1, secciones 4.1–4.3 y 6]
+
+El beneficio esperado es determinar si la recuperación aporta evidencia útil para distinguir las nueve funciones de cita y, posteriormente, mostrar esa evidencia en la aplicación. Esta utilidad es una hipótesis de trabajo; su confirmación requiere la evaluación de recuperación y la comparación de los clasificadores. Las cifras de suministro de datos, el acuerdo entre jueces y los aciertos de eval60 describen avances necesarios para construir el experimento, pero no demuestran todavía esa mejora.
+
+El hilo conductor para las siguientes etapas será: **preparar pares citante–citado → recuperar evidencia → construir y revisar etiquetas → ajustar las dos entradas de SciBERT → evaluar sobre T_B humano → interpretar el aporte de la evidencia → integrar la solución en la aplicación**.
+
+<a id="ni-representacion"></a>
+
+### NI.2. Representación de textos: promedio con máscara de atención
+
+*Según las observaciones de la revisión, criterio «Recolección y preparación de los datos», se debe explicar qué se promedia, qué considera la máscara y por qué se usa esta operación. Amplía el apartado 3.1 del informe.*
+
+La operación documentada para recuperación es el promedio de las representaciones de tokens producidas por SciBERT, utilizando la máscara de atención, seguido de normalización L2 y comparación mediante coseno. Su propósito es obtener un vector de tamaño fijo para cada contexto y cada fragmento, de modo que puedan compararse dentro del artículo citado. El promedio se realiza sobre las representaciones vectoriales de las posiciones incluidas por la máscara; no es un promedio de etiquetas ni de puntajes de similitud.
+
+La operación puede expresarse como `v = suma(m_i * h_i) / suma(m_i)`, donde `h_i` es la representación del token en la posición `i` y `m_i` indica si esa posición participa. Las posiciones de relleno con máscara 0 no aportan a la suma ni al denominador. Después se divide el vector por su norma L2 y se ordenan los fragmentos por similitud coseno respecto del contexto. Esta es una explicación de la operación registrada en A1, no un nuevo resultado experimental.
+
+El promedio permite combinar las posiciones participantes en una representación del texto completo. Sin embargo, la documentación revisada no acredita una comparación entre este promedio y otras estrategias de representación. En consecuencia, no se afirma que sea la alternativa óptima. Tampoco debe afirmarse que se excluyeron los tokens especiales: la máscara de atención, por sí sola, no documenta esa exclusión. Para cerrar la reproducibilidad de A1 se debe recuperar la implementación original y registrar la capa utilizada, el tratamiento de tokens especiales y el enmascaramiento efectivo. La motivación histórica de esa elección queda pendiente de corroboración si no aparece en dicho registro.
+
+**Respaldo:** operación de recuperación descrita en el apartado 3.1 y estrategia SciBERT de la propuesta [1]. **Pendiente específico:** detalle de implementación y justificación comparativa del promedio.
+
+<a id="ni-corpus"></a>
+
+### NI.3. Selección del corpus, concentración temática y clases minoritarias
+
+*Según las observaciones de la revisión, criterio «Recolección y preparación de los datos», se debe justificar la selección temática y explicar el desbalance. Amplía los apartados 2.1, 2.3 y 5.*
+
+El documento de propuesta en formato IEEE [2], apartado «Construcción incremental (estrategia piloto)», establece que las cinco subcategorías iniciales se seleccionaron por un criterio combinado de volumen y diversidad estilística. Se incluyeron cs.CV, cs.SI, cs.HC, cs.CY y cs.ET del lado citante; el artículo citado podía pertenecer a otro subcampo si su texto estaba disponible. El mismo documento explica que las categorías adicionales pretendían mitigar el riesgo de concentrar las funciones de cita en un subcampo aplicado.
+
+La selección pretendía aportar diversidad, pero el piloto descrito en el informe quedó concentrado en cs.CV, con el 97,8 % de sus contextos. Ese porcentaje no debe trasladarse sin recálculo al corpus ampliado ni a las particiones finales. Deben distinguirse dos fenómenos: la concentración temática de los artículos y el desbalance entre funciones de cita. Seleccionar subcategorías diversas no garantiza una distribución equilibrada de las nueve funciones.
+
+La respuesta documentada al suministro insuficiente consistió en muestreo dirigido por frases indicadoras y ampliación a cs.LG, cs.CL y cs.DS. Las clases escasas continúan condicionando la disponibilidad después de aplicar exclusiones por documento. Para las siguientes entregas se reportarán por separado los conteos del corpus, las pre-etiquetas, las instancias elegibles, las etiquetas humanas finales y las filas efectivas de entrenamiento y validación. La meta de 300 etiquetas humanas válidas por categoría y conjunto de prueba no equivale a 2.000 ejemplos de entrenamiento por categoría. [1, 3, 5]
+
+<a id="ni-eval60"></a>
+
+### NI.4. Función de eval60, selección y justificación de su tamaño
+
+*Según las observaciones de la revisión, criterio «Descripción del proceso de construcción de los modelos», se pregunta por qué se escogieron 60 instancias y cómo se seleccionaron. Amplía los apartados 3.2, 4.2 y 4.3.*
+
+Eval60 es un conjunto de desarrollo utilizado para comparar jueces, revisar reglas y construir una referencia adjudicada. Los dos grupos anotaron las mismas 60 instancias. La presentación [«eval60 Results 101226 Meeting»](<Folder_trabajo_Equipos_14_y_15/eval60 Results 101226 Meeting.pptx>), diapositiva 4, registra cuatro integrantes por equipo y 15 instancias por integrante. Hubo 41 acuerdos iniciales y 19 desacuerdos, posteriormente revisados. El informe distingue los resultados sobre los 41 acuerdos iniciales de los obtenidos sobre la referencia adjudicada de 60 casos.
+
+La distribución de 15 instancias por integrante explica la organización del trabajo, pero no prueba por sí sola por qué se fijó ese tamaño. No se ha localizado una justificación estadística del número 60 ni un registro completo del muestreo que permita reconstruir aquí su composición, semilla y criterios de inclusión. Por ello, no se presenta como una muestra aleatoria representativa, ni se le asigna un margen de error o nivel de confianza no documentado.
+
+La consolidación auxiliar consultada apunta a selección dirigida a categorías escasas y errores de los jueces; ese detalle debe corroborarse con el muestreador o manifiesto original antes de incorporarlo como procedimiento definitivo. El Excel conserva su función de guía de revisión y no se incorpora a la bibliografía del informe como documento rector.
+
+**Respuesta sustentada:** 60 casos de desarrollo anotados por ambos equipos, distribuidos operativamente en cuatro bloques de 15 por equipo, para comparar configuraciones y adjudicar fronteras semánticas. **Pendiente:** recuperar la razón original del tamaño y el procedimiento completo de selección, con universo, criterios, composición, semilla si existió y claves de las instancias. La ausencia de ese registro se mantiene explícita; no se completa mediante una suposición.
+
+Los 48/60 aciertos de v11.1 son desempeño de desarrollo sobre una referencia utilizada para refinar reglas. No deben interpretarse como la exactitud esperada en todo el conjunto ni como resultado del clasificador supervisado sobre T_B. Los artículos citantes de las calibraciones se excluyen del entrenamiento, la validación y la prueba de A4 según el contrato. [3, 7]
+
+<a id="ni-clasificador"></a>
+
+### NI.5. Modelo de clasificación, entradas y configuración de ajuste
+
+*Según las observaciones de la revisión, criterio «Descripción del proceso de construcción de los modelos», se requiere explicar el fine-tuning, el modelo propuesto y su configuración. Amplía el apartado 3.4.*
+
+Existen tres funciones distintas dentro de la solución:
+
+| Componente | Función | Tratamiento documentado |
+| --- | --- | --- |
+| SciBERT para recuperación, F1 | Representar contexto y fragmentos; seleccionar el Top-3 dentro del citado | Sin ajuste fino para esta etapa |
+| Trío de modelos de lenguaje, F2 | Producir pre-etiquetas y evidencia textual mediante voto | Inferencia con prompt y revisiones congeladas; no entrenamiento de estos jueces |
+| SciBERT para clasificación, F4 | Predecir una función principal entre nueve categorías | Ajuste supervisado del modelo con una cabeza de clasificación y entropía cruzada |
+
+La propuesta [1, secciones 4.1 y 4.2] ya define un único modelo base, SciBERT, ajustado bajo dos configuraciones de entrada. En ambas se concatena el contexto citante con la información del citado mediante un separador. La configuración **base** utiliza título y resumen; la configuración **fragmentos** utiliza las secciones y el Top-3. Son dos ajustes comparables del mismo modelo preentrenado, destinados a evaluar el efecto de cambiar la información de entrada. El modelo comercial previsto se evalúa por inferencia con estrategias sin ejemplos y con pocos ejemplos; no sustituye la comparación supervisada.
+
+**Desarrollo posterior al corte del informe.** La documentación local de A4 concreta la siguiente configuración de trabajo. Estos parámetros corresponden a la continuidad documentada después del 23 de octubre y no se presentan como entrenamiento ejecutado durante la primera entrega.
+
+| Aspecto | Configuración registrada en A4 |
+| --- | --- |
+| Modelo base | `allenai/scibert_scivocab_uncased`; registrar la revisión exacta por ejecución |
+| Salida y objetivo | Una etiqueta principal entre nueve; entropía cruzada sin ponderación en la comparación inicial |
+| Inicialización | Cada configuración parte del mismo modelo preentrenado; fragmentos no continúa los pesos ajustados de base |
+| Tasa de aprendizaje | `2e-5` |
+| Épocas máximas | 4 |
+| Lote efectivo de entrenamiento | 32: lote de 16 con acumulación de gradientes de 2 |
+| Optimizador | AdamW; decaimiento de pesos `0,01` |
+| Programa de aprendizaje | Calentamiento del 10 % y descenso lineal |
+| Semilla de entrenamiento | 42 |
+| Partición | Variante V0 en la configuración de trabajo; validación objetivo del 10 % agrupada por citante, con identificador `G15-A4-split-v1` |
+| Longitud máxima | 512 tokens, incluidos los especiales |
+| Contexto citante | Presupuesto de hasta 192 tokens centrado en `[[TARGET]]` |
+| Información del citado | En base, título de hasta 64 tokens y resumen con el resto; en fragmentos, reparto del presupuesto entre los tres y sus secciones |
+| Selección del modelo | Mayor F1 macro de validación; evaluación por época y parada temprana con paciencia 2 |
+| Entorno de trabajo | Colab con A100 y BF16; versiones y artefactos registrados por ejecución |
+| Evaluación final | T_B con etiquetas humanas adjudicadas; sin utilizarlo para elegir hiperparámetros |
+
+**Fuentes de esta configuración posterior:** [análisis y plan de A4](../A4/analisis_y_plan_A4.md#6-configuración-inicial-para-colab-pro-a100), [configuración del notebook](../A4/A4_SciBERT_G15_Colab_A100.ipynb) y [continuación base–fragmentos](../A4/SEGUNDA_CORRIDA.md). Son archivos de trabajo que deben contrastarse con los manifiestos de cada ejecución al redactar resultados definitivos.
+
+La documentación posterior registra una primera corrida base completada y una comparación con fragmentos preparada. Estas notas no certifican la finalización de esa comparación ni agregan sus métricas al corte histórico. La siguiente entrega deberá enlazar los resultados con los artefactos efectivos de ejecución.
+
+El límite de tokens exige una aclaración adicional: tres fragmentos de hasta 300 palabras no caben necesariamente completos junto con el contexto en 512 tokens. A4 asigna presupuestos y registra recortes. Este tratamiento de las entradas del clasificador es distinto del descarte de contextos de más de 512 tokens en la preparación de A1. El resultado de la comparación debe interpretarse considerando cuánto texto se conserva en cada configuración.
+
+La implementación actual de A4 no aplica el corte temporal contemplado en la propuesta ni fuerza estratificación por sección. Estas diferencias deben declararse como decisiones de ejecución, con sus limitaciones, al presentar el experimento; no debe afirmarse que tales condiciones se cumplieron. La elección del modelo se realiza con validación y la interpretación final debe considerar el desbalance, las métricas por clase y los citados vistos o no vistos bajo la variante de aislamiento utilizada.
+
+<a id="ni-p3"></a>
+
+### NI.6. Evaluación humana de recuperación: P@3
+
+*Según las observaciones de la revisión, criterio «Resultados obtenidos», falta la evaluación humana P@3. Amplía los apartados 3.1 y 4.1.*
+
+La propuesta [1, secciones 4.3 y 6] contempla una muestra aproximada de 150–200 contextos de cita, cuyos tres fragmentos serán evaluados independientemente por dos anotadores. Un fragmento se considera relevante cuando contiene evidencia directamente relacionada con la función de la cita. La precisión de cada contexto se define como `P@3 = número de fragmentos relevantes / 3`; el valor agregado corresponde al promedio sobre los contextos evaluados, identificando la regla utilizada para tratar desacuerdos.
+
+La evaluación debe reportar el tamaño efectivo de la muestra, su procedimiento de selección, la versión de recuperación examinada, el acuerdo entre anotadores y el tratamiento de sus discrepancias. También debe distinguir si se revisa el Top-3 recuperado completo o el texto que efectivamente recibe el clasificador después de aplicar el presupuesto de tokens. Esta distinción se incorpora como recomendación de seguimiento para interpretar conjuntamente la recuperación y el resultado de A4.
+
+**Estado sustentado al corte del 23 de octubre:** P@3 pendiente, sin resultado humano consignado en este informe. La similitud coseno, la reconstrucción de textos y el acuerdo de etiquetas evalúan propiedades distintas y no sustituyen P@3. Para cerrar la observación se requiere ejecutar la evaluación y conservar sus registros; redactar este protocolo no equivale a haberla realizado.
+
+<a id="ni-indicadores"></a>
+
+### NI.7. Indicadores consolidados y alcance de sus resultados
+
+*Según las observaciones de la revisión, criterio «Resultados obtenidos», se recomienda consolidar los indicadores de recuperación, pre-etiquetado y validación humana.*
+
+La siguiente tabla reúne resultados ya consignados en el informe. Su corte sigue siendo el 23 de octubre; no representa el estado global del proyecto al 3 de noviembre.
+
+| Componente | Indicador y resultado | Unidad o referencia | Alcance de la interpretación |
+| --- | --- | --- | --- |
+| Recuperación | 721.335 pares procesados entre piloto y extensión | Pares citante–citado | Volumen procesado, no calidad de relevancia |
+| Recuperación | Coseno medio Top-1: 0,9148 en piloto con `norw`; 0,9128 en extensión con `norw` | Puntajes de similitud | Ordenamiento semántico; no evaluación humana |
+| Trazabilidad | Reconstrucción exacta en 300/300 verificaciones | Muestra de contextos y fragmentos | Consistencia de localizadores y textos |
+| Recuperación | P@3 humano: pendiente | Muestra prevista de unos 150–200 contextos | No existe resultado que pueda derivarse del coseno |
+| Jueces, desarrollo | 48/60 aciertos con v11.1 | Referencia adjudicada de eval60 | Selección y desarrollo de reglas; no prueba final |
+| Jueces, producción | κ de Fleiss = 0,67; unanimidad del 63 % | Lote de 28.553 instancias | Acuerdo entre jueces, no exactitud contra gold humano |
+| Jueces, repetición | 294/300 pre-etiquetas conservadas, 98 % | Muestra repetida | Estabilidad de las salidas |
+| Calibración humana | κ de Fleiss = 0,87 | Calib2: 27 casos, ocho anotadores | Acuerdo en calibración; no acuerdo final de T_B |
+| Validación humana parcial | 71 correcciones de 880 anotaciones, 8,1 % | Primera ola: 440 paquetes de ambos conjuntos | Correcciones por anotación, no porcentaje de paquetes erróneos |
+| Validación humana parcial | 1,60 minutos por anotación | 1.409 minutos / 880 anotaciones | Carga operativa observada |
+| Avance manual comunicado | 60–70 % de la primera ronda | Estimación del equipo al 23 de octubre | Avance histórico de esa ronda; no del conjunto completo actual |
+| Clasificación supervisada | F1 macro, F1 micro y evaluación por clase pendientes al corte | T_B humano consolidado | No se sustituyen con aciertos de los jueces |
+
+**Respaldo:** apartados 3.1 y 4.1–4.3 del informe y sus referencias [3, 6, 7, 9, 13]. En la siguiente entrega, cada resultado nuevo deberá indicar fecha, muestra, versión de datos y artefacto de evaluación. Un indicador pendiente solo se actualizará cuando exista evidencia de su ejecución.
+
+<a id="ni-experimentos"></a>
+
+### NI.8. Experimentos: pregunta, comparación, resultado y decisión
+
+*Según las observaciones de la revisión, criterio «Análisis de los resultados obtenidos», se debe organizar mejor la experimentación mediante hipótesis y resultados. Amplía el apartado 5.*
+
+La tabla reorganiza comparaciones documentadas. Las preguntas explicitan su propósito para el seguimiento; no se afirma que todas hayan sido registradas como hipótesis formales antes de experimentar.
+
+| Pregunta experimental | Comparación documentada | Resultado | Decisión o límite |
+| --- | --- | --- | --- |
+| ¿Conviene sustituir el trío pequeño inicial? | Trío de 7–8B frente al trío mayor, con prompt v8 sobre los 41 acuerdos iniciales | 13/41 frente a 30/41 | Sustitución sustentada en desarrollo; no extrapolar al conjunto completo |
+| ¿Qué tercer juez conviene con v11.1? | Ministral 3 14B frente a Mistral Small 3.2 24B, compartiendo Qwen y Gemma | 45/60 frente a 48/60; revisión Gap de 12/20 frente a 17/20 | Se seleccionó Mistral Small para el trío congelado |
+| ¿Mejoran las reglas revisadas? | Prompt v8, v11 y v11.1 del trío con Mistral Small | 43/60, 47/60 y 48/60 | Se congeló v11.1; eval60 fue parte del desarrollo |
+| ¿Aporta el Top-3 al pre-etiquetado? | Trío v11.1 con fragmentos frente a retirarlos | 48/60 frente a 49/60; revisión de 45 cambios: 16 mejores con fragmentos, 18 sin ellos y 11 sin ventaja | Sin mejora neta clara en estas pruebas; no resuelve la hipótesis del clasificador supervisado |
+| ¿Ayuda reforzar las instrucciones sobre fragmentos? | Prompt v12 frente a v11.1 | 47/60 frente a 48/60; dos regresiones | Se descartó v12 y se conservó v11.1 |
+| ¿Los fragmentos mejoran SciBERT supervisado? | Contexto + título/resumen frente a contexto + secciones/Top-3 | Pendiente al corte del informe | Comparación central de F4 sobre el mismo T_B humano |
+| ¿Es relevante la evidencia recuperada? | Evaluación independiente del Top-3 por dos anotadores | P@3 pendiente al corte | Necesaria para interpretar la calidad de recuperación y su relación con F4 |
+
+**Respaldo de las comparaciones realizadas:** apartados 3.2, 4.2 y 5; referencias [7, 8]. **Respaldo de los experimentos previstos:** propuesta [1]. La mejora del acuerdo entre calibraciones se mantiene como resultado descriptivo: cambiaron simultáneamente reglas, muestra y modalidad de anotación, por lo que no identifica el efecto aislado de una intervención.
+
+Para continuar, cada experimento registrará una pregunta, qué factor cambia, qué condiciones se mantienen, qué datos se emplean, su criterio de selección, el resultado y la decisión. En la comparación base–fragmentos se mantendrán la partición, las etiquetas y las condiciones de entrenamiento documentadas; se registrarán las diferencias de longitud y recorte. Los resultados de desarrollo o validación no se denominarán resultados de prueba humana.
+
+<a id="ni-redaccion"></a>
+
+### NI.9. Definiciones y pauta de redacción para las siguientes entregas
+
+*Según las observaciones de la revisión, criterio «Presentación y redacción», se deben definir los términos y distinguir decisiones metodológicas de resultados principales.*
+
+| Término | Definición para este proyecto |
+| --- | --- |
+| Contexto citante | Texto del artículo que contiene la cita objetivo |
+| Fragmento o chunk | Segmento del artículo citado que puede recuperarse como evidencia |
+| Top-3 | Tres fragmentos seleccionados por similitud dentro del artículo citado |
+| Pool o conjunto de trabajo | Conjunto versionado de instancias disponible antes de las selecciones y exclusiones de cada uso |
+| Pre-etiqueta | Categoría propuesta por los jueces, sujeta a confirmación o corrección humana |
+| Alta confianza | Estado de votación con al menos dos principales coincidentes entre votos válidos; no equivale a verdad garantizada |
+| Paquete y anotación | El paquete es la instancia distribuida para revisión; una anotación es la respuesta de una persona sobre ella |
+| Adjudicación | Resolución documentada de desacuerdos conservando las respuestas originales |
+| Gold humano | Etiqueta humana final que resulta del procedimiento de acuerdo o adjudicación |
+| Ablación | Comparación en la que se retira un componente, como los fragmentos, para examinar su aporte |
+| Ajuste fino o fine-tuning | Entrenamiento supervisado que adapta los parámetros del modelo a las nueve categorías |
+| V0, V1 y V2 | Variantes de exclusión por documentos: citantes; citantes y citados; y exclusión adicional de roles inversos, respectivamente |
+| F1 macro y F1 micro | Métricas de clasificación; no son identificadores de la fase F1 |
+
+El relato de cada componente seguirá el orden **objetivo → decisión y justificación → procedimiento → resultado → interpretación y limitación → siguiente paso**. Se presentarán primero los resultados que responden la pregunta del proyecto y después los detalles necesarios para reproducirlos. Las versiones, revisiones y manifiestos conservan su función de trazabilidad, con una explicación breve de su relevancia.
+
+En particular, «se decidió usar» identifica una decisión; «se obtuvo» exige una medición y su muestra; «se espera mejorar» identifica una hipótesis; y «se evaluará» indica trabajo pendiente. El acuerdo entre anotadores, la exactitud de los jueces y el F1 del clasificador deben conservar nombres y denominadores distintos.
+
+<a id="ni-cierre"></a>
+
+### NI.10. Cierre de observaciones y continuidad documental
+
+Las aclaraciones anteriores resuelven la explicación del aporte, la selección inicial del corpus, los roles de los modelos, el diseño y configuración documentada de A4, la organización de indicadores y experimentos y la definición de términos. Se mantienen los siguientes compromisos de evidencia para completar las respuestas:
+
+| Punto | Evidencia que falta o debe consolidarse | Condición para darlo por cerrado |
+| --- | --- | --- |
+| Representación de A1 | Implementación original: capa, máscara y tratamiento de tokens especiales; razón de la elección si fue registrada | Descripción coherente con el código o manifiesto de recuperación |
+| Muestreo de eval60 | Procedimiento completo de selección y razón del tamaño 60 | Registro original o aclaración explícita del equipo, sin atribuir representatividad no demostrada |
+| Calidad de recuperación | Anotaciones independientes de relevancia, acuerdo y cálculo P@3 | Resultado humano trazable con tamaño y selección de muestra |
+| Experimento supervisado | Manifiestos, particiones, configuración efectiva y resultados de ambas entradas | Comparación reproducible y evaluación final sobre gold de T_B |
+| Cierre de validación | Gold, adjudicación, exclusiones y métricas finales de acuerdo | Denominadores y versiones definitivos de los conjuntos humanos |
+
+**Control de versiones para la siguiente etapa.** El contrato de la primera entrega [3] y la validación del equipo establecen 885 instancias en `pool_cue_yield`. El [contrato posterior del 28 de octubre](../Folder_trabajo_Equipos_14_y_15/Contrato_Datos_A3_2026-10-28_guia_rev3.1.md), en el párrafo «Cifras del pool de la ronda 1», vuelve a mencionar 900 y una conciliación que descuenta 90 calibraciones. Esa redacción requiere contraste con la corrección validada y los manifiestos originales antes de reutilizarla. Estas notas no modifican dicho contrato ni sustituyen el valor de 885 ya validado. El cierre de esta discrepancia debe conservar la conciliación sustentada en archivos, sin introducir ajustes aritméticos supuestos.
+
+Para las siguientes entregas se mantendrá la secuencia de versiones: primera entrega con corte al 23 de octubre; aclaraciones internas del 3 de noviembre; y resultados posteriores con su propia fecha, versión de datos y ejecución. El contrato posterior rige la operación de su etapa, pero sus cifras deben verificarse ante discrepancias con correcciones previamente validadas. Las notas no convierten automáticamente propuestas de configuración en decisiones históricas ni pendientes en resultados.
+
+**Nota final de trazabilidad.** Este bloque se añade **según las observaciones de la revisión de la primera entrega**, registradas en [observacionesentrega1.md](observacionesentrega1.md). NI.1 responde a la descripción de la solución; NI.2–NI.3 a recolección y preparación; NI.4–NI.5 a construcción de modelos; NI.6–NI.7 a resultados; NI.8 al análisis experimental; y NI.9 a presentación y redacción. NI.10 conserva los pendientes y el control de versiones para dar continuidad a las etapas posteriores. El documento de observaciones permanece como registro de la evaluación recibida.

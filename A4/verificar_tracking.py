@@ -50,6 +50,34 @@ def temporary_directory():
 
 
 class TrackingTests(unittest.TestCase):
+    def test_evaluation_child_preserves_training_results(self):
+        with temporary_directory() as tmp, patch.object(tempfile, "TemporaryDirectory", temporary_directory):
+            base = Path(tmp)
+            output = base / "outputs"
+            (output / "base").mkdir(parents=True)
+            historical = output / "base/validation_metrics.json"
+            save_json(historical, {"eval_f1_macro": .846})
+            before = historical.read_bytes()
+            tracker = runtime.A4Tracking(base / "tracking", base / "snapshots", output, "evaluation_01")
+            with tracker.attempt("base", {"seed": 42}, None):
+                pass
+            parent = tracker.parent("base")
+            evaluation = output / "evaluations/v2_fp32_fixture/base"
+            evaluation.mkdir(parents=True)
+            save_json(evaluation / "validation_scores.json", {"f1_macro": .848})
+            with tracker.evaluation("base", evaluation) as rid:
+                tracker.metrics(rid, {"validation_fp32_f1_macro": .848})
+            self.assertEqual(tracker.client.get_run(rid).info.status, "FINISHED")
+            self.assertEqual(tracker.client.get_run(rid).data.tags["kind"], "evaluation")
+            self.assertTrue(tracker.client.list_artifacts(rid, "evaluation"))
+            self.assertEqual(tracker.client.get_run(parent).info.status, "FINISHED")
+            with self.assertRaisesRegex(ValueError, "bad audit"):
+                with tracker.evaluation("base", evaluation) as failed:
+                    raise ValueError("bad audit")
+            self.assertEqual(tracker.client.get_run(failed).info.status, "FAILED")
+            self.assertEqual(tracker.client.get_run(parent).info.status, "FINISHED")
+            self.assertEqual(before, historical.read_bytes())
+
     def test_trainer_checkpoint_and_resume(self):
         import torch
         from transformers import BertConfig, BertForSequenceClassification, Trainer, TrainingArguments, TrainerCallback

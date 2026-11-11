@@ -144,6 +144,29 @@ class A4Tracking:
                     self.client.log_artifact(run, str(path), artifact_path=artifact_path)
 
     @contextlib.contextmanager
+    def evaluation(self, config, directory, policy="v2_fp32"):
+        parent = self.parent(config)
+        rid = self.client.create_run(self.experiment, tags={
+            "mlflow.runName": f"{config}/evaluation_{policy}_{uuid.uuid4().hex[:8]}",
+            "mlflow.parentRunId": parent, "a4_run_id": self.run_id, "config": config,
+            "kind": "evaluation", "evaluation_policy": policy,
+            "canonical_precision": "fp32", "drive_output": str(directory)}).info.run_id
+        try:
+            yield rid
+            self.client.log_artifacts(rid, str(directory), artifact_path="evaluation")
+            self.client.set_terminated(rid, "FINISHED")
+            self.client.set_tag(parent, "latest_evaluation_run", rid)
+            self.backup(force=True)
+        except BaseException as error:
+            self.client.set_tag(rid, "failure", f"{type(error).__name__}: {error}"[:2000])
+            self.client.set_terminated(rid, "KILLED" if isinstance(error, KeyboardInterrupt) else "FAILED")
+            try:
+                self.backup(force=True)
+            except Exception as backup_error:
+                print("Falló el respaldo de evaluación:", backup_error)
+            raise
+
+    @contextlib.contextmanager
     def attempt(self, config, spec, checkpoint):
         parent = self.parent(config)
         self.client.update_run(parent, status="RUNNING")

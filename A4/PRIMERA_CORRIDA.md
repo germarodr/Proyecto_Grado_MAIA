@@ -1,5 +1,9 @@
 # Primera corrida de SciBERT con MLflow
 
+La primera corrida de base ya está completada y su notebook se conserva en
+`pruebascolab/`. Para continuar con la comparación y la evaluación versionada,
+usa [SEGUNDA_CORRIDA.md](SEGUNDA_CORRIDA.md).
+
 El notebook entrena en Colab A100 y registra en SQLite local. Publica snapshots
 en `MAIA_TESIS/a4/_tracking/snapshots/`. AWS sirve una copia de ese historial:
 no necesita estar encendido para entrenar. La UI no se actualiza en vivo desde Colab.
@@ -62,8 +66,8 @@ no descarta silenciosamente el historial ni crea una base vacía para reemplazar
 3. El respaldo de historial se comprueba al terminar cada paso; cuando han pasado
    300 segundos publica una copia consistente. Durante validación o preparación
    puede transcurrir más tiempo. También publica al guardar checkpoints y al cerrar.
-4. Ejecuta **12**: comprueba la exportación y genera métricas por clase, matriz
-   de confusión y predicciones de validación, también disponibles en MLflow.
+4. Ejecuta **12**: comprueba toda la validación contra el checkpoint, compara las
+   precisiones y genera reportes FP32 en `evaluations/v2_fp32_<id>/`, también en MLflow.
 5. Ejecuta **13**: con la configuración inicial informa que T_B final está pendiente.
 6. Ejecuta **14**: empaqueta el modelo, actualiza los reportes y publica el snapshot final.
 7. Guarda el notebook con sus salidas en Drive antes de cerrar Colab.
@@ -138,13 +142,17 @@ Para otro experimento (semilla, variante o hiperparámetros), usa **otro RUN_ID*
 ## Validación previa a la entrega
 
 Pasaron seis pruebas del notebook (contratos, aislamiento, reconstrucción de los
-34.775 textos, sintaxis y exportación con un BERT pequeño) y tres pruebas del
-seguimiento con MLflow 3.17.2 y Transformers 4.57.1. Estas últimas comprueban curvas,
+34.775 textos, sintaxis y exportación con un BERT pequeño), cuatro del seguimiento
+y cuatro de evaluación. Las pruebas con MLflow 3.17.2 y Transformers 4.57.1 comprueban curvas,
 artefactos, cierre con error, restauración, intentos separados, rechazo de copias
 alteradas y entrenamiento/reanudación reales con un BERT pequeño en CPU.
 El ensayo parte sin carpeta de modelo, interrumpe después de la primera época y
 reanuda con la misma configuración, incluida la selección del mejor checkpoint.
-La corrida completa de SciBERT y el montaje de Drive en A100 quedan por ejecutar en Colab.
+La evaluación comprueba todos los ejemplos de un conjunto pequeño, reproduce BF16
+en CPU y rechaza pesos exportados diferentes. También verifica reportes por clase
+y conserva los archivos de métricas previos.
+La primera corrida de SciBERT base ya terminó en Colab A100. La evaluación
+versionada y la comparación con fragmentos se validarán en la siguiente corrida.
 
 Referencias de implementación: [callbacks de Transformers 4.57.1](https://huggingface.co/docs/transformers/v4.57.1/en/main_classes/callback)
 y [cliente de MLflow](https://mlflow.org/docs/latest/api_reference/python_api/mlflow.client.html).

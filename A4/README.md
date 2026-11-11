@@ -3,7 +3,7 @@
 **Proyecto:** clasificación de la función de citas académicas · Grupo 15.  
 **Fecha:** 29 de octubre de 2026, America/Bogota.  
 **Actualización de rutas:** 1 de noviembre de 2026.  
-**Estado:** seguimiento integrado; primera corrida de SciBERT en Colab pendiente.
+**Estado:** base, Top-3, prueba Top-1 y comparación exploratoria V2 completados y evaluados en validación; el test humano permanece cerrado.
 
 Entrenaremos SciBERT en **Colab Pro con A100**, registraremos el avance con
 **MLflow y SQLite dentro de Colab** y conservaremos los respaldos en **Google Drive**.
@@ -14,6 +14,12 @@ Este README define la arquitectura implementada. El notebook incorpora MLflow,
 respaldos automáticos y recuperación de checkpoints. Conserva el modelo y sus
 hiperparámetros, lee desde `MAIA_PROYECTO` y guarda en `MAIA_TESIS`.
 Para iniciar el entrenamiento sigue [PRIMERA_CORRIDA.md](PRIMERA_CORRIDA.md).
+Para continuar desde el base existente, sigue [SEGUNDA_CORRIDA.md](SEGUNDA_CORRIDA.md).
+La prueba adicional Top-1 y sus resultados están en [README_TOP1.md](README_TOP1.md).
+La corrida exploratoria con aislamiento V2 y comparación frente a V0 está completada
+en [README_V2.md](README_V2.md).
+Para revisar los 20 casos diagnósticos, sigue
+[REVISION_MANUAL_EVIDENCE_IM.md](REVISION_MANUAL_EVIDENCE_IM.md).
 No se necesita S3. El usuario dispone de 5 TB en Drive; la frecuencia de copia se
 ajustará a la velocidad de transferencia y al tamaño de los archivos.
 
