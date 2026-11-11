@@ -1,0 +1,61 @@
+Rubric1
+Descripción breve de la propuesta de solución 
+
+Score:
+10 out of 10 points
+
+Es sólido y puede mejorarse el sintetizar el aporte diferenciador de la solución y sus beneficios.
+
+Rubric2
+Recolección y preparación de los datos
+
+Score:
+12 out of 15 points
+
+Cuando mencionan que se usa el promedio de extracción  de representaciones con máscara de atención a que se refieren?? Porque el promedio, que consideran?
+
+También se observa desbalance entre las categorías minoritarias y una concentración temática importante en cs.CV, de existir una razón importante de selección, deben incorporarlo en el documento.
+
+Rubric3
+Descripción del proceso de construcción de los modelos
+
+Score:
+20 out of 35 points
+
+Porque escogen 60 para la muestra (eval60) y como escogen el set de esos 60?
+
+No se describe como se plantea abordar el modelo del proyecto para clasificación por medio de fine-tuning, que modelos proponen? Con que configuración?
+
+Rubric4
+Resultados obtenidos
+
+Score:
+10 out of 10 points
+
+Faltó la evaluación humana de P@3. Recomendación, consolidar una tabla de los indicadores para los resultados de recuperación, pre--etiquetado y validación humana.
+
+Rubric5
+Análisis de los resultados obtenidos
+
+Score:
+20 out of 20 points
+
+En la experimentación realizada hasta el momento, es importante presentar de mejor manera con un conjunto de experimentos de hipótesis y resultados buscando ese mejor modelo.
+
+Rubric6
+Referencias
+
+Score:
+5 out of 5 points
+
+Buena presentación e incluye fuentes bibliográficas.
+
+Rubric7
+Presentación y redacción. No se excede del número de páginas.
+
+Score:
+4 out of 5 points
+
+Cuidado cuando usan nombre para referirse a términos y no lo han definido previamente.
+
+No excede el límite de páginas, deben mejorar la redacción e hilo conductor del documento, dado que al estar enfocado muy técnicamente, no queda claro en algunos puntos si hablan de decisiones o de resultados principales.
