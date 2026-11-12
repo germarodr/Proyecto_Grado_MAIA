@@ -15,9 +15,9 @@ Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET)	1.113.513	50.538	31.532	1.229.408
 Ampliación (cs.LG, cs.CL, cs.DS)	368.296	50.456	30.153	1.574.790
 
 ===== TABLA III
-Instancias por función. Conjunto: conjunto de datos construido en este trabajo (pre-etiquetas de alta confianza y conjunto de prueba; meta del proyecto: 2.000 por función). Entrenamiento y validación: instancias que quedan tras el aislamiento por documento (Sección III-D). Corrección: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
+Instancias por función. Dataset: dataset construido en este trabajo (pre-etiquetas de alta confianza y conjunto de prueba; meta del proyecto: 2.000 por función). Entrenamiento y validación: instancias que quedan tras el aislamiento por documento (Sección III-D). Corrección: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
 
-Función	Conjunto	Entrenamiento	Validación	T_B	Corrección
+Función	Dataset	Entrenamiento	Validación	T_B	Corrección
 Background	12.713	5.004	717	330	13,9 %
 Gap	3.189	1.217	179	310	12,7 %
 Basis	3.022	848	112	322	13,6 %
