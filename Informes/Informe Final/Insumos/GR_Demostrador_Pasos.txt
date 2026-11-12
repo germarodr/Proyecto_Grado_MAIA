@@ -1,18 +1,17 @@
 DEMOSTRADOR CITESCOPE - PASOS (acuerdo del equipo, 11-nov-2026)
 
-Fuente única de datos: 40 ejemplos de T_B, cada uno con los 6 componentes (contexto, título, resumen y 3 fragmentos) y su etiqueta humana. El demostrador no calcula similitud ni recupera fragmentos en ejecución: toma todo de este archivo.
+Fuente única de datos: 40 ejemplos de T_B, cada uno con los 6 componentes (contexto, título, resumen y 3 fragmentos) y su etiqueta humana.
+El demostrador no calcula similitud ni recupera fragmentos en ejecución: toma todo de este archivo.
 Archivo: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/examples_TB_con_resumen.jsonl
-Licencia y atribución: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/README.md
 
 ========================================================================
 PASO 1. Menú de selección fijo donde el usuario elige un ejemplo
 REQUISITO: 5.1 Entrada de usuario
 PROCESO:
 - Fuente única: los 40 ejemplos de T_B; no hay texto libre.
-- Origen: lista generada por Alejandra (citas de T_B con etiqueta humana y con artículo citante y citado bajo licencia CC BY), con el resumen del citado y el texto de los 3 fragmentos agregados por GR.
+- Origen: lista generada por Alejandra; el resumen del citado y el texto de los 3 fragmentos los agregó GR.
 - El menú muestra, por ejemplo, el título del artículo citante y el del citado (campos citing_title y cited_title).
-- Contenido visible del ejemplo elegido: párrafo citante con la cita objetivo resaltada (context, marcada con [[TARGET]]); título y resumen del citado (cited_title, cited_abstract), con su enlace de arXiv.
-- Por función: Improvement/Modification 10, Evidence 6, Further Reading 6, Basis 5, Gap 5, Background 4, Comparison 3, Application 1; no hay ejemplos de Identification of the Originator.
+- Contenido visible del ejemplo elegido: párrafo citante (campo context, con la cita marcada como [[TARGET]]); título y resumen del citado.
 
 ========================================================================
 PASO 2. Mostrar el Top-3
@@ -26,9 +25,9 @@ PROCESO:
 PASO 3. Clasificar
 REQUISITO: 5.3 Selección del modelo
 PROCESO: el usuario elige una de tres opciones:
-- Encoder fine-tuned (SciBERT Base o SciBERT Chunk), en texto, hasta 512 tokens: Base = párrafo + título + resumen; Chunk = párrafo + los 3 fragmentos con su sección.
-- Model Open-Weight (Llama 3.1 8B o Qwen 8B): usa el prompt de la condición principal de A5.
-- Modelo Comercial vía API (GPT o Gemini): los modelos de A5, con su condición principal.
+- Encoder fine-tuned (SciBERT ajustado): un solo modelo, el de mayor F1 macro en T_B. Entrada de hasta 512 tokens: contexto + título + resumen + 3 Chunks
+- Model Open-Weight (Llama 3.1 8B o Qwen 8B): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido, ya recortada.
+- Modelo Comercial vía API (GPT o Gemini): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido, ya recortada.
 - En todos los casos el modelo devuelve una probabilidad o puntaje por función.
 
 ========================================================================
@@ -39,6 +38,5 @@ PROCESO:
 - Barras con el puntaje de las 9 funciones.
 - Los 3 fragmentos con su rango y sección.
 - Etiqueta humana (campo label) con ✓ o ✗.
-- Atribución CC BY junto a cada texto: título, licencia y enlace de arXiv del artículo (campos *_title, *_license, *_url).
 
 ========================================================================
