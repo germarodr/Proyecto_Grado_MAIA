@@ -15,9 +15,9 @@ Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET)	1.113.513	50.538	31.532	1.229.408
 Ampliación (cs.LG, cs.CL, cs.DS)	368.296	50.456	30.153	1.574.790
 
 ===== TABLA III
-Instancias por función. Dataset = Excluded + Training + Validation + Test B. Dataset: dataset construido en este trabajo (meta del proyecto: 2.000 por función). Excluded: instancias que no se usan por el aislamiento por documento (comparten un artículo con Test B o su citante está en las calibraciones) o por compartir un artículo con Validation (Sección III-D). Test B: conjunto de prueba T_B, por etiqueta humana. Correction: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
+Instancias por función. Dataset = Excluded + Training + Validation + Test. Dataset: dataset construido en este trabajo (meta del proyecto: 2.000 por función). Excluded: instancias que no se usan por el aislamiento por documento (comparten un artículo con el Test o su citante está en las calibraciones) o por compartir un artículo con Validation (Sección III-D). Test: por etiqueta humana. Correction: porcentaje de las 330 instancias del Test muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
 
-Función	Dataset	Excluded	Training	Validation	Test B	Correction
+Función	Dataset	Excluded	Training	Validation	Test	Correction
 Background	12.713	6.662	5.004	717	330	13,9 %
 Gap	3.189	1.483	1.217	179	310	12,7 %
 Basis	3.022	1.740	848	112	322	13,6 %
@@ -35,8 +35,8 @@ Configuración de entrenamiento.
 Parámetro	Valor
 Modelo	allenai/scibert_scivocab_uncased
 Longitud máxima	512 tokens (contexto ≤ 192)
-Tasa de aprendizaje	2e-5 (base) · 3e-5 (fragmentos), elegidas en validación
-Decaimiento de pesos	0,1 (base) · 0,01 (fragmentos), elegidos en validación
+Tasa de aprendizaje	2e-5 (base) · 3e-5 (fragmentos), elegidas en Validation
+Decaimiento de pesos	0,1 (base) · 0,01 (fragmentos), elegidos en Validation
 Épocas	Hasta 8, parada temprana con paciencia 2
 Lote efectivo	32 (16 × acumulación 2)
 Optimizador	AdamW, calentamiento 10 %, decaimiento lineal de la tasa
@@ -73,11 +73,11 @@ Pre-etiquetado (producción)	κ de Fleiss entre jueces; unanimidad	0,67; 63 %	�
 	Instancias con pre-etiqueta de alta confianza	37.254 de 38.780 (96,1 %)	—
 	Estabilidad al repetir 300 instancias	98 %	—
 Validación humana	κ de Fleiss: primera frente a segunda calibración	0,47 frente a 0,87	—
-	Corrección de la pre-etiqueta en T_B	9,7 % (25,2 % en Improvement/Modification)	—
-	κ de Cohen / α de Krippendorff en T_B	0,854 / 0,854	—
+	Corrección de la pre-etiqueta en el Test	9,7 % (25,2 % en Improvement/Modification)	—
+	κ de Cohen / α de Krippendorff en el Test	0,854 / 0,854	—
 
 ===== TABLA VII
-Resultados sobre el conjunto de prueba T_B. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A4-2, A5-3; consolida GR en A6]]
+Resultados sobre el Test. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A4-2, A5-3; consolida GR en A6]]
 
 Modelo	Precisión macro	Exhaustividad macro	F1 macro	F1 micro
 SciBERT base	[[ ]]	[[ ]]	[[ ]]	[[ ]]
@@ -90,7 +90,7 @@ SciBERT con fragmentos	[[ ]]	[[ ]]	[[ ]]	[[ ]]
 ===== TABLA VIII
 Costo y latencia por modelo. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A7-1, A7-2, A5-3, A7-3]]
 
-Modelo	Entrenamiento	Costo por 1.000 ejemplos	Latencia (s/ejemplo)	Formato inválido
+Modelo	Training	Costo por 1.000 ejemplos	Latencia (s/ejemplo)	Formato inválido
 SciBERT base	[[h GPU]]	[[ ]]	[[ ]]	—
 SciBERT con fragmentos	[[h GPU]]	[[ ]]	[[ ]]	—
 [[A5-1: modelo 1]] · título y resumen (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
@@ -99,6 +99,6 @@ SciBERT con fragmentos	[[h GPU]]	[[ ]]	[[ ]]	—
 [[A5-1: modelo 2]] · fragmentos (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
 
 ===== TABLA X
-Precisión, exhaustividad, F1 macro y micro, costo por 1.000 ejemplos, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre T_B. [[A5-3, A6, A7]]
+Precisión, exhaustividad, F1 macro y micro, costo por 1.000 ejemplos, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre el Test. [[A5-3, A6, A7]]
 
 (sin filas en el borrador)

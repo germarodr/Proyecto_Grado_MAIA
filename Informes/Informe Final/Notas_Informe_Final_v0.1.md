@@ -100,7 +100,8 @@ Fuente: [Feedback Primer Informe.txt](../Feedback%20Primer%20Informe.txt). El pr
 | pool_cue_yield | No se menciona; "885 casos difíciles" |
 | prompt v8/v11/v11.1/v12 | "Versiones sucesivas del prompt"; v11.1 = "versión final" |
 | jueces | "Modelos de lenguaje de pesos abiertos usados como jueces" (definido en III-C) |
-| T_A / T_B | Solo T_B, definido en III-C como "el conjunto propio" |
+| T_A / T_B | **T_B = "Test"** (definido en III-C; primera mención en Resumen e Introducción como "conjunto de prueba (Test)"). **T_A = T_A**: en el artículo solo aparece como "el conjunto de prueba del otro grupo" |
+| Particiones | **Training, Validation y Test** en inglés (preferencia de GR, 11-nov). Siguen en español "validación humana" (la anotación de A3), el proceso de "entrenamiento" (p. ej., "configuración de entrenamiento") y los verbos ("validaron") |
 | V0 / V1 / V2 | No se nombran; se describe la exclusión usada (III-D) |
 | paquete, ola, lote, colchón, reserva | "Instancia"; la logística no se menciona |
 | `unclear` | "Instancias sin función identificable" |
@@ -186,6 +187,7 @@ Agregar una fila cada vez que se tome una decisión sobre el artículo.
 | 11-nov | **Meta de 2.000 por función aclarada en el informe.** TABLA III pasa a "Instancias por función" con columnas Conjunto (34.988 = 32.020 de la versión 2 con etiqueta humana de T_A, sin sus 3 *unclear*, + 2.968 de T_B), Entrenamiento (11.616), Validación (1.653), T_B y Corrección. III-C: 6 de 9 funciones superan 2.000 en el conjunto (IM 826, Orig 1.692, FR 1.716 no); III-D: tras el aislamiento se usan 13.269 y solo Background supera 2.000 en entrenamiento; Limitaciones ajustadas. "Dataset" → "conjunto de datos" | GR |
 | 11-nov | Estilo: GR prefiere "dataset" en todo el informe; se reemplaza "conjunto de datos" (5 menciones, incluida la TABLA III) y se agrega a §4.2 | GR |
 | 11-nov | TABLA III rehecha para que las cifras sumen a la vista: Dataset = Excluded + Training + Validation + Test B (p. ej., Background 12.713 = 6.662 + 5.004 + 717 + 330; total 34.988 = 18.751 + 11.616 + 1.653 + 2.968), más Correction. Excluded = aislamiento por documento + retiro por compartir artículo con Validation; recalculado desde los archivos originales | GR |
+| 11-nov | Informe: T_B → "Test" (15 menciones) y particiones en inglés (Training, Validation, Test) en texto y tablas (III, IV, VI, VII, VIII, X); se mantienen en español "validación humana", el proceso de "entrenamiento" y las referencias al conjunto de prueba del otro grupo. Regla en §4.2. Copia previa en la carpeta de la sesión | GR |
 
 ## 6. Presupuesto de páginas
 
