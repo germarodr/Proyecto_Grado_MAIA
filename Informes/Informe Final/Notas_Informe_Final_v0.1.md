@@ -188,6 +188,7 @@ Agregar una fila cada vez que se tome una decisión sobre el artículo.
 | 11-nov | Estilo: GR prefiere "dataset" en todo el informe; se reemplaza "conjunto de datos" (5 menciones, incluida la TABLA III) y se agrega a §4.2 | GR |
 | 11-nov | TABLA III rehecha para que las cifras sumen a la vista: Dataset = Excluded + Training + Validation + Test B (p. ej., Background 12.713 = 6.662 + 5.004 + 717 + 330; total 34.988 = 18.751 + 11.616 + 1.653 + 2.968), más Correction. Excluded = aislamiento por documento + retiro por compartir artículo con Validation; recalculado desde los archivos originales | GR |
 | 11-nov | Informe: T_B → "Test" (15 menciones) y particiones en inglés (Training, Validation, Test) en texto y tablas (III, IV, VI, VII, VIII, X); se mantienen en español "validación humana", el proceso de "entrenamiento" y las referencias al conjunto de prueba del otro grupo. Regla en §4.2. Copia previa en la carpeta de la sesión | GR |
+| 11-nov | **Siguiente fase: revisión manual del .md por GR**, sección por sección. Durante la revisión se toman decisiones con el asistente y se validan con el equipo cuando haga falta; cada cambio se registra en esta bitácora. El paso a Word queda para el final de la semana | GR |
 
 ## 6. Presupuesto de páginas
 
