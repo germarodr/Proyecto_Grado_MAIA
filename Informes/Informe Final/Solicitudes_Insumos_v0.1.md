@@ -52,7 +52,7 @@
 | 6 | **Aplicación web** (D-1 a D-5). Está en el resumen y en los objetivos; hoy solo existe el índice de la demo (`a8_index.py`). | Confirmar si habrá URL pública para el 17-nov. Si no, se quita del resumen y de los objetivos. | |
 | 7 | **`Insumos/a3/`** incluye las etiquetas de T_A. El G14 autorizó usarlas para entrenar, no publicarlas. | Usarlas en entrenamiento; no publicar la carpeta (ya está en `.gitignore`). | |
 | 8 | **Entrega de A4-6.** Las entradas de SciBERT contienen texto de los artículos. | ST las entrega directamente a JA, fuera del repositorio. | |
-| 9 | **Pruebas extra de Sebastián** (solo validación): Top-1 (un fragmento, F1 0,845) y aislamiento estricto V2 (−3,2 puntos). | Incluirlas en el informe como pruebas de desarrollo: Top-1 responde al recorte del 91 %, y V2 mide lo que se habría perdido con un aislamiento más estricto. | No incluirlas en el informe (GR, 11-nov). |
+| 9 | **Pruebas extra de Sebastián** (solo validación): Top-1 (un fragmento, F1 0,845) y aislamiento estricto V2 (−3,2 puntos). | Incluirlas en el informe como pruebas de desarrollo: Top-1 responde al recorte del 91 %, y V2 mide lo que se habría perdido con un aislamiento más estricto. | Top-1: no se incluye; A4 se mantiene en SciBERT base y SciBERT Top-3 (GR, 11-nov). Aislamiento V2: Sebastián lo adoptó como configuración principal el 11-nov (ver bitácora). |
 | 10 | **Nombre "V2" duplicado:** el aislamiento V2 de A4 no es la versión 2 de los datos de A3. | En el informe, "variante de aislamiento" frente a "versión de los datos". | |
 | 11 | **Declaración de uso de IA** (recomendación de los profesores). | Un párrafo breve al final del informe; ver la propuesta de GR. | Incluida antes de las Referencias (GR, 11-nov). |
 | 13 | **Clasificadores del demostrador** (guía 5.3: tres opciones). | **Encoder fine-tuned:** un solo SciBERT, el de mayor F1 macro en T_B (fijar la regla antes de abrir T_B). **Model Open-Weight** (Llama 3.1 8B o Qwen 8B) y **Modelo Comercial vía API** (GPT o Gemini): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido. Confirmar la versión exacta de Qwen. | Definido por GR (11-nov) |
@@ -108,7 +108,7 @@ Alimenta la TABLA VII y las Figs. 3 y 4.
 
 ## D — Despliegue (CB/ST)
 
-Diseño acordado: el usuario elige una cita de los **40 ejemplos de T_B**, la única fuente del demostrador; la app muestra el Top-3 ya guardado para ese ejemplo (sin cálculo de similitud), clasifica con la opción elegida (Encoder fine-tuned: SciBERT Base o Chunk; Open-Weight: Llama 3.1 8B o Qwen 8B; Comercial: GPT o Gemini) y muestra la función, el puntaje de las 9 funciones, los 3 fragmentos con su sección y la etiqueta humana. Detalle en las notas, §7 III-H.
+Diseño acordado: el usuario elige una cita de los **40 ejemplos de T_B**, la única fuente del demostrador; la app muestra el Top-3 ya guardado para ese ejemplo (sin cálculo de similitud), clasifica con la opción elegida (Encoder fine-tuned: el mejor entre SciBERT base y SciBERT Top-3; Open-Weight: Llama 3.1 8B o Qwen 8B; Comercial: GPT o Gemini) y muestra la función, el puntaje de las 9 funciones, los 3 fragmentos con su sección y la etiqueta humana. Detalle en las notas, §7 III-H.
 
 | Código | Qué necesitamos |
 |---|---|

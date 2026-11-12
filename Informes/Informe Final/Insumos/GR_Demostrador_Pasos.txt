@@ -25,7 +25,7 @@ PROCESO:
 PASO 3. Clasificar
 REQUISITO: 5.3 Selección del modelo
 PROCESO: el usuario elige una de tres opciones:
-- Encoder fine-tuned (SciBERT ajustado): un solo modelo, el de mayor F1 macro en T_B. Entrada de hasta 512 tokens: contexto + título + resumen + 3 Chunks
+- Encoder fine-tuned (SciBERT ajustado): un solo modelo, el de mayor F1 macro en T_B entre SciBERT base (contexto + título + resumen) y SciBERT Top-3 (contexto + los 3 fragmentos con su sección). Entrada de hasta 512 tokens.
 - Model Open-Weight (Llama 3.1 8B o Qwen 8B): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido, ya recortada.
 - Modelo Comercial vía API (GPT o Gemini): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido, ya recortada.
 - En todos los casos el modelo devuelve una probabilidad o puntaje por función.
