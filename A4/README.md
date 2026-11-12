@@ -456,7 +456,6 @@ los accesos a Drive pueden demorarse o fallar. [FAQ de Colab](https://research.g
 - [Notebook actual](A4_SciBERT_G15_Colab_A100.ipynb).
 - [Auditoría de identificadores y aislamiento](auditoria_datos_A4.json).
 - [Auditoría de textos y tokenización](auditoria_textos_A4.json).
-- [Plan de trabajo general](../plan_de_trabajo.md).
 
 El notebook incorpora el registro, respaldo y recuperación. La primera corrida
 en Colab permitirá validar el flujo con SciBERT y medir sus tiempos reales.

@@ -17,7 +17,7 @@ apuntan al historial de esa carpeta en GitHub.
 |---|---|
 | [Propuesta](../PropuestaProyectoGrado.md) | Clasificación de nueve funciones, SciBERT con CE y dos entradas; evaluar el aporte del Top-3 |
 | [Primer informe](../Primer%20Informe%20Avance.md) | Corte al 23-oct: A1/A2 completadas, A3 parcial; aún sin fine-tuning ni resultados finales |
-| [Plan de trabajo](../plan_de_trabajo.md) | G15 autónomo desde A4, T_B como test, liberación temprana del modelo base para la aplicación |
+| Plan de trabajo (archivado, sin enlace) | G15 autónomo desde A4, T_B como test, liberación temprana del modelo base para la aplicación |
 | [Contrato del 28-oct](../Folder_trabajo_Equipos_14_y_15/Contrato_Datos_A3_2026-10-28_guia_rev3.1.md) | A4 puede empezar con training v1; reglas V0/V1/V2 y gold posterior por clave |
 | [Guía rev3.1](../Folder_trabajo_Equipos_14_y_15/guia_anotacion_funcion_cita_rev3.1.md) | Etiqueta principal única, marcadores y fronteras entre clases |
 | Presentación «A3 Round 1 (W1+W2) Results, Adjudication and Training Set» | Ronda 1 anotada al 27-oct; adjudicación, procedencia del texto, conteos y decisiones de A4 |
