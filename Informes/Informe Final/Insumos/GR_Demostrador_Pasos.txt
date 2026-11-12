@@ -5,9 +5,8 @@ PASO 1. Menú de selección fijo donde el usuario elige un ejemplo
 REQUISITO: 5.1 Entrada de usuario
 PROCESO:
 - Fuente única: los 40 ejemplos de T_B; no hay texto libre.
-- Origen: lista generada por Alejandra, con el resumen del citado agregado por GR
+- Origen: lista generada por Alejandra, con el resumen del citado y el texto de los 3 fragmentos agregados por GR (los 40 ejemplos tienen los 6 componentes: contexto, título, resumen y 3 fragmentos)
   Archivo: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/examples_TB_con_resumen.jsonl
-  Licencia y atribución: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/README.md
 - Contenido visible de cada ejemplo: párrafo citante con [[TARGET]]; título y resumen del citado.
 
 ========================================================================
