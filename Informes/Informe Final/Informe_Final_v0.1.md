@@ -71,7 +71,7 @@ La construcción inicial tomó como artículos citantes los de cs.CV, cs.SI, cs.
 | Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET) | 1.113.513 | 50.538 | 31.532 | 1.229.408 |
 | Ampliación (cs.LG, cs.CL, cs.DS) | 368.296 | 50.456 | 30.153 | 1.574.790 |
 
-Como la ampliación se usó sobre todo para muestrear funciones escasas, la concentración se redujo poco: según la categoría principal de arXiv del artículo citante, cs.CV representa el 86,2 % de las 31.265 instancias de entrenamiento y validación y el 88,4 % de las 2.968 del conjunto de prueba, seguido de cs.LG (6,2 % y 5,8 %) y cs.DS (3,7 % y 2,4 %); los otros cinco subcampos suman menos del 4 % en ambos.
+Como la ampliación se usó sobre todo para muestrear funciones escasas, la concentración se redujo poco: según la categoría principal de arXiv del artículo citante, cs.CV representa el 77,2 % de las 13.269 instancias de entrenamiento y validación y el 88,4 % de las 2.968 del conjunto de prueba, seguido de cs.LG (8,9 % y 5,8 %) y cs.DS (6,8 % y 2,4 %); los otros cinco subcampos suman 7,1 % y 3,4 %.
 
 La limpieza eliminó fragmentos duplicados, fragmentos de menos de 15 palabras y residuos de plantillas LaTeX; los fragmentos sin sección se conservaron, porque en su mayoría son texto real de artículos cuyos encabezados no se pudieron extraer. Se exigió que el cuerpo del citado tuviera al menos 1.000 palabras, se excluyeron contextos de más de 512 tokens sin truncarlos, así como citantes en otros idiomas y autocitas del mismo identificador. Cada instancia conserva una clave estable (citante, párrafo, posición del marcador y citado) que permite reconstruir el texto exacto; esa reconstrucción se verificó en 300 de 300 casos.
 
@@ -116,26 +116,29 @@ El acuerdo entre los dos grupos antes de adjudicar fue de 87,0 % (κ de Cohen = 
 
 ### D. Clasificador supervisado
 
-Para evitar fuga de información, se excluyeron de entrenamiento y validación todos los artículos citantes del conjunto de prueba y de las calibraciones. No se excluyeron además los artículos citados, porque esa variante reducía el entrenamiento de 28.039 a 12.119 instancias y dejaba sin suministro a las funciones escasas; como compensación, los resultados se reportan por separado para citados vistos y no vistos en entrenamiento. La partición entre entrenamiento y validación (90/10) se hizo por artículo citante con un hash fijo: 28.039 y 3.226 instancias. [[A4-3: versión del conjunto de entrenamiento usada (1 o 2, con las filas recuperadas por función si es la 2) y si las instancias del conjunto de prueba del otro grupo se usaron con su etiqueta humana en lugar de la pre-etiqueta (autorizado por el Grupo 14); actualizar los conteos si cambian]]
+Se usó la versión 2 del conjunto de entrenamiento: 32.023 instancias con pre-etiqueta de alta confianza, en las que las instancias del conjunto de prueba del otro grupo llevan su etiqueta humana en lugar de la pre-etiqueta, con autorización del Grupo 14. Para evitar fuga de información se aplicó el aislamiento más estricto por documento: se excluyeron las instancias cuyo artículo citante o citado aparece, en cualquiera de los dos papeles, en el conjunto de prueba, y las de los artículos citantes de las calibraciones, de modo que ningún documento de T_B se ve durante el entrenamiento. La partición entre entrenamiento y validación (90/10) se hizo por artículo citante con un hash fijo y, para que tampoco compartan documentos, se retiraron del entrenamiento las instancias con algún artículo presente en validación. Quedaron 11.616 instancias de entrenamiento y 1.653 de validación; 944 y 125 de ellas, respectivamente, tienen etiqueta humana y el resto conserva la pre-etiqueta. El aislamiento tiene un costo en suministro: Background pasa a ser el 43,1 % de los datos y Improvement/Modification queda con 140 instancias de entrenamiento y 19 de validación.
 
 Se ajustó SciBERT con una capa lineal de clasificación sobre el token `[CLS]` y nueve salidas, con entropía cruzada y todos los parámetros entrenables. Se entrenaron dos modelos independientes desde el mismo punto de partida y sobre las mismas instancias, que solo difieren en la información del citado:
 
 - **Base:** `[CLS]` contexto `[SEP]` título y resumen del citado `[SEP]`.
 - **Con fragmentos:** `[CLS]` contexto `[SEP]` tres fragmentos Top-3, cada uno precedido por su sección `[SEP]`.
 
-Como SciBERT admite 512 tokens, el contexto se limita a 192 tokens centrados en la cita objetivo y el resto se asigna al citado: hasta 64 tokens para el título en la configuración base y hasta 24 para cada encabezado de sección en la de fragmentos, recortando cada segmento desde el final y redistribuyendo el espacio no usado. [[A4-4: manejo del desbalance de clases]] La Tabla IV resume la configuración; el mejor punto de control de cada modelo se eligió por F1 macro en validación.
+Como SciBERT admite 512 tokens, el contexto se limita a 192 tokens centrados en la cita objetivo y el resto se asigna al citado: hasta 64 tokens para el título en la configuración base y hasta 24 para cada encabezado de sección en la de fragmentos, recortando cada segmento desde el final y redistribuyendo el espacio no usado. La pérdida es la entropía cruzada sin pesos por clase. [[A4-4: justificación en una frase]] Los hiperparámetros de cada configuración se eligieron por separado mediante una búsqueda en rejilla sobre la tasa de aprendizaje y el decaimiento de pesos (12 ensayos en total) [[A4-3: valores de la rejilla]], y la configuración elegida se repitió con tres semillas (42, 17 y 73) para medir su estabilidad; el modelo principal es el de semilla 42 y el mejor punto de control de cada ensayo se eligió por F1 macro en validación (Tabla IV). Como la validación combina pre-etiquetas (92,4 %) y etiquetas humanas (7,6 %) y se usó para tomar estas decisiones, sus métricas son optimistas; la evaluación sin sesgo es la de T_B, que se usa una sola vez con los modelos ya congelados.
 
-**TABLA IV.** Configuración de entrenamiento. [[A4-3: confirmar con la corrida]]
+**TABLA IV.** Configuración de entrenamiento.
 
 | Parámetro | Valor |
 |---|---|
 | Modelo | `allenai/scibert_scivocab_uncased` |
 | Longitud máxima | 512 tokens (contexto ≤ 192) |
-| Tasa de aprendizaje / épocas | 2e-5 / hasta 4, parada temprana con paciencia 2 |
+| Tasa de aprendizaje | 2e-5 (base) · 3e-5 (fragmentos), elegidas en validación |
+| Decaimiento de pesos | 0,1 (base) · 0,01 (fragmentos), elegidos en validación |
+| Épocas | Hasta 8, parada temprana con paciencia 2 |
 | Lote efectivo | 32 (16 × acumulación 2) |
-| Optimizador | AdamW, decaimiento 0,01, calentamiento 10 %, decaimiento lineal |
+| Optimizador | AdamW, calentamiento 10 %, decaimiento lineal de la tasa |
+| Pérdida | Entropía cruzada sin pesos por clase |
 | Precisión y hardware | BF16, GPU A100 (Colab) |
-| Semilla | 42 |
+| Semillas | 42 (modelo principal), 17 y 73 |
 
 ### E. Modelos de lenguaje comerciales
 
@@ -216,7 +219,7 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 | [[A5-1: modelo 2]] · título y resumen (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 2]] · fragmentos (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 
-[[A4-2: diferencia de F1 macro entre fragmentos y base con IC 95 %; F1 macro para citados vistos y no vistos en entrenamiento.]]
+[[A4-2: diferencia de F1 macro entre fragmentos y base con IC 95 %; media y desviación del F1 macro de las tres semillas.]]
 
 [[Fig. 3 · gráfica de barras agrupadas: F1 por función (eje x, nueve funciones) para SciBERT base, SciBERT con fragmentos y la condición principal de cada modelo comercial con cada tipo de información del citado, con una línea horizontal en el F1 macro de cada uno; consolida GR en A6]]
 
@@ -249,7 +252,7 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 [[TABLA IX o párrafo: F1 macro de este trabajo frente a los resultados publicados de SciCite y MultiCite, indicando para cada uno número de clases, dominio y si usa texto del citado, porque las cifras no son directamente comparables.]]
 
-[[Análisis crítico de los resultados: qué tan robustos son (intervalos, citados vistos y no vistos, sesgo por muestreo de alta confianza y pre-etiqueta visible), qué hipótesis quedan respaldadas y cuáles no.]]
+[[Análisis crítico de los resultados: qué tan robustos son (intervalos, variación entre semillas, sesgo por muestreo de alta confianza y pre-etiqueta visible), qué hipótesis quedan respaldadas y cuáles no.]]
 
 ## V. Discusión
 
@@ -259,9 +262,9 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 [[Codificador frente a modelos comerciales: desempeño y costo; diferencias entre los modelos comerciales; si los fragmentos ayudan también a esos modelos (H8).]]
 
-**Fortalezas.** El conjunto de prueba se construyó con un protocolo reproducible: muestreo estratificado con semilla fija, guía de anotación con reglas para las fronteras más confusas, calibración previa con un umbral de acuerdo por pareja y adjudicación de desacuerdos por anotadores independientes. Las dos configuraciones de SciBERT se compararon de forma controlada, con las mismas instancias, partición, semilla e hiperparámetros, de modo que la diferencia entre ellas se atribuye a la información del citado. La evaluación incluye costo y latencia, y no solo desempeño, lo que permite juzgar la viabilidad práctica de cada alternativa. Cada instancia conserva una clave que permite reconstruir su texto exacto y reproducir el pre-etiquetado y la recuperación.
+**Fortalezas.** El conjunto de prueba se construyó con un protocolo reproducible: muestreo estratificado con semilla fija, guía de anotación con reglas para las fronteras más confusas, calibración previa con un umbral de acuerdo por pareja y adjudicación de desacuerdos por anotadores independientes. Las dos configuraciones de SciBERT se compararon de forma controlada, con las mismas instancias y partición, hiperparámetros elegidos con la misma búsqueda y tres semillas, de modo que la diferencia entre ellas se atribuye a la información del citado. El aislamiento por documento garantiza que ningún artículo del conjunto de prueba se vio durante el entrenamiento. La evaluación incluye costo y latencia, y no solo desempeño, lo que permite juzgar la viabilidad práctica de cada alternativa. Cada instancia conserva una clave que permite reconstruir su texto exacto y reproducir el pre-etiquetado y la recuperación.
 
-**Limitaciones.** El corpus está concentrado en cs.CV (86–88 % de las instancias de entrenamiento y prueba), por lo que los resultados no describen de manera uniforme todo Computer Science. Tres funciones quedaron por debajo de la meta de 2.000 ejemplos, e Improvement/Modification quedó por debajo de la meta de 300 instancias en el conjunto de prueba (268), lo que amplía la incertidumbre de su F1. El conjunto de prueba se muestreó entre instancias con pre-etiqueta de alta confianza y se anotó con la pre-etiqueta visible, lo que puede favorecer tanto el F1 como el acuerdo (sin los dos anotadores que menos corrigieron la pre-etiqueta, el κ en T_B baja de 0,854 a 0,840); la mejora del acuerdo entre calibraciones no puede atribuirse a una sola intervención, porque cambiaron a la vez la muestra, las reglas y la modalidad. La muestra de desarrollo es pequeña y sesgada a casos difíciles. La recuperación usa SciBERT sin ajuste y la entrada con fragmentos se trunca. La relevancia de los fragmentos recuperados no se evaluó con anotadores; su utilidad se infiere de la auditoría de secciones y de su efecto en las decisiones de los jueces y de los clasificadores. El 82,9 % de las instancias de prueba cita artículos que aparecen como citados en entrenamiento.
+**Limitaciones.** El corpus está concentrado en cs.CV (77 % de las instancias de entrenamiento y 88 % de las de prueba), por lo que los resultados no describen de manera uniforme todo Computer Science. Tres funciones quedaron por debajo de la meta de 2.000 ejemplos, e Improvement/Modification quedó por debajo de la meta de 300 instancias en el conjunto de prueba (268), lo que amplía la incertidumbre de su F1. El conjunto de prueba se muestreó entre instancias con pre-etiqueta de alta confianza y se anotó con la pre-etiqueta visible, lo que puede favorecer tanto el F1 como el acuerdo (sin los dos anotadores que menos corrigieron la pre-etiqueta, el κ en T_B baja de 0,854 a 0,840); la mejora del acuerdo entre calibraciones no puede atribuirse a una sola intervención, porque cambiaron a la vez la muestra, las reglas y la modalidad. La muestra de desarrollo es pequeña y sesgada a casos difíciles. La recuperación usa SciBERT sin ajuste y la entrada con fragmentos se trunca. La relevancia de los fragmentos recuperados no se evaluó con anotadores; su utilidad se infiere de la auditoría de secciones y de su efecto en las decisiones de los jueces y de los clasificadores. El aislamiento estricto por documento reduce el entrenamiento a 11.616 instancias y deja muy pocas de las funciones escasas (140 de Improvement/Modification). Las métricas de validación se calculan sobre pre-etiquetas en su mayoría y se usaron para elegir hiperparámetros, por lo que solo T_B ofrece una estimación sin sesgo.
 
 ## VI. Conclusiones y trabajo futuro
 
@@ -271,7 +274,7 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 **Lecciones aprendidas.** [[Tres o cuatro lecciones (GR, con aportes del equipo). Candidatas: los modelos de lenguaje como jueces permiten pre-etiquetar a escala, pero requieren validación humana por función; calibrar a los anotadores antes de anotar fue decisivo para alcanzar un acuerdo aceptable; el límite de 512 tokens condiciona cuánta evidencia del citado puede usar un codificador; coordinar dos grupos exige un contrato de datos con identificadores estables y reglas de exclusión explícitas.]]
 
-Como trabajo futuro se plantea evaluar con anotadores la relevancia de los fragmentos recuperados mediante precisión en 3 (P@3), frente a una línea base aleatoria; reemplazar la recuperación por un modelo ajustado para similitud entre documentos científicos, como SPECTER2 [21]; usar modelos de contexto largo para no truncar los fragmentos; extender la clasificación a múltiples etiquetas; aislar también los artículos citados para medir la generalización a documentos no vistos, y ampliar el suministro de las funciones escasas.
+Como trabajo futuro se plantea evaluar con anotadores la relevancia de los fragmentos recuperados mediante precisión en 3 (P@3), frente a una línea base aleatoria; reemplazar la recuperación por un modelo ajustado para similitud entre documentos científicos, como SPECTER2 [21]; usar modelos de contexto largo para no truncar los fragmentos; extender la clasificación a múltiples etiquetas, y ampliar el suministro de las funciones escasas.
 
 ## Apéndices
 

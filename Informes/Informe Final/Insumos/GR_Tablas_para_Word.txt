@@ -30,16 +30,19 @@ Further Reading	315	4,8 %
 Total	2.968	9,7 %
 
 ===== TABLA IV
-Configuración de entrenamiento. [[A4-3: confirmar con la corrida]]
+Configuración de entrenamiento.
 
 Parámetro	Valor
 Modelo	allenai/scibert_scivocab_uncased
 Longitud máxima	512 tokens (contexto ≤ 192)
-Tasa de aprendizaje / épocas	2e-5 / hasta 4, parada temprana con paciencia 2
+Tasa de aprendizaje	2e-5 (base) · 3e-5 (fragmentos), elegidas en validación
+Decaimiento de pesos	0,1 (base) · 0,01 (fragmentos), elegidos en validación
+Épocas	Hasta 8, parada temprana con paciencia 2
 Lote efectivo	32 (16 × acumulación 2)
-Optimizador	AdamW, decaimiento 0,01, calentamiento 10 %, decaimiento lineal
+Optimizador	AdamW, calentamiento 10 %, decaimiento lineal de la tasa
+Pérdida	Entropía cruzada sin pesos por clase
 Precisión y hardware	BF16, GPU A100 (Colab)
-Semilla	42
+Semillas	42 (modelo principal), 17 y 73
 
 ===== TABLA V
 Hipótesis y experimentos.
