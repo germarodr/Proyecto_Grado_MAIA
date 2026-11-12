@@ -1,0 +1,80 @@
+{
+  "examples_version": "a8-examples-v1",
+  "built": "2026-11-10T18:43:02",
+  "set": "B",
+  "include_unannotated": false,
+  "examples": 40,
+  "counts": {
+    "candidates (gold)": 2968,
+    "examples: ('Application', 'gold')": 1,
+    "examples: ('Background', 'gold')": 4,
+    "examples: ('Basis', 'gold')": 5,
+    "examples: ('Comparison', 'gold')": 3,
+    "examples: ('Evidence', 'gold')": 6,
+    "examples: ('Further Reading', 'gold')": 6,
+    "examples: ('Gap', 'gold')": 5,
+    "examples: ('Improvement/Modification', 'gold')": 10
+  },
+  "by_label": {
+    "Application": {
+      "gold": 1
+    },
+    "Background": {
+      "gold": 4
+    },
+    "Basis": {
+      "gold": 5
+    },
+    "Comparison": {
+      "gold": 3
+    },
+    "Evidence": {
+      "gold": 6
+    },
+    "Further Reading": {
+      "gold": 6
+    },
+    "Gap": {
+      "gold": 5
+    },
+    "Improvement/Modification": {
+      "gold": 10
+    }
+  },
+  "inputs": {
+    "pool": {
+      "name": "prelabels_pool.jsonl",
+      "size": 44869684,
+      "sha256_head_tail": "c917a06c0108609d2362528878f2ab77d477fea77fac2cbf51c3048fd595a74c"
+    },
+    "gold": {
+      "name": "test_set_gold.jsonl",
+      "size": 3681748,
+      "sha256_head_tail": "3b39f7d2eb42a47a46810b590e9ec40d0bb562c00c0c1eb958921978599af57d"
+    },
+    "samples": [
+      {
+        "name": "sample_round1.jsonl",
+        "size": 1464486,
+        "sha256_head_tail": "5d041749d4d367065cb6fbe91f46107ad4e91c10a08dcd6bfb9f6ed8da6576be"
+      },
+      {
+        "name": "sample_round2.jsonl",
+        "size": 770052,
+        "sha256_head_tail": "119c8c680f688059539a68151a08b2b89f2b2b07ef9192ce51ed3b27249390ee"
+      }
+    ],
+    "license_map": {
+      "name": "cs_subset_core.license_map.tsv",
+      "size": 26063532,
+      "sha256_head_tail": "a3cdbff40e46672313c1092a4d7f559ea4f3aa5dc25429d83af014c2ada2783e"
+    },
+    "metadata": {
+      "name": "cs_subset_core_paper_metadata.jsonl",
+      "size": 456540796,
+      "sha256_head_tail": "5acc1379f667e1b62af753a854db30895184346ed9f1e21fbe5def4b77dbbd58"
+    },
+    "index_version": "a8-index-v1",
+    "index_built": "2026-11-10T18:09:48"
+  }
+}

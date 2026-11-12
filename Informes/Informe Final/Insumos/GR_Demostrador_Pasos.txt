@@ -1,0 +1,39 @@
+DEMOSTRADOR CITESCOPE - PASOS (acuerdo del equipo, 10-nov-2026)
+
+========================================================================
+PASO 1. Menú de selección fijo donde el usuario elige un ejemplo
+REQUISITO: 5.1 Entrada de usuario
+PROCESO:
+- Fuente única: los 40 ejemplos de T_B; no hay texto libre.
+- Origen: lista generada por Alejandra, con el resumen del citado agregado por GR
+  Archivo: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/examples_TB_con_resumen.jsonl
+  Licencia y atribución: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/Informes/Informe%20Final/Insumos/a3/demo_examples/README.md
+- Contenido visible de cada ejemplo: párrafo citante con [[TARGET]]; título y resumen del citado.
+
+========================================================================
+PASO 2. Mostrar el Top-3
+REQUISITO: 5.2 Recuperación de chunks
+PROCESO:
+- La aplicacion lee los 3 fragmentos guardados: los que recuperó A1 con SciBERT y que vieron los anotadores y los modelos.
+- Se muestran en orden, con su sección y su texto.
+
+========================================================================
+PASO 3. Clasificar
+REQUISITO: 5.3 Selección del modelo
+PROCESO: el usuario elige una de tres opciones:
+- Encoder fine-tuned (SciBERT Base o SciBERT Chunk), en texto, hasta 512 tokens: Base = párrafo + título + resumen; Chunk = párrafo + los 3 fragmentos con su sección.
+- Model Open-Weight (Llama 3.1 8B o Qwen 8B): usa el prompt de la condición principal de A5.
+- Modelo Comercial vía API (GPT o Gemini): los modelos de A5, con su condición principal. 
+- En todos los casos el modelo devuelve una probabilidad o puntaje por función.
+
+========================================================================
+PASO 4. Mostrar resultados
+REQUISITO: 5.4 Visualización
+PROCESO:
+- Función predicha, con su definición.
+- Barras con el puntaje de las 9 funciones.
+- Los 3 fragmentos con su rango y sección.
+- Etiqueta humana con ✓ o ✗.
+
+========================================================================
+

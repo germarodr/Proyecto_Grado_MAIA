@@ -2,54 +2,55 @@
 Versión de lectura del artículo para ir completando en equipo, una vez finalizada se pasa al formato IEEE.
 -->
 
-# Clasificación de la función de citas en Computer Science con modelos de lenguaje y recuperación semántica del artículo citado
+# CiteScope: Clasificación de la función de citas en Computer Science con modelos de lenguaje y recuperación semántica del artículo citado
 
-**Camilo Bejarano, German Rodriguez, Jose Arteaga y Sebastian Toro**
+**Camilo Bejarano, Germán Rodríguez, José Arteaga y Sebastián Toro**
 
 > *[Instrucción de maquetación, no es texto del artículo: el siguiente párrafo va como nota al pie sin numerar en la primera columna de la página 1, según la plantilla IEEE.]*
 >
-> Documento recibido el 23 de noviembre de 2026. Este trabajo contó con el apoyo de la Universidad de los Andes y del grupo de investigación FLAG–TICSw del Departamento de Ingeniería de Sistemas y Computación, y con la asesoría del PhD. Juan Camilo Sanguino en la definición del problema, la orientación bibliográfica y la validación de las decisiones clave. Los autores pertenecen a la Maestría en Inteligencia Artificial (MaIA), Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes, Bogotá, Colombia. Camilo Bejarano (c.bejaranoc@uniandes.edu.co), German Rodriguez (gm.rodriguez@uniandes.edu.co), Jose Arteaga (j.arteagac@uniandes.edu.co), Sebastian Toro (s.torod@uniandes.edu.co).
+> Documento recibido el 23 de noviembre de 2026. Este trabajo contó con el apoyo de la Universidad de los Andes y del grupo de investigación FLAG–TICSw del Departamento de Ingeniería de Sistemas y Computación, y con la asesoría del PhD. Juan Camilo Sanguino en la definición del problema, la orientación bibliográfica y la validación de las decisiones clave. Los autores pertenecen a la Maestría en Inteligencia Artificial (MaIA), Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes, Bogotá, Colombia. Camilo Bejarano (c.bejaranoc@uniandes.edu.co), Germán Rodríguez (gm.rodriguez@uniandes.edu.co), José Arteaga (j.arteagac@uniandes.edu.co), Sebastián Toro (s.torod@uniandes.edu.co).
 
-**Resumen—** La cita es el principal mecanismo con el que un artículo se conecta con el conocimiento previo, pero en la práctica suele reducirse a un conteo que no distingue si una referencia aporta contexto, fundamenta un método, respalda una afirmación o señala una limitación. Este trabajo aborda la clasificación automática de la función de una cita en nueve categorías para artículos de Computer Science en inglés y evalúa si la evidencia recuperada del propio artículo citado mejora esa clasificación. A partir de unarXive 2022 se construyó un corpus de contextos de cita vinculados al texto completo del artículo citado; para cada par se recuperaron los tres fragmentos más similares al contexto con SciBERT. Un trío de modelos de lenguaje de pesos abiertos asignó pre-etiquetas a 38.780 instancias, y dos grupos de anotadores validaron un conjunto de prueba de [[A3-1: n]] citas (κ de Cohen = [[A3-1]]). Se ajustó SciBERT con dos entradas —título y resumen del citado, frente a fragmentos recuperados con su sección— y se comparó con un modelo de lenguaje comercial en modalidades *zero-shot* y *few-shot*. La configuración con fragmentos obtuvo un F1 macro de [[X,XX]] frente a [[X,XX]] de la configuración base, y el modelo comercial alcanzó [[X,XX]] con un costo de [[X]] por cada mil ejemplos. [[conclusión principal en una frase]]. A diferencia de trabajos previos, el estudio combina una taxonomía de nueve funciones en Computer Science, evidencia recuperada del texto del citado y una comparación de desempeño y costo entre un codificador ajustado y un modelo comercial; la solución se ofrece como aplicación web que muestra la función predicha junto con los fragmentos que la sustentan.
+**Resumen—** La cita es el principal mecanismo con el que un artículo científico se conecta con el conocimiento previo, pero en la práctica suele reducirse a un conteo que no distingue si una referencia aporta contexto, fundamenta un método, respalda una afirmación o señala una limitación. Este trabajo aborda la clasificación automática de la función de una cita en nueve categorías para artículos de Computer Science en inglés y evalúa si la evidencia recuperada del propio artículo citado mejora esa clasificación. A partir de unarXive 2022 se construyó un corpus de contextos de cita vinculados al texto completo del artículo citado; para cada par citante–citado se recuperaron con SciBERT los tres fragmentos más similares al párrafo citante. Un trío de modelos de lenguaje de pesos abiertos asignó pre-etiquetas a 38.780 instancias, y dos grupos de anotadores validaron un conjunto de prueba de 2.968 citas (κ de Cohen = 0,854). Se ajustó SciBERT con dos entradas —título y resumen del citado, frente a fragmentos recuperados— y se comparó con dos modelos de lenguaje comerciales sin ajuste, cada uno en ocho condiciones que combinan la información del citado, el tipo de prompt y el uso de ejemplos. La configuración con fragmentos obtuvo un F1 macro de [[X,XX]] frente a [[X,XX]] de la configuración base, y los modelos comerciales obtuvieron entre [[X,XX]] y [[X,XX]] según el modelo y la condición, con un costo de entre [[X]] y [[X]] USD por cada mil ejemplos. [[conclusión principal en una frase]]. A diferencia de trabajos previos, el estudio combina una taxonomía de nueve funciones en Computer Science, evidencia recuperada del texto del citado y una comparación de desempeño y costo entre un codificador ajustado y modelos comerciales; la solución se ofrece como aplicación web.
 
-**Índice de Términos—** función de cita, modelos de lenguaje, recuperación densa, SciBERT, unarXive.
+**Índice de Términos—** función de cita, modelos de lenguaje, recuperación semántica, SciBERT, unarXive.
 
 ## I. Introducción
 
-El volumen de publicaciones en Computer Science crece a un ritmo que dificulta seguir cómo se relacionan los trabajos entre sí. Los indicadores bibliométricos más usados se basan en el número de citas, que trata por igual una referencia que fundamenta un método y otra que solo se menciona como antecedente. Distinguir estas funciones permitiría, por ejemplo, identificar qué trabajos se usan efectivamente como base, cuáles se contrastan o cuáles se citan para señalar una limitación [2].
+El volumen de artículos científicos en Computer Science crece a un ritmo que dificulta seguir cómo se relacionan los trabajos entre sí. Los indicadores bibliométricos más usados se basan en el número de citas, que trata por igual una referencia que fundamenta un método y otra que solo se menciona como antecedente. Distinguir estas funciones permitiría, por ejemplo, identificar qué trabajos se usan efectivamente como base, cuáles se contrastan o cuáles se citan para señalar una limitación [1].
 
 La función de una cita no siempre es explícita en la oración que la contiene. A menudo depende de lo que el artículo citado aporta, información que está dispersa en su texto completo y no en su título o resumen. Además, varias funciones tienen fronteras difusas —por ejemplo, entre el uso de un trabajo como base y su modificación—, lo que exige criterios de anotación consistentes.
 
-El objetivo general de este trabajo es clasificar automáticamente la función de una cita en artículos de Computer Science en inglés, incorporando evidencia recuperada del artículo citado. Los objetivos específicos son: (i) construir un corpus que vincule contextos de cita con el texto del citado; (ii) recuperar los fragmentos del citado más relevantes para cada contexto; (iii) construir un conjunto de prueba validado por humanos para nueve funciones; (iv) comparar un clasificador ajustado con y sin fragmentos recuperados, y frente a un modelo de lenguaje comercial; y (v) desplegar la solución como aplicación web. [[ajustar al alcance final]]
+El objetivo general de este trabajo es clasificar automáticamente la función de una cita en artículos de Computer Science en inglés, incorporando evidencia recuperada del artículo citado. Los objetivos específicos son: (i) construir un corpus que vincule contextos de cita con el texto del citado; (ii) recuperar los fragmentos del citado más relevantes para cada contexto; (iii) construir un conjunto de prueba validado por humanos para nueve funciones; (iv) comparar un clasificador ajustado con y sin fragmentos recuperados, y frente a modelos de lenguaje comerciales; y (v) desplegar la solución como aplicación web. [[ajustar al alcance final]]
 
-La solución propuesta opera en dos etapas. Primero, dado el párrafo que contiene una cita, recupera del texto completo del artículo citado los tres fragmentos más similares al contexto, junto con la sección a la que pertenecen. Después, un clasificador basado en SciBERT, ajustado con ejemplos etiquetados, asigna una de nueve funciones a partir del contexto y de esa evidencia. Para obtener los ejemplos de entrenamiento a escala, tres modelos de lenguaje de pesos abiertos propusieron pre-etiquetas que luego se validaron con anotadores humanos en un conjunto de prueba. La solución se compara con un modelo de lenguaje comercial y se ofrece como aplicación web que muestra la función predicha junto con los fragmentos que la sustentan.
+La solución propuesta opera en dos etapas. Primero, para cada par formado por un artículo citante y uno citado, compara el párrafo citante con los fragmentos del texto completo del artículo citado, excluidas sus secciones de trabajos relacionados, y recupera los tres más similares; cada fragmento conserva el título de la sección de la que proviene. Después, un clasificador basado en SciBERT, ajustado con ejemplos etiquetados, asigna una de nueve funciones a partir del contexto y de esa evidencia. Para obtener los ejemplos de entrenamiento a escala, tres modelos de lenguaje de pesos abiertos propusieron pre-etiquetas que luego se validaron con anotadores humanos en un conjunto de prueba. La solución se compara con modelos de lenguaje comerciales y se ofrece como aplicación web que muestra la función predicha junto con los fragmentos que la sustentan.
 
 Las contribuciones del trabajo son:
-- Un conjunto de prueba de [[A3-1: n]] citas de Computer Science con nueve funciones, validado por dos grupos de anotadores y construido con un protocolo reproducible de pre-etiquetado, calibración y adjudicación.
+- Un conjunto de prueba de 2.968 citas de Computer Science con nueve funciones, validado por dos grupos de anotadores y construido con un protocolo reproducible de pre-etiquetado, calibración y adjudicación.
 - Una medición controlada del aporte de los fragmentos recuperados del artículo citado a la clasificación, con las mismas instancias, partición y configuración de entrenamiento.
-- Una comparación de desempeño, costo y latencia entre un codificador científico ajustado y un modelo de lenguaje comercial, y una aplicación web que muestra al usuario la función predicha junto con la evidencia del citado que la sustenta.
+- Una comparación de desempeño, costo y latencia entre un codificador científico ajustado y modelos de lenguaje comerciales, y una aplicación web que muestra al usuario la función predicha junto con la evidencia del citado que la sustenta.
 
 El resto del artículo se organiza así: la Sección II revisa el estado del arte; la Sección III describe datos, métodos y despliegue; la Sección IV presenta los resultados; la Sección V los discute, y la Sección VI concluye.
 
 ## II. Estado del arte
 
-[[Taxonomías: Lyu et al. (2021) y la reducción a nueve funciones.]]
+**Taxonomías.** Lyu et al. [1] sintetizaron 38 estudios sobre las motivaciones para citar en 13 temas: diez de motivación científica, con función retórica, y tres de motivación táctica, difíciles de detectar en el texto. Este trabajo adopta nueve de las diez científicas y excluye Assessment, la valoración positiva o negativa del citante, porque corresponde a una tarea de detección de postura.
 
-[[Conjuntos de datos: SciCite (tres clases, señales estructurales), MultiCite (multietiqueta, contextos de varias oraciones, dominio acotado).]]
+**Conjuntos de datos.** SciCite [2] reúne 11.020 citas de computación y medicina anotadas en tres clases; su antecesor, ACL-ARC, tiene seis clases y 1.941 citas de lingüística computacional. MultiCite [3] mostró que estos esquemas simplifican el fenómeno: en 12.653 contextos de lingüística computacional, anotados por expertos con siete clases, muchas citas abarcan varias oraciones o expresan varias intenciones. Ninguno vincula cada cita con el contenido del artículo citado ni cubre las nueve funciones en Computer Science.
 
-[[Métodos: codificadores científicos (SciBERT) y uso de texto del citado o recuperación local (Gu et al., 2022).]]
+**Métodos.** Cohan et al. [2] alcanzaron un F1 macro de 84,0 en SciCite incorporando la estructura del artículo citante, y SciBERT [4], preentrenado con el texto completo de 1,14 millones de artículos científicos, lo elevó a 85,5 con ajuste fino. La recuperación sobre artículos científicos se ha usado sobre todo para recomendar qué citar [5]; este trabajo invierte esa dirección y, dado un par citante–citado, recupera los fragmentos del citado que ayudan a explicar por qué se cita.
 
-[[Modelos de lenguaje como clasificadores y como anotadores automáticos: Koloveas et al. (2025) adaptan modelos de lenguaje abiertos a la predicción de la intención de cita con aprendizaje en contexto y ajuste fino, sobre SciCite y ACL-ARC; Gilardi et al. (2023) muestran que un modelo de lenguaje supera a anotadores de crowdsourcing en tareas de anotación de texto.]]
+**Modelos de lenguaje.** Koloveas et al. [6] adaptaron modelos de lenguaje abiertos a la intención de cita en SciCite y ACL-ARC, con aprendizaje en contexto y ajuste fino. Como anotadores, un modelo comercial superó a trabajadores de colaboración abierta con un costo unas treinta veces menor [7]. Este trabajo usa modelos abiertos como jueces para pre-etiquetar y modelos comerciales como alternativa de clasificación sin ajuste.
 
 **TABLA I.** Comparación de trabajos relacionados con este trabajo.
 
-| Trabajo | Clases | Dominio | Usa texto del citado | Modelo de lenguaje |
+| Trabajo | Clases | Dominio | Texto del citado | Modelos |
 |---|---|---|---|---|
-| SciCite | 3 | [[ ]] | No | [[ ]] |
-| MultiCite | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
-| Este trabajo | 9 | Computer Science | Sí (Top-3) | Comercial y de pesos abiertos |
+| Cohan et al. (SciCite) [2] | 3 | Computación y medicina | No | BiLSTM con ELMo |
+| Lauscher et al. (MultiCite) [3] | 7, multietiqueta | Lingüística computacional | No | SciBERT, RoBERTa |
+| Koloveas et al. [6] | 3 y 6 | Computación, medicina y lingüística | No | Modelos abiertos |
+| Este trabajo | 9 | Computer Science (8 subcampos) | Sí | SciBERT; dos modelos comerciales |
 
-[[Análisis propio: ningún trabajo revisado combina nueve funciones en Computer Science, evidencia recuperada del citado y la comparación entre un codificador ajustado y un modelo de lenguaje comercial; esa es la brecha que aborda este trabajo.]]
+En conjunto, los conjuntos de datos existentes tienen pocas clases o dominios acotados y clasifican la función solo con el texto citante. Ningún trabajo revisado combina las nueve funciones científicas de Lyu et al. en Computer Science, evidencia recuperada del artículo citado y una comparación de desempeño y costo entre un codificador ajustado y modelos de lenguaje comerciales (Tabla I); esa es la brecha que aborda este trabajo.
 
 ## III. Metodología
 
@@ -59,9 +60,9 @@ La metodología sigue el ciclo de aprendizaje automático: obtención y preparac
 
 ### A. Datos y corpus
 
-Se utilizó unarXive 2022 [3], derivado de las fuentes LaTeX de arXiv, porque conserva el texto estructurado por secciones y párrafos y vincula las referencias bibliográficas con identificadores de arXiv, lo que permite acceder al texto completo del artículo citado. El corpus contiene 405.947 artículos con alguna categoría cs.\*; al restringir la categoría primaria a cs.\*, eess.\* o stat.ML se obtienen 358.494 artículos, y el 72,6 % de sus referencias resueltas apunta a artículos del mismo subconjunto.
+Se utilizó unarXive 2022 [8], derivado de las fuentes LaTeX de arXiv, porque conserva el texto estructurado por secciones y párrafos y vincula las referencias bibliográficas con identificadores de arXiv, lo que permite acceder al texto completo del artículo citado. El corpus contiene 405.947 artículos con alguna categoría cs.\*; al restringir la categoría primaria a cs.\*, eess.\* o stat.ML se obtienen 358.494 artículos, y el 72,6 % de los artículos de arXiv que citan (117.194 distintos) pertenece al mismo subconjunto.
 
-La construcción inicial tomó como artículos citantes los de cs.CV, cs.SI, cs.HC, cs.CY y cs.ET [[A1-1]]; el artículo citado podía pertenecer a cualquier subcampo disponible en el corpus. Por el volumen relativo de cs.CV en arXiv, el 97,8 % de los contextos de este piloto provino de ese subcampo. Para reducir esa concentración y aumentar el suministro de funciones escasas, el corpus se amplió con citantes de cs.LG, cs.CL y cs.DS. La Tabla II resume ambos corpus y la distribución por subcampo del conjunto de prueba.
+La construcción inicial tomó como artículos citantes los de cs.CV, cs.SI, cs.HC, cs.CY y cs.ET; el artículo citado podía pertenecer a cualquier subcampo disponible en el corpus. El 97,8 % de los contextos de este piloto provino de cs.CV: además de tener más artículos (59.780, frente a 7.033 o menos en los otros cuatro), el 25,8 % de sus referencias tiene identificador de arXiv, frente a entre 1,9 % y 8,2 % en los demás, y el 89,9 % de los artículos de arXiv que cita pertenece al corpus, lo que multiplica los pares citante–citado utilizables. Para aumentar el suministro de funciones escasas, el corpus se amplió con citantes de cs.LG, cs.CL y cs.DS. La Tabla II resume ambos corpus.
 
 **TABLA II.** Corpus después de la limpieza.
 
@@ -70,50 +71,52 @@ La construcción inicial tomó como artículos citantes los de cs.CV, cs.SI, cs.
 | Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET) | 1.113.513 | 50.538 | 31.532 | 1.229.408 |
 | Ampliación (cs.LG, cs.CL, cs.DS) | 368.296 | 50.456 | 30.153 | 1.574.790 |
 
-[[A1-2: distribución por subcampo del citante en entrenamiento y prueba]]
+Como la ampliación se usó sobre todo para muestrear funciones escasas, la concentración se redujo poco: según la categoría principal de arXiv del artículo citante, cs.CV representa el 86,2 % de las 31.265 instancias de entrenamiento y validación y el 88,4 % de las 2.968 del conjunto de prueba, seguido de cs.LG (6,2 % y 5,8 %) y cs.DS (3,7 % y 2,4 %); los otros cinco subcampos suman menos del 4 % en ambos.
 
-La limpieza eliminó fragmentos duplicados, textos de menos de 15 palabras, segmentos sin sección y residuos de plantillas LaTeX. Se exigió que el cuerpo del citado tuviera al menos 1.000 palabras, se excluyeron contextos de más de 512 tokens sin truncarlos, así como citantes en otros idiomas y autocitas del mismo identificador. Cada instancia conserva una clave estable (citante, párrafo, posición del marcador y citado) que permite reconstruir el texto exacto; esa reconstrucción se verificó en 300 de 300 casos.
+La limpieza eliminó fragmentos duplicados, fragmentos de menos de 15 palabras y residuos de plantillas LaTeX; los fragmentos sin sección se conservaron, porque en su mayoría son texto real de artículos cuyos encabezados no se pudieron extraer. Se exigió que el cuerpo del citado tuviera al menos 1.000 palabras, se excluyeron contextos de más de 512 tokens sin truncarlos, así como citantes en otros idiomas y autocitas del mismo identificador. Cada instancia conserva una clave estable (citante, párrafo, posición del marcador y citado) que permite reconstruir el texto exacto; esa reconstrucción se verificó en 300 de 300 casos.
 
-El desbalance entre funciones es propio del fenómeno: la mayoría de las citas cumple una función de contexto (Background), mientras que funciones como Further Reading o Improvement/Modification son escasas. Para la prueba se recurrió a muestreo dirigido por función (Sección III-C); el entrenamiento conserva la distribución natural.
+El desbalance entre funciones es propio del fenómeno: la mayoría de las citas cumple una función de contexto (Background), mientras que funciones como Further Reading o Improvement/Modification son escasas. Por eso, además de lotes aleatorios, el pre-etiquetado incluyó lotes dirigidos por señales léxicas a las funciones escasas, de modo que el conjunto pre-etiquetado, del que salen el entrenamiento y la prueba, no refleja la distribución natural; la prueba, además, se muestreó con una cuota por función (Sección III-C).
 
 ### B. Segmentación y recuperación de evidencia
 
-El texto de cada artículo citado se segmentó respetando sus secciones, en fragmentos de hasta 300 palabras y dos párrafos. Cada contexto de cita y cada fragmento se codifica con SciBERT [1] sin ajuste (`allenai/scibert_scivocab_uncased`). La representación de un texto es el promedio de los vectores de la última capa oculta sobre sus tokens reales; la máscara de atención $m_t \in \{0,1\}$ excluye el relleno:
+El texto de cada artículo citado se segmentó respetando sus secciones, en fragmentos de hasta 300 palabras y dos párrafos. Cada contexto de cita y cada fragmento se codifica con SciBERT [4] sin ajuste (`allenai/scibert_scivocab_uncased`). La representación de un texto es el promedio de los vectores de la última capa oculta sobre sus tokens reales; la máscara de atención $m_t \in \{0,1\}$ excluye el relleno:
 
 $$\mathbf{e} = \frac{\sum_t m_t\,\mathbf{h}_t}{\sum_t m_t} \qquad (1)$$
 
-El vector se normaliza a norma unitaria, de modo que el producto punto equivale a la similitud coseno. Los textos de más de 512 tokens se truncan ([[A1-3: %]] de los fragmentos). Se prefirió el promedio al vector `[CLS]` porque, sin ajuste, este último no está entrenado como resumen del texto.
+El vector se normaliza a norma unitaria, de modo que el producto punto equivale a la similitud coseno. La segmentación ya limita cada fragmento a 512 tokens de SciBERT, por lo que solo superan ese límite, y se truncan, 138 de 1.229.408 fragmentos del piloto (0,01 %) y 252 de 1.574.790 de la ampliación (0,02 %): oraciones únicas demasiado largas para dividirse. Se prefirió el promedio al vector `[CLS]` porque, sin ajuste, este último no está entrenado como resumen del texto.
 
-Para cada par citante–citado se seleccionan los tres fragmentos del citado más similares al contexto (Top-3), junto con el título de su sección; se procesaron 721.335 pares. Se excluyeron los fragmentos de las secciones de trabajos relacionados del citado, porque describen trabajo ajeno a su aporte y aparecían sobrerrepresentados en las primeras posiciones; cuando quedaban menos de tres candidatos se conservaron los originales.
+La consulta es el párrafo citante completo, sin marcar la cita objetivo. Para cada par citante–citado se toma un párrafo representativo y se seleccionan, entre los fragmentos de ese artículo citado, los tres más similares a la consulta (Top-3); cada uno conserva el título de su sección tal como aparece en el artículo citado, o queda como sección desconocida si no se pudo extraer (cerca del 1,6 % de los fragmentos). Se procesaron 721.335 pares. Como la consulta no distingue la cita objetivo, en párrafos que citan varios trabajos el Top-3 refleja el párrafo en conjunto y no solo esa cita. Se excluyeron los fragmentos de las secciones de trabajos relacionados del citado, porque describen trabajo ajeno a su aporte y aparecían sobrerrepresentados en las primeras posiciones; cuando quedaban menos de tres candidatos se conservaron los originales.
 
-La relevancia de los fragmentos se evaluó manualmente con precisión en 3 (P@3): en una muestra aleatoria de [[A1-4: N]] pares del conjunto de prueba, dos anotadores marcaron cada fragmento como relevante o no para la función de la cita, y se comparó contra una línea base de tres fragmentos elegidos al azar del mismo citado.
+La calidad de la recuperación se verificó de dos formas. Primero, una auditoría de las secciones de origen mostró que, sin filtro, las secciones de trabajos relacionados aparecían en las primeras posiciones muy por encima de su peso en el corpus, lo que motivó excluirlas. Segundo, el aporte de los fragmentos se midió por su efecto en las decisiones: en los modelos jueces (H5) y en los clasificadores (H6 y H8). El esfuerzo de anotación humana del proyecto se concentró en validar las etiquetas del conjunto de prueba (11.880 anotaciones), por lo que la relevancia de cada fragmento no se anotó directamente; esa evaluación queda como trabajo futuro.
 
 ### C. Pre-etiquetado y validación humana
 
-Anotar desde cero decenas de miles de citas no era viable, por lo que se usaron tres modelos de lenguaje de pesos abiertos como jueces que proponen una pre-etiqueta: Qwen3.8-27B, Gemma 4 26B y Mistral Small 3.2 24B. Cada juez recibe las definiciones y reglas de la guía, el título y resumen del citado, sus tres fragmentos con sección, el párrafo citante y la oración de la cita objetivo, y devuelve en JSON la evidencia textual, una etiqueta principal y posibles secundarias. La decodificación es determinista. Una función con al menos dos votos genera una pre-etiqueta de alta confianza; los empates quedan sin pre-etiqueta, y no votan las respuestas con JSON inválido ni las que citan evidencia ajena al párrafo citante.
+Anotar desde cero decenas de miles de citas no era viable, por lo que se usaron tres modelos de lenguaje de pesos abiertos como jueces que proponen una pre-etiqueta: Qwen3.8-27B [9], Gemma 4 26B [10] y Mistral Small 3.2 24B [11]. Cada juez recibe las definiciones y reglas de la guía, el título y resumen del citado, sus tres fragmentos con sección, el párrafo citante y la oración de la cita objetivo, y devuelve en JSON la evidencia textual, una etiqueta principal y posibles secundarias. La decodificación es determinista. Una función con al menos dos votos genera una pre-etiqueta de alta confianza; los empates quedan sin pre-etiqueta, y no votan las respuestas con JSON inválido ni las que citan evidencia ajena al párrafo citante.
 
 La selección de jueces y del prompt se hizo sobre una muestra de desarrollo de 60 instancias, sesgada a propósito hacia casos difíciles: 20 en que los jueces confundían Further Reading con Background e Improvement/Modification con Application; 5 por cada estrato de funciones escasas identificadas por señales léxicas (Identification of the Originator, Further Reading, Evidence, Gap y Comparison), y 15 al azar de una verificación previa. El tamaño quedó limitado por la capacidad de que ambos grupos la anotaran a ciegas en una sesión, por lo que diferencias de uno o dos aciertos se consideran empates. Sus artículos citantes se excluyeron de entrenamiento y prueba.
 
-Para la validación, los dos grupos participantes construyeron conjuntos de prueba disjuntos por instancia y artículo citante; en este trabajo se usa el propio, denominado T_B. El muestreo fue estratificado por pre-etiqueta, con semilla fija, a lo sumo dos instancias por citante y una por grupo de citas contiguas, con una meta de 300 instancias válidas por función. Cada instancia fue anotada de forma independiente por una persona de cada grupo, con la pre-etiqueta visible y sin conocer la respuesta del otro, siguiendo una guía con reglas para las fronteras más confusas. Antes de iniciar se realizaron dos calibraciones; la segunda exigió κ ≥ 0,6 en cada pareja de anotadores. Los desacuerdos se adjudicaron por una pareja que no había anotado la instancia, y las instancias sin función identificable se excluyeron. La Tabla III describe el conjunto resultante.
+Para la validación, los dos grupos participantes construyeron conjuntos de prueba disjuntos por instancia y artículo citante; en este trabajo se usa el propio, denominado T_B. El muestreo fue estratificado por pre-etiqueta, con semilla fija, a lo sumo dos instancias por citante y una por grupo de citas contiguas, con una meta de 300 instancias válidas por función. Cada instancia fue anotada de forma independiente por una persona de cada grupo, con la pre-etiqueta visible y sin conocer la respuesta del otro, siguiendo una guía con reglas para las fronteras más confusas. Antes de iniciar se realizaron dos calibraciones; la segunda exigió κ ≥ 0,6 en cada pareja de anotadores. Los desacuerdos se adjudicaron por una pareja que no había anotado la instancia, y las instancias sin función identificable se excluyeron (2 en T_B). La meta de 300 se cumplió en todas las funciones excepto Improvement/Modification, que quedó con 268 instancias en T_B: ambos grupos decidieron no liberar la reserva prevista para cubrir ese déficit, por la carga de anotación y el calendario. La Tabla III describe el conjunto resultante.
 
-**TABLA III.** Conjunto de prueba T_B. [[A3-1]]
+**TABLA III.** Conjunto de prueba T_B. Instancias: etiqueta final por función. Corrección: porcentaje de las 330 instancias muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
 
 | Función | Instancias | Corrección de la pre-etiqueta |
 |---|---:|---:|
-| Background | [[n]] | [[%]] |
-| Gap | [[n]] | [[%]] |
-| Basis | [[n]] | [[%]] |
-| Comparison | [[n]] | [[%]] |
-| Application | [[n]] | [[%]] |
-| Improvement/Modification | [[n]] | [[%]] |
-| Evidence | [[n]] | [[%]] |
-| Identification of the Originator | [[n]] | [[%]] |
-| Further Reading | [[n]] | [[%]] |
-| **Total** | [[n]] | κ de Cohen = [[X,XX]] · α de Krippendorff = [[X,XX]] |
+| Background | 330 | 13,9 % |
+| Gap | 310 | 12,7 % |
+| Basis | 322 | 13,6 % |
+| Comparison | 313 | 8,2 % |
+| Application | 400 | 3,3 % |
+| Improvement/Modification | 268 | 25,2 % |
+| Evidence | 386 | 1,5 % |
+| Identification of the Originator | 324 | 3,6 % |
+| Further Reading | 315 | 4,8 % |
+| **Total** | **2.968** | **9,7 %** |
+
+El acuerdo entre los dos grupos antes de adjudicar fue de 87,0 % (κ de Cohen = 0,854, que descuenta el acuerdo esperado por azar; valores sobre 0,80 se consideran acuerdo casi perfecto [12]; α de Krippendorff nominal = 0,854). Por función, el κ (una contra el resto) varió entre 0,756 en Background y 0,967 en Identification of the Originator; 386 instancias (13,0 %) requirieron adjudicación.
 
 ### D. Clasificador supervisado
 
-Para evitar fuga de información, se excluyeron de entrenamiento y validación todos los artículos citantes del conjunto de prueba y de las calibraciones. No se excluyeron además los artículos citados, porque esa variante reducía el entrenamiento de 28.039 a 12.119 instancias y dejaba sin suministro a las funciones escasas; como compensación, los resultados se reportan por separado para citados vistos y no vistos en entrenamiento. La partición entre entrenamiento y validación (90/10) se hizo por artículo citante con un hash fijo: 28.039 y 3.226 instancias.
+Para evitar fuga de información, se excluyeron de entrenamiento y validación todos los artículos citantes del conjunto de prueba y de las calibraciones. No se excluyeron además los artículos citados, porque esa variante reducía el entrenamiento de 28.039 a 12.119 instancias y dejaba sin suministro a las funciones escasas; como compensación, los resultados se reportan por separado para citados vistos y no vistos en entrenamiento. La partición entre entrenamiento y validación (90/10) se hizo por artículo citante con un hash fijo: 28.039 y 3.226 instancias. [[A4-3: versión del conjunto de entrenamiento usada (1 o 2, con las filas recuperadas por función si es la 2) y si las instancias del conjunto de prueba del otro grupo se usaron con su etiqueta humana en lugar de la pre-etiqueta (autorizado por el Grupo 14); actualizar los conteos si cambian]]
 
 Se ajustó SciBERT con una capa lineal de clasificación sobre el token `[CLS]` y nueve salidas, con entropía cruzada y todos los parámetros entrenables. Se entrenaron dos modelos independientes desde el mismo punto de partida y sobre las mismas instancias, que solo difieren en la información del citado:
 
@@ -134,13 +137,13 @@ Como SciBERT admite 512 tokens, el contexto se limita a 192 tokens centrados en 
 | Precisión y hardware | BF16, GPU A100 (Colab) |
 | Semilla | 42 |
 
-### E. Modelo de lenguaje comercial
+### E. Modelos de lenguaje comerciales
 
-[[A5-1: modelo, proveedor y versión, y por qué se eligió]] El modelo recibe el contexto, el título y el resumen del citado, y devuelve en JSON un puntaje entre 0 y 1 por función. [[A5-2: zero-shot y few-shot; cómo se eligieron los ejemplos sin usar el conjunto de prueba; temperatura; reintentos y manejo de respuestas inválidas]] Los prompts completos están en el Apéndice A.
+Se evalúan dos modelos de lenguaje comerciales: [[A5-1: nombre, proveedor y versión de cada uno, y por qué se eligieron]]. Cada modelo se evalúa sin ajuste en las mismas ocho condiciones, que combinan tres factores: la información del citado (título y resumen, como la configuración base de SciBERT, o los tres fragmentos con su sección, como la configuración con fragmentos); el prompt (genérico, con definiciones breves de las nueve funciones, o específico, que añade las reglas del prompt final de los jueces), y el uso de ejemplos (*zero-shot*, o *few-shot* con nueve ejemplos de desarrollo con etiqueta humana, uno por función). Los ejemplos no comparten instancias ni artículos citantes con el conjunto de prueba. Para que la comparación con SciBERT sea justa, en la prueba cada modelo recibe exactamente el mismo texto, ya recortado, que SciBERT en la configuración correspondiente. Cada modelo devuelve en JSON un puntaje entre 0 y 1 por función, y la predicción es la función con mayor puntaje. Una respuesta inválida se conserva como predicción fallida; solo se reintentan los errores transitorios del servicio. [[A5-2: temperatura y demás parámetros de decodificación; condición principal por tipo de información del citado, común a todos los modelos y definida antes de ver el conjunto de prueba]] Los prompts completos están en el Apéndice A.
 
 ### F. Diseño experimental
 
-Los experimentos se formularon como hipótesis con una métrica de decisión (Tabla V). H1–H5 corresponden al desarrollo de la recuperación y del pre-etiquetado; H6 y H7 son la evaluación final sobre el conjunto de prueba.
+Los experimentos se formularon como hipótesis con una métrica de decisión (Tabla V). H1–H5 corresponden al desarrollo de la recuperación y del pre-etiquetado; H6 a H8 son la evaluación final sobre el conjunto de prueba.
 
 **TABLA V.** Hipótesis y experimentos.
 
@@ -149,10 +152,11 @@ Los experimentos se formularon como hipótesis con una métrica de decisión (Ta
 | H1 | Jueces de 24–27B superan a jueces de 7–8B | Trío Llama 3.1 8B, Qwen 2.5 7B y Mistral 7B frente al trío final | Aciertos en los 41 casos de desarrollo con acuerdo humano |
 | H2 | El tercer juez afecta la calidad del trío, sobre todo en Gap | Mistral Small 3.2 24B frente a Ministral 3 14B | Aciertos en la muestra de desarrollo; precisión en 20 Gap nuevos |
 | H3 | Incorporar reglas de adjudicación al prompt mejora el pre-etiquetado | Cuatro versiones sucesivas del prompt | Aciertos en la muestra de desarrollo |
-| H4 | Excluir secciones de trabajos relacionados mejora la evidencia recuperada | Recuperación con y sin filtro | Presencia de esas secciones en Top-1; P@3 humano |
+| H4 | Sin filtro, las secciones de trabajos relacionados dominan las primeras posiciones de la recuperación | Auditoría de las secciones del Top-1 con y sin filtro | Peso de esas secciones entre los candidatos frente al Top-1 |
 | H5 | Los fragmentos mejoran las decisiones de los jueces | Ablación con y sin fragmentos | Aciertos en la muestra de desarrollo; cambios en 885 casos difíciles |
 | H6 | El clasificador con fragmentos supera al clasificador base | Dos ajustes de SciBERT con las mismas instancias | Diferencia de F1 macro con intervalo bootstrap pareado por citante |
-| H7 | El modelo comercial sin ajuste no supera a SciBERT ajustado y cuesta más | Zero-shot y few-shot frente al mejor SciBERT | F1 macro; costo por mil ejemplos; latencia |
+| H7 | Los modelos comerciales sin ajuste no superan a SciBERT ajustado y cuestan más | Ocho condiciones de cada modelo comercial frente a SciBERT con la misma información del citado | F1 macro con IC *bootstrap* pareado; costo por mil ejemplos; latencia |
+| H8 | Los fragmentos también mejoran a los modelos comerciales | Condiciones con fragmentos frente a las mismas condiciones con título y resumen | Diferencia de F1 macro |
 
 ### G. Métricas
 
@@ -164,13 +168,13 @@ La diferencia entre las dos configuraciones de SciBERT se acompaña de un interv
 
 ### H. Despliegue
 
-[[D-1: arquitectura en AWS, servicios, dónde corre cada modelo y cómo se invoca el modelo comercial]]
+[[D-1: arquitectura en AWS, servicios, dónde corre cada modelo y cómo se invocan los modelos comerciales]]
 
 **Fig. 2.** Arquitectura de despliegue. *Fuente: elaboración propia.* [[D-1]]
 
-[[D-2: backend FastAPI, endpoints, carga de modelos, modelo de pesos abiertos elegido]] [[D-3: frontend Next.js; el usuario ingresa un contexto de cita, ve los fragmentos recuperados, elige un clasificador y obtiene la función predicha]]
+[[D-2: backend FastAPI [13], endpoints, carga de modelos, modelo de pesos abiertos elegido]] [[D-3: frontend Next.js [14]; el usuario ingresa un contexto de cita, ve los fragmentos recuperados, elige un clasificador y obtiene la función predicha]]
 
-El desarrollo usó Python, PyTorch, Transformers, vLLM y scikit-learn; los datos se versionaron con DVC y los experimentos se registraron en MLflow. El entrenamiento se ejecutó en Colab con GPU A100.
+El desarrollo usó Python, PyTorch [15], Transformers [16], vLLM [17] y scikit-learn [18]; los datos se versionaron con DVC [19] y los experimentos se registraron en MLflow [20]. El entrenamiento se ejecutó en Colab con GPU A100.
 
 ## IV. Resultados
 
@@ -185,7 +189,7 @@ La Tabla VI consolida los indicadores de las etapas de construcción. Las cifras
 | Recuperación | Coseno medio Top-1 (piloto / ampliación) | 0,915 / 0,913 | — |
 | | Brecha mediana entre Top-1 y Top-3 | 0,013 | — |
 | | Trabajos relacionados: % de candidatos frente a % de Top-1 sin filtro | 8,6 % frente a 31,6 % | H4 |
-| | P@3 humano: Top-3 frente a línea base aleatoria | [[A1-4]] | H4 |
+| | Pares con algún fragmento de trabajos relacionados en el Top-3 sin filtro | 51,9 % | H4 |
 | Pre-etiquetado (desarrollo) | Trío 7–8B frente a trío final (41 casos) | 13 frente a 30 | H1 |
 | | Tercer juez: Mistral Small frente a Ministral (60 casos; 20 Gap) | 48 frente a 45; 17 frente a 12 | H2 |
 | | Versiones del prompt (60 casos) | 43 → 47 → **48** → 47 | H3 |
@@ -194,42 +198,46 @@ La Tabla VI consolida los indicadores de las etapas de construcción. Las cifras
 | | Instancias con pre-etiqueta de alta confianza | 37.254 de 38.780 (96,1 %) | — |
 | | Estabilidad al repetir 300 instancias | 98 % | — |
 | Validación humana | κ de Fleiss: primera frente a segunda calibración | 0,47 frente a 0,87 | — |
-| | Corrección de la pre-etiqueta en T_B | [[A3-1]] | — |
-| | κ de Cohen / α de Krippendorff en T_B | [[A3-1]] | — |
+| | Corrección de la pre-etiqueta en T_B | 9,7 % (25,2 % en Improvement/Modification) | — |
+| | κ de Cohen / α de Krippendorff en T_B | 0,854 / 0,854 | — |
 
-Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la versión final del prompt alcanzó 48 de 60 aciertos (H3); las diferencias entre terceros jueces y entre versiones vecinas del prompt son de pocos casos y deben leerse como empates (H2). Los fragmentos no mejoraron netamente las decisiones de los jueces: de 45 cambios en 885 casos difíciles, 16 fueron mejores con fragmentos, 18 sin ellos y 11 equivalentes (H5). Las similitudes coseno son altas y muy comprimidas, comportamiento típico de promedios de BERT sin ajuste; ordenan candidatos pero no prueban su relevancia, que se valora con el P@3 humano (H4). [[lectura del P@3 y de la validación humana]]
+Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la versión final del prompt alcanzó 48 de 60 aciertos (H3); las diferencias entre terceros jueces y entre versiones vecinas del prompt son de pocos casos y deben leerse como empates (H2). Los fragmentos no mejoraron netamente las decisiones de los jueces: de 45 cambios en 885 casos difíciles, 16 fueron mejores con fragmentos, 18 sin ellos y 11 equivalentes (H5). Las similitudes coseno son altas y muy comprimidas, comportamiento típico de promedios de BERT sin ajuste; ordenan candidatos pero no prueban su relevancia. La auditoría de secciones respalda H4: sin filtro, los trabajos relacionados ocupaban el 31,6 % de las primeras posiciones siendo el 8,6 % de los candidatos, y aparecían en el Top-3 del 51,9 % de los pares; con el filtro, la introducción del artículo citado pasa a ser la sección más frecuente en la primera posición (46,8 %). En la validación humana, la etiqueta final coincidió con la pre-etiqueta en el 90,3 % de las instancias de T_B: en el 94,6 % cuando los tres jueces votaron igual y en el 82,2 % cuando votaron 2 de 3, de modo que la unanimidad de los jueces es una señal útil de confiabilidad. Improvement/Modification concentró las correcciones (25,2 %), sobre todo hacia Basis y Application.
 
-### B. Desempeño de clasificación (H6–H7)
+### B. Desempeño de clasificación (H6–H8)
 
-**TABLA VII.** Resultados sobre el conjunto de prueba T_B. [[A4-2, A5-3; consolida GR en A6]]
+**TABLA VII.** Resultados sobre el conjunto de prueba T_B. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A4-2, A5-3; consolida GR en A6]]
 
 | Modelo | Precisión macro | Exhaustividad macro | F1 macro | F1 micro |
 |---|---:|---:|---:|---:|
 | SciBERT base | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 | SciBERT con fragmentos | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
-| Modelo comercial *zero-shot* | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
-| Modelo comercial *few-shot* | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 1]] · título y resumen (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 1]] · fragmentos (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 2]] · título y resumen (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 2]] · fragmentos (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 
 [[A4-2: diferencia de F1 macro entre fragmentos y base con IC 95 %; F1 macro para citados vistos y no vistos en entrenamiento.]]
 
-[[Fig. 3 · gráfica de barras agrupadas: F1 por función (eje x, nueve funciones) para los cuatro modelos, con una línea horizontal en el F1 macro de cada uno; consolida GR en A6]]
+[[Fig. 3 · gráfica de barras agrupadas: F1 por función (eje x, nueve funciones) para SciBERT base, SciBERT con fragmentos y la condición principal de cada modelo comercial con cada tipo de información del citado, con una línea horizontal en el F1 macro de cada uno; consolida GR en A6]]
 
-**Fig. 3.** F1 por función para los cuatro modelos sobre el conjunto de prueba. *Fuente: elaboración propia.*
+**Fig. 3.** F1 por función de SciBERT y de los modelos comerciales sobre el conjunto de prueba. *Fuente: elaboración propia.*
 
-**Fig. 4.** Matrices de confusión de SciBERT con fragmentos y del mejor modelo comercial. *Fuente: elaboración propia.* [[ ]]
+**Fig. 4.** Matrices de confusión de SciBERT con fragmentos y de la condición principal con fragmentos de cada modelo comercial. *Fuente: elaboración propia.* [[ ]]
 
-[[Funciones más confundidas y lectura de H6 y H7.]]
+[[Funciones más confundidas y lectura de H6, H7 y H8.]]
 
 ### C. Eficiencia, latencia y costo (H7)
 
-**TABLA VIII.** Costo y latencia por modelo. [[A7-1, A7-2, A5-3, A7-3]]
+**TABLA VIII.** Costo y latencia por modelo. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A7-1, A7-2, A5-3, A7-3]]
 
 | Modelo | Entrenamiento | Costo por 1.000 ejemplos | Latencia (s/ejemplo) | Formato inválido |
 |---|---:|---:|---:|---:|
 | SciBERT base | [[h GPU]] | [[ ]] | [[ ]] | — |
 | SciBERT con fragmentos | [[h GPU]] | [[ ]] | [[ ]] | — |
-| Modelo comercial *zero-shot* | — | [[ ]] | [[ ]] | [[ ]] |
-| Modelo comercial *few-shot* | — | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 1]] · título y resumen (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 1]] · fragmentos (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 2]] · título y resumen (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
+| [[A5-1: modelo 2]] · fragmentos (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
 
 ### D. Análisis cualitativo y aplicación
 
@@ -245,15 +253,15 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 ## V. Discusión
 
-[[Respuesta a H1–H7, una frase cada una: aceptada, rechazada o no concluyente.]]
+[[Respuesta a H1–H8, una frase cada una: aceptada, rechazada o no concluyente.]]
 
 [[Aporte de los fragmentos: contrastar H5 (sin mejora neta en los jueces) con H6 en el clasificador. La entrada con fragmentos recorta evidencia del citado en cerca del 91 % de las instancias por el límite de 512 tokens, frente a un 5 % en la configuración base.]]
 
-[[Codificador frente a modelo comercial: desempeño y costo.]]
+[[Codificador frente a modelos comerciales: desempeño y costo; diferencias entre los modelos comerciales; si los fragmentos ayudan también a esos modelos (H8).]]
 
 **Fortalezas.** El conjunto de prueba se construyó con un protocolo reproducible: muestreo estratificado con semilla fija, guía de anotación con reglas para las fronteras más confusas, calibración previa con un umbral de acuerdo por pareja y adjudicación de desacuerdos por anotadores independientes. Las dos configuraciones de SciBERT se compararon de forma controlada, con las mismas instancias, partición, semilla e hiperparámetros, de modo que la diferencia entre ellas se atribuye a la información del citado. La evaluación incluye costo y latencia, y no solo desempeño, lo que permite juzgar la viabilidad práctica de cada alternativa. Cada instancia conserva una clave que permite reconstruir su texto exacto y reproducir el pre-etiquetado y la recuperación.
 
-**Limitaciones.** El corpus está concentrado en cs.CV, por lo que los resultados no describen de manera uniforme todo Computer Science. Tres funciones quedaron por debajo de la meta de 2.000 ejemplos. El conjunto de prueba se muestreó entre instancias con pre-etiqueta de alta confianza y se anotó con la pre-etiqueta visible, lo que puede favorecer tanto el F1 como el acuerdo; la mejora del acuerdo entre calibraciones no puede atribuirse a una sola intervención, porque cambiaron a la vez la muestra, las reglas y la modalidad. La muestra de desarrollo es pequeña y sesgada a casos difíciles. La recuperación usa SciBERT sin ajuste y la entrada con fragmentos se trunca. El 82,9 % de las instancias de prueba cita artículos que aparecen como citados en entrenamiento.
+**Limitaciones.** El corpus está concentrado en cs.CV (86–88 % de las instancias de entrenamiento y prueba), por lo que los resultados no describen de manera uniforme todo Computer Science. Tres funciones quedaron por debajo de la meta de 2.000 ejemplos, e Improvement/Modification quedó por debajo de la meta de 300 instancias en el conjunto de prueba (268), lo que amplía la incertidumbre de su F1. El conjunto de prueba se muestreó entre instancias con pre-etiqueta de alta confianza y se anotó con la pre-etiqueta visible, lo que puede favorecer tanto el F1 como el acuerdo (sin los dos anotadores que menos corrigieron la pre-etiqueta, el κ en T_B baja de 0,854 a 0,840); la mejora del acuerdo entre calibraciones no puede atribuirse a una sola intervención, porque cambiaron a la vez la muestra, las reglas y la modalidad. La muestra de desarrollo es pequeña y sesgada a casos difíciles. La recuperación usa SciBERT sin ajuste y la entrada con fragmentos se trunca. La relevancia de los fragmentos recuperados no se evaluó con anotadores; su utilidad se infiere de la auditoría de secciones y de su efecto en las decisiones de los jueces y de los clasificadores. El 82,9 % de las instancias de prueba cita artículos que aparecen como citados en entrenamiento.
 
 ## VI. Conclusiones y trabajo futuro
 
@@ -263,31 +271,37 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 **Lecciones aprendidas.** [[Tres o cuatro lecciones (GR, con aportes del equipo). Candidatas: los modelos de lenguaje como jueces permiten pre-etiquetar a escala, pero requieren validación humana por función; calibrar a los anotadores antes de anotar fue decisivo para alcanzar un acuerdo aceptable; el límite de 512 tokens condiciona cuánta evidencia del citado puede usar un codificador; coordinar dos grupos exige un contrato de datos con identificadores estables y reglas de exclusión explícitas.]]
 
-Como trabajo futuro se plantea reemplazar la recuperación por un modelo ajustado para similitud entre documentos científicos, como SPECTER2 [19]; usar modelos de contexto largo para no truncar los fragmentos; extender la clasificación a múltiples etiquetas; aislar también los artículos citados para medir la generalización a documentos no vistos, y ampliar el suministro de las funciones escasas.
+Como trabajo futuro se plantea evaluar con anotadores la relevancia de los fragmentos recuperados mediante precisión en 3 (P@3), frente a una línea base aleatoria; reemplazar la recuperación por un modelo ajustado para similitud entre documentos científicos, como SPECTER2 [21]; usar modelos de contexto largo para no truncar los fragmentos; extender la clasificación a múltiples etiquetas; aislar también los artículos citados para medir la generalización a documentos no vistos, y ampliar el suministro de las funciones escasas.
 
 ## Apéndices
 
-**Apéndice A.** Prompts *zero-shot* y *few-shot* del modelo comercial. [[A5-2]]
+**Apéndice A.** Prompts genérico y específico de los modelos comerciales y formato de los ejemplos *few-shot*. [[A5-2]]
 
 **Apéndice B.** Repositorios y aplicación desplegada: [[D-5]]
 
+**Apéndice C.** **TABLA X.** Precisión, exhaustividad, F1 macro y micro, costo por 1.000 ejemplos, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre T_B. [[A5-3, A6, A7]]
+
+## Declaración de uso de IA
+
+Los autores usaron asistentes de inteligencia artificial generativa como apoyo en la escritura y depuración de código, en la búsqueda y organización de información y en la revisión de la redacción de este documento. Los autores revisaron y verificaron todo el contenido y asumen la responsabilidad por él. Los modelos de lenguaje que forman parte de la metodología (jueces de pre-etiquetado y modelos comerciales evaluados) se describen en la Sección III.
+
 ## Referencias
 
-[1] I. Beltagy, K. Lo y A. Cohan, "SciBERT: A pretrained language model for scientific text," en *Proc. 2019 Conf. Empirical Methods in Natural Language Processing and 9th Int. Joint Conf. Natural Language Processing (EMNLP-IJCNLP)*, Hong Kong, China, 2019, pp. 3615–3620, doi: 10.18653/v1/D19-1371.
+[1] D. Lyu, X. Ruan, J. Xie y Y. Cheng, "The classification of citing motivations: A meta-synthesis," *Scientometrics*, vol. 126, no. 4, pp. 3243–3264, 2021, doi: 10.1007/s11192-021-03908-z.
 
-[2] D. Lyu, X. Ruan, J. Xie y Y. Cheng, "The classification of citing motivations: A meta-synthesis," *Scientometrics*, vol. 126, no. 4, pp. 3243–3264, 2021, doi: 10.1007/s11192-021-03908-z.
+[2] A. Cohan, W. Ammar, M. van Zuylen y F. Cady, "Structural scaffolds for citation intent classification in scientific publications," en *Proc. 2019 Conf. North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)*, Minneapolis, MN, EE. UU., 2019, pp. 3586–3596, doi: 10.18653/v1/N19-1361.
 
-[3] T. Saier, J. Krause y M. Färber, "unarXive 2022: All arXiv publications pre-processed for NLP, including structured full-text and citation network," en *Proc. 2023 ACM/IEEE Joint Conf. Digital Libraries (JCDL)*, 2023, pp. 66–70, doi: 10.1109/JCDL57899.2023.00020.
+[3] A. Lauscher, B. Ko, B. Kuehl, S. Johnson, A. Cohan, D. Jurgens y K. Lo, "MultiCite: Modeling realistic citations requires moving beyond the single-sentence single-label setting," en *Proc. 2022 Conf. North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)*, Seattle, WA, EE. UU., 2022, pp. 1875–1889, doi: 10.18653/v1/2022.naacl-main.137.
 
-[4] A. Cohan, W. Ammar, M. van Zuylen y F. Cady, "Structural scaffolds for citation intent classification in scientific publications," en *Proc. 2019 Conf. North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)*, Minneapolis, MN, EE. UU., 2019, pp. 3586–3596, doi: 10.18653/v1/N19-1361.
+[4] I. Beltagy, K. Lo y A. Cohan, "SciBERT: A pretrained language model for scientific text," en *Proc. 2019 Conf. Empirical Methods in Natural Language Processing and 9th Int. Joint Conf. Natural Language Processing (EMNLP-IJCNLP)*, Hong Kong, China, 2019, pp. 3615–3620, doi: 10.18653/v1/D19-1371.
 
-[5] A. Lauscher, B. Ko, B. Kuehl, S. Johnson, A. Cohan, D. Jurgens y K. Lo, "MultiCite: Modeling realistic citations requires moving beyond the single-sentence single-label setting," en *Proc. 2022 Conf. North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)*, Seattle, WA, EE. UU., 2022, pp. 1875–1889, doi: 10.18653/v1/2022.naacl-main.137.
+[5] N. Gu, Y. Gao y R. H. R. Hahnloser, "Local citation recommendation with hierarchical-attention text encoder and SciBERT-based reranking," en *Advances in Information Retrieval (ECIR 2022)*, Lecture Notes in Computer Science, Cham, Suiza: Springer International Publishing, 2022, pp. 274–288, doi: 10.1007/978-3-030-99736-6_19.
 
-[6] N. Gu, Y. Gao y R. H. R. Hahnloser, "Local citation recommendation with hierarchical-attention text encoder and SciBERT-based reranking," en *Advances in Information Retrieval (ECIR 2022)*, Lecture Notes in Computer Science, Cham, Suiza: Springer International Publishing, 2022, pp. 274–288, doi: 10.1007/978-3-030-99736-6_19.
+[6] P. Koloveas, S. Chatzopoulos, T. Vergoulis y C. Tryfonopoulos, "Can LLMs predict citation intent? An experimental analysis of in-context learning and fine-tuning on open LLMs," en *Linking Theory and Practice of Digital Libraries (TPDL 2025)*, Lecture Notes in Computer Science, Cham, Suiza: Springer Nature Switzerland, 2025, pp. 207–224, doi: 10.1007/978-3-032-05409-8_13.
 
-[7] P. Koloveas, S. Chatzopoulos, T. Vergoulis y C. Tryfonopoulos, "Can LLMs predict citation intent? An experimental analysis of in-context learning and fine-tuning on open LLMs," en *Linking Theory and Practice of Digital Libraries (TPDL 2025)*, Lecture Notes in Computer Science, Cham, Suiza: Springer Nature Switzerland, 2025, pp. 207–224, doi: 10.1007/978-3-032-05409-8_13.
+[7] F. Gilardi, M. Alizadeh y M. Kubli, "ChatGPT outperforms crowd workers for text-annotation tasks," *Proc. Natl. Acad. Sci. U.S.A.*, vol. 120, no. 30, art. e2305016120, 2023, doi: 10.1073/pnas.2305016120.
 
-[8] F. Gilardi, M. Alizadeh y M. Kubli, "ChatGPT outperforms crowd workers for text-annotation tasks," *Proc. Natl. Acad. Sci. U.S.A.*, vol. 120, no. 30, art. e2305016120, 2023, doi: 10.1073/pnas.2305016120.
+[8] T. Saier, J. Krause y M. Färber, "unarXive 2022: All arXiv publications pre-processed for NLP, including structured full-text and citation network," en *Proc. 2023 ACM/IEEE Joint Conf. Digital Libraries (JCDL)*, 2023, pp. 66–70, doi: 10.1109/JCDL57899.2023.00020.
 
 [9] Qwen Team, "Qwen3.8-27B," Hugging Face, 2026, rev. 1d4bf0f2ff. [En línea]. Disponible: https://huggingface.co/Qwen/Qwen3.8-27B
 
@@ -295,20 +309,22 @@ Como trabajo futuro se plantea reemplazar la recuperación por un modelo ajustad
 
 [11] Mistral AI, "Mistral-Small-3.2-24B-Instruct-2506," Hugging Face, 2025, rev. 95a6d26c4b. [En línea]. Disponible: https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506
 
-[12] A. Paszke *et al.*, "PyTorch: An imperative style, high-performance deep learning library," en *Advances in Neural Information Processing Systems 32 (NeurIPS 2019)*, 2019.
+[12] J. R. Landis y G. G. Koch, "The measurement of observer agreement for categorical data," *Biometrics*, vol. 33, no. 1, pp. 159–174, 1977, doi: 10.2307/2529310.
 
-[13] T. Wolf *et al.*, "Transformers: State-of-the-art natural language processing," en *Proc. 2020 Conf. Empirical Methods in Natural Language Processing: System Demonstrations*, 2020, pp. 38–45, doi: 10.18653/v1/2020.emnlp-demos.6.
+[13] S. Ramírez, "FastAPI," software. [En línea]. Disponible: https://fastapi.tiangolo.com
 
-[14] W. Kwon *et al.*, "Efficient memory management for large language model serving with PagedAttention," en *Proc. 29th Symp. Operating Systems Principles (SOSP)*, Koblenz, Alemania, 2023, pp. 611–626, doi: 10.1145/3600006.3613165.
+[14] Vercel, "Next.js," software. [En línea]. Disponible: https://nextjs.org
 
-[15] M. Zaharia *et al.*, "Accelerating the machine learning lifecycle with MLflow," *IEEE Data Eng. Bull.*, vol. 41, no. 4, pp. 39–45, 2018.
+[15] A. Paszke *et al.*, "PyTorch: An imperative style, high-performance deep learning library," en *Advances in Neural Information Processing Systems 32 (NeurIPS 2019)*, 2019.
 
-[16] "DVC: Data Version Control," software. [En línea]. Disponible: https://dvc.org
+[16] T. Wolf *et al.*, "Transformers: State-of-the-art natural language processing," en *Proc. 2020 Conf. Empirical Methods in Natural Language Processing: System Demonstrations*, 2020, pp. 38–45, doi: 10.18653/v1/2020.emnlp-demos.6.
 
-[17] S. Ramírez, "FastAPI," software. [En línea]. Disponible: https://fastapi.tiangolo.com
+[17] W. Kwon *et al.*, "Efficient memory management for large language model serving with PagedAttention," en *Proc. 29th Symp. Operating Systems Principles (SOSP)*, Koblenz, Alemania, 2023, pp. 611–626, doi: 10.1145/3600006.3613165.
 
-[18] Vercel, "Next.js," software. [En línea]. Disponible: https://nextjs.org
+[18] F. Pedregosa *et al.*, "Scikit-learn: Machine learning in Python," *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.
 
-[19] A. Singh, M. D'Arcy, A. Cohan, D. Downey y S. Feldman, "SciRepEval: A multi-format benchmark for scientific document representations," en *Proc. 2023 Conf. Empirical Methods in Natural Language Processing (EMNLP)*, Singapur, 2023, pp. 5548–5566, doi: 10.18653/v1/2023.emnlp-main.338.
+[19] "DVC: Data Version Control," software. [En línea]. Disponible: https://dvc.org
 
-[20] F. Pedregosa *et al.*, "Scikit-learn: Machine learning in Python," *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.
+[20] M. Zaharia *et al.*, "Accelerating the machine learning lifecycle with MLflow," *IEEE Data Eng. Bull.*, vol. 41, no. 4, pp. 39–45, 2018.
+
+[21] A. Singh, M. D'Arcy, A. Cohan, D. Downey y S. Feldman, "SciRepEval: A multi-format benchmark for scientific document representations," en *Proc. 2023 Conf. Empirical Methods in Natural Language Processing (EMNLP)*, Singapur, 2023, pp. 5548–5566, doi: 10.18653/v1/2023.emnlp-main.338.

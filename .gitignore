@@ -10,3 +10,18 @@ snapshot_A4/
 
 # Archivos temporales de Office
 ~$*
+
+# ZIP descargados de Drive (contienen material del equipo que no se publica)
+Informes/Informe Final/Insumos/*.zip
+
+# Hojas de anotación de A3 (contienen texto de unarXive e identificadores de anotador)
+Informes/Informe Final/Insumos/G1[45]-*.xlsx
+
+# Etiquetas de A3: incluyen las de T_A del Grupo 14 (uso autorizado para entrenar, no para publicar)
+Informes/Informe Final/Insumos/a3/*
+# Excepción: ejemplos del demostrador del G15 (texto CC BY; publicación acordada por el equipo el 11-nov)
+!Informes/Informe Final/Insumos/a3/demo_examples/
+Informes/Informe Final/Insumos/a3/demo_examples/*
+!Informes/Informe Final/Insumos/a3/demo_examples/examples_TB_con_resumen.jsonl
+!Informes/Informe Final/Insumos/a3/demo_examples/manifest_examples_TB.json
+!Informes/Informe Final/Insumos/a3/demo_examples/README.md

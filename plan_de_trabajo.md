@@ -31,15 +31,15 @@
 **Lo que sí hacemos (mínimo para entregar):**
 
 1. SciBERT en 2 configuraciones: **base** (contexto + título + abstract) y **con fragmentos** (contexto + sección + Top-3), evaluado en T_B.
-2. Un LLM comercial, **zero-shot y few-shot**, con contexto + título + abstract y puntaje 0–1 por clase.
+2. **Dos** LLM comerciales sin ajuste, cada uno en **8 condiciones** (información del citado: título + abstract o fragmentos × prompt genérico o específico × zero-shot o few-shot), con las mismas entradas recortadas de SciBERT y puntaje 0–1 por clase.
 3. Precision, Recall y F1 macro/micro; matrices de confusión; tabla comparativa de los modelos.
-4. Costo y latencia por modelo; tasa de errores de formato del LLM.
+4. Costo y latencia por modelo; tasa de errores de formato de cada LLM comercial.
 5. Aplicación desplegada con los 3 clasificadores.
 6. Informe y sustentación.
 
-**Solo si sobra tiempo (después del 19-nov):** prompts específicos por categoría vs. genérico; P@3 manual del retrieval en una muestra pequeña; F1 por citados vistos/no vistos; más semillas.
+**Solo si sobra tiempo (después del 19-nov):** prompts específicos por categoría vs. genérico; F1 por citados vistos/no vistos; más semillas.
 
-**Fuera de alcance:** SPECTER, multietiqueta, variantes V1/V2, nuevas rondas de anotación.
+**Fuera de alcance:** P@3 manual del retrieval (decisión del 10-nov: se declara como limitación y trabajo futuro), SPECTER, multietiqueta, variantes V1/V2, nuevas rondas de anotación.
 
 ## 4. Tareas por persona
 
@@ -48,15 +48,16 @@
 | **ST** (A4) | SciBERT base v0 a CB: pesos + contrato de entrada/salida | 11-nov | Pendiente |
 | | SciBERT base final + predicciones sobre T_B | 12-nov | Pendiente |
 | | SciBERT con fragmentos final + predicciones sobre T_B | 13-nov | Pendiente |
+| | Entradas recortadas de SciBERT (base y fragmentos) de T_B y de los 9 ejemplos few-shot, entregadas a JA para A5 | 13-nov | Pendiente |
 | **ST** (frontend) | Versión 1 conectada al backend | 14-nov | Pendiente |
 | | Versión final con visualización de resultados | 20-nov | Pendiente |
-| **JA** (A5) | Modelo comercial elegido + prompts zero-/few-shot | 10-nov | Pendiente |
-| | Predicciones sobre T_B (zero y few-shot) con tokens, costo y latencia por llamada | 13-nov | Pendiente |
+| **JA** (A5) | Los dos modelos comerciales elegidos, prompts genérico y específico, 9 ejemplos few-shot y condición principal | 10-nov | Pendiente |
+| | Predicciones sobre T_B en las 8 condiciones de cada modelo, con tokens, costo y latencia por llamada | 13-nov | Pendiente |
 | **CB** (backend) | Modelo open-weight elegido; API con Top-3 + SciBERT v0 | 13-nov | Pendiente |
 | | API con los 3 clasificadores | 18-nov | Pendiente |
 | **CB + ST** | Aplicación desplegada en AWS (URL pública) | 21-nov | Pendiente |
 | **GR** (A6, A7, informe) | Script de métricas probado sobre validación + esqueleto del informe en la plantilla | 12-nov | Pendiente |
-| | Resultados finales (A6 + A7): tabla P/R/F1 macro-micro de los 4 modelos, F1 por clase, matrices de confusión, base vs. con fragmentos, costos, latencia y errores de formato del LLM | 16-nov (festivo) | Pendiente |
+| | Resultados finales (A6 + A7): tabla P/R/F1 macro-micro de SciBERT (2 configuraciones) y de cada LLM comercial (8 condiciones por modelo), F1 por clase, matrices de confusión, base vs. con fragmentos, costos, latencia y errores de formato del LLM | 16-nov (festivo) | Pendiente |
 | | Borrador completo del informe (único editor; integra insumos y sugerencias) | 21-nov | Pendiente |
 | **Todos** | Insumos para el informe según la tabla "Qué entrega cada uno" de `Informes/Informe Final/Borrador_v0_Informe_Final.md` | 13–21-nov | Pendiente |
 | | Comentarios sobre el PDF del informe: v1 (19-nov) y final (22-nov) | 22-nov | Pendiente |
@@ -83,7 +84,7 @@ Regla: si una tarea se atrasa más de un día, se avisa al grupo y se recorta de
 - 9 clases, etiqueta única.
 - Aislamiento V0; train/val separado por citante; test = gold de T_B.
 - Éxito: F1 macro de la configuración con fragmentos frente a la base.
-- El LLM comercial recibe contexto + título + abstract, como pide el enunciado.
+- Los LLM comerciales se evalúan con contexto + título + abstract, como pide el enunciado, y además con fragmentos (diseño de A5), siempre con el mismo texto recortado que recibe SciBERT.
 - El modelo open-weight (1–8B) solo se usa en la demo.
 
 ## 7. Limitaciones a declarar en el informe

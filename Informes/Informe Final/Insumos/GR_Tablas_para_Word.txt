@@ -1,0 +1,101 @@
+===== TABLA I
+Comparación de trabajos relacionados con este trabajo.
+
+Trabajo	Clases	Dominio	Texto del citado	Modelos
+Cohan et al. (SciCite) [2]	3	Computación y medicina	No	BiLSTM con ELMo
+Lauscher et al. (MultiCite) [3]	7, multietiqueta	Lingüística computacional	No	SciBERT, RoBERTa
+Koloveas et al. [6]	3 y 6	Computación, medicina y lingüística	No	Modelos abiertos
+Este trabajo	9	Computer Science (8 subcampos)	Sí	SciBERT; dos modelos comerciales
+
+===== TABLA II
+Corpus después de la limpieza.
+
+Corpus	Contextos	Artículos citantes	Artículos citados	Fragmentos
+Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET)	1.113.513	50.538	31.532	1.229.408
+Ampliación (cs.LG, cs.CL, cs.DS)	368.296	50.456	30.153	1.574.790
+
+===== TABLA III
+Conjunto de prueba T_B. Instancias: etiqueta final por función. Corrección: porcentaje de las 330 instancias muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
+
+Función	Instancias	Corrección de la pre-etiqueta
+Background	330	13,9 %
+Gap	310	12,7 %
+Basis	322	13,6 %
+Comparison	313	8,2 %
+Application	400	3,3 %
+Improvement/Modification	268	25,2 %
+Evidence	386	1,5 %
+Identification of the Originator	324	3,6 %
+Further Reading	315	4,8 %
+Total	2.968	9,7 %
+
+===== TABLA IV
+Configuración de entrenamiento. [[A4-3: confirmar con la corrida]]
+
+Parámetro	Valor
+Modelo	allenai/scibert_scivocab_uncased
+Longitud máxima	512 tokens (contexto ≤ 192)
+Tasa de aprendizaje / épocas	2e-5 / hasta 4, parada temprana con paciencia 2
+Lote efectivo	32 (16 × acumulación 2)
+Optimizador	AdamW, decaimiento 0,01, calentamiento 10 %, decaimiento lineal
+Precisión y hardware	BF16, GPU A100 (Colab)
+Semilla	42
+
+===== TABLA V
+Hipótesis y experimentos.
+
+	Hipótesis	Experimento	Métrica
+H1	Jueces de 24–27B superan a jueces de 7–8B	Trío Llama 3.1 8B, Qwen 2.5 7B y Mistral 7B frente al trío final	Aciertos en los 41 casos de desarrollo con acuerdo humano
+H2	El tercer juez afecta la calidad del trío, sobre todo en Gap	Mistral Small 3.2 24B frente a Ministral 3 14B	Aciertos en la muestra de desarrollo; precisión en 20 Gap nuevos
+H3	Incorporar reglas de adjudicación al prompt mejora el pre-etiquetado	Cuatro versiones sucesivas del prompt	Aciertos en la muestra de desarrollo
+H4	Sin filtro, las secciones de trabajos relacionados dominan las primeras posiciones de la recuperación	Auditoría de las secciones del Top-1 con y sin filtro	Peso de esas secciones entre los candidatos frente al Top-1
+H5	Los fragmentos mejoran las decisiones de los jueces	Ablación con y sin fragmentos	Aciertos en la muestra de desarrollo; cambios en 885 casos difíciles
+H6	El clasificador con fragmentos supera al clasificador base	Dos ajustes de SciBERT con las mismas instancias	Diferencia de F1 macro con intervalo bootstrap pareado por citante
+H7	Los modelos comerciales sin ajuste no superan a SciBERT ajustado y cuestan más	Ocho condiciones de cada modelo comercial frente a SciBERT con la misma información del citado	F1 macro con IC bootstrap pareado; costo por mil ejemplos; latencia
+H8	Los fragmentos también mejoran a los modelos comerciales	Condiciones con fragmentos frente a las mismas condiciones con título y resumen	Diferencia de F1 macro
+
+===== TABLA VI
+Indicadores por etapa.
+
+Etapa	Indicador	Valor	H
+Recuperación	Coseno medio Top-1 (piloto / ampliación)	0,915 / 0,913	—
+	Brecha mediana entre Top-1 y Top-3	0,013	—
+	Trabajos relacionados: % de candidatos frente a % de Top-1 sin filtro	8,6 % frente a 31,6 %	H4
+	Pares con algún fragmento de trabajos relacionados en el Top-3 sin filtro	51,9 %	H4
+Pre-etiquetado (desarrollo)	Trío 7–8B frente a trío final (41 casos)	13 frente a 30	H1
+	Tercer juez: Mistral Small frente a Ministral (60 casos; 20 Gap)	48 frente a 45; 17 frente a 12	H2
+	Versiones del prompt (60 casos)	43 → 47 → 48 → 47	H3
+	Sin fragmentos frente a con fragmentos (60 casos)	49 frente a 48	H5
+Pre-etiquetado (producción)	κ de Fleiss entre jueces; unanimidad	0,67; 63 %	—
+	Instancias con pre-etiqueta de alta confianza	37.254 de 38.780 (96,1 %)	—
+	Estabilidad al repetir 300 instancias	98 %	—
+Validación humana	κ de Fleiss: primera frente a segunda calibración	0,47 frente a 0,87	—
+	Corrección de la pre-etiqueta en T_B	9,7 % (25,2 % en Improvement/Modification)	—
+	κ de Cohen / α de Krippendorff en T_B	0,854 / 0,854	—
+
+===== TABLA VII
+Resultados sobre el conjunto de prueba T_B. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A4-2, A5-3; consolida GR en A6]]
+
+Modelo	Precisión macro	Exhaustividad macro	F1 macro	F1 micro
+SciBERT base	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+SciBERT con fragmentos	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 1]] · título y resumen (condición principal)	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 1]] · fragmentos (condición principal)	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 2]] · título y resumen (condición principal)	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 2]] · fragmentos (condición principal)	[[ ]]	[[ ]]	[[ ]]	[[ ]]
+
+===== TABLA VIII
+Costo y latencia por modelo. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A7-1, A7-2, A5-3, A7-3]]
+
+Modelo	Entrenamiento	Costo por 1.000 ejemplos	Latencia (s/ejemplo)	Formato inválido
+SciBERT base	[[h GPU]]	[[ ]]	[[ ]]	—
+SciBERT con fragmentos	[[h GPU]]	[[ ]]	[[ ]]	—
+[[A5-1: modelo 1]] · título y resumen (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 1]] · fragmentos (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 2]] · título y resumen (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
+[[A5-1: modelo 2]] · fragmentos (condición principal)	—	[[ ]]	[[ ]]	[[ ]]
+
+===== TABLA X
+Precisión, exhaustividad, F1 macro y micro, costo por 1.000 ejemplos, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre T_B. [[A5-3, A6, A7]]
+
+(sin filas en el borrador)
