@@ -15,19 +15,19 @@ Piloto (cs.CV, cs.SI, cs.HC, cs.CY, cs.ET)	1.113.513	50.538	31.532	1.229.408
 Ampliación (cs.LG, cs.CL, cs.DS)	368.296	50.456	30.153	1.574.790
 
 ===== TABLA III
-Instancias por función. Dataset: dataset construido en este trabajo (pre-etiquetas de alta confianza y conjunto de prueba; meta del proyecto: 2.000 por función). Entrenamiento y validación: instancias que quedan tras el aislamiento por documento (Sección III-D). Corrección: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
+Instancias por función. Dataset = Excluded + Training + Validation + Test B. Dataset: dataset construido en este trabajo (meta del proyecto: 2.000 por función). Excluded: instancias que no se usan por el aislamiento por documento (comparten un artículo con Test B o su citante está en las calibraciones) o por compartir un artículo con Validation (Sección III-D). Test B: conjunto de prueba T_B, por etiqueta humana. Correction: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
 
-Función	Dataset	Entrenamiento	Validación	T_B	Corrección
-Background	12.713	5.004	717	330	13,9 %
-Gap	3.189	1.217	179	310	12,7 %
-Basis	3.022	848	112	322	13,6 %
-Comparison	3.530	1.188	176	313	8,2 %
-Application	4.766	871	144	400	3,3 %
-Improvement/Modification	826	140	19	268	25,2 %
-Evidence	3.534	1.318	166	386	1,5 %
-Identification of the Originator	1.692	329	58	324	3,6 %
-Further Reading	1.716	701	82	315	4,8 %
-Total	34.988	11.616	1.653	2.968	9,7 %
+Función	Dataset	Excluded	Training	Validation	Test B	Correction
+Background	12.713	6.662	5.004	717	330	13,9 %
+Gap	3.189	1.483	1.217	179	310	12,7 %
+Basis	3.022	1.740	848	112	322	13,6 %
+Comparison	3.530	1.853	1.188	176	313	8,2 %
+Application	4.766	3.351	871	144	400	3,3 %
+Improvement/Modification	826	399	140	19	268	25,2 %
+Evidence	3.534	1.664	1.318	166	386	1,5 %
+Identification of the Originator	1.692	981	329	58	324	3,6 %
+Further Reading	1.716	618	701	82	315	4,8 %
+Total	34.988	18.751	11.616	1.653	2.968	9,7 %
 
 ===== TABLA IV
 Configuración de entrenamiento.

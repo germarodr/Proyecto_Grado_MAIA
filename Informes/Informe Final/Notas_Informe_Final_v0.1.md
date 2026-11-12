@@ -93,6 +93,7 @@ Fuente: [Feedback Primer Informe.txt](../Feedback%20Primer%20Informe.txt). El pr
 | A1–A7 / F1–F4 | No se usan; se nombran las etapas |
 | eval60 | "Muestra de desarrollo de 60 instancias" |
 | Conjunto de datos construido | "Dataset" (preferencia de GR, 11-nov); "conjunto de prueba" sigue para T_B |
+| Columnas de la TABLA III | En inglés por preferencia de GR: Dataset, Excluded, Training, Validation, Test B, Correction |
 | calib30, calib2 | "Primera y segunda calibración" |
 | `norw` | "Exclusión de secciones de trabajos relacionados" |
 | pool_v11.1, conjunto ampliado | "Conjunto pre-etiquetado" (38.780) |
@@ -184,6 +185,7 @@ Agregar una fila cada vez que se tome una decisión sobre el artículo.
 | 11-nov | Chat GR–ST: ST confirma que **Top-1 fue solo una prueba**; A4 queda en SciBERT base y SciBERT Top-3. GR pregunta: (1) si esos dos modelos ya quedan congelados; (2) los valores de la rejilla de los 12 ensayos (A4-3); (3) la razón de usar entropía cruzada sin pesos por clase (A4-4). En espera de respuesta | GR |
 | 11-nov | **Meta de 2.000 por función aclarada en el informe.** TABLA III pasa a "Instancias por función" con columnas Conjunto (34.988 = 32.020 de la versión 2 con etiqueta humana de T_A, sin sus 3 *unclear*, + 2.968 de T_B), Entrenamiento (11.616), Validación (1.653), T_B y Corrección. III-C: 6 de 9 funciones superan 2.000 en el conjunto (IM 826, Orig 1.692, FR 1.716 no); III-D: tras el aislamiento se usan 13.269 y solo Background supera 2.000 en entrenamiento; Limitaciones ajustadas. "Dataset" → "conjunto de datos" | GR |
 | 11-nov | Estilo: GR prefiere "dataset" en todo el informe; se reemplaza "conjunto de datos" (5 menciones, incluida la TABLA III) y se agrega a §4.2 | GR |
+| 11-nov | TABLA III rehecha para que las cifras sumen a la vista: Dataset = Excluded + Training + Validation + Test B (p. ej., Background 12.713 = 6.662 + 5.004 + 717 + 330; total 34.988 = 18.751 + 11.616 + 1.653 + 2.968), más Correction. Excluded = aislamiento por documento + retiro por compartir artículo con Validation; recalculado desde los archivos originales | GR |
 
 ## 6. Presupuesto de páginas
 

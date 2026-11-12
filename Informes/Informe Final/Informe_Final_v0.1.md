@@ -97,20 +97,20 @@ La selección de jueces y del prompt se hizo sobre una muestra de desarrollo de 
 
 Para la validación, los dos grupos participantes construyeron conjuntos de prueba disjuntos por instancia y artículo citante; en este trabajo se usa el propio, denominado T_B. El muestreo fue estratificado por pre-etiqueta, con semilla fija, a lo sumo dos instancias por citante y una por grupo de citas contiguas, con una meta de 300 instancias válidas por función. Cada instancia fue anotada de forma independiente por una persona de cada grupo, con la pre-etiqueta visible y sin conocer la respuesta del otro, siguiendo una guía con reglas para las fronteras más confusas. Antes de iniciar se realizaron dos calibraciones; la segunda exigió κ ≥ 0,6 en cada pareja de anotadores. Los desacuerdos se adjudicaron por una pareja que no había anotado la instancia, y las instancias sin función identificable se excluyeron (2 en T_B). La meta de 300 se cumplió en todas las funciones excepto Improvement/Modification, que quedó con 268 instancias en T_B: ambos grupos decidieron no liberar la reserva prevista para cubrir ese déficit, por la carga de anotación y el calendario. El dataset resultante suma 34.988 instancias: las 2.968 de T_B y 32.020 con pre-etiqueta de alta confianza, que en las del conjunto de prueba del otro grupo se reemplaza por su etiqueta humana (se descartan las 3 de ese conjunto sin función identificable). Seis de las nueve funciones superan la meta de 2.000 instancias del proyecto; no la alcanzan Improvement/Modification (826), Identification of the Originator (1.692) y Further Reading (1.716). Estas cifras describen el conjunto construido; el clasificador se entrena con menos instancias por el aislamiento descrito en la Sección III-D (Tabla III).
 
-**TABLA III.** Instancias por función. Dataset: dataset construido en este trabajo (pre-etiquetas de alta confianza y conjunto de prueba; meta del proyecto: 2.000 por función). Entrenamiento y validación: instancias que quedan tras el aislamiento por documento (Sección III-D). Corrección: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
+**TABLA III.** Instancias por función. Dataset = Excluded + Training + Validation + Test B. Dataset: dataset construido en este trabajo (meta del proyecto: 2.000 por función). Excluded: instancias que no se usan por el aislamiento por documento (comparten un artículo con Test B o su citante está en las calibraciones) o por compartir un artículo con Validation (Sección III-D). Test B: conjunto de prueba T_B, por etiqueta humana. Correction: porcentaje de las 330 instancias de T_B muestreadas con esa pre-etiqueta cuya etiqueta final es otra.
 
-| Función | Dataset | Entrenamiento | Validación | T_B | Corrección |
-|---|---:|---:|---:|---:|---:|
-| Background | 12.713 | 5.004 | 717 | 330 | 13,9 % |
-| Gap | 3.189 | 1.217 | 179 | 310 | 12,7 % |
-| Basis | 3.022 | 848 | 112 | 322 | 13,6 % |
-| Comparison | 3.530 | 1.188 | 176 | 313 | 8,2 % |
-| Application | 4.766 | 871 | 144 | 400 | 3,3 % |
-| Improvement/Modification | 826 | 140 | 19 | 268 | 25,2 % |
-| Evidence | 3.534 | 1.318 | 166 | 386 | 1,5 % |
-| Identification of the Originator | 1.692 | 329 | 58 | 324 | 3,6 % |
-| Further Reading | 1.716 | 701 | 82 | 315 | 4,8 % |
-| **Total** | **34.988** | **11.616** | **1.653** | **2.968** | **9,7 %** |
+| Función | Dataset | Excluded | Training | Validation | Test B | Correction |
+|---|---:|---:|---:|---:|---:|---:|
+| Background | 12.713 | 6.662 | 5.004 | 717 | 330 | 13,9 % |
+| Gap | 3.189 | 1.483 | 1.217 | 179 | 310 | 12,7 % |
+| Basis | 3.022 | 1.740 | 848 | 112 | 322 | 13,6 % |
+| Comparison | 3.530 | 1.853 | 1.188 | 176 | 313 | 8,2 % |
+| Application | 4.766 | 3.351 | 871 | 144 | 400 | 3,3 % |
+| Improvement/Modification | 826 | 399 | 140 | 19 | 268 | 25,2 % |
+| Evidence | 3.534 | 1.664 | 1.318 | 166 | 386 | 1,5 % |
+| Identification of the Originator | 1.692 | 981 | 329 | 58 | 324 | 3,6 % |
+| Further Reading | 1.716 | 618 | 701 | 82 | 315 | 4,8 % |
+| **Total** | **34.988** | **18.751** | **11.616** | **1.653** | **2.968** | **9,7 %** |
 
 El acuerdo entre los dos grupos antes de adjudicar fue de 87,0 % (κ de Cohen = 0,854, que descuenta el acuerdo esperado por azar; valores sobre 0,80 se consideran acuerdo casi perfecto [12]; α de Krippendorff nominal = 0,854). Por función, el κ (una contra el resto) varió entre 0,756 en Background y 0,967 en Identification of the Originator; 386 instancias (13,0 %) requirieron adjudicación.
 
