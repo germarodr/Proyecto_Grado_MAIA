@@ -23,7 +23,7 @@ LABELS = ["Background", "Gap", "Basis", "Comparison", "Application",
           "Improvement/Modification", "Evidence", "Identification of the Originator",
           "Further Reading"]
 INVALID = "__invalid__"
-VERSION = "a5-v1"
+VERSION = "a5-base-only-v2"
 
 
 def utcnow():
@@ -101,23 +101,15 @@ def normalize_cases(rows, split):
         case.update(cited_title=row.get("cited_title", ""), cited_abstract=row.get("cited_abstract", ""))
         if any(not isinstance(case[k], str) for k in ("cited_title", "cited_abstract")):
             raise ValueError(f"Título/abstract deben ser texto: {key}")
-        chunks = row.get("top3", [])
-        if not isinstance(chunks, list):
-            raise ValueError(f"top3 debe ser lista: {key}")
-        case["top3"] = []
-        for c in chunks:
-            if not isinstance(c, dict) or not isinstance(c.get("text"), str) or not c["text"].strip():
-                raise ValueError(f"Chunk sin texto: {key}")
-            if c.get("section") is not None and not isinstance(c["section"], str):
-                raise ValueError(f"Sección no textual: {key}")
-            case["top3"].append({"text": c["text"], "section": c.get("section") or "Unknown"})
+        # Campos adicionales del origen (incluidos top3/chunks) se descartan.
+        # A5 recibe exclusivamente contexto, título y resumen del citado.
         # Exportación opcional del texto visible de A4, después de su política de entrada.
         if row.get("a4_inputs") is not None:
             if not isinstance(row["a4_inputs"], dict):
                 raise ValueError(f"a4_inputs debe ser objeto: {key}")
             case["a4_inputs"] = {}
             for rep, entry in row["a4_inputs"].items():
-                if rep not in ("base", "fragmentos") or not isinstance(entry, dict):
+                if rep != "base" or not isinstance(entry, dict):
                     raise ValueError(f"Entrada A4 desconocida: {key}")
                 if set(entry) != {"context", "target_sentence", "evidence"} or any(
                     not isinstance(x, str) or not x.strip() for x in entry.values()
@@ -125,8 +117,10 @@ def normalize_cases(rows, split):
                     raise ValueError(f"Entrada A4 incompleta: {key}/{rep}")
                 if entry["context"].count("[[TARGET]]") != 1 or entry["target_sentence"].count("[[TARGET]]") != 1:
                     raise ValueError(f"Target no preservado en entrada A4: {key}/{rep}")
-                if entry["target_sentence"] not in entry["context"] or entry["target_sentence"] not in row["context"]:
-                    raise ValueError(f"Oración A4 no coincide con la original: {key}")
+                # El texto viene de IDs decodificados de SciBERT uncased: cambia caja/espaciado.
+                # Solo puede repetir contenido del contexto VISIBLE, sin añadir la oración sin recortar.
+                if entry["target_sentence"] not in entry["context"]:
+                    raise ValueError(f"Oración A4 no está en el contexto visible: {key}")
                 case["a4_inputs"][rep] = dict(entry)
         result.append(case)
     return result
@@ -176,26 +170,23 @@ def make_conditions(representations, styles, shots):
         raise ValueError("Matriz vacía")
     if len(set(representations)) != len(representations) or len(set(styles)) != len(styles) or len(set(shots)) != len(shots):
         raise ValueError("Condiciones repetidas")
-    if not set(representations) <= {"base", "fragmentos"} or not set(styles) <= {"generic", "specific"} or not set(shots) <= {"zero", "few"}:
+    if representations != ["base"] or not set(styles) <= {"generic", "specific"} or not set(shots) <= {"zero", "few"}:
         raise ValueError("Condición desconocida")
     return [{"id": f"{r}-{s}-{h}", "representation": r, "style": s, "shot": h}
             for r in representations for s in styles for h in shots]
 
 
 def input_view(case, representation, aligned):
+    if representation != "base":
+        raise ValueError("A5 solo permite contexto, título y resumen; variante no autorizada")
     if aligned:
         entry = case.get("a4_inputs", {}).get(representation)
         if not entry:
             raise ValueError(f"Falta texto exportado de A4: {case['inst_key']}/{representation}")
         return dict(entry)
-    if representation == "base":
-        if not case["cited_title"].strip() or not case["cited_abstract"].strip():
-            raise ValueError(f"Falta título/abstract: {case['inst_key']}")
-        evidence = f"Title: {case['cited_title']}\nAbstract: {case['cited_abstract']}"
-    else:
-        if len(case["top3"]) != 3:
-            raise ValueError(f"Se requieren exactamente tres chunks: {case['inst_key']}")
-        evidence = "\n\n".join(f"Chunk {i}, section {c['section']}:\n{c['text']}" for i, c in enumerate(case["top3"], 1))
+    if not case["cited_title"].strip() or not case["cited_abstract"].strip():
+        raise ValueError(f"Falta título/abstract: {case['inst_key']}")
+    evidence = f"Title: {case['cited_title']}\nAbstract: {case['cited_abstract']}"
     return {"context": case["context"], "target_sentence": case["target_sentence"], "evidence": evidence}
 
 
@@ -268,8 +259,7 @@ def synthetic_demo():
             return {"inst_key": f"{prefix}-{i}", "citing_id": f"{prefix}-citing-{i}",
                     "cited_id": f"{prefix}-cited-{i}", "split": "dev", "context": targets[i],
                     "target_sentence": targets[i], "cited_title": "Synthetic article for software demonstration",
-                    "cited_abstract": "Invented text. This is not an actual research paper.",
-                    "top3": [{"section": "Synthetic", "text": f"Invented passage {j}. Not scientific evidence."} for j in range(3)]}
+                    "cited_abstract": "Invented text. This is not an actual research paper."}
         cases.append(make("demo")); examples.append(make("example"))
         gold.append({"inst_key": f"demo-{i}", "gold_primary": label, "label_source": "human_gold", "adjudicated": True})
         example_gold[f"example-{i}"] = label
@@ -378,6 +368,8 @@ def check_api_config(cfg, bundle):
         raise ValueError("Los datos demo nunca se envían a la API")
     if not cfg["enable_api"]:
         raise ValueError("Llamadas pagadas desactivadas")
+    if "few" in cfg["shots"] and not cfg.get("fewshot_reviewed", False):
+        raise ValueError("Revisa los nueve ejemplos seleccionados y marca fewshot_reviewed antes del piloto comercial")
     url = urllib.parse.urlsplit(cfg["endpoint"])
     if url.scheme != "https" or not url.netloc or url.username or url.password or url.query or url.fragment:
         raise ValueError("Usa URL HTTPS completa, sin credenciales, query ni fragmento")

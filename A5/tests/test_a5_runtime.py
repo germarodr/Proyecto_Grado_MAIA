@@ -24,7 +24,7 @@ def config(output, demo=True):
             "budget_usd": 1.0, "reserve_per_attempt_usd": .05, "input_usd_per_million": 1.0,
             "output_usd_per_million": 2.0, "pricing_verified": True, "pricing_source": "fixture",
             "pricing_date": "2026-11-09", "timeout_seconds": 30, "max_retries": 2,
-            "request_interval_seconds": 0, "representations": ["base", "fragmentos"],
+            "request_interval_seconds": 0, "representations": ["base"],
             "styles": ["generic", "specific"], "shots": ["zero", "few"],
             "aligned_inputs": False, "input_policy_version": "fixture", "seed": 42,
             "limit_cases": None, "stability_cases": 0}
@@ -85,8 +85,8 @@ class RuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as out:
             cfg = config(out); cfg["stability_cases"] = 2
             plan = a5.make_plan(cfg, bundle, self.snapshot)
-            self.assertEqual(plan["primary_calls"], 72)
-            self.assertEqual(plan["total_calls"], 104)
+            self.assertEqual(plan["primary_calls"], 36)
+            self.assertEqual(plan["total_calls"], 52)
             zero = next(t for t in plan["tasks"] if "-zero" in t["condition"])
             few = next(t for t in plan["tasks"] if "-few" in t["condition"])
             self.assertEqual(len(zero["messages"]), 2)
@@ -119,7 +119,7 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(first["predictions"], second["predictions"])
             self.assertTrue(all(p["synthetic"] for p in second["predictions"]))
             metrics = a5.evaluate(first["predictions"], bundle["demo_gold"], bundle["cases"], root)
-            self.assertEqual(len(metrics), 8)
+            self.assertEqual(len(metrics), 4)
             self.assertTrue(all(m["f1_macro"] == 1 for m in metrics))
             cfg["model"] = "changed"
             with self.assertRaisesRegex(ValueError, "run_id"): a5.run_experiment(cfg, bundle, plan, self.snapshot)
@@ -156,6 +156,14 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(len(calls), 1)
             self.assertEqual(result["predictions"][0]["predicted_label"], a5.INVALID)
             self.assertNotIn("secret-for-test", (Path(result["output_dir"]) / "manifest.json").read_text())
+
+    def test_fewshot_api_requires_review_of_selected_examples(self):
+        cfg = config("unused", demo=False)
+        bundle = a5.synthetic_demo(); bundle["synthetic"] = False
+        with self.assertRaisesRegex(ValueError, "nueve ejemplos"):
+            a5.check_api_config(cfg, bundle)
+        cfg["fewshot_reviewed"] = True
+        a5.check_api_config(cfg, bundle)
 
     def test_retry_resume_and_ledger_account_all_attempts(self):
         calls = []
@@ -201,7 +209,7 @@ class RuntimeTests(unittest.TestCase):
 
     def test_all_notebook_blocks_execute_in_demo_without_network(self):
         book = json.loads((ROOT / "A5_Modelo_Comercial_G15.ipynb").read_text(encoding="utf-8"))
-        self.assertEqual(sum(c["cell_type"] == "code" for c in book["cells"]), 14)
+        self.assertEqual(sum(c["cell_type"] == "code" for c in book["cells"]), 16)
         namespace = {"__name__": "__main__"}
         with tempfile.TemporaryDirectory() as out, contextlib.redirect_stdout(io.StringIO()), patch.object(Path, "cwd", return_value=ROOT), patch.object(a5.urllib.request.OpenerDirector, "open", side_effect=AssertionError("Network forbidden")):
             for i, cell in enumerate(book["cells"]):
@@ -209,13 +217,33 @@ class RuntimeTests(unittest.TestCase):
                 self.assertEqual(book["cells"][i-1]["cell_type"], "markdown")
                 self.assertIsNone(cell["execution_count"])
                 self.assertEqual(cell["outputs"], [])
-                exec(compile(cell["source"], f"notebook-cell-{i}", "exec"), namespace)
-                if "DATA_DIR =" in cell["source"]:
+                source = "".join(cell["source"]) if isinstance(cell["source"], list) else cell["source"]
+                exec(compile(source, f"notebook-cell-{i}", "exec"), namespace)
+                if "DATA_DIR =" in source:
                     namespace["OUTPUT_DIR"] = Path(out)
             self.assertEqual(namespace["run"]["status"], "SIMULATED")
-            self.assertEqual(len(namespace["predictions"]), 72)
-            self.assertEqual(len(namespace["metrics"]), 8)
+            self.assertEqual(len(namespace["predictions"]), 36)
+            self.assertEqual(len(namespace["metrics"]), 4)
             self.assertIsNone(namespace["api_token"])
+
+    def test_only_base_is_allowed_and_chunks_never_enter_messages(self):
+        with self.assertRaises(ValueError):
+            a5.make_conditions(["base", "fragmentos"], ["generic"], ["zero"])
+        with self.assertRaises(ValueError):
+            a5.make_conditions(["fragmentos"], ["generic"], ["zero"])
+        raw = a5.synthetic_demo()["cases"][0]
+        raw.update(top3=[{"text": "FORBIDDEN_CHUNK_SENTINEL", "section": "NOT_FOR_A5"}],
+                   chunks="FORBIDDEN_CHUNK_SENTINEL")
+        case = a5.normalize_cases([raw], "dev")[0]
+        self.assertNotIn("top3", case); self.assertNotIn("chunks", case)
+        for style in ("generic", "specific"):
+            condition = a5.make_conditions(["base"], [style], ["zero"])[0]
+            messages = a5.build_messages(case, condition, self.snapshot, [], {})
+            self.assertNotIn("FORBIDDEN_CHUNK_SENTINEL", json.dumps(messages))
+        with self.assertRaises(ValueError):
+            a5.input_view(raw, "fragmentos", False)
+        with self.assertRaises(ValueError):
+            a5.input_view(raw, "fragmentos", True)
 
 
 if __name__ == "__main__":
