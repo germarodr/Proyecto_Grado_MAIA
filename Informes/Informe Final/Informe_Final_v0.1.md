@@ -10,7 +10,7 @@ Versión de lectura del artículo para ir completando en equipo, una vez finaliz
 >
 > Documento recibido el 23 de noviembre de 2026. Este trabajo contó con el apoyo de la Universidad de los Andes y del grupo de investigación FLAG–TICSw del Departamento de Ingeniería de Sistemas y Computación, y con la asesoría del PhD. Juan Camilo Sanguino en la definición del problema, la orientación bibliográfica y la validación de las decisiones clave. Los autores pertenecen a la Maestría en Inteligencia Artificial (MaIA), Departamento de Ingeniería de Sistemas y Computación, Universidad de los Andes, Bogotá, Colombia. Camilo Bejarano (c.bejaranoc@uniandes.edu.co), Germán Rodríguez (gm.rodriguez@uniandes.edu.co), José Arteaga (j.arteagac@uniandes.edu.co), Sebastián Toro (s.torod@uniandes.edu.co).
 
-**Resumen—** La cita es el principal mecanismo con el que un artículo científico se conecta con el conocimiento previo, pero en la práctica suele reducirse a un conteo que no distingue si una referencia aporta contexto, fundamenta un método, respalda una afirmación o señala una limitación. Este trabajo aborda la clasificación automática de la función de una cita en nueve categorías para artículos de Computer Science en inglés y evalúa si la evidencia recuperada del propio artículo citado mejora esa clasificación. A partir de unarXive 2022 se construyó un corpus de contextos de cita vinculados al texto completo del artículo citado; para cada par citante–citado se recuperaron con SciBERT los tres fragmentos más similares al párrafo citante. Un trío de modelos de lenguaje de pesos abiertos asignó pre-etiquetas a 38.780 instancias, y dos grupos de anotadores validaron un conjunto de prueba (Test) de 2.968 citas (κ de Cohen = 0,854). Se ajustó SciBERT con dos entradas —título y resumen del citado, frente a fragmentos recuperados— y se comparó con dos modelos de lenguaje comerciales sin ajuste, cada uno en ocho condiciones que combinan la información del citado, el tipo de prompt y el uso de ejemplos. La configuración con fragmentos obtuvo un F1 macro de [[X,XX]] frente a [[X,XX]] de la configuración base, y los modelos comerciales obtuvieron entre [[X,XX]] y [[X,XX]] según el modelo y la condición, con un costo de entre [[X]] y [[X]] USD por cada mil ejemplos. [[conclusión principal en una frase]]. A diferencia de trabajos previos, el estudio combina una taxonomía de nueve funciones en Computer Science, evidencia recuperada del texto del citado y una comparación de desempeño y costo entre un codificador ajustado y modelos comerciales; la solución se ofrece como aplicación web.
+**Resumen—** La cita es el principal mecanismo con el que un artículo científico se conecta con el conocimiento previo, pero en la práctica suele reducirse a un conteo que no distingue si una referencia aporta contexto, fundamenta un método, respalda una afirmación o señala una limitación. Este trabajo aborda la clasificación automática de la función de una cita entre nueve posibles para artículos de Computer Science en inglés y evalúa si la evidencia recuperada del propio artículo citado mejora esa clasificación. A partir de unarXive 2022 se construyó un corpus de contextos de cita vinculados al texto completo del artículo citado; para cada par citante–citado se recuperaron con SciBERT los tres fragmentos más similares al párrafo citante. Un trío de modelos de lenguaje de pesos abiertos asignó pre-etiquetas a 38.780 instancias, y dos grupos de anotadores validaron un conjunto de prueba (Test) de 2.968 citas (κ de Cohen = 0,854). Se ajustó SciBERT con dos entradas —título y resumen del citado, frente a fragmentos recuperados— y se comparó con dos modelos de lenguaje comerciales sin ajuste, cada uno en ocho condiciones que combinan la información del citado, el tipo de prompt y el uso de ejemplos. SciBERT obtuvo un F1 macro de 0,800 con fragmentos y de 0,797 con título y resumen, sin una diferencia significativa; los modelos comerciales obtuvieron entre [[X,XX]] y [[X,XX]] según el modelo y la condición, con un costo de entre [[X]] y [[X]] USD por cada mil instancias. [[conclusión principal en una frase]]. A diferencia de trabajos previos, el estudio combina una taxonomía de nueve funciones de cita, aplicada a artículos de Computer Science, evidencia recuperada del texto del citado y una comparación de desempeño y costo entre un codificador ajustado y modelos comerciales; la solución se ofrece como aplicación web.
 
 **Índice de Términos—** función de cita, modelos de lenguaje, recuperación semántica, SciBERT, unarXive.
 
@@ -20,14 +20,14 @@ El volumen de artículos científicos en Computer Science crece a un ritmo que d
 
 La función de una cita no siempre es explícita en la oración que la contiene. A menudo depende de lo que el artículo citado aporta, información que está dispersa en su texto completo y no en su título o resumen. Además, varias funciones tienen fronteras difusas —por ejemplo, entre el uso de un trabajo como base y su modificación—, lo que exige criterios de anotación consistentes.
 
-El objetivo general de este trabajo es clasificar automáticamente la función de una cita en artículos de Computer Science en inglés, incorporando evidencia recuperada del artículo citado. Los objetivos específicos son: (i) construir un corpus que vincule contextos de cita con el texto del citado; (ii) recuperar los fragmentos del citado más relevantes para cada contexto; (iii) construir un conjunto de prueba (Test) validado por humanos para nueve funciones; (iv) comparar un clasificador ajustado con y sin fragmentos recuperados, y frente a modelos de lenguaje comerciales; y (v) desplegar la solución como aplicación web. [[ajustar al alcance final]]
+El objetivo general de este trabajo es clasificar automáticamente la función de una cita en artículos de Computer Science en inglés, entre nueve funciones, incorporando evidencia recuperada del artículo citado. Los objetivos específicos son: (i) construir un corpus que vincule cada contexto de cita con los fragmentos del artículo citado más similares, recuperados con SciBERT; (ii) construir un dataset trazable, con pre-etiquetado a escala, un conjunto de prueba (Test) validado por humanos, atención a las funciones escasas y aislamiento por documento para evitar fuga de información; (iii) medir si los fragmentos recuperados mejoran un clasificador SciBERT ajustado, frente a una entrada con título y resumen del citado; (iv) contrastar ese clasificador con modelos de lenguaje comerciales sin ajuste, en desempeño y costo; y (v) desplegar la solución como aplicación web.
 
-La solución propuesta opera en dos etapas. Primero, para cada par formado por un artículo citante y uno citado, compara el párrafo citante con los fragmentos del texto completo del artículo citado, excluidas sus secciones de trabajos relacionados, y recupera los tres más similares; cada fragmento conserva el título de la sección de la que proviene. Después, un clasificador basado en SciBERT, ajustado con ejemplos etiquetados, asigna una de nueve funciones a partir del contexto y de esa evidencia. Para obtener los ejemplos de Training a escala, tres modelos de lenguaje de pesos abiertos propusieron pre-etiquetas que luego se validaron con anotadores humanos en el Test. La solución se compara con modelos de lenguaje comerciales y se ofrece como aplicación web que muestra la función predicha junto con los fragmentos que la sustentan.
+La solución propuesta opera en dos etapas. Primero, para cada par formado por un artículo citante y uno citado, compara el párrafo citante con los fragmentos del texto completo del artículo citado, excluidas sus secciones de trabajos relacionados, y recupera los tres más similares; cada fragmento conserva el título de la sección de la que proviene. Después, un clasificador basado en SciBERT, ajustado con instancias etiquetadas, asigna una de nueve funciones a partir del contexto y de esa evidencia. Para obtener las instancias de Training a escala, tres modelos de lenguaje de pesos abiertos propusieron pre-etiquetas, y 5.935 instancias (el 17,0 % del dataset), entre ellas las del Test, se validaron con anotadores humanos. La solución se compara con modelos de lenguaje comerciales y se ofrece como aplicación web que muestra la función predicha junto con los fragmentos que la sustentan.
 
 Las contribuciones del trabajo son:
-- Un Test de 2.968 citas de Computer Science con nueve funciones, validado por dos grupos de anotadores y construido con un protocolo reproducible de pre-etiquetado, calibración y adjudicación.
-- Una medición controlada del aporte de los fragmentos recuperados del artículo citado a la clasificación, con las mismas instancias, partición y configuración de entrenamiento.
-- Una comparación de desempeño, costo y latencia entre un codificador científico ajustado y modelos de lenguaje comerciales, y una aplicación web que muestra al usuario la función predicha junto con la evidencia del citado que la sustenta.
+- Un dataset de 34.988 instancias de citas en Computer Science con nueve funciones, cada una vinculada al artículo citado y a sus tres fragmentos más similares: 5.935 tienen etiqueta humana de dos grupos de anotadores, entre ellas las 2.968 del Test, y el resto tiene pre-etiquetas de alta confianza de tres modelos de pesos abiertos, cuya concordancia con la validación humana se mide. Cada instancia puede reconstruirse desde unarXive mediante un identificador estable.
+- Una medición controlada de si los fragmentos recuperados del artículo citado mejoran la clasificación: dos versiones de SciBERT entrenadas con las mismas instancias y la misma configuración, que solo difieren en la información del citado que reciben, evaluadas sobre el Test con etiquetas humanas.
+- Una comparación de desempeño, costo y latencia entre SciBERT ajustado y modelos de lenguaje comerciales sin ajuste, en la que todos reciben el mismo texto de la cita y del citado, de modo que las diferencias no se deben a la información disponible.
 
 El resto del artículo se organiza así: la Sección II revisa el estado del arte; la Sección III describe datos, métodos y despliegue; la Sección IV presenta los resultados; la Sección V los discute, y la Sección VI concluye.
 
@@ -73,7 +73,7 @@ La construcción inicial tomó como artículos citantes los de cs.CV, cs.SI, cs.
 
 Como la ampliación se usó sobre todo para muestrear funciones escasas, la concentración se redujo poco: según la categoría principal de arXiv del artículo citante, cs.CV representa el 77,2 % de las 13.269 instancias de Training y Validation y el 88,4 % de las 2.968 del Test, seguido de cs.LG (8,9 % y 5,8 %) y cs.DS (6,8 % y 2,4 %); los otros cinco subcampos suman 7,1 % y 3,4 %.
 
-La limpieza eliminó fragmentos duplicados, fragmentos de menos de 15 palabras y residuos de plantillas LaTeX; los fragmentos sin sección se conservaron, porque en su mayoría son texto real de artículos cuyos encabezados no se pudieron extraer. Se exigió que el cuerpo del citado tuviera al menos 1.000 palabras, se excluyeron contextos de más de 512 tokens sin truncarlos, así como citantes en otros idiomas y autocitas del mismo identificador. Cada instancia conserva una clave estable (citante, párrafo, posición del marcador y citado) que permite reconstruir el texto exacto; esa reconstrucción se verificó en 300 de 300 casos.
+La limpieza eliminó fragmentos duplicados, fragmentos de menos de 15 palabras y residuos de plantillas LaTeX; los fragmentos sin sección se conservaron, porque en su mayoría son texto real de artículos cuyos encabezados no se pudieron extraer. Se exigió que el cuerpo del citado tuviera al menos 1.000 palabras, se excluyeron contextos de más de 512 tokens sin truncarlos, así como citantes en otros idiomas y autocitas del mismo identificador. Cada instancia es una cita concreta, identificada por una clave estable (citante, párrafo, posición del marcador y citado) que permite reconstruir el texto exacto; esa reconstrucción se verificó en 300 de 300 casos.
 
 El desbalance entre funciones es propio del fenómeno: la mayoría de las citas cumple una función de contexto (Background), mientras que funciones como Further Reading o Improvement/Modification son escasas. Por eso, además de lotes aleatorios, el pre-etiquetado incluyó lotes dirigidos por señales léxicas a las funciones escasas, de modo que el conjunto pre-etiquetado, del que salen Training, Validation y Test, no refleja la distribución natural; el Test, además, se muestreó con una cuota por función (Sección III-C).
 
@@ -123,21 +123,21 @@ Se ajustó SciBERT con una capa lineal de clasificación sobre el token `[CLS]` 
 - **Base:** `[CLS]` contexto `[SEP]` título y resumen del citado `[SEP]`.
 - **Con fragmentos:** `[CLS]` contexto `[SEP]` tres fragmentos Top-3, cada uno precedido por su sección `[SEP]`.
 
-Como SciBERT admite 512 tokens, el contexto se limita a 192 tokens centrados en la cita objetivo y el resto se asigna al citado: hasta 64 tokens para el título en la configuración base y hasta 24 para cada encabezado de sección en la de fragmentos, recortando cada segmento desde el final y redistribuyendo el espacio no usado. La pérdida es la entropía cruzada sin pesos por clase. [[A4-4: justificación en una frase]] Los hiperparámetros de cada configuración se eligieron por separado mediante una búsqueda en rejilla sobre la tasa de aprendizaje y el decaimiento de pesos (12 ensayos en total) [[A4-3: valores de la rejilla]], y la configuración elegida se repitió con tres semillas (42, 17 y 73) para medir su estabilidad; el modelo principal es el de semilla 42 y el mejor punto de control de cada ensayo se eligió por F1 macro en Validation (Tabla IV). Como Validation combina pre-etiquetas (92,4 %) y etiquetas humanas (7,6 %) y se usó para tomar estas decisiones, sus métricas son optimistas; la evaluación sin sesgo es la del Test, que se usa una sola vez con los modelos ya congelados.
+Como SciBERT admite 512 tokens, el contexto se limita a 192 tokens centrados en la cita objetivo y el resto se asigna al citado: hasta 64 tokens para el título en la configuración base y hasta 24 para cada encabezado de sección en la de fragmentos, recortando cada segmento desde el final y redistribuyendo el espacio no usado. Se probaron también límites de 128 y 256 tokens para el contexto, que no mejoraron el resultado en Validation. La pérdida es la entropía cruzada sin pesos por clase: se probaron dos esquemas de pesos para compensar el desbalance (raíz de la frecuencia inversa y frecuencia inversa limitada), y ninguno superó en Validation al entrenamiento sin pesos (Sección IV-B). Los hiperparámetros de cada configuración se eligieron por separado mediante una búsqueda en rejilla sobre la tasa de aprendizaje (1e-5, 2e-5 y 3e-5) y el decaimiento de pesos (0,01 y 0,1), 12 ensayos entre las dos configuraciones, y cada alternativa se repitió con tres semillas (42, 17 y 73) para comparar condiciones por su media y no por una sola corrida. Las dos configuraciones eligieron los mismos valores (Tabla IV). El modelo final de cada una es el de semilla 42, y su mejor punto de control se eligió por F1 macro en Validation: la época 5 en la base y la 7 con fragmentos. Como Validation combina pre-etiquetas (92,4 %) y etiquetas humanas (7,6 %) y se usó para tomar estas decisiones, sus métricas son optimistas; la evaluación sin sesgo es la del Test, que se usa una sola vez con los modelos ya congelados.
 
 **TABLA IV.** Configuración de entrenamiento.
 
 | Parámetro | Valor |
 |---|---|
 | Modelo | `allenai/scibert_scivocab_uncased` |
-| Longitud máxima | 512 tokens (contexto ≤ 192) |
-| Tasa de aprendizaje | 2e-5 (base) · 3e-5 (fragmentos), elegidas en Validation |
-| Decaimiento de pesos | 0,1 (base) · 0,01 (fragmentos), elegidos en Validation |
-| Épocas | Hasta 8, parada temprana con paciencia 2 |
+| Longitud máxima | 512 tokens (contexto ≤ 192; se probaron 128 y 256) |
+| Tasa de aprendizaje | 3e-5 en ambas configuraciones, elegida en Validation |
+| Decaimiento de pesos | 0,1 en ambas configuraciones, elegido en Validation |
+| Épocas | Hasta 12, parada temprana con paciencia 3 (mejor época: 5 en la base, 7 con fragmentos) |
 | Lote efectivo | 32 (16 × acumulación 2) |
 | Optimizador | AdamW, calentamiento 10 %, decaimiento lineal de la tasa |
-| Pérdida | Entropía cruzada sin pesos por clase |
-| Precisión y hardware | BF16, GPU A100 (Colab) |
+| Pérdida | Entropía cruzada sin pesos por clase (se probaron dos esquemas de pesos) |
+| Precisión y hardware | Entrenamiento en BF16; evaluación en FP32; GPU A100 de 40 GB (Colab) |
 | Semillas | 42 (modelo principal), 17 y 73 |
 
 ### E. Modelos de lenguaje comerciales
@@ -167,7 +167,7 @@ Se reportan precisión, exhaustividad y F1 por función, sus promedios macro y m
 
 $$F1_{macro} = \frac{1}{K}\sum_{k=1}^{K}\frac{2P_kR_k}{P_k+R_k} \qquad (2)$$
 
-La diferencia entre las dos configuraciones de SciBERT se acompaña de un intervalo de confianza del 95 % obtenido por *bootstrap* pareado por artículo citante. La eficiencia se mide con el costo (horas de GPU o tokens facturados), la latencia por ejemplo y la tasa de respuestas con formato inválido.
+La diferencia entre las dos configuraciones de SciBERT se acompaña de un intervalo de confianza del 95 % obtenido por *bootstrap* pareado por artículo citante. La eficiencia se mide con el costo (horas de GPU o tokens facturados), la latencia por instancia y la tasa de respuestas con formato inválido.
 
 ### H. Despliegue
 
@@ -208,18 +208,18 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 ### B. Desempeño de clasificación (H6–H8)
 
-**TABLA VII.** Resultados sobre el Test. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A4-2, A5-3; consolida GR en A6]]
+**TABLA VII.** Resultados sobre el Test. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A5-3; consolida GR en A6]]
 
 | Modelo | Precisión macro | Exhaustividad macro | F1 macro | F1 micro |
 |---|---:|---:|---:|---:|
-| SciBERT base | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
-| SciBERT con fragmentos | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
+| SciBERT base | 0,818 | 0,793 | 0,797 | 0,792 |
+| SciBERT con fragmentos | 0,822 | 0,798 | 0,800 | 0,795 |
 | [[A5-1: modelo 1]] · título y resumen (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 1]] · fragmentos (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 2]] · título y resumen (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 2]] · fragmentos (condición principal) | [[ ]] | [[ ]] | [[ ]] | [[ ]] |
 
-[[A4-2: diferencia de F1 macro entre fragmentos y base con IC 95 %; media y desviación del F1 macro de las tres semillas.]]
+Sobre el Test, la configuración con fragmentos superó a la base en 0,003 de F1 macro (0,800 frente a 0,797). El intervalo de confianza del 95 % de esa diferencia, obtenido con 2.000 remuestreos pareados por artículo citante (2.764 artículos), va de −0,008 a 0,014 e incluye el cero: los datos no muestran que los fragmentos mejoren el clasificador, pero tampoco que ambas entradas sean equivalentes (H6). En Validation, la media de las tres semillas fue 0,833 (desviación estándar 0,002) en la base y 0,826 (0,004) con fragmentos, y los modelos elegidos obtuvieron 0,830 en ambas configuraciones. Ninguna alternativa probada superó esa configuración: con 128 o 256 tokens de contexto, o con pérdida ponderada, la media de tres semillas quedó entre 0,815 y 0,833. Las cifras de Validation y Test no son directamente comparables, porque Validation se mide sobre pre-etiquetas en su mayoría y conserva el predominio de Background, mientras que el Test tiene etiquetas humanas y una cuota por función.
 
 [[Fig. 3 · gráfica de barras agrupadas: F1 por función (eje x, nueve funciones) para SciBERT base, SciBERT con fragmentos y la condición principal de cada modelo comercial con cada tipo de información del citado, con una línea horizontal en el F1 macro de cada uno; consolida GR en A6]]
 
@@ -227,16 +227,16 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 **Fig. 4.** Matrices de confusión de SciBERT con fragmentos y de la condición principal con fragmentos de cada modelo comercial. *Fuente: elaboración propia.* [[ ]]
 
-[[Funciones más confundidas y lectura de H6, H7 y H8.]]
+En ambas configuraciones de SciBERT el error dominante es predecir Background: 233 instancias del Test en la base y 248 con fragmentos se asignaron por error a esa función, lo que deja su precisión en 0,53 y su F1 (0,64 y 0,65) como el más bajo de las nueve. Las confusiones más frecuentes son Evidence → Background (59 en la base y 76 con fragmentos), Improvement/Modification → Basis (60 y 50), Gap → Background (48 y 49) y Evidence → Gap (45 y 47). Con fragmentos, el F1 sube en seis funciones, sobre todo en Further Reading (de 0,920 a 0,943), Basis (de 0,798 a 0,818) e Improvement/Modification (de 0,744 a 0,765), y baja en Evidence (de 0,756 a 0,728), Comparison (de 0,824 a 0,794) y Gap (de 0,776 a 0,772); estas diferencias por función son descriptivas y no se sometieron a prueba por separado. [[Lectura de H7 y H8 · A5]]
 
 ### C. Eficiencia, latencia y costo (H7)
 
-**TABLA VIII.** Costo y latencia por modelo. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A7-1, A7-2, A5-3, A7-3]]
+**TABLA VIII.** Costo y latencia por modelo. Training: horas de GPU A100 del entrenamiento del modelo final, sin incluir la búsqueda de hiperparámetros. Latencia de SciBERT: promedio por instancia en lotes de 32 sobre una A100, con tokenización e inferencia, sin la recuperación del Top-3. Las ocho condiciones de cada modelo comercial están en la TABLA X (Apéndice C). [[A7-1, A5-3, A7-3]]
 
-| Modelo | Training | Costo por 1.000 ejemplos | Latencia (s/ejemplo) | Formato inválido |
+| Modelo | Training | Costo por 1.000 instancias | Latencia (s/instancia) | Formato inválido |
 |---|---:|---:|---:|---:|
-| SciBERT base | [[h GPU]] | [[ ]] | [[ ]] | — |
-| SciBERT con fragmentos | [[h GPU]] | [[ ]] | [[ ]] | — |
+| SciBERT base | 0,26 h | [[ ]] | 0,0088 | — |
+| SciBERT con fragmentos | 0,35 h | [[ ]] | 0,0106 | — |
 | [[A5-1: modelo 1]] · título y resumen (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 1]] · fragmentos (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
 | [[A5-1: modelo 2]] · título y resumen (condición principal) | — | [[ ]] | [[ ]] | [[ ]] |
@@ -244,7 +244,7 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 ### D. Análisis cualitativo y aplicación
 
-[[A4-5, A5-4: errores representativos; contexto, etiqueta de referencia, predicción y causa.]]
+Dos errores de SciBERT ilustran las confusiones más frecuentes; en ambos fallan las dos configuraciones. En el primero, el citante afirma que "CNNs [...] have been shown to outperform Deformable Part Model (DPM) based methods for recognition tasks" y cita el trabajo como respaldo de esa afirmación (Evidence), pero ambos modelos predicen Background, posiblemente porque la cita aparece en una enumeración de trabajos dentro de una frase general. En el segundo, el citante declara: "Inspired by the success of convolutional-deconvolutional network (CNN-DecNN) in semantic segmentation [...], we adapt the network to detect salient objects"; la adaptación del método citado corresponde a Improvement/Modification, pero ambos modelos predicen Basis, la confusión más frecuente de esa función, que también concentró las correcciones de los anotadores (Sección IV-A). [[A4-5: validar la lectura de los dos errores con ST · GR]] [[A5-4]]
 
 **Fig. 5.** Aplicación desplegada con un ejemplo real. *Fuente: elaboración propia.* [[D-3]]
 
@@ -258,7 +258,9 @@ Los jueces de mayor tamaño superaron con claridad a los pequeños (H1), y la ve
 
 [[Respuesta a H1–H8, una frase cada una: aceptada, rechazada o no concluyente.]]
 
-[[Aporte de los fragmentos: contrastar H5 (sin mejora neta en los jueces) con H6 en el clasificador. La entrada con fragmentos recorta evidencia del citado en cerca del 91 % de las instancias por el límite de 512 tokens, frente a un 5 % en la configuración base.]]
+**Aporte de los fragmentos.** Los fragmentos recuperados no produjeron una mejora clara ni en los jueces (H5) ni en el clasificador (H6): la diferencia en el Test fue de 0,003 de F1 macro, con un intervalo que incluye el cero. Una explicación compatible con los datos es el límite de 512 tokens: con fragmentos, el texto del citado se recorta en el 89,8 % de las instancias del Test, frente al 5,0 % en la configuración base, de modo que el modelo ve solo parte de la evidencia recuperada. El efecto depende de la función: los fragmentos ayudan en Further Reading, Basis e Improvement/Modification y perjudican en Evidence y Comparison. El diseño no permite atribuir estas diferencias a una causa concreta. [[GR: revisar redacción; contrastar con H8 cuando lleguen los resultados de A5]]
+
+[[Sesgo hacia Background: es el 43,1 % de Training, pero solo el 11,1 % del Test, que se muestreó con una cuota por función; el modelo lo predice en exceso (precisión de 0,53). Decidir si va en la Discusión o en Limitaciones · GR]]
 
 [[Codificador frente a modelos comerciales: desempeño y costo; diferencias entre los modelos comerciales; si los fragmentos ayudan también a esos modelos (H8).]]
 
@@ -282,7 +284,7 @@ Como trabajo futuro se plantea evaluar con anotadores la relevancia de los fragm
 
 **Apéndice B.** Repositorios y aplicación desplegada: [[D-5]]
 
-**Apéndice C.** **TABLA X.** Precisión, exhaustividad, F1 macro y micro, costo por 1.000 ejemplos, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre el Test. [[A5-3, A6, A7]]
+**Apéndice C.** **TABLA X.** Precisión, exhaustividad, F1 macro y micro, costo por 1.000 instancias, latencia y tasa de respuestas inválidas de las ocho condiciones de cada modelo comercial sobre el Test. [[A5-3, A6, A7]]
 
 ## Declaración de uso de IA
 
