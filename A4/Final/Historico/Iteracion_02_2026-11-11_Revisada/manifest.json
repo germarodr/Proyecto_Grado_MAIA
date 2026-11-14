@@ -1,0 +1,15 @@
+{
+  "iteration": 2,
+  "revision": "conclusions_and_output_review",
+  "study_id": "g15_scibert_final_v2_top1_02",
+  "date": "2026-11-11",
+  "timezone": "America/Bogota",
+  "tracking_snapshot": "20261112T001120318089Z_0f8d76df",
+  "files": {
+    "conclusiones.md": "334de63ab127f410be4655cd582958ae8534041e3c9f6eb69d8c0901179a3758",
+    "img/LOGO-UNIANDES.png": "b8f0bb8f7b3bc76a100005d38fad687967a1c2ee588f72dd6d8700c559c9793b",
+    "README.md": "69121834b0349906ec1892b8212e1f05429f2463aac79f76cf8d4d622e0edf06",
+    "SciBERT_Entrenamiento_Final.ipynb": "6a499e0c0f462d80093d5268c79b93ee2a530649ab135934cc43c4162110b05f",
+    "validation_review.json": "057601c3e0a414a8ccf07ef6e90d72fa9699d605440fe7d98a9649c058f7da8c"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "prepared_date": "2026-11-13",
+  "test_scored": false,
+  "real_selected_models_inference_executed": false,
+  "verified_test_input_rows": 2968,
+  "validation_checks": {
+    "standalone_notebook_and_frozen_scope": "passed",
+    "real_gold_reconstruction_and_document_isolation": "passed",
+    "paired_bootstrap_and_three_paragraph_conclusions": "passed",
+    "validation_reference_bound_to_selected_export": "passed",
+    "cpu_inference_shards_resume_and_corruption": "passed",
+    "reports_figures_and_error_examples": "passed"
+  },
+  "fixture_inference": "random tiny BERT on CPU, not final SciBERT weights",
+  "files": {
+    "SciBERT_Evaluacion_Final.ipynb": "7bd0c105b7ff7a2193431ec8bedd560bd5d486841f2b8ddcadc75ee8cb2e23bf",
+    "crear_notebook.py": "35064b3a9e6997c5b93b828d36221b3f7f11f65ae707941c484abac6cb3a9b58",
+    "evaluacion_runtime.py": "ba40bd3c9fcbe576b3395fd7e745466c5bc2efc49693ef455fb3956264582a7e",
+    "seleccion_congelada.json": "8ed12d41b3aa714054edb5221c6368ee919ef712759ccb97e806fec66e2fd0a1",
+    "verificar_evaluacion.py": "015df51d4c0b24cf1015897311260594ff8175f39bff54c4aee5b44aa883f72a",
+    "requirements.txt": "63be791288d63856ae8e6861e002e8c126deecc7a89752abbc18179f37e61913",
+    "README.md": "0fea90cc36deecb29934947b8fb03cc852fbc47e8632e7e1f4b4e38ee49b580b"
+  }
+}

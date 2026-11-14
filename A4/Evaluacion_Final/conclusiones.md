@@ -1,0 +1,5 @@
+Evaluamos los dos modelos congelados sobre **2,968 citas con referencia humana**. Base obtuvo F1 macro **0.7967** y micro **0.7921**; Top-3 obtuvo **0.8000** y **0.7948**, respectivamente. La diferencia Top-3 − base fue **+0.32 puntos porcentuales**, con IC 95 % por bootstrap pareado por artículo citante **[-0.75; +1.39]**. El intervalo incluye cero; no establece una ventaja clara de una entrada sobre la otra.
+
+En Improvement/Modification, con 268 ejemplos de test, el F1 fue **0.7440** para base y **0.7647** para Top-3. Las matrices y los reportes permiten distinguir las confusiones por categoría. Esta clase tuvo solo 140 ejemplos de entrenamiento; su resultado no elimina la limitación de representación.
+
+Los mismos modelos habían obtenido F1 macro de validación interna 0.8303 y 0.8301. Esa validación tenía 125 etiquetas humanas y 1.528 automáticas: la diferencia con el test no demuestra por sí sola una mejora o deterioro. Conservamos los modelos, el recorte a 512 tokens y la separación por documento; el test no se utilizó para ajustar parámetros. Los resultados se limitan al conjunto evaluado y sus criterios de selección.

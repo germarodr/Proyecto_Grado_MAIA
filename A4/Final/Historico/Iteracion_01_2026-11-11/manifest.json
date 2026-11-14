@@ -1,0 +1,12 @@
+{
+  "iteration": 1,
+  "study_id": "g15_scibert_final_v2_grid_01",
+  "date": "2026-11-11",
+  "files": {
+    "conclusiones.md": "bf34ecc9d2425d1de356f148dde484722c70fb43a9d54c1eb47cc9316a21dbde",
+    "img/LOGO-UNIANDES.png": "b8f0bb8f7b3bc76a100005d38fad687967a1c2ee588f72dd6d8700c559c9793b",
+    "README.md": "05dd64315606c7f41ce9f6ec9571d8e0245c8464ba2917df12158a19c2b1cd24",
+    "SciBERT_Entrenamiento_Final.ipynb": "9de26eba5170337a324e7c70962ae1901486759e0ebb11292c74ab74b2eee373",
+    "Verificacion_Ejecucion.json": "d6c3f806dbd518c2e2480e9dbb3c32529c3c3b885f5b97efca05c28e486cc20d"
+  }
+}
