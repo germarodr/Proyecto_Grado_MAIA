@@ -26,3 +26,7 @@ Informes/Informe Final/Insumos/a3/demo_examples/*
 !Informes/Informe Final/Insumos/a3/demo_examples/manifest_examples_TB.json
 !Informes/Informe Final/Insumos/a3/demo_examples/README.md
 A5/Notebook_Explain.md
+
+# Borrador de Word y tablas generadas (locales, no se publican)
+Informes/Informe Final/*.docx
+Informes/Informe Final/Insumos/tablas/
