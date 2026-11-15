@@ -1,0 +1,14 @@
+{
+  "purpose": "Gemini isolated development; no API calls",
+  "helper_sha256": {
+    "a5_runtime.py": "eb172205581ffe1f3db2b253dd2a77ec88aed447d607315e415fb56b101bc448",
+    "a5_drive.py": "236fdcb6a60c4dd46583b84161c949b03ce0d886b131852715eff94b45de05b2",
+    "a5_alignment.py": "95cb10280a5f3e47bc4558861f28a6c25593b9ea4e0a45c40b70a7d62854bc54",
+    "a5_providers.py": "337a7ca6216595df0ecd86d466a9507b7edcdef49c363f1efb73d7ff2c686c90",
+    "a5_tracking.py": "b2635e564d17e1f3b05500eb1b0633aae9f8aaa69ac04acba6a6b04c1603164b",
+    "prompt_v11_1_snapshot.json": "997b5c28a33c6a16568ee3ab8e4f03789dd54c27a375d02652c88d2b9a7c2206"
+  },
+  "source": "A5 helpers copied without modifying originals",
+  "private_drive_root": "/content/drive/MyDrive/MAIA_TESIS/A5/Gemini",
+  "shared_tracking_import": "A5/tracking/snapshots; sequential registration only"
+}

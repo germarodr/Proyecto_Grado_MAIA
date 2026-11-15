@@ -1,0 +1,9 @@
+data/
+prepared/
+outputs/
+tracking/
+__pycache__/
+.ipynb_checkpoints/
+.env
+.env.*
+*.log

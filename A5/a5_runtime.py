@@ -23,7 +23,7 @@ LABELS = ["Background", "Gap", "Basis", "Comparison", "Application",
           "Improvement/Modification", "Evidence", "Identification of the Originator",
           "Further Reading"]
 INVALID = "__invalid__"
-VERSION = "a5-base-only-v4"
+VERSION = "a5-base-only-v5"
 
 
 def utcnow():
@@ -380,7 +380,10 @@ def check_api_config(cfg, bundle):
         a5_providers.validate_config(cfg)
     if cfg["output_token_parameter"] not in ("max_completion_tokens", "max_tokens"):
         raise ValueError("Parámetro de tokens no soportado por este adaptador")
-    for k in ("budget_usd", "reserve_per_attempt_usd", "input_usd_per_million", "output_usd_per_million", "timeout_seconds"):
+    budget = cfg["budget_usd"]
+    if budget is not None and (isinstance(budget, bool) or not isinstance(budget, (int, float)) or not math.isfinite(budget) or budget <= 0):
+        raise ValueError("budget_usd debe ser positivo o None para no aplicar tope local")
+    for k in ("reserve_per_attempt_usd", "input_usd_per_million", "output_usd_per_million", "timeout_seconds"):
         v = cfg[k]
         if isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v <= 0:
             raise ValueError(f"Configura valor positivo para {k}")
@@ -467,6 +470,48 @@ def ledger_status(events, cfg):
     return {"estimated_known_cost_usd": estimated, "unknown_cost_attempts": unknown, "reserved_usd": reserved}
 
 
+def failure_policy(result):
+    """Distingue rechazos de saldo/cuota, errores de servicio e intentos inciertos."""
+    if result["ok"]:
+        return None
+    try:
+        error = json.loads(result.get("raw_body") or "{}").get("error", {})
+        codes = {str(error.get("code", "")).lower(), str(error.get("type", "")).lower()}
+    except (ValueError, TypeError, AttributeError):
+        codes = set()
+    billing = {"credit_balance_exhausted", "insufficient_quota", "billing_hard_limit_reached",
+               "organization_spend_limit_exceeded", "project_spend_limit_exceeded",
+               "organization_usage_limit_exceeded"}
+    if codes & billing:
+        return {"reason": "provider_balance_or_quota", "automatic_retry": False,
+                "retryable_on_resume": True, "requires_review": False}
+    status = result.get("status_code")
+    if status is None or status == 408:
+        return {"reason": "uncertain_response", "automatic_retry": False,
+                "retryable_on_resume": False, "requires_review": True}
+    return {"reason": "service_or_rate_limit" if status in (429, 500, 502, 503, 504) else "provider_configuration",
+            "automatic_retry": status in (429, 500, 502, 503, 504),
+            "retryable_on_resume": True, "requires_review": False}
+
+
+def save_progress(root, plan, terminal, events, cfg, status, reason=None):
+    report = {"status": status, "reason": reason, "run_id": cfg["run_id"], "updated_at": utcnow(),
+              "total_requests": len(plan["tasks"]), "completed_requests": len(terminal),
+              "pending_requests": len(plan["tasks"]) - len(terminal),
+              "ledger": ledger_status(events, cfg), "resume_same_run_id": True}
+    write_json(Path(root) / "progress.json", report)
+    return report
+
+
+def release_stale_run_lock(output_dir, run_id, *, confirm_no_active_writer=False):
+    """Solo para una sesión Colab muerta, tras confirmar que ningún proceso sigue activo."""
+    if not confirm_no_active_writer:
+        raise ValueError("Primero confirma que no existe otra sesión ejecutando este mismo run")
+    if Path(run_id).name != run_id or run_id in {"", ".", ".."}:
+        raise ValueError("RUN_ID inválido")
+    (Path(output_dir) / run_id / "RUNNING.lock").unlink(missing_ok=True)
+
+
 def run_experiment(cfg, bundle, plan, snapshot, token=None, transport=None):
     """Sin enable_api: solo genera manifiesto/plan. Demo: respuestas simuladas explícitas."""
     if cfg["demo"] != bundle["synthetic"]:
@@ -516,22 +561,25 @@ def run_experiment(cfg, bundle, plan, snapshot, token=None, transport=None):
         events = read_jsonl(journal) if journal.exists() else []
         starts = {(e["request_key"], e["attempt"]) for e in events if e["event"] == "start"}
         ends = {(e["request_key"], e["attempt"]) for e in events if e["event"] == "outcome"}
-        if starts - ends:
-            raise RuntimeError("Intento sin desenlace: revisar proveedor/facturación. No se reenvía automáticamente; usar un run_id nuevo tras resolverlo.")
         terminal = {e["request_key"]: e for e in events if e["event"] == "outcome" and e["terminal"]}
+        if starts - ends or any(e.get("requires_review") for e in events if e["event"] == "outcome"):
+            save_progress(root, plan, terminal, events, cfg, "paused", "uncertain_response")
+            raise RuntimeError("Intento sin desenlace confirmado: revisar proveedor/facturación. No se reenvía automáticamente; conserva RUN_ID y el diario para resolverlo sin repetir el resto.")
+        save_progress(root, plan, terminal, events, cfg, "running")
         for task in plan["tasks"]:
             key = task["request_key"]
             if key in terminal:
                 continue
             prior = [e for e in events if e["request_key"] == key and e["event"] == "outcome"]
-            if len(prior) > cfg["max_retries"]:
-                raise RuntimeError("Diario inconsistente: demasiados intentos")
             payload = payload_for(task, cfg)
-            for attempt in range(len(prior) + 1, cfg["max_retries"] + 2):
-                if paid:
+            last_attempt = max((e["attempt"] for e in prior), default=0)
+            for retry_index in range(cfg["max_retries"] + 1):
+                attempt = last_attempt + retry_index + 1
+                if paid and cfg["budget_usd"] is not None:
                     ledger = ledger_status(events, cfg)
                     if ledger["reserved_usd"] + cfg["reserve_per_attempt_usd"] > cfg["budget_usd"] + 1e-12:
                         write_json(root / "budget_status.json", ledger)
+                        save_progress(root, plan, terminal, events, cfg, "paused", "local_budget")
                         raise RuntimeError("Tope local de reserva alcanzado; revisar costo y presupuesto antes de continuar")
                 start_event = {"event": "start", "request_key": key, "attempt": attempt, "at": utcnow()}
                 append_event(journal, start_event); events.append(start_event)
@@ -544,17 +592,33 @@ def run_experiment(cfg, bundle, plan, snapshot, token=None, transport=None):
                 else:
                     result = (transport or http_call)(payload, cfg, token)
                 parsed = unpack_response(result, cfg)
-                transient = (not result["ok"]) and (result["status_code"] in (408, 429, 500, 502, 503, 504) or result["status_code"] is None)
-                is_terminal = not transient or attempt > cfg["max_retries"]
+                policy = failure_policy(result)
+                retry_now = bool(policy and policy["automatic_retry"] and retry_index < cfg["max_retries"])
+                # Una respuesta del modelo, incluso inválida, queda como resultado definitivo.
+                # Un rechazo HTTP de saldo o de servicio no es una predicción inválida.
+                is_terminal = bool(result["ok"])
+                if policy and policy["reason"] == "provider_balance_or_quota" and not parsed["cost_known"]:
+                    # Solicitud rechazada antes de inferencia: no se consumieron tokens de modelo.
+                    parsed.update(cost_known=True, estimated_cost_usd=0.0)
                 event = {"event": "outcome", "request_key": key, "attempt": attempt, "at": utcnow(),
                          "terminal": is_terminal, "result": result, "parsed": parsed}
+                if policy:
+                    event.update(policy)
                 append_event(journal, event); events.append(event)
                 if is_terminal:
                     terminal[key] = event
-                if paid and (not result["ok"] and not transient):
-                    raise RuntimeError(f"Error HTTP permanente {result['status_code']}; revisar configuración antes de gastar en otros casos")
-                if paid and parsed["cost_known"] and parsed["estimated_cost_usd"] > cfg["reserve_per_attempt_usd"]:
-                    raise RuntimeError("Costo estimado por intento superó la reserva: detenido. Cambiar presupuesto exige un nuevo run_id")
+                if policy and not retry_now:
+                    save_progress(root, plan, terminal, events, cfg, "paused", policy["reason"])
+                    if policy["requires_review"]:
+                        raise RuntimeError("Respuesta incierta: se guardó el avance. No se reenvía este intento sin revisar proveedor/facturación.")
+                    raise RuntimeError("Ejecución pausada: " + policy["reason"] + ". Corrige saldo, cuota o acceso y reejecuta con el mismo RUN_ID y configuración; se omiten respuestas ya guardadas.")
+                if paid and cfg["budget_usd"] is not None and parsed["cost_known"] and parsed["estimated_cost_usd"] > cfg["reserve_per_attempt_usd"]:
+                    save_progress(root, plan, terminal, events, cfg, "paused", "attempt_cost_exceeds_reserve")
+                    raise RuntimeError("Costo estimado por intento superó la reserva: detenido para revisar presupuesto")
+                if len(terminal) % 100 == 0 or not is_terminal:
+                    save_progress(root, plan, terminal, events, cfg, "running")
+                if is_terminal and len(terminal) % 100 == 0:
+                    print(f"Progreso: {len(terminal)}/{len(plan['tasks'])} solicitudes guardadas")
                 if is_terminal:
                     break
                 time.sleep(min(60, 2 ** (attempt - 1)))
@@ -574,6 +638,7 @@ def run_experiment(cfg, bundle, plan, snapshot, token=None, transport=None):
                    "records": len(predictions), "invalid": sum(not p["valid"] for p in predictions),
                    "ledger": ledger_status(events, cfg), "completed_at": utcnow()}
         write_json(root / "run_summary.json", summary)
+        save_progress(root, plan, terminal, events, cfg, "completed")
         return {**summary, "predictions": predictions}
     finally:
         lock.unlink(missing_ok=True)

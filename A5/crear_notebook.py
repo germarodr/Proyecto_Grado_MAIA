@@ -16,7 +16,7 @@ CELLS.append({"cell_type": "markdown", "metadata": {}, "source": """# A5 · Mode
 
 Este notebook usa únicamente **contexto de cita + título + resumen del artículo citado**. Compara instrucciones genéricas/específicas y zero-shot/few-shot: cuatro condiciones por modelo comercial. Se basa en el prompt v11.1 del equipo y lo adapta a nueve puntuaciones. No utiliza chunks ni Top-3.
 
-**Primera ejecución:** mantén `DEMO=True` y `ENABLE_API=False`. Se usarán textos inventados y respuestas simuladas para comprobar el flujo. Sus métricas no son resultados científicos ni provienen de un modelo.
+**Estado actual:** preparación de la evaluación final de Luna en T_B, con `ENABLE_API=False`. Revisar el plan no envía solicitudes. Para una demo de software coloca `FINAL_TEST_MODE=False`; se usarán textos inventados y respuestas simuladas sin valor científico.
 
 En Colab se monta Drive, el bloque 3.1 reconstruye T_B y el bloque 3.2 prepara el recorte equivalente a **SciBERT base** y candidatos humanos para desarrollo/few-shot. Guarda archivos privados en `MAIA_TESIS/A5/prepared`, sin inferir. Estos pasos son independientes de DEMO: la inferencia posterior sigue siendo sintética hasta configurarla explícitamente.
 
@@ -73,8 +73,9 @@ print("Módulo:", a5.VERSION, "| prompt:", snapshot["version"])
 ''')
 
 block("3. Señalar los archivos de datos", "Configura origen compartido y destino privado. El gold A3 ya está adjudicado; el bloque 3.1 lo verifica por manifiesto. Las rutas de desarrollo y few-shot siguen siendo independientes del test.", r'''
-DEMO = True  # AQUÍ: False cuando tengas los JSONL reales. Demo nunca consume API.
-SPLIT = "dev"  # AQUÍ: "dev" para piloto; "test" únicamente para evaluación final.
+FINAL_TEST_MODE = True  # AQUÍ: preparación final autorizada; para demo cambia a False.
+DEMO = not FINAL_TEST_MODE  # Para repetir un piloto real: FINAL_TEST_MODE=False y DEMO=False.
+SPLIT = "test" if FINAL_TEST_MODE else "dev"
 # AQUÍ: el enlace identifica el origen; se accede mediante Drive montado, no como descarga pública.
 SHARED_FOLDER_URL = "https://drive.google.com/drive/u/0/folders/11RYKPpKDissDfgVTvdXWLJekbZabRK1U"
 SHARED_DATA_ROOT = Path("/content/drive/MyDrive/MAIA_PROYECTO")  # AQUÍ: acceso directo compartido, SOLO LECTURA.
@@ -88,7 +89,7 @@ EXPECTED_A3_MANIFEST_SHA256 = a5_drive.EXPECTED_METRICS_SHA256  # Huella usada p
 PREPARE_ALIGNED_DATA = PREPARE_DRIVE_DATA  # AQUÍ: True para ejecutar el bloque 3.2 después del 3.1.
 PILOT_PER_CLASS = 5  # AQUÍ: 5 por función = 45 casos T_A, separados del banco few-shot y T_B.
 DEVELOPMENT_SELECTION_SEED = "G15-A5-fewshot-v1"  # AQUÍ: fijar antes de consultar resultados.
-FEWSHOT_REVIEWED = False  # AQUÍ: True SOLO tras revisar los nueve candidatos; bloquea API few-shot si False.
+FEWSHOT_REVIEWED = True  # Banco fijo de nueve ejemplos ya revisado; volver a False si cambia.
 DEVELOPMENT_EXCLUDED_KEYS = [
     "2211.09791|48|203-252|1809.04427",  # MOT17: el recurso mencionado no coincide con título/resumen citados.
 ]  # Exclusión del banco y piloto; no cambia el gold ni elimina casos de T_B.
@@ -105,8 +106,8 @@ PATHS = {
 DATASET_VERSION = "training_v2+A3_gold_2026-11-09"  # AQUÍ: verificar con el manifiesto de la entrega final.
 GUIDE_VERSION = "rev3.1"
 VARIANT = "V2"  # AQUÍ: la entrega final recibida de Sebastián usa aislamiento V2.
-GOLD_FINAL = False  # AQUÍ: True solo tras cerrar adjudicación, reservas y exclusiones.
-PROTOCOL_FROZEN = False  # AQUÍ: True tras elegir prompts/ejemplos/modelo usando desarrollo.
+GOLD_FINAL = FINAL_TEST_MODE  # Cierre A3 verificado por manifiesto; no completar cuotas con preetiquetas.
+PROTOCOL_FROZEN = FINAL_TEST_MODE  # Luna, cuatro condiciones, mismos prompts y banco revisado del piloto.
 MIN_GOLD_PER_CLASS = 300
 QUOTA_DEVIATION_REASON = "Cierre A3 sin ola 4 acordado por G14/G15: T_B conserva 268 Improvement/Modification."
 ''')
@@ -168,7 +169,7 @@ block("4. Seleccionar proveedor, modelo y presupuesto", "PROVIDER selecciona Ope
 ENABLE_API = False  # AQUÍ: activar solo para una ejecución pagada ya preparada.
 PROVIDER = "openai"  # AQUÍ: "openai" o "gemini". Selecciona también la clave y tarifas de ese proveedor.
 OPENAI_MODEL = "gpt-6-luna"  # AQUÍ: gpt-6-luna o gpt-6.1-sol; selecciona juntas sus tarifas.
-RUN_STAGE = "piloto45"  # AQUÍ: conexion, piloto45 o test. No cambia SPLIT ni autoriza usar T_B.
+RUN_STAGE = "test" if FINAL_TEST_MODE else "piloto45"
 RUN_SEQUENCE = "01"  # AQUÍ: secuencia NUEVA; nunca reutilices nombres de pruebas ya terminadas.
 if OPENAI_MODEL not in a5_providers.OPENAI_MODELS:
     raise ValueError("Modelo OpenAI sin perfil de tarifas: revisa OPENAI_MODEL antes de continuar.")
@@ -192,7 +193,7 @@ OUTPUT_TOKEN_PARAMETER = provider_profile["output_token_parameter"]
 RESPONSE_FORMAT = "json_object"  # AQUÍ: "none", "json_object" o "json_schema", según soporte.
 EXTRA_BODY = {}  # AQUÍ: parámetros públicos adicionales admitidos por el modelo. Nunca credenciales.
 
-BUDGET_USD = 0.50 if MODEL_ID == "gpt-6-luna" else 0.0  # AQUÍ: presupuesto local, no precio garantizado del piloto.
+BUDGET_USD = None  # AQUÍ: None = sin tope local de gasto, según lo autorizado. No activa recargas del proveedor.
 RESERVE_PER_ATTEMPT_USD = 0.01 if MODEL_ID == "gpt-6-luna" else 0.0  # AQUÍ: reserva antes de cada intento.
 INPUT_USD_PER_MILLION = provider_settings["input_usd"]
 OUTPUT_USD_PER_MILLION = provider_settings["output_usd"]
@@ -235,7 +236,7 @@ SHOTS = ["zero", "few"]
 ALIGNED_INPUTS = aligned_preparation is not None and not DEMO  # La demo no contiene entradas SciBERT reales.
 INPUT_POLICY_VERSION = aligned_preparation["policy_version"] if ALIGNED_INPUTS else "demo-full-text"
 SEED = 42  # Controla orden de casos/condiciones; no hace determinista al modelo comercial.
-LIMIT_CASES = 45  # AQUÍ: mismo piloto de Sol, cinco por función. Siempre None en test.
+LIMIT_CASES = None if SPLIT == "test" else 45  # FIJO: test completo; nunca recortar ni muestrear T_B.
 STABILITY_CASES = 0  # AQUÍ: tamaño de submuestra predefinida; 3 solicitudes por caso/condición.
 BOOTSTRAP_REPETITIONS = 0 if DEMO else 1000  # Intervalos agrupados por artículo citante.
 
@@ -278,11 +279,15 @@ print("Solicitudes principales:", plan["primary_calls"])
 print("Solicitudes con estabilidad:", plan["total_calls"])
 print("Máximo de intentos con reintentos:", plan["max_attempts"])
 print("Máximo de bytes UTF-8 de mensajes:", plan["utf8_bytes_max"])
-print("Presupuesto local: USD", BUDGET_USD, "| reserva antes de cada intento: USD", RESERVE_PER_ATTEMPT_USD)
+print("Presupuesto local:", "SIN TOPE LOCAL" if BUDGET_USD is None else f"USD {BUDGET_USD}", "| reserva contable por intento: USD", RESERVE_PER_ATTEMPT_USD)
 print("Referencia si todos los intentos quedaran con costo desconocido: USD", plan["max_attempts"] * RESERVE_PER_ATTEMPT_USD)
 print("Los costos conocidos se liquidan; solo los desconocidos mantienen su reserva. No es una estimación del costo del piloto.")
-if RESERVE_PER_ATTEMPT_USD <= 0 or BUDGET_USD <= 0:
+if RESERVE_PER_ATTEMPT_USD <= 0 or (BUDGET_USD is not None and BUDGET_USD <= 0):
     print("Falta configurar presupuesto y reserva positivos antes de activar la API.")
+if SPLIT == "test" and not DEMO:
+    assert len(bundle["cases"]) == 2968, "El T_B final esperado contiene 2968 casos; revisa la entrega."
+    assert plan["primary_calls"] == 11872, "El protocolo final requiere cuatro condiciones sobre todo T_B."
+    print("Test final preparado: 2968 casos, 4 condiciones, sin consultar resultados para modificar el protocolo.")
 if ENABLE_API:
     a5.check_api_config(CFG, bundle)
     if DATASET_VERSION.startswith("REEMPLAZAR") or INPUT_POLICY_VERSION.startswith("REEMPLAZAR"):
@@ -306,7 +311,7 @@ else:
     print("No se necesita token: API desactivada.")
 ''')
 
-block("9. Preparar o ejecutar y guardar el experimento", "Con datos reales y API desactivada, guarda solo el plan y las solicitudes. En demo simula las respuestas. En modo real activado ejecuta las llamadas, registra intentos y permite reanudar sin repetir resultados terminales.", r'''
+block("9. Preparar o ejecutar y guardar el experimento", "Con datos reales y API desactivada, guarda solo el plan y las solicitudes. En modo real activado ejecuta las llamadas y registra cada intento. Si se pausa por saldo o cuota, recarga y reejecuta esta celda con el mismo RUN_ID/configuración. Tras reiniciar Colab reconstruye antes 1–8 con esos mismos valores. No cambia prompts ni repite respuestas guardadas. Un intento sin respuesta confirmada requiere revisión y no se reenvía automáticamente.", r'''
 run = a5.run_experiment(CFG, bundle, plan, snapshot, token=api_token)
 RUN_DIR = Path(run["output_dir"])
 predictions = run["predictions"]

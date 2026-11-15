@@ -247,6 +247,7 @@ class RuntimeTests(unittest.TestCase):
                 self.assertIsNone(cell["execution_count"])
                 self.assertEqual(cell["outputs"], [])
                 source = "".join(cell["source"]) if isinstance(cell["source"], list) else cell["source"]
+                source = source.replace("FINAL_TEST_MODE = True", "FINAL_TEST_MODE = False")
                 exec(compile(source, f"notebook-cell-{i}", "exec"), namespace)
                 if "DATA_DIR =" in source:
                     namespace["OUTPUT_DIR"] = Path(out)
