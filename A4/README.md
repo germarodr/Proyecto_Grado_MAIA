@@ -3,7 +3,7 @@
 **Proyecto:** clasificación de la función de citas académicas · Grupo 15.  
 **Fecha:** 29 de octubre de 2026, America/Bogota.  
 **Actualización de rutas:** 1 de noviembre de 2026.  
-**Estado:** base, Top-3, prueba Top-1 y comparación exploratoria V2 completados y evaluados en validación; el test humano permanece cerrado.
+**Versión de trabajo:** [Final/README.md](Final/README.md), segunda iteración de SciBERT: Top-1 frente a Top-3 con los mismos datos, parámetros y semillas. La primera búsqueda de parámetros, sus salidas y sus conclusiones se conservan en el [histórico](Final/Historico/README.md).
 
 Entrenaremos SciBERT en **Colab Pro con A100**, registraremos el avance con
 **MLflow y SQLite dentro de Colab** y conservaremos los respaldos en **Google Drive**.
@@ -18,6 +18,11 @@ Para continuar desde el base existente, sigue [SEGUNDA_CORRIDA.md](SEGUNDA_CORRI
 La prueba adicional Top-1 y sus resultados están en [README_TOP1.md](README_TOP1.md).
 La corrida exploratoria con aislamiento V2 y comparación frente a V0 está completada
 en [README_V2.md](README_V2.md).
+La nueva corrida con la entrega training v2 y las correcciones humanas de T_A está
+completada y documentada en [README_TRAINING_V2_GOLD.md](README_TRAINING_V2_GOLD.md).
+La fase A4 independiente de G15 está completada en [README_INDEPENDIENTE.md](README_INDEPENDIENTE.md):
+usa las preetiquetas A2 de nuestra entrega y deja preparada la prueba final humana,
+siguiendo la separación acordada para la entrega principal.
 Para revisar los 20 casos diagnósticos, sigue
 [REVISION_MANUAL_EVIDENCE_IM.md](REVISION_MANUAL_EVIDENCE_IM.md).
 No se necesita S3. El usuario dispone de 5 TB en Drive; la frecuencia de copia se

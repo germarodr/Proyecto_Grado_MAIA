@@ -1,0 +1,58 @@
+{
+  "study_id": "g15_scibert_final_v2_grid_01",
+  "grid": 12,
+  "additional_seeds": 4,
+  "exports_verified": 16,
+  "mlflow_parents_finished": 16,
+  "mlflow_attempts_finished": 16,
+  "test_scored": false,
+  "packages": {
+    "base": {
+      "archive": "/content/drive/MyDrive/MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/scibert_base_final.zip",
+      "bytes": 408776260
+    },
+    "fragmentos": {
+      "archive": "/content/drive/MyDrive/MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/scibert_fragmentos_final.zip",
+      "bytes": 408775235
+    }
+  },
+  "stability": {
+    "base": {
+      "n": 3,
+      "mean_f1": 0.8308619824236191,
+      "std_f1": 0.0007142078732363006,
+      "min_f1": 0.8303449789863898,
+      "max_f1": 0.8316769223424074
+    },
+    "fragmentos": {
+      "n": 3,
+      "mean_f1": 0.8260731305251632,
+      "std_f1": 0.001594743310644871,
+      "min_f1": 0.824963011918713,
+      "max_f1": 0.8279005630977383
+    }
+  },
+  "validation_rows": 1653,
+  "training_rows": 11616,
+  "last_tracking_snapshot": "20261111T221940871690Z_de61cc40",
+  "validation_policy": "v2_fp32",
+  "date": "2026-11-11",
+  "selected_primary": {
+    "base": {
+      "trial_id": "grid_base_lr2em05_wd0p1_s42",
+      "seed": 42,
+      "learning_rate": 2e-05,
+      "weight_decay": 0.1,
+      "best_epoch": 3,
+      "f1_macro": 0.8305640459420599
+    },
+    "fragmentos": {
+      "trial_id": "grid_fragmentos_lr3em05_wd0p01_s42",
+      "seed": 42,
+      "learning_rate": 3e-05,
+      "weight_decay": 0.01,
+      "best_epoch": 3,
+      "f1_macro": 0.8253558165590383
+    }
+  }
+}

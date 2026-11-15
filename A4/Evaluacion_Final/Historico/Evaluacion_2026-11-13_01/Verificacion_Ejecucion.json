@@ -1,0 +1,113 @@
+{
+  "execution_date": "2026-11-13",
+  "run_id": "g15_scibert_test_B_final_01",
+  "code_cells_completed": 9,
+  "execution_errors": 0,
+  "test_scored": true,
+  "data_audit": {
+    "passed": true,
+    "documents": {
+      "train": 16392,
+      "validation": 2802,
+      "test": 4485
+    },
+    "roles": "citing_and_cited",
+    "valid_rows": 2968,
+    "unclear_excluded": 2,
+    "reserved_rows": 2970,
+    "gold_sha256": "3b39f7d2eb42a47a46810b590e9ec40d0bb562c00c0c1eb958921978599af57d",
+    "test_order_sha256": "c5cefd41f4dc5cd2c166dfe2600809b66761f8d72d83ab762110a68a1946cebf",
+    "split_hashes": {
+      "train": "7636b0a0a2704c9e04a22cbb6ad9140b9fc65dc5bb8f5761f6a8b141d2fe5a02",
+      "validation": "f7b544a3f787f5a40f101f57ac4662ad49e27a9296dfdd19e5d67b50afc7223f"
+    },
+    "source_closure_sha256": "2e16a7bb6187176f4e4fcb0af876d6d70be4c4720bfb9166b6378a51bcd20bf4"
+  },
+  "reconstruction_audit": {
+    "n": 2968,
+    "batch_hashes": {
+      "pilot_random_1500": "6ec2511d1d7d354396cd082f5dcb7325ffc33a840bd50b0b32b3a92ad637ce43",
+      "pool_cue_basis": "0dadc2022f71e8b569c27583e2b7a6c3f9b181d997134133571742e4194deba2",
+      "pool_cue_cmp": "64e3fe248f6c72acffb78d1670f80b808cf2be2b50a11c5cfed5144570b016ae",
+      "pool_cue_eg": "49c3640e878b73e44a6a7221409fc77afc5649211ce09f581cf95cb48e0624f0",
+      "pool_cue_rare": "f8a768d7bc15c732097ef712ec4ec3900aa1cf3149c7cefecdb3f384f28e522b",
+      "pool_cue_yield": "0b9a3cfbca8810b4533c0630b5ae97415bc5eb4d4de470e660cd696ec0192a0d",
+      "pool_ext_cue_rare": "243e0222dfd043141d9ac8bdf3e85be5817d27e6699bc64f4dfa2a9600a47428",
+      "pool_single_7000": "c5cf38cc818c5e785a928a57b2d7535e130ad90aa72fa726f2b7c13cedc6e8e3"
+    },
+    "texts_sha256": "6ee36584b2f161c0a9aca201abdd9a9a1e8d5b6a8b1d591af18127f0f4175099",
+    "missing_sections": 74
+  },
+  "environment": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "precision": "fp32",
+    "attention": "eager",
+    "tf32": false,
+    "packages": {
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "transformers": "4.57.1",
+      "accelerate": "1.11.0",
+      "scikit-learn": "1.7.2",
+      "matplotlib": "3.10.7",
+      "safetensors": "0.6.2",
+      "mlflow": "3.17.2"
+    }
+  },
+  "metrics": {
+    "base": {
+      "n": 2968,
+      "accuracy": 0.7921159029649596,
+      "precision_macro": 0.8180641883165563,
+      "recall_macro": 0.7929702007936787,
+      "f1_macro": 0.796727798977867,
+      "precision_micro": 0.7921159029649596,
+      "recall_micro": 0.7921159029649596,
+      "f1_micro": 0.7921159029649596
+    },
+    "fragmentos": {
+      "n": 2968,
+      "accuracy": 0.7948113207547169,
+      "precision_macro": 0.822013048835148,
+      "recall_macro": 0.7980630379589734,
+      "f1_macro": 0.7999511990834441,
+      "precision_micro": 0.7948113207547169,
+      "recall_micro": 0.7948113207547169,
+      "f1_micro": 0.7948113207547169
+    }
+  },
+  "paired_test_comparison": {
+    "difference": "Top-3 minus base",
+    "metric": "f1_macro",
+    "delta": 0.00322340010557709,
+    "ci95_percentile": [
+      -0.007535624220191684,
+      0.013895142454058197
+    ],
+    "bootstrap_unit": "citing_paper_id",
+    "n_groups": 2764,
+    "n_instances": 2968,
+    "repetitions": 2000,
+    "seed": 20261113,
+    "fixed_labels": [
+      "Background",
+      "Gap",
+      "Basis",
+      "Comparison",
+      "Application",
+      "Improvement/Modification",
+      "Evidence",
+      "Identification of the Originator",
+      "Further Reading"
+    ]
+  },
+  "protocol_sha256": "10a9cefdbcd863a2d133a43e366e9003a27e9f029cb43406d981650fc7bb4bc1",
+  "drive_output": "MAIA_TESIS/a4/g15_scibert_test_B_final_01",
+  "mlflow_experiment": "G15_SciBERT_Test_Final",
+  "final_snapshot": "20261113T211318096884Z_0ff99e6a",
+  "saved_notebook_sha256": "cef13077ecb3997c48f7cdc4a65d51ff189a3b6f1e6ec1b0ac777aa4ab1699e1",
+  "scope": "Two frozen seed-42 models; no retraining or selection on final test."
+}

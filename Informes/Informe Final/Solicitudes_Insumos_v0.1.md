@@ -78,11 +78,11 @@ Dos SciBERT con las mismas instancias, partición (`G15-A4-split-v1`), semilla (
 
 | Código | Qué necesitamos | Requiere |
 |---|---|---|
-| A4-1 | ✓ **Entregado** (iteración 1 del 11-nov, FP32, semilla 42): F1 macro de validación base 0,8306 y Top-3 0,8254; Top-3 con 3 semillas 0,826 ± 0,002. Falta la media de base con 3 semillas y el F1 por función de ambos. | — |
-| A4-2 | Evaluación **única** de ambas configuraciones sobre T_B: `test_comparison.csv`, `paired_test_comparison.json` (IC 95 % bootstrap pareado por citante), `test_classification_report.json`, `test_confusion.csv/.png`, `test_cited_seen_unseen.json`, `test_predictions.csv`. | A4-1 |
-| A4-3 | *Parcial:* datos, aislamiento, partición (11.616/1.653), hiperparámetros elegidos (base 2e-5 / 0,1; Top-3 3e-5 / 0,01), hasta 8 épocas con paciencia 2 y semillas 42/17/73 ya confirmados. Faltan los **valores de la rejilla** (12 ensayos; preguntado a ST por chat el 11-nov), la mejor época por modelo y las versiones de las bibliotecas de esta corrida. | — |
-| A4-4 | Confirmado: entropía cruzada sin pesos por clase. Falta la justificación en una frase (preguntada a ST por chat el 11-nov). | — |
-| A4-5 | Dos errores típicos en T_B: `inst_key`, etiqueta real, predicción de cada configuración y 2–3 líneas de explicación. | A4-2 |
+| A4-1 | ✓ **Entregado** (cierre del 13-nov): modelos base y Top-3 congelados, semilla 42; F1 macro de validación 0,830 en ambos; media de 3 semillas 0,833 (base) y 0,826 (Top-3). | — |
+| A4-2 | ✓ **Entregado** (13-nov; incorporado al artículo el 14-nov): `A4/Final/Métricas.md` y zip `g15_scibert_test_B_final_01`. | A4-1 |
+| A4-3 | ✓ **Cerrado (14-nov):** rejilla LR {1e-5, 2e-5, 3e-5} × decaimiento {0,01, 0,1}; desviación de 3 semillas 0,002 / 0,004; BF16, lote 16 × 2, AdamW (commit 01c88ee de ST). | — |
+| A4-4 | ✓ **Cerrado (14-nov):** sin pesos; los dos esquemas de pesos probados no superaron al control en validación. | — |
+| A4-5 | *Parcial (14-nov):* dos errores tomados de `error_examples.csv` y redactados en IV-D; falta que ST confirme la explicación. | A4-2 |
 | A4-6 | Texto de entrada de SciBERT, ya recortado a 512 tokens, en base y fragmentos, por `inst_key`, para T_B y los 9 ejemplos few-shot. Entrega privada a JA. | A5-2 |
 
 ## A5 — Modelos comerciales (JA)

@@ -1,0 +1,402 @@
+{
+  "cases": [
+    {
+      "case_id": "E1",
+      "inst_key": "1507.01529|67|333-382|0905.3830",
+      "reference_label": "Further Reading",
+      "label_source": "human_gold",
+      "split": "validation",
+      "models": {
+        "base": {
+          "name": "SciBERT base",
+          "study_id": "g15_scibert_final_v2_grid_01",
+          "trial_id": "grid_base_lr2em05_wd0p1_s42",
+          "url": "https://drive.google.com/file/d/1lVOt6Dgbpah6PwaiuQV6G1KpTY0MrvsB/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/trials/grid_base_lr2em05_wd0p1_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "1507.01529|67|333-382|0905.3830",
+            "reference": "Further Reading",
+            "label_source": "human_gold",
+            "predicted_label": "Further Reading",
+            "p_Background": "0.0664447620511055",
+            "p_Gap": "0.0018386252922937274",
+            "p_Basis": "0.0011737134773284197",
+            "p_Comparison": "0.012617317028343678",
+            "p_Application": "0.007204123307019472",
+            "p_Improvement/Modification": "0.0013891614507883787",
+            "p_Evidence": "0.021377582103013992",
+            "p_Identification of the Originator": "0.0018940165173262358",
+            "p_Further Reading": "0.8860606551170349"
+          },
+          "output": {
+            "label": "Further Reading",
+            "score": 0.8860606551170349,
+            "scores": {
+              "Background": 0.0664447620511055,
+              "Gap": 0.0018386252922937274,
+              "Basis": 0.0011737134773284197,
+              "Comparison": 0.012617317028343678,
+              "Application": 0.007204123307019472,
+              "Improvement/Modification": 0.0013891614507883787,
+              "Evidence": 0.021377582103013992,
+              "Identification of the Originator": 0.0018940165173262358,
+              "Further Reading": 0.8860606551170349
+            }
+          },
+          "matches_reference": true,
+          "selected_plain_text_input": {
+            "context": "Figures REF and REF show examples of use. The Correspondence\nAnalysis figure at the top is static. It and the table to its left are provided as\nnavigation\naids in search and discovery. The table to the left of the Correspondence Analysis\nprincipal\nfactor plane is also static. An alternative could be a text cloud or cloudmap\n(see [[TARGET]]).\n[FIGURE][FIGURE]",
+            "title": "Tag Clouds for Displaying Semantics: The Case of Filmscripts",
+            "abstract": "We relate tag clouds to other forms of visualization, including planar or\nreduced dimensionality mapping, and Kohonen self-organizing maps. Using a\nmodified tag cloud visualization, we incorporate other information into it,\nincluding text sequence and most pertinent words. Our notion of word pertinence\ngoes beyond just word frequency and instead takes a word in a mathematical\nsense as located at the average of all of its pairwise relationships. We\ncapture semantics through context, taken as all pairwise relationships. Our\ndomain of application is that of filmscript analysis. The analysis of\nfilmscripts, always important for cinema, is experiencing a major gain in\nimportance in the context of television. Our objective in this work is to\nvisualize the semantics of filmscript, and beyond filmscript any other\npartially structured, time-ordered, sequence of text segments. In particular we\ndevelop an innovative approach to plot characterization."
+          },
+          "selected_input_sha256": "c00ecf6ecdd7a64ed568ccfd815c61f67b2d53614773f69ad0bd509f4331991f"
+        },
+        "top3": {
+          "name": "SciBERT Top-3",
+          "study_id": "g15_scibert_final_v2_grid_01",
+          "trial_id": "grid_fragmentos_lr3em05_wd0p01_s42",
+          "url": "https://drive.google.com/file/d/15512CRhtmWMymO3pOfH6IGaSQep1sW-o/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/trials/grid_fragmentos_lr3em05_wd0p01_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "1507.01529|67|333-382|0905.3830",
+            "reference": "Further Reading",
+            "label_source": "human_gold",
+            "predicted_label": "Background",
+            "p_Background": "0.6926819086074829",
+            "p_Gap": "0.0034816251136362553",
+            "p_Basis": "0.0011251922696828842",
+            "p_Comparison": "0.02017958089709282",
+            "p_Application": "0.004993177019059658",
+            "p_Improvement/Modification": "0.001025326200760901",
+            "p_Evidence": "0.006795517634600401",
+            "p_Identification of the Originator": "0.001576838782057166",
+            "p_Further Reading": "0.26814085245132446"
+          },
+          "output": {
+            "label": "Background",
+            "score": 0.6926819086074829,
+            "scores": {
+              "Background": 0.6926819086074829,
+              "Gap": 0.0034816251136362553,
+              "Basis": 0.0011251922696828842,
+              "Comparison": 0.02017958089709282,
+              "Application": 0.004993177019059658,
+              "Improvement/Modification": 0.001025326200760901,
+              "Evidence": 0.006795517634600401,
+              "Identification of the Originator": 0.001576838782057166,
+              "Further Reading": 0.26814085245132446
+            }
+          },
+          "matches_reference": false,
+          "selected_plain_text_input": {
+            "context": "Figures REF and REF show examples of use. The Correspondence\nAnalysis figure at the top is static. It and the table to its left are provided as\nnavigation\naids in search and discovery. The table to the left of the Correspondence Analysis\nprincipal\nfactor plane is also static. An alternative could be a text cloud or cloudmap\n(see [[TARGET]]).\n[FIGURE][FIGURE]",
+            "chunks": [
+              {
+                "text": "Figure REF shows the resulting tag clouds.\nSome remarks on this figure follow.\n“NV” (CSI 322) is part of a much used identifier of personages in a Nevada\nCorrectional Facility in scene 22. Also in CSI 322, our punctuation handling\nhas left “doesn” and stripped the remainder.\nWe can of course base scene characterization\non a selected set of words and not all words. In the section to follow,\nsection REF , we do just that.\n In our tag clouds, as explored in Figures REF and\nREF , input terms are chosen as the nearest neighbor\nword for each scene.\nIn these visualizations we have the following simultaneous properties:",
+                "section": "Television Transcripts"
+              },
+              {
+                "text": "The Correspondence Analysis allows us to easily seek the principal\ncharacter who is closest to each scene. In the plot of scenes crossed\nby all words used in the filmscript, which naturally contains the\ncharacter names, we look for proximity – in the full dimensional\nEuclidean, factor space, so no approximation is involved – between\nthe character and the scenes. The relative importance is expressed\nby size in Figures REF and REF .\nThis relative importance is a scaled version of the log (base 10)\nof the squared Euclidean distance. (Using the distance or\nsquared distance, and taking the log, there is clearly no effect\non monotonicity of\nproximity. We take the log for improved visual appearance.)\n We can see at a glance how Grissom pervades these films; whether\ncharacters reappear as the most crucial players implying intertwining\nof different actors; how the central roles of male and female characters\nalternate; and so on. We could of course collect statistics of\nappearance, and present such results as histograms or pie charts,\nor a time series. However the motivation for our tag clouds is to have\na range of properties of the filmscript presented simultaneously.\n[FIGURE][FIGURE]",
+                "section": "Tracking of Characters"
+              },
+              {
+                "text": "Let us now turn our attention to tag clouds. To start with, we use\nother implementations of\ntag clouds as an alternative approach to visualization, for comparison\npurposes. Then we explore\nhow we can use the Correspondence Analysis opening up the\nfilmscript semantics for us\nin order to enhance the tag clouds. As we will\nshow tag clouds can express additional information about our filmscript data\nwhile still maintaining the very clear display format.\n The tag clouds of Figures REF and REF \nuse frequency information related\nto word occurrence, and order words alphabetically. There is nothing\nin such tag clouds that takes into account\nthe sequential order of the original text. The number of words is set by\nthe user.",
+                "section": "Television Transcripts"
+              }
+            ]
+          },
+          "selected_input_sha256": "cc281f4c394f7f9ed3ada7722c8d27166f4a31222a48cb804c5304775513abb4"
+        },
+        "top1": {
+          "name": "SciBERT Top-1",
+          "study_id": "g15_scibert_final_v2_top1_02",
+          "trial_id": "top1_top1_lr3em05_wd0p01_s42",
+          "url": "https://drive.google.com/file/d/1bqwjqcdqb8EnXPsDLWWfOWnfHcklKarL/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_top1_02/trials/top1_top1_lr3em05_wd0p01_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "1507.01529|67|333-382|0905.3830",
+            "reference": "Further Reading",
+            "label_source": "human_gold",
+            "predicted_label": "Further Reading",
+            "p_Background": "0.08221587538719177",
+            "p_Gap": "0.0017313080606982112",
+            "p_Basis": "0.0016818689182400703",
+            "p_Comparison": "0.009785102680325508",
+            "p_Application": "0.007069493178278208",
+            "p_Improvement/Modification": "0.0010925682727247477",
+            "p_Evidence": "0.11274504661560059",
+            "p_Identification of the Originator": "0.0018110193777829409",
+            "p_Further Reading": "0.7818677425384521"
+          },
+          "output": {
+            "label": "Further Reading",
+            "score": 0.7818677425384521,
+            "scores": {
+              "Background": 0.08221587538719177,
+              "Gap": 0.0017313080606982112,
+              "Basis": 0.0016818689182400703,
+              "Comparison": 0.009785102680325508,
+              "Application": 0.007069493178278208,
+              "Improvement/Modification": 0.0010925682727247477,
+              "Evidence": 0.11274504661560059,
+              "Identification of the Originator": 0.0018110193777829409,
+              "Further Reading": 0.7818677425384521
+            }
+          },
+          "matches_reference": true,
+          "selected_plain_text_input": {
+            "context": "Figures REF and REF show examples of use. The Correspondence\nAnalysis figure at the top is static. It and the table to its left are provided as\nnavigation\naids in search and discovery. The table to the left of the Correspondence Analysis\nprincipal\nfactor plane is also static. An alternative could be a text cloud or cloudmap\n(see [[TARGET]]).\n[FIGURE][FIGURE]",
+            "chunks": [
+              {
+                "text": "Figure REF shows the resulting tag clouds.\nSome remarks on this figure follow.\n“NV” (CSI 322) is part of a much used identifier of personages in a Nevada\nCorrectional Facility in scene 22. Also in CSI 322, our punctuation handling\nhas left “doesn” and stripped the remainder.\nWe can of course base scene characterization\non a selected set of words and not all words. In the section to follow,\nsection REF , we do just that.\n In our tag clouds, as explored in Figures REF and\nREF , input terms are chosen as the nearest neighbor\nword for each scene.\nIn these visualizations we have the following simultaneous properties:",
+                "section": "Television Transcripts"
+              }
+            ]
+          },
+          "selected_input_sha256": "38a90ac73dd93463c34e6a6590ba8de86a897e62e072d7ac1a75b1c32341697f"
+        }
+      },
+      "text_source": {
+        "source_batch": "pool_ext_cue_rare",
+        "relative_path": "A4/a2/batches_norw/pool_ext_cue_rare.jsonl",
+        "drive_path": "MAIA_PROYECTO/a2/batches_norw/pool_ext_cue_rare.jsonl",
+        "record_line": 183,
+        "record_bytes_sha256": "84f273076d0ad8516bcaf86a0d6557300cfcd7c0033d076c9c1a53b257a66df1",
+        "citing_paper_id": "1507.01529",
+        "cited_paper_id": "0905.3830"
+      },
+      "normalized_text_record": {
+        "inst_key": "1507.01529|67|333-382|0905.3830",
+        "context": "Figures REF and REF show examples of use. The Correspondence\nAnalysis figure at the top is static. It and the table to its left are provided as\nnavigation\naids in search and discovery. The table to the left of the Correspondence Analysis\nprincipal\nfactor plane is also static. An alternative could be a text cloud or cloudmap\n(see [[TARGET]]).\n[FIGURE][FIGURE]",
+        "title": "Tag Clouds for Displaying Semantics: The Case of Filmscripts",
+        "abstract": "We relate tag clouds to other forms of visualization, including planar or\nreduced dimensionality mapping, and Kohonen self-organizing maps. Using a\nmodified tag cloud visualization, we incorporate other information into it,\nincluding text sequence and most pertinent words. Our notion of word pertinence\ngoes beyond just word frequency and instead takes a word in a mathematical\nsense as located at the average of all of its pairwise relationships. We\ncapture semantics through context, taken as all pairwise relationships. Our\ndomain of application is that of filmscript analysis. The analysis of\nfilmscripts, always important for cinema, is experiencing a major gain in\nimportance in the context of television. Our objective in this work is to\nvisualize the semantics of filmscript, and beyond filmscript any other\npartially structured, time-ordered, sequence of text segments. In particular we\ndevelop an innovative approach to plot characterization.",
+        "chunks": [
+          {
+            "text": "Figure REF shows the resulting tag clouds.\nSome remarks on this figure follow.\n“NV” (CSI 322) is part of a much used identifier of personages in a Nevada\nCorrectional Facility in scene 22. Also in CSI 322, our punctuation handling\nhas left “doesn” and stripped the remainder.\nWe can of course base scene characterization\non a selected set of words and not all words. In the section to follow,\nsection REF , we do just that.\n In our tag clouds, as explored in Figures REF and\nREF , input terms are chosen as the nearest neighbor\nword for each scene.\nIn these visualizations we have the following simultaneous properties:",
+            "section": "Television Transcripts",
+            "section_missing": false
+          },
+          {
+            "text": "The Correspondence Analysis allows us to easily seek the principal\ncharacter who is closest to each scene. In the plot of scenes crossed\nby all words used in the filmscript, which naturally contains the\ncharacter names, we look for proximity – in the full dimensional\nEuclidean, factor space, so no approximation is involved – between\nthe character and the scenes. The relative importance is expressed\nby size in Figures REF and REF .\nThis relative importance is a scaled version of the log (base 10)\nof the squared Euclidean distance. (Using the distance or\nsquared distance, and taking the log, there is clearly no effect\non monotonicity of\nproximity. We take the log for improved visual appearance.)\n We can see at a glance how Grissom pervades these films; whether\ncharacters reappear as the most crucial players implying intertwining\nof different actors; how the central roles of male and female characters\nalternate; and so on. We could of course collect statistics of\nappearance, and present such results as histograms or pie charts,\nor a time series. However the motivation for our tag clouds is to have\na range of properties of the filmscript presented simultaneously.\n[FIGURE][FIGURE]",
+            "section": "Tracking of Characters",
+            "section_missing": false
+          },
+          {
+            "text": "Let us now turn our attention to tag clouds. To start with, we use\nother implementations of\ntag clouds as an alternative approach to visualization, for comparison\npurposes. Then we explore\nhow we can use the Correspondence Analysis opening up the\nfilmscript semantics for us\nin order to enhance the tag clouds. As we will\nshow tag clouds can express additional information about our filmscript data\nwhile still maintaining the very clear display format.\n The tag clouds of Figures REF and REF \nuse frequency information related\nto word occurrence, and order words alphabetically. There is nothing\nin such tag clouds that takes into account\nthe sequential order of the original text. The number of words is set by\nthe user.",
+            "section": "Television Transcripts",
+            "section_missing": false
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "E2",
+      "inst_key": "2009.13311|7|1953-2002|1706.02071",
+      "reference_label": "Background",
+      "label_source": "human_gold",
+      "split": "validation",
+      "models": {
+        "base": {
+          "name": "SciBERT base",
+          "study_id": "g15_scibert_final_v2_grid_01",
+          "trial_id": "grid_base_lr2em05_wd0p1_s42",
+          "url": "https://drive.google.com/file/d/1lVOt6Dgbpah6PwaiuQV6G1KpTY0MrvsB/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/trials/grid_base_lr2em05_wd0p1_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "2009.13311|7|1953-2002|1706.02071",
+            "reference": "Background",
+            "label_source": "human_gold",
+            "predicted_label": "Evidence",
+            "p_Background": "0.16132661700248718",
+            "p_Gap": "0.002920202910900116",
+            "p_Basis": "0.002714544301852584",
+            "p_Comparison": "0.008475527167320251",
+            "p_Application": "0.005274319089949131",
+            "p_Improvement/Modification": "0.0019130285363644361",
+            "p_Evidence": "0.7999517917633057",
+            "p_Identification of the Originator": "0.0044365874491631985",
+            "p_Further Reading": "0.012987303547561169"
+          },
+          "output": {
+            "label": "Evidence",
+            "score": 0.7999517917633057,
+            "scores": {
+              "Background": 0.16132661700248718,
+              "Gap": 0.002920202910900116,
+              "Basis": 0.002714544301852584,
+              "Comparison": 0.008475527167320251,
+              "Application": 0.005274319089949131,
+              "Improvement/Modification": 0.0019130285363644361,
+              "Evidence": 0.7999517917633057,
+              "Identification of the Originator": 0.0044365874491631985,
+              "Further Reading": 0.012987303547561169
+            }
+          },
+          "matches_reference": false,
+          "selected_plain_text_input": {
+            "context": "Data augmentation, by translation, rotation, symmetries, or other transformations.\n\nTransfer from an existing GAN trained on another dataset to a new dataset [CITE].\n\nModification of the distribution in order to match a specific request as done in several papers.\n[CITE] modifies the training, using quality assessement as we do; however they modify the training whereas we modify inference. In the same vein, [CITE] works on scale disentanglement: it also works at training time. These works could actually be combined with ours.\n[CITE] generates images conditionally to a classifier output or conditionally to a captioning network output. [CITE] and [CITE] condition the generation to a playability criterion (estimated by an agent using the GAN output) or some high-level constraints.\n[CITE] uses a variational autoencoder (VAE), so that constraints can be added to the generation: they can add an attribute (e.g. black hair) and still take into account a realism criterion extracted from the VAE: this uses labels from the dataset. [CITE] uses disentanglement of the latent space for semantic face editing: the user can modify a specific latent variable.\n[CITE] allows image editing and manipulation: it uses projections onto the output domain.\n\nBiasing the dataset. [CITE] augments the dataset by generating images with a distribution skewed towards the minority classes.\n\nLearning a specific probability distribution, rather than using a predefined, for example Gaussian, distribution. Such a method is advocated in [[TARGET]].",
+            "title": "DeLiGAN : Generative Adversarial Networks for Diverse and Limited Data",
+            "abstract": "A class of recent approaches for generating images, called Generative\nAdversarial Networks (GAN), have been used to generate impressively realistic\nimages of objects, bedrooms, handwritten digits and a variety of other image\nmodalities. However, typical GAN-based approaches require large amounts of\ntraining data to capture the diversity across the image modality. In this\npaper, we propose DeLiGAN -- a novel GAN-based architecture for diverse and\nlimited training data scenarios. In our approach, we reparameterize the latent\ngenerative space as a mixture model and learn the mixture model's parameters\nalong with those of GAN. This seemingly simple modification to the GAN\nframework is surprisingly effective and results in models which enable\ndiversity in generated samples although trained with limited data. In our work,\nwe show that DeLiGAN can generate images of handwritten digits, objects and\nhand-drawn sketches, all using limited amounts of data. To quantitatively\ncharacterize intra-class diversity of generated samples, we also introduce a\nmodified version of \"inception-score\", a measure which has been found to\ncorrelate well with human assessment of generated samples."
+          },
+          "selected_input_sha256": "8a388e4d4df2cf86d1b8eb4e3378b848f40833c9d4ba85e5195dafb30f768934"
+        },
+        "top3": {
+          "name": "SciBERT Top-3",
+          "study_id": "g15_scibert_final_v2_grid_01",
+          "trial_id": "grid_fragmentos_lr3em05_wd0p01_s42",
+          "url": "https://drive.google.com/file/d/15512CRhtmWMymO3pOfH6IGaSQep1sW-o/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_grid_01/trials/grid_fragmentos_lr3em05_wd0p01_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "2009.13311|7|1953-2002|1706.02071",
+            "reference": "Background",
+            "label_source": "human_gold",
+            "predicted_label": "Background",
+            "p_Background": "0.8376405835151672",
+            "p_Gap": "0.002039525657892227",
+            "p_Basis": "0.0028432311955839396",
+            "p_Comparison": "0.004448734689503908",
+            "p_Application": "0.0009285373380407691",
+            "p_Improvement/Modification": "0.0022043720819056034",
+            "p_Evidence": "0.005130042787641287",
+            "p_Identification of the Originator": "0.14219099283218384",
+            "p_Further Reading": "0.002573998412117362"
+          },
+          "output": {
+            "label": "Background",
+            "score": 0.8376405835151672,
+            "scores": {
+              "Background": 0.8376405835151672,
+              "Gap": 0.002039525657892227,
+              "Basis": 0.0028432311955839396,
+              "Comparison": 0.004448734689503908,
+              "Application": 0.0009285373380407691,
+              "Improvement/Modification": 0.0022043720819056034,
+              "Evidence": 0.005130042787641287,
+              "Identification of the Originator": 0.14219099283218384,
+              "Further Reading": 0.002573998412117362
+            }
+          },
+          "matches_reference": true,
+          "selected_plain_text_input": {
+            "context": "Data augmentation, by translation, rotation, symmetries, or other transformations.\n\nTransfer from an existing GAN trained on another dataset to a new dataset [CITE].\n\nModification of the distribution in order to match a specific request as done in several papers.\n[CITE] modifies the training, using quality assessement as we do; however they modify the training whereas we modify inference. In the same vein, [CITE] works on scale disentanglement: it also works at training time. These works could actually be combined with ours.\n[CITE] generates images conditionally to a classifier output or conditionally to a captioning network output. [CITE] and [CITE] condition the generation to a playability criterion (estimated by an agent using the GAN output) or some high-level constraints.\n[CITE] uses a variational autoencoder (VAE), so that constraints can be added to the generation: they can add an attribute (e.g. black hair) and still take into account a realism criterion extracted from the VAE: this uses labels from the dataset. [CITE] uses disentanglement of the latent space for semantic face editing: the user can modify a specific latent variable.\n[CITE] allows image editing and manipulation: it uses projections onto the output domain.\n\nBiasing the dataset. [CITE] augments the dataset by generating images with a distribution skewed towards the minority classes.\n\nLearning a specific probability distribution, rather than using a predefined, for example Gaussian, distribution. Such a method is advocated in [[TARGET]].",
+            "chunks": [
+              {
+                "text": "The TU-Berlin dataset [CITE], contains [FORMULA] hand-drawn sketches evenly distributed among 250 object categories, which amounts to 80 images per category. This dataset represents a scenario where the amount of training data is actually limited, unlike previous experiments where the quantity of training data was artificially restricted. For sketches, our network contains 5 convolutional layers in the discriminator with weight normalization and dropout followed by mini-batch discrimination and 3 deconvolutional layers, followed by a fully connected layer in the generator. To demonstrate the capability of our model, we perform two sets of experiments.\n For the first set of experiments, we select 4 sketch categories – apple, pear, tomato, candle. These categories have simple global contours, low sketch stroke density and are somewhat similar in appearance. During training, we augment the dataset using the flipped versions of the images. Once again, we compare the generated results of GAN and DeLiGAN. Figure REF shows the samples generated by DeLiGAN and GAN respectively, trained on the similar looking categories (left side of the dotted line). The samples generated by both the models look visually appealing. Our guess is that since the object categories are very similar, the data distribution can be easily modelled as a continuous distribution in the latent space. Therefore, the latent space doesn't need a multi-modal representation in this case. This is also borne out by the m-IS diversity scores in Table REF .\n[TABLE]",
+                "section": "Freehand Sketches"
+              },
+              {
+                "text": "For each Gaussian component, we first need to initialise its parameters. For [FORMULA] , we sample from a simple prior – in our case, a uniform distribution [FORMULA] . For [FORMULA] , we assign a small, fixed non-zero initial value ([FORMULA] in our case). Normally, the number of samples we generate from each Gaussian relative to the other Gaussians during training gives us a measure of the `weight' [FORMULA] for that component. However, [FORMULA] is not a trainable parameter in our model since we cannot obtain gradients for [FORMULA] s. Therefore, as mentioned before, we consider all components to be equally important.\n To generate data, we randomly choose one of the [FORMULA] Gaussian components and sample a latent vector [FORMULA] from the chosen Gaussian (Equation REF ). [FORMULA] is passed to [FORMULA] to obtain the output data (image). The generated sample [FORMULA] can now be used to train parameters of [FORMULA] or [FORMULA] using the standard GAN training procedure (Equation REF ). In addition, [FORMULA] and [FORMULA] are also trained simultaneously along with [FORMULA] 's parameters, using gradients arising from [FORMULA] 's loss function.",
+                "section": "Learning {{formula:b1bddd8a-3893-4e94-bdd8-5cda8cb592e9}}  and {{formula:4a84d3cf-1b3f-49c9-b44f-b7447ecb7928}}"
+              },
+              {
+                "text": "In complicated multi-modal settings, the data may be disproportionally distributed among the modes such that some of the modes contain relatively more data points. In this situation, the generator in baseline GAN tends to fit the latent distribution to the mode with maximum data as dictated by the Jensen-Shannon Divergence [CITE]. This results in low diversity among the generated samples since a section of the data distribution is sometimes overlooked by the generator network. This effect is especially pronounced in low data regimes because the number of modes in the image space increase due to the non-availability of data connecting some of the modes. As a result, the generator tries to fit to a small fraction of the already limited data. This is consistent with our experimental results wherein the diversity and quality of samples produced by baseline GANs deteriorate with decreasing amounts of training data (MNIST – Figure REF , CIFAR – Figure REF ) or increasing diversity of the training data (Sketches – Figure REF ).\n Our design decision of having a trainable mixture model for latent space can be viewed as an algorithmic “plug-in\" that can be added to almost any GAN framework including recently proposed models [CITE], [CITE] to obtain better performance on diverse data. Finally, it is also important to note that our model is still constrained by the modelling capacity of the underlying GAN framework itself. Hence, as we employ better GAN frameworks on top of our mixture of Gaussians layer, we can expect the model to generate realistic, high-quality samples.",
+                "section": "Discussion"
+              }
+            ]
+          },
+          "selected_input_sha256": "15459fdc1a3b9cba4d00fb6a242d910b1ed4b09c1a4d4f31b90a2b0e36bb07e4"
+        },
+        "top1": {
+          "name": "SciBERT Top-1",
+          "study_id": "g15_scibert_final_v2_top1_02",
+          "trial_id": "top1_top1_lr3em05_wd0p01_s42",
+          "url": "https://drive.google.com/file/d/1bqwjqcdqb8EnXPsDLWWfOWnfHcklKarL/view",
+          "seed": 42,
+          "evaluation_policy": "v2_fp32",
+          "artifact_path": "MAIA_TESIS/a4/g15_scibert_final_v2_top1_02/trials/top1_top1_lr3em05_wd0p01_s42/evaluation/predictions.csv",
+          "saved_prediction": {
+            "inst_key": "2009.13311|7|1953-2002|1706.02071",
+            "reference": "Background",
+            "label_source": "human_gold",
+            "predicted_label": "Evidence",
+            "p_Background": "0.029332706704735756",
+            "p_Gap": "0.002888198010623455",
+            "p_Basis": "0.0029780154582113028",
+            "p_Comparison": "0.011282228864729404",
+            "p_Application": "0.003253689268603921",
+            "p_Improvement/Modification": "0.0019862735643982887",
+            "p_Evidence": "0.9027612209320068",
+            "p_Identification of the Originator": "0.008954454213380814",
+            "p_Further Reading": "0.03656322509050369"
+          },
+          "output": {
+            "label": "Evidence",
+            "score": 0.9027612209320068,
+            "scores": {
+              "Background": 0.029332706704735756,
+              "Gap": 0.002888198010623455,
+              "Basis": 0.0029780154582113028,
+              "Comparison": 0.011282228864729404,
+              "Application": 0.003253689268603921,
+              "Improvement/Modification": 0.0019862735643982887,
+              "Evidence": 0.9027612209320068,
+              "Identification of the Originator": 0.008954454213380814,
+              "Further Reading": 0.03656322509050369
+            }
+          },
+          "matches_reference": false,
+          "selected_plain_text_input": {
+            "context": "Data augmentation, by translation, rotation, symmetries, or other transformations.\n\nTransfer from an existing GAN trained on another dataset to a new dataset [CITE].\n\nModification of the distribution in order to match a specific request as done in several papers.\n[CITE] modifies the training, using quality assessement as we do; however they modify the training whereas we modify inference. In the same vein, [CITE] works on scale disentanglement: it also works at training time. These works could actually be combined with ours.\n[CITE] generates images conditionally to a classifier output or conditionally to a captioning network output. [CITE] and [CITE] condition the generation to a playability criterion (estimated by an agent using the GAN output) or some high-level constraints.\n[CITE] uses a variational autoencoder (VAE), so that constraints can be added to the generation: they can add an attribute (e.g. black hair) and still take into account a realism criterion extracted from the VAE: this uses labels from the dataset. [CITE] uses disentanglement of the latent space for semantic face editing: the user can modify a specific latent variable.\n[CITE] allows image editing and manipulation: it uses projections onto the output domain.\n\nBiasing the dataset. [CITE] augments the dataset by generating images with a distribution skewed towards the minority classes.\n\nLearning a specific probability distribution, rather than using a predefined, for example Gaussian, distribution. Such a method is advocated in [[TARGET]].",
+            "chunks": [
+              {
+                "text": "The TU-Berlin dataset [CITE], contains [FORMULA] hand-drawn sketches evenly distributed among 250 object categories, which amounts to 80 images per category. This dataset represents a scenario where the amount of training data is actually limited, unlike previous experiments where the quantity of training data was artificially restricted. For sketches, our network contains 5 convolutional layers in the discriminator with weight normalization and dropout followed by mini-batch discrimination and 3 deconvolutional layers, followed by a fully connected layer in the generator. To demonstrate the capability of our model, we perform two sets of experiments.\n For the first set of experiments, we select 4 sketch categories – apple, pear, tomato, candle. These categories have simple global contours, low sketch stroke density and are somewhat similar in appearance. During training, we augment the dataset using the flipped versions of the images. Once again, we compare the generated results of GAN and DeLiGAN. Figure REF shows the samples generated by DeLiGAN and GAN respectively, trained on the similar looking categories (left side of the dotted line). The samples generated by both the models look visually appealing. Our guess is that since the object categories are very similar, the data distribution can be easily modelled as a continuous distribution in the latent space. Therefore, the latent space doesn't need a multi-modal representation in this case. This is also borne out by the m-IS diversity scores in Table REF .\n[TABLE]",
+                "section": "Freehand Sketches"
+              }
+            ]
+          },
+          "selected_input_sha256": "077198232fb7f7fd0fdf78be5cca14e0a8217c8354281abfddc41c62d4b04aa4"
+        }
+      },
+      "text_source": {
+        "source_batch": "pool_cue_eg",
+        "relative_path": "A4/a2/batches_norw/pool_cue_eg.jsonl",
+        "drive_path": "MAIA_PROYECTO/a2/batches_norw/pool_cue_eg.jsonl",
+        "record_line": 3275,
+        "record_bytes_sha256": "ea6020632849e4025eca966057ffbf9785b90d25b6d126f3e1ccb99e162e02df",
+        "citing_paper_id": "2009.13311",
+        "cited_paper_id": "1706.02071"
+      },
+      "normalized_text_record": {
+        "inst_key": "2009.13311|7|1953-2002|1706.02071",
+        "context": "Data augmentation, by translation, rotation, symmetries, or other transformations.\n\nTransfer from an existing GAN trained on another dataset to a new dataset [CITE].\n\nModification of the distribution in order to match a specific request as done in several papers.\n[CITE] modifies the training, using quality assessement as we do; however they modify the training whereas we modify inference. In the same vein, [CITE] works on scale disentanglement: it also works at training time. These works could actually be combined with ours.\n[CITE] generates images conditionally to a classifier output or conditionally to a captioning network output. [CITE] and [CITE] condition the generation to a playability criterion (estimated by an agent using the GAN output) or some high-level constraints.\n[CITE] uses a variational autoencoder (VAE), so that constraints can be added to the generation: they can add an attribute (e.g. black hair) and still take into account a realism criterion extracted from the VAE: this uses labels from the dataset. [CITE] uses disentanglement of the latent space for semantic face editing: the user can modify a specific latent variable.\n[CITE] allows image editing and manipulation: it uses projections onto the output domain.\n\nBiasing the dataset. [CITE] augments the dataset by generating images with a distribution skewed towards the minority classes.\n\nLearning a specific probability distribution, rather than using a predefined, for example Gaussian, distribution. Such a method is advocated in [[TARGET]].",
+        "title": "DeLiGAN : Generative Adversarial Networks for Diverse and Limited Data",
+        "abstract": "A class of recent approaches for generating images, called Generative\nAdversarial Networks (GAN), have been used to generate impressively realistic\nimages of objects, bedrooms, handwritten digits and a variety of other image\nmodalities. However, typical GAN-based approaches require large amounts of\ntraining data to capture the diversity across the image modality. In this\npaper, we propose DeLiGAN -- a novel GAN-based architecture for diverse and\nlimited training data scenarios. In our approach, we reparameterize the latent\ngenerative space as a mixture model and learn the mixture model's parameters\nalong with those of GAN. This seemingly simple modification to the GAN\nframework is surprisingly effective and results in models which enable\ndiversity in generated samples although trained with limited data. In our work,\nwe show that DeLiGAN can generate images of handwritten digits, objects and\nhand-drawn sketches, all using limited amounts of data. To quantitatively\ncharacterize intra-class diversity of generated samples, we also introduce a\nmodified version of \"inception-score\", a measure which has been found to\ncorrelate well with human assessment of generated samples.",
+        "chunks": [
+          {
+            "text": "The TU-Berlin dataset [CITE], contains [FORMULA] hand-drawn sketches evenly distributed among 250 object categories, which amounts to 80 images per category. This dataset represents a scenario where the amount of training data is actually limited, unlike previous experiments where the quantity of training data was artificially restricted. For sketches, our network contains 5 convolutional layers in the discriminator with weight normalization and dropout followed by mini-batch discrimination and 3 deconvolutional layers, followed by a fully connected layer in the generator. To demonstrate the capability of our model, we perform two sets of experiments.\n For the first set of experiments, we select 4 sketch categories – apple, pear, tomato, candle. These categories have simple global contours, low sketch stroke density and are somewhat similar in appearance. During training, we augment the dataset using the flipped versions of the images. Once again, we compare the generated results of GAN and DeLiGAN. Figure REF shows the samples generated by DeLiGAN and GAN respectively, trained on the similar looking categories (left side of the dotted line). The samples generated by both the models look visually appealing. Our guess is that since the object categories are very similar, the data distribution can be easily modelled as a continuous distribution in the latent space. Therefore, the latent space doesn't need a multi-modal representation in this case. This is also borne out by the m-IS diversity scores in Table REF .\n[TABLE]",
+            "section": "Freehand Sketches",
+            "section_missing": false
+          },
+          {
+            "text": "For each Gaussian component, we first need to initialise its parameters. For [FORMULA] , we sample from a simple prior – in our case, a uniform distribution [FORMULA] . For [FORMULA] , we assign a small, fixed non-zero initial value ([FORMULA] in our case). Normally, the number of samples we generate from each Gaussian relative to the other Gaussians during training gives us a measure of the `weight' [FORMULA] for that component. However, [FORMULA] is not a trainable parameter in our model since we cannot obtain gradients for [FORMULA] s. Therefore, as mentioned before, we consider all components to be equally important.\n To generate data, we randomly choose one of the [FORMULA] Gaussian components and sample a latent vector [FORMULA] from the chosen Gaussian (Equation REF ). [FORMULA] is passed to [FORMULA] to obtain the output data (image). The generated sample [FORMULA] can now be used to train parameters of [FORMULA] or [FORMULA] using the standard GAN training procedure (Equation REF ). In addition, [FORMULA] and [FORMULA] are also trained simultaneously along with [FORMULA] 's parameters, using gradients arising from [FORMULA] 's loss function.",
+            "section": "Learning {{formula:b1bddd8a-3893-4e94-bdd8-5cda8cb592e9}}  and {{formula:4a84d3cf-1b3f-49c9-b44f-b7447ecb7928}}",
+            "section_missing": false
+          },
+          {
+            "text": "In complicated multi-modal settings, the data may be disproportionally distributed among the modes such that some of the modes contain relatively more data points. In this situation, the generator in baseline GAN tends to fit the latent distribution to the mode with maximum data as dictated by the Jensen-Shannon Divergence [CITE]. This results in low diversity among the generated samples since a section of the data distribution is sometimes overlooked by the generator network. This effect is especially pronounced in low data regimes because the number of modes in the image space increase due to the non-availability of data connecting some of the modes. As a result, the generator tries to fit to a small fraction of the already limited data. This is consistent with our experimental results wherein the diversity and quality of samples produced by baseline GANs deteriorate with decreasing amounts of training data (MNIST – Figure REF , CIFAR – Figure REF ) or increasing diversity of the training data (Sketches – Figure REF ).\n Our design decision of having a trainable mixture model for latent space can be viewed as an algorithmic “plug-in\" that can be added to almost any GAN framework including recently proposed models [CITE], [CITE] to obtain better performance on diverse data. Finally, it is also important to note that our model is still constrained by the modelling capacity of the underlying GAN framework itself. Hence, as we employ better GAN frameworks on top of our mixture of Gaussians layer, we can expect the model to generate realistic, high-quality samples.",
+            "section": "Discussion",
+            "section_missing": false
+          }
+        ]
+      }
+    }
+  ],
+  "provenance": {
+    "split": "validation",
+    "evaluation_policy": "v2_fp32",
+    "seed": 42,
+    "selection": "Two human-labeled cases with opposite Top-1/Top-3 correctness outcomes; first matching inst_key in sorted order.",
+    "inputs": "Reconstructed from the same normalized A2 batches used by the classifier, before tokenization and truncation.",
+    "outputs": "Read from saved predictions.csv. label is predicted_label; score is p_<predicted_label>. No new inference was performed."
+  }
+}

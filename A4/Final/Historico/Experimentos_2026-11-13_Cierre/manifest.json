@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-13",
+  "studies": [
+    "g15_scibert_reparto_v2_01",
+    "g15_scibert_pesos_v2_01"
+  ],
+  "reviewed_trials_per_study": 28,
+  "reviewed_prediction_rows_per_study": 46284,
+  "selected_weight_hashes_equal": {
+    "base": true,
+    "fragmentos": true
+  },
+  "test_scored": false,
+  "files": {
+    "Comparacion_Reparto_vs_Pesos.md": "791cf1b7e7b30ad3a31e056a8a2e14c68cfcb8250ca7d41d3e33ce14db1ea852",
+    "Conclusiones_Reparto_Tokens.md": "9ab94ae1c7d823f1486c0823a983b5948841efed141c23afe18597b79d36cbd2",
+    "SciBERT_Pesos_Clases.ipynb": "17c0c127f0c17b79efb9639c74d3b3f20d41b4ee20bfc63ce17baa91f1f57a82",
+    "SciBERT_Reparto_Tokens_Recuperacion.ipynb": "917cd009792b526cb14613b6444bfa381be0797e5f6c96295aa0c4c69eb6e2d8"
+  }
+}

@@ -7,6 +7,19 @@ MAIACURSOPROYECTO.pem
 NOTAS.txt
 Folder_trabajo_Equipos_14_y_15/
 snapshot_A4/
+snapshot_A5/
+
+# Herramientas locales de autoría y verificación de notebooks de A4.
+# Los notebooks son autónomos; conservar código funcional *_runtime.py,
+# documentación, resultados, figuras y manifiestos metodológicos.
+A4/**/crear_notebook*.py
+A4/**/verificar_*.py
+A4/preparar_exclusiones_independiente.py
+
+# Cachés y entornos locales de Python/Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
 
 # Archivos temporales de Office
 ~$*

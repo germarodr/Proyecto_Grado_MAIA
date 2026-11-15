@@ -1,0 +1,15 @@
+{
+  "conclusiones.md": "b4c08f726c3d60c233c25dbce87fe1e81b2948384eaf0747c28778cbe181736d",
+  "crear_notebook.py": "35064b3a9e6997c5b93b828d36221b3f7f11f65ae707941c484abac6cb3a9b58",
+  "evaluacion_runtime.py": "ba40bd3c9fcbe576b3395fd7e745466c5bc2efc49693ef455fb3956264582a7e",
+  "README.md": "85a323a231a5c9522a75c28485a895b6c484e2e667923ff5b56eb7f09b289b78",
+  "requirements.txt": "63be791288d63856ae8e6861e002e8c126deecc7a89752abbc18179f37e61913",
+  "SciBERT_Evaluacion_Final.ipynb": "cef13077ecb3997c48f7cdc4a65d51ff189a3b6f1e6ec1b0ac777aa4ab1699e1",
+  "seleccion_congelada.json": "8ed12d41b3aa714054edb5221c6368ee919ef712759ccb97e806fec66e2fd0a1",
+  "Verificacion_Ejecucion.json": "ce7a2607fec025e586a38731cbc4d6dac9db6d9c029bd40f89c5fc5be9a45c38",
+  "Figuras/bootstrap_comparacion.png": "48f1bed300bc665845508097ba4dc2fc2b52e385016a67b0f430de909880f721",
+  "Figuras/comparacion_por_clase.png": "d6d8e460f93a74953ed675b4f349b5f1a3f55e7698cb698db724798262a7f617",
+  "Figuras/distribucion_clases.png": "3beea2390aa549075d34a915ad8b3be540d707be93fe4092e94e595de1bf8cf4",
+  "Figuras/matrices_confusion.png": "3df41ca6118692365047f21e0d24d976830141a69d0655fd59de0f7413fdc785",
+  "Figuras/validacion_vs_test.png": "4046617fa53dc335e65558d183b6f2f6fc0d52b48961de2ffb7933799d14091c"
+}
