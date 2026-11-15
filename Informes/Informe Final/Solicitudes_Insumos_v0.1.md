@@ -83,22 +83,22 @@ Dos SciBERT con las mismas instancias, partición (`G15-A4-split-v1`), semilla (
 | A4-3 | ✓ **Cerrado (14-nov):** rejilla LR {1e-5, 2e-5, 3e-5} × decaimiento {0,01, 0,1}; desviación de 3 semillas 0,002 / 0,004; BF16, lote 16 × 2, AdamW (commit 01c88ee de ST). | — |
 | A4-4 | ✓ **Cerrado (14-nov):** sin pesos; los dos esquemas de pesos probados no superaron al control en validación. | — |
 | A4-5 | *Parcial (14-nov):* dos errores tomados de `error_examples.csv` y redactados en IV-D; falta que ST confirme la explicación. | A4-2 |
-| A4-6 | Texto de entrada de SciBERT, ya recortado a 512 tokens, en base y fragmentos, por `inst_key`, para T_B y los 9 ejemplos few-shot. Entrega privada a JA. | A5-2 |
+| A4-6 | ✓ **Ya no se necesita (14-nov):** el notebook de A5 reconstruye la entrada recortada de SciBERT base y A5 ya no usa fragmentos. | — |
 
 ## A5 — Modelos comerciales (JA)
 
-Dos modelos sin ajuste, cada uno en **8 condiciones**: información del citado (título y resumen o fragmentos) × prompt (genérico o específico) × zero-shot o few-shot (9 ejemplos, uno por función). Los dos reciben el mismo texto que SciBERT (A4-6) y los mismos prompts, ejemplos y parámetros.
+**Actualizado (15-nov):** dos modelos sin ajuste de gama económica: **uno de OpenAI (elegido por JA) y Gemini 3.5 Flash-Lite**, cada uno en **4 condiciones**: prompt (genérico o específico) × zero-shot o few-shot (9 ejemplos, uno por función). Solo con título y resumen del citado, el mismo texto recortado que SciBERT base, y los mismos prompts, ejemplos y parámetros en los dos modelos.
 
 | Código | Qué necesitamos | Requiere |
 |---|---|---|
-| A5-1 | Por modelo: proveedor, nombre, versión exacta de la API, fecha de las consultas, precio por millón de tokens de entrada y de salida, motivo de la elección y enlace oficial. | Tema 2 |
+| A5-1 | Por modelo: proveedor, nombre, versión exacta de la API, fecha de las consultas, precio por millón de tokens de entrada y de salida, motivo de la elección y enlace oficial. *Parcial (15-nov):* Google = **`gemini-3.5-flash-lite`** (configuración probada en `A5/Prueba_API_Gemini.ipynb`, sección 8); falta nombre, versión y precio del modelo de OpenAI. | Tema 2 |
 | A5-2 | Prompts genérico y específico completos, con el formato de los ejemplos; los 9 `inst_key` few-shot con su etiqueta y el criterio de elección; temperatura y demás parámetros; condición principal (tema 3). | — |
 | A5-3 | `A5-3_predicciones.csv`: una fila por instancia × modelo × condición, con `inst_key`, `modelo`, `condicion`, `pred_label`, `score_<función>` (9), `latency_ms`, `respuesta_valida`, `tokens_entrada`, `tokens_salida`, `costo_usd` e `intentos`. | A4-6 |
 | A5-4 | Dos errores por modelo; uno de ellos, un caso donde difiera de SciBERT. | A5-3 |
 
 ## A6 — Evaluación comparativa (GR)
 
-Compara todos los modelos sobre las mismas 2.968 instancias de T_B: los dos SciBERT y las 8 condiciones de cada modelo comercial. Calcula:
+Compara todos los modelos sobre las mismas 2.968 instancias de T_B: los dos SciBERT y las 4 condiciones de cada modelo comercial. Calcula:
 - precisión, exhaustividad y F1, macro y micro;
 - F1 por función y matrices de confusión;
 - diferencia de F1 macro entre fragmentos y base, con IC 95 % bootstrap pareado por artículo citante;
@@ -117,7 +117,7 @@ Alimenta la TABLA VII y las Figs. 3 y 4.
 |---|---|---|
 | A7-1 | *Parcial:* A100-SXM4-40GB, ≈859 s (base) y ≈890 s (fragmentos) de sesión de entrenamiento, pico de 9,27 GiB. Falta el precio por hora con su fuente y confirmarlo para el par final. Por configuración de SciBERT: GPU, horas de entrenamiento (en total y hasta el mejor checkpoint), pico de memoria y precio por hora con su fuente (plan de Colab). | — |
 | A7-2 | Por configuración de SciBERT: ms por ejemplo, hardware, tamaño de lote, número de ejemplos medidos y si incluye la tokenización. | — |
-| A7-3 | Costo total facturado por cada proveedor en las 8 condiciones, para contrastarlo con `costo_usd`. | A5-3 |
+| A7-3 | Costo total facturado por cada proveedor en las 4 condiciones, para contrastarlo con `costo_usd`. | A5-3 |
 
 ## D — Despliegue (CB/ST)
 
