@@ -8,3 +8,6 @@ __pycache__/
 .env.*
 !.env.example
 *.log
+.venv_mlflow/
+MLflow_Respaldo_A4/
+tracking/

@@ -179,7 +179,7 @@ class RuntimeTests(unittest.TestCase):
             result = a5.run_experiment(cfg, bundle, plan, self.snapshot, token="test", transport=mock)
             self.assertEqual(len(calls), 2); self.assertTrue(result["predictions"][0]["valid"])
             self.assertEqual(result["ledger"]["unknown_cost_attempts"], 1)
-            self.assertAlmostEqual(result["ledger"]["reserved_usd"], .1)
+            self.assertAlmostEqual(result["ledger"]["reserved_usd"], .05 + .0003)
             a5.run_experiment(cfg, bundle, plan, self.snapshot, token="test", transport=mock)
             self.assertEqual(len(calls), 2)
 
@@ -195,6 +195,35 @@ class RuntimeTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "sin desenlace"):
                 a5.run_experiment(cfg, bundle, plan, self.snapshot, token="test", transport=lambda *args: self.fail("duplicate send"))
 
+    def test_ledger_settles_known_costs_and_retains_unknown_reserve(self):
+        cfg = {"reserve_per_attempt_usd": .15}
+        events = [{"event": "outcome", "parsed": {"cost_known": True, "estimated_cost_usd": .01}}
+                  for _ in range(180)]
+        ledger = a5.ledger_status(events, cfg)
+        self.assertAlmostEqual(ledger["reserved_usd"], 1.8)
+        self.assertEqual(ledger["unknown_cost_attempts"], 0)
+        events.append({"event": "outcome", "parsed": {"cost_known": False, "estimated_cost_usd": None}})
+        self.assertAlmostEqual(a5.ledger_status(events, cfg)["reserved_usd"], 1.95)
+        # Un costo no verificable no libera la reserva aunque el flag sea incorrecto.
+        events.append({"event": "outcome", "parsed": {"cost_known": True, "estimated_cost_usd": None}})
+        self.assertEqual(a5.ledger_status(events, cfg)["unknown_cost_attempts"], 2)
+
+    def test_settled_budget_checks_next_reserve_before_sending(self):
+        calls = []
+        def mock(payload, cfg, token):
+            calls.append(1)
+            return {"ok": True, "status_code": 200, "elapsed_seconds": .01, "raw_body": json.dumps({
+                "model": "mock", "choices": [{"finish_reason": "stop", "message": {"content": json.dumps(scores())}}],
+                "usage": {"prompt_tokens": 100, "completion_tokens": 100}})}
+        with tempfile.TemporaryDirectory() as out, patch.object(a5.time, "sleep"):
+            cfg, bundle, plan = self.mock_api_setup(out)
+            # Una segunda solicitud no cabe: la primera cuesta .0003 y se reservan .05 para la siguiente.
+            cfg['budget_usd'] = .0501
+            plan['tasks'].append({**plan['tasks'][0], 'request_key': 'second-task'})
+            with self.assertRaisesRegex(RuntimeError, 'Tope'):
+                a5.run_experiment(cfg, bundle, plan, self.snapshot, token='test', transport=mock)
+            self.assertEqual(len(calls), 1)
+
     def test_invalid_predictions_remain_in_metrics(self):
         y = list(a5.LABELS); pred = list(y); pred[0] = a5.INVALID
         metrics = a5.classification_metrics(y, pred)
@@ -209,7 +238,7 @@ class RuntimeTests(unittest.TestCase):
 
     def test_all_notebook_blocks_execute_in_demo_without_network(self):
         book = json.loads((ROOT / "A5_Modelo_Comercial_G15.ipynb").read_text(encoding="utf-8"))
-        self.assertEqual(sum(c["cell_type"] == "code" for c in book["cells"]), 16)
+        self.assertEqual(sum(c["cell_type"] == "code" for c in book["cells"]), 18)
         namespace = {"__name__": "__main__"}
         with tempfile.TemporaryDirectory() as out, contextlib.redirect_stdout(io.StringIO()), patch.object(Path, "cwd", return_value=ROOT), patch.object(a5.urllib.request.OpenerDirector, "open", side_effect=AssertionError("Network forbidden")):
             for i, cell in enumerate(book["cells"]):

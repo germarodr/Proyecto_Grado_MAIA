@@ -23,7 +23,7 @@ LABELS = ["Background", "Gap", "Basis", "Comparison", "Application",
           "Improvement/Modification", "Evidence", "Identification of the Originator",
           "Further Reading"]
 INVALID = "__invalid__"
-VERSION = "a5-base-only-v2"
+VERSION = "a5-base-only-v4"
 
 
 def utcnow():
@@ -375,6 +375,9 @@ def check_api_config(cfg, bundle):
         raise ValueError("Usa URL HTTPS completa, sin credenciales, query ni fragmento")
     if not cfg["model"].strip() or "REEMPLAZAR" in cfg["model"] or "REEMPLAZAR" in cfg["endpoint"]:
         raise ValueError("Falta URL/modelo reales")
+    if "provider" in cfg:
+        import a5_providers
+        a5_providers.validate_config(cfg)
     if cfg["output_token_parameter"] not in ("max_completion_tokens", "max_tokens"):
         raise ValueError("Parámetro de tokens no soportado por este adaptador")
     for k in ("budget_usd", "reserve_per_attempt_usd", "input_usd_per_million", "output_usd_per_million", "timeout_seconds"):
@@ -445,10 +448,22 @@ def unpack_response(result, cfg):
 
 
 def ledger_status(events, cfg):
+    """Liquida costos conocidos; retiene reserva solo para costos desconocidos.
+
+    Antes del siguiente envío se agrega su reserva completa. Nunca se libera
+    una reserva por un intento sin usage fiable ni se reenvían intentos inciertos.
+    """
     outcomes = [e for e in events if e["event"] == "outcome"]
-    estimated = sum(e["parsed"]["estimated_cost_usd"] or 0 for e in outcomes)
-    unknown = sum(not e["parsed"]["cost_known"] for e in outcomes)
-    reserved = sum(max(cfg["reserve_per_attempt_usd"], e["parsed"]["estimated_cost_usd"] or 0) for e in outcomes)
+    costs = []
+    for event in outcomes:
+        parsed = event["parsed"]
+        cost = parsed.get("estimated_cost_usd")
+        reliable = (parsed.get("cost_known") is True and isinstance(cost, (int, float))
+                    and not isinstance(cost, bool) and math.isfinite(cost) and cost >= 0)
+        costs.append(cost if reliable else None)
+    estimated = sum(cost for cost in costs if cost is not None)
+    unknown = sum(cost is None for cost in costs)
+    reserved = estimated + unknown * cfg["reserve_per_attempt_usd"]
     return {"estimated_known_cost_usd": estimated, "unknown_cost_attempts": unknown, "reserved_usd": reserved}
 
 
