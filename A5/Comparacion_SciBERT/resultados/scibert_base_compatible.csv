@@ -1,0 +1,2969 @@
+﻿inst_key,reference,predicted_label
+0804.0924|44|374-423|0711.0189,Further Reading,Further Reading
+0907.0718|24|333-382|0806.1722,Further Reading,Further Reading
+1001.1231|14|2679-2728|0907.4573,Further Reading,Further Reading
+1008.4220|2|306-355|1010.4207,Further Reading,Further Reading
+1009.3802|3|104-153|0711.0189,Further Reading,Further Reading
+1009.4517|6|590-639|1001.0555,Further Reading,Further Reading
+1105.5488|93|561-610|1102.4599,Gap,Background
+1106.2662|8|1015-1064|0906.0447,Further Reading,Further Reading
+1201.1221|9|306-355|cs/0312044,Further Reading,Further Reading
+1204.4710|8|57-106|1204.5721,Further Reading,Further Reading
+1207.1522|6|988-1037|1112.6291,Evidence,Evidence
+1207.3414|25|3431-3480|0905.4162,Evidence,Evidence
+1210.2380|4|1407-1456|1305.4446,Background,Basis
+1210.5363|1|987-1036|1112.1538,Further Reading,Further Reading
+1301.5584|12|1075-1124|1204.2021,Further Reading,Background
+1305.2362|75|1720-1769|1207.2422,Evidence,Evidence
+1305.3616|1|595-644|1006.0234,Basis,Background
+1305.5306|7|185-234|1206.5538,Further Reading,Further Reading
+1307.1805|9|927-976|1109.1693,Further Reading,Background
+1307.4518|16|371-420|1203.6397,Further Reading,Further Reading
+1311.1406|21|313-362|cs/0406021,Background,Background
+1311.5595|92|979-1028|1209.6560,Application,Application
+1312.0723|0|593-642|1407.1116,Further Reading,Further Reading
+1401.2804|21|54-103|1401.4107,Further Reading,Further Reading
+1401.4112|47|417-466|1401.4107,Further Reading,Further Reading
+1402.2031|3|364-413|1206.5538,Further Reading,Further Reading
+1402.5164|84|59-108|cs/9904019,Improvement/Modification,Improvement/Modification
+1402.6508|6|1519-1568|1308.0971,Further Reading,Further Reading
+1403.2041|82|670-719|1304.6321,Application,Application
+1403.6188|2|984-1033|1305.5520,Further Reading,Further Reading
+1404.3882|2|801-850|1308.2858,Further Reading,Further Reading
+1404.4805|139|168-217|1401.4107,Basis,Application
+1407.4420|2|516-565|0708.4149,Evidence,Evidence
+1409.2391|5|560-609|1407.1289,Further Reading,Further Reading
+1409.7615|12|237-286|1110.5813,Further Reading,Further Reading
+1410.1594|23|442-491|1008.3314,Gap,Gap
+1410.5392|24|286-335|1311.3286,Improvement/Modification,Improvement/Modification
+1411.0740|30|1825-1874|1411.4033,Further Reading,Further Reading
+1411.2057|9|396-445|1204.5721,Further Reading,Further Reading
+1411.6067|10|260-309|1311.2524,Evidence,Background
+1412.0165|21|562-611|1010.4237,Further Reading,Further Reading
+1412.2306|8|529-578|1406.5679,Comparison,Comparison
+1412.2863|99|436-485|1311.3287,Further Reading,Evidence
+1501.02285|178|930-979|1007.1841,Further Reading,Further Reading
+1501.04262|2|483-532|1504.05140,Further Reading,Further Reading
+1502.03505|0|1144-1193|1306.6709,Further Reading,Further Reading
+1502.04492|1|144-193|1206.5538,Further Reading,Further Reading
+1502.06626|24|877-926|1502.05675,Further Reading,Further Reading
+1502.06626|36|28-77|1103.0995,Evidence,Evidence
+1502.07423|101|578-627|1210.1316,Evidence,Evidence
+1504.05133|21|108-157|1411.1091,Application,Basis
+1504.05277|10|1146-1195|1403.1840,Evidence,Evidence
+1504.06993|19|323-372|1502.01852,Evidence,Evidence
+1504.07029|2|803-852|1502.05082,Background,Background
+1505.06389|5|1234-1283|1502.00717,Further Reading,Further Reading
+1505.07203|44|1306-1355|1002.1887,Background,Background
+1506.04130|55|69-118|1403.6382,Evidence,Evidence
+1506.05532|0|809-858|1403.1840,Evidence,Comparison
+1509.04874|7|595-644|1502.02766,Evidence,Evidence
+1510.02824|107|528-577|1411.2577,Further Reading,Further Reading
+1511.01245|19|1326-1375|1111.1788,Evidence,Evidence
+1511.01287|23|466-515|1512.03306,Further Reading,Further Reading
+1511.02283|14|192-241|1505.01121,Background,Background
+1511.02570|29|83-132|1506.01144,Application,Background
+1511.03476|2|317-366|1505.00487,Evidence,Evidence
+1511.04377|7|1216-1265|1504.06375,Application,Comparison
+1511.04773|9|697-746|1510.02054,Further Reading,Further Reading
+1511.05197|25|1152-1201|1511.06062,Evidence,Evidence
+1511.06437|0|546-595|1502.05082,Background,Background
+1511.06489|2|595-644|1409.5403,Basis,Basis
+1511.06645|7|13-62|1412.1526,Comparison,Comparison
+1511.07569|118|948-997|1111.4729,Evidence,Evidence
+1511.07571|2|594-643|1506.01497,Basis,Basis
+1512.02013|26|469-518|1403.1840,Basis,Basis
+1512.02866|0|184-233|1204.5721,Further Reading,Further Reading
+1601.04143|10|1494-1543|1510.00857,Background,Background
+1601.06032|8|742-791|1311.2524,Application,Comparison
+1601.06683|0|796-845|0711.0189,Further Reading,Further Reading
+1602.03903|1|346-395|1310.5107,Further Reading,Further Reading
+1602.04421|229|235-284|1007.1841,Further Reading,Further Reading
+1602.07261|1|228-277|1512.00567,Basis,Improvement/Modification
+1603.03234|42|859-908|1411.7718,Comparison,Comparison
+1603.05359|3|936-985|1406.7443,Basis,Basis
+1603.06327|2|676-725|1412.8556,Gap,Gap
+1603.07234|5|219-268|1409.6041,Background,Background
+1603.08561|2|1136-1185|1505.05192,Evidence,Evidence
+1603.08754|3|568-617|1412.2306,Improvement/Modification,Improvement/Modification
+1603.09535|33|1488-1537|1006.1923,Further Reading,Background
+1604.01325|7|82-131|1604.02426,Comparison,Further Reading
+1604.03227|2|102-151|1505.04366,Improvement/Modification,Basis
+1604.03650|12|233-282|1504.06852,Evidence,Evidence
+1604.08202|2|657-706|1509.08147,Evidence,Evidence
+1604.08691|1|458-507|1212.2264,Background,Background
+1605.02569|22|281-330|1211.0053,Further Reading,Further Reading
+1605.04988|13|362-411|1403.4334,Further Reading,Further Reading
+1606.02615|1|841-890|1105.2988,Further Reading,Further Reading
+1606.03237|31|366-415|1410.1037,Further Reading,Further Reading
+1606.03642|19|295-344|1504.00744,Further Reading,Further Reading
+1606.08132|5|1103-1152|1601.02306,Basis,Evidence
+1607.01855|9|381-430|1706.00712,Evidence,Evidence
+1607.03084|21|1360-1409|1204.5721,Further Reading,Further Reading
+1607.03084|271|1198-1247|1503.01752,Further Reading,Further Reading
+1607.04433|28|59-108|1412.6980,Gap,Gap
+1607.05781|18|1086-1135|1602.00763,Improvement/Modification,Improvement/Modification
+1607.05781|19|966-1015|1506.02753,Evidence,Evidence
+1608.00229|18|40-89|1506.08581,Basis,Basis
+1608.00708|43|296-345|1404.4679,Further Reading,Further Reading
+1608.03656|3|169-218|1112.1010,Gap,Background
+1608.04307|5|309-358|1411.4389,Background,Background
+1608.05137|15|270-319|1411.4038,Application,Application
+1608.06800|2|1298-1347|1411.4568,Evidence,Comparison
+1608.08305|5|38-87|1603.06180,Improvement/Modification,Improvement/Modification
+1608.08336|1|2288-2337|1203.1005,Gap,Background
+1608.08851|5|14-63|1411.4389,Gap,Background
+1609.02500|2|147-196|1311.2524,Identification of the Originator,Identification of the Originator
+1609.03057|45|534-583|1606.01299,Further Reading,Further Reading
+1609.03677|25|12-61|1511.08861,Basis,Basis
+1609.04802|9|795-844|1608.00367,Background,Evidence
+1609.06641|23|132-181|1609.06638,Further Reading,Further Reading
+1610.00291|24|410-459|1311.5591,Application,Application
+1610.01256|2|188-237|1601.04126,Gap,Gap
+1610.02454|17|648-697|1409.8403,Further Reading,Further Reading
+1610.09645|35|662-711|1503.03832,Evidence,Evidence
+1611.02862|19|1558-1607|1502.06220,Basis,Background
+1611.03589|5|814-863|1406.4729,Evidence,Evidence
+1611.04481|4|505-554|1501.00092,Improvement/Modification,Improvement/Modification
+1611.05435|0|115-164|1411.4038,Evidence,Background
+1611.06391|7|57-106|1512.03385,Identification of the Originator,Identification of the Originator
+1611.06612|0|887-936|1411.4038,Gap,Gap
+1611.06689|5|234-283|1604.06573,Improvement/Modification,Basis
+1611.07727|0|1713-1762|1605.02346,Background,Background
+1611.08588|12|107-156|1506.01497,Improvement/Modification,Basis
+1611.09312|44|580-629|1312.4569,Application,Application
+1611.09571|25|224-273|1412.2306,Background,Background
+1612.00132|0|385-434|1612.01958,Background,Background
+1612.00410|72|506-555|1412.5687,Further Reading,Further Reading
+1612.01079|31|422-471|1603.08511,Basis,Basis
+1612.01105|31|362-411|1507.02159,Improvement/Modification,Improvement/Modification
+1612.01958|3|528-577|1611.07004,Comparison,Comparison
+1612.02583|1|2197-2246|1503.00593,Gap,Gap
+1612.03268|36|756-805|1603.08155,Evidence,Evidence
+1612.04426|10|435-484|1303.5778,Further Reading,Further Reading
+1612.04757|38|56-105|1411.4389,Improvement/Modification,Application
+1612.05234|7|1185-1234|1506.01497,Background,Background
+1612.05363|6|43-92|1610.05586,Comparison,Comparison
+1612.08230|4|864-913|1606.04797,Basis,Application
+1701.01779|18|81-130|1311.2524,Basis,Basis
+1701.02468|2|275-324|1607.08128,Improvement/Modification,Improvement/Modification
+1701.03153|5|812-861|1412.7122,Identification of the Originator,Background
+1701.05013|0|607-656|1703.04980,Background,Background
+1701.06123|48|406-455|1603.09382,Application,Application
+1701.07204|13|470-519|0709.2196,Further Reading,Further Reading
+1701.08349|3|388-437|1512.03385,Comparison,Comparison
+1701.08349|3|453-502|1603.05027,Comparison,Comparison
+1702.00503|22|325-374|1502.01852,Application,Application
+1702.02138|12|503-552|1604.03540,Evidence,Evidence
+1702.02463|28|131-180|1501.02565,Comparison,Comparison
+1702.05186|40|374-423|1407.4443,Further Reading,Further Reading
+1702.05354|9|837-886|1204.5721,Further Reading,Further Reading
+1702.05464|2|810-859|1510.02192,Background,Background
+1702.05891|33|184-233|1507.02159,Application,Application
+1702.06257|4|17-66|1512.00567,Improvement/Modification,Application
+1702.07975|0|1626-1675|1309.0261,Identification of the Originator,Identification of the Originator
+1702.08481|18|1478-1527|1608.04188,Further Reading,Further Reading
+1703.01847|45|240-289|1007.1841,Further Reading,Further Reading
+1703.04079|5|430-479|1512.03385,Basis,Basis
+1703.04774|1|1243-1292|1002.2746,Background,Background
+1703.08471|25|628-677|1710.02560,Further Reading,Further Reading
+1703.08816|14|180-229|0711.0189,Further Reading,Further Reading
+1703.08866|30|401-450|1502.01852,Application,Application
+1703.09145|23|299-348|1604.03540,Evidence,Evidence
+1703.10571|19|430-479|1411.4038,Further Reading,Further Reading
+1704.02612|1|818-867|1605.03389,Evidence,Evidence
+1704.02767|13|809-858|1405.1649,Further Reading,Background
+1704.03373|29|308-357|1604.08683,Application,Application
+1704.03414|3|774-823|1604.03540,Evidence,Evidence
+1704.04861|43|154-203|1511.06789,Improvement/Modification,Improvement/Modification
+1704.05645|3|900-949|1611.02447,Evidence,Evidence
+1704.06456|3|160-209|1501.05703,Improvement/Modification,Improvement/Modification
+1704.06956|17|493-542|1603.06677,Further Reading,Further Reading
+1705.01450|8|452-501|1604.06318,Background,Background
+1705.01781|24|1196-1245|1604.06182,Gap,Gap
+1705.02012|3|46-95|1406.1078,Improvement/Modification,Improvement/Modification
+1705.02544|8|1694-1743|1501.02741,Further Reading,Further Reading
+1705.03566|3|2211-2260|1004.4057,Further Reading,Further Reading
+1705.04043|46|1132-1181|1603.09114,Comparison,Comparison
+1705.05933|90|71-120|0910.1879,Improvement/Modification,Improvement/Modification
+1705.09425|3|762-811|1311.2524,Evidence,Evidence
+1705.10709|3|1506-1555|1409.6277,Further Reading,Further Reading
+1706.01805|3|290-339|1411.4038,Identification of the Originator,Identification of the Originator
+1706.02413|1|60-109|1612.00593,Identification of the Originator,Identification of the Originator
+1706.03008|4|563-612|1403.6382,Evidence,Evidence
+1706.04041|34|346-395|1704.07711,Further Reading,Further Reading
+1706.06253|4|141-190|1402.3488,Basis,Basis
+1706.06549|3|998-1047|0906.3234,Further Reading,Further Reading
+1706.06749|2|257-306|1505.07818,Improvement/Modification,Improvement/Modification
+1707.00116|7|1097-1146|1504.06375,Background,Background
+1707.01530|1|373-422|1403.6318,Evidence,Gap
+1707.01698|70|258-307|1502.01812,Further Reading,Further Reading
+1707.01700|13|150-199|1512.03385,Application,Comparison
+1707.02477|3|269-318|1405.1773,Background,Background
+1707.02921|11|279-328|1511.08861,Evidence,Evidence
+1707.03717|14|587-636|1512.00567,Comparison,Comparison
+1707.06923|4|282-331|1608.00859,Further Reading,Further Reading
+1707.07102|2|164-213|1604.08633,Basis,Basis
+1708.00710|6|71-120|1512.03385,Basis,Basis
+1708.01241|19|51-100|1512.00567,Basis,Basis
+1708.01641|3|685-734|1604.01753,Evidence,Further Reading
+1708.02681|10|882-931|1603.08155,Application,Application
+1708.02681|9|547-596|1504.06375,Application,Background
+1708.03361|102|363-412|1512.03385,Application,Further Reading
+1708.04512|27|612-661|1603.08155,Improvement/Modification,Background
+1708.04669|15|11-60|1508.04065,Identification of the Originator,Identification of the Originator
+1708.05349|11|714-763|1603.08155,Evidence,Evidence
+1708.05924|12|397-446|1701.07274,Further Reading,Background
+1708.06073|11|80-129|1609.03528,Further Reading,Further Reading
+1708.08333|3|448-497|1606.01377,Identification of the Originator,Identification of the Originator
+1709.03842|9|571-620|1702.08423,Comparison,Background
+1709.05745|34|357-406|1507.02438,Application,Application
+1709.08563|15|219-268|1311.3144,Further Reading,Further Reading
+1710.00814|1|135-184|1702.02284,Evidence,Background
+1710.00962|15|31-80|1603.08155,Identification of the Originator,Background
+1710.01453|17|27-76|1411.4038,Basis,Basis
+1710.04043|11|512-561|1709.00382,Evidence,Comparison
+1710.07231|5|192-241|1102.5046,Evidence,Evidence
+1710.07498|3|65-114|1512.03385,Identification of the Originator,Identification of the Originator
+1710.09338|3|215-264|1505.04597,Basis,Basis
+1710.10891|19|545-594|1705.07426,Evidence,Evidence
+1711.00146|6|128-177|1506.01497,Identification of the Originator,Identification of the Originator
+1711.00199|37|1029-1078|1703.01661,Application,Application
+1711.00305|57|749-798|1703.05192,Evidence,Evidence
+1711.02652|28|385-434|1612.09007,Further Reading,Further Reading
+1711.02741|31|210-259|1412.6980,Application,Application
+1711.03273|18|57-106|1512.03385,Improvement/Modification,Improvement/Modification
+1711.06330|32|89-138|1707.07998,Improvement/Modification,Basis
+1711.06368|2|175-224|1611.07715,Evidence,Evidence
+1711.06526|3|155-204|1605.09759,Gap,Gap
+1711.07377|2|1500-1549|1506.04214,Background,Comparison
+1711.07553|1|1136-1185|1611.08097,Further Reading,Further Reading
+1711.07624|8|258-307|1412.6980,Application,Application
+1711.08848|4|296-345|1612.08242,Basis,Basis
+1711.09594|3|855-904|1404.7584,Gap,Gap
+1711.09802|5|1649-1698|1103.4395,Background,Background
+1711.10151|1|69-118|1707.07012,Further Reading,Further Reading
+1711.10267|1|287-336|1511.04110,Gap,Background
+1711.10370|37|432-481|1603.08895,Evidence,Evidence
+1711.11556|6|630-679|1411.4038,Identification of the Originator,Identification of the Originator
+1712.00202|10|1247-1296|1606.06650,Evidence,Background
+1712.00282|9|191-240|1403.1840,Evidence,Evidence
+1712.00559|0|501-550|1707.07012,Background,Background
+1712.01056|6|2131-2180|1603.06359,Evidence,Evidence
+1712.02310|59|328-377|1705.09914,Improvement/Modification,Improvement/Modification
+1712.02514|13|60-109|1406.2661,Identification of the Originator,Identification of the Originator
+1712.02517|1|371-420|1411.4038,Gap,Background
+1712.03382|5|310-359|1608.06993,Application,Application
+1712.03727|16|305-354|1801.06867,Further Reading,Further Reading
+1712.03747|24|324-373|1412.5661,Background,Background
+1712.04119|13|432-481|1608.03981,Identification of the Originator,Identification of the Originator
+1712.04489|18|858-907|1610.02357,Identification of the Originator,Identification of the Originator
+1712.06316|19|180-229|1607.01794,Comparison,Comparison
+1712.07271|13|698-747|1507.00448,Background,Background
+1712.07732|51|610-659|1506.01497,Improvement/Modification,Application
+1712.08130|35|151-200|1106.6224,Further Reading,Further Reading
+1712.08521|60|498-547|1702.07486,Evidence,Evidence
+1712.09124|0|226-275|1701.08230,Evidence,Evidence
+1712.09708|33|178-227|1612.08242,Application,Background
+1801.00868|73|1021-1070|1705.02950,Background,Background
+1801.00926|11|69-118|1505.04597,Improvement/Modification,Improvement/Modification
+1801.01444|11|971-1020|1506.04214,Background,Comparison
+1801.03986|28|34-83|1412.6980,Application,Application
+1801.06665|1|797-846|1612.05424,Evidence,Gap
+1801.07791|8|368-417|1611.08097,Further Reading,Further Reading
+1801.08839|0|245-294|1506.01497,Comparison,Background
+1801.08839|11|106-155|1611.07004,Identification of the Originator,Identification of the Originator
+1801.09108|40|561-610|1502.01852,Application,Application
+1801.09467|32|153-202|1505.04597,Comparison,Comparison
+1801.10281|22|234-283|1411.4389,Evidence,Evidence
+1802.01218|5|499-548|1707.03017,Basis,Background
+1802.03237|16|70-119|1512.02134,Basis,Basis
+1802.03788|14|765-814|1509.06321,Improvement/Modification,Improvement/Modification
+1802.04216|1|961-1010|1504.06852,Background,Background
+1802.04472|8|738-787|1404.0431,Background,Background
+1802.05763|2|752-801|1608.04644,Gap,Gap
+1802.06464|45|296-345|0906.3469,Improvement/Modification,Basis
+1802.07144|6|162-211|1311.3144,Further Reading,Further Reading
+1802.07421|40|71-120|1512.03385,Improvement/Modification,Improvement/Modification
+1802.08509|4|215-264|1403.7721,Further Reading,Further Reading
+1802.08948|8|63-112|1701.06659,Improvement/Modification,Improvement/Modification
+1802.10367|15|840-889|1612.08242,Improvement/Modification,Background
+1803.01413|29|355-404|1512.02017,Basis,Basis
+1803.02563|2|200-249|1511.02274,Basis,Background
+1803.02563|33|911-960|1609.00446,Improvement/Modification,Basis
+1803.02699|15|1420-1469|1612.03144,Evidence,Evidence
+1803.02758|1|277-326|1704.08545,Background,Background
+1803.04347|1|80-129|1607.01952,Evidence,Background
+1803.04680|13|505-554|1512.03385,Application,Application
+1803.05848|3|238-287|1411.4038,Identification of the Originator,Basis
+1803.06416|2|623-672|1412.7584,Further Reading,Further Reading
+1803.06641|10|34-83|1607.01895,Evidence,Background
+1803.08495|2|446-495|1511.06078,Background,Background
+1803.09127|8|353-402|1708.06519,Background,Background
+1803.09132|35|157-206|1412.6980,Application,Application
+1803.09786|5|1076-1125|1711.07027,Gap,Gap
+1803.10071|9|27-76|1210.4752,Evidence,Application
+1803.10892|31|219-268|1612.00603,Comparison,Comparison
+1803.11189|4|303-352|1507.05670,Background,Background
+1804.00497|16|461-510|1502.01852,Comparison,Comparison
+1804.01159|45|337-386|1512.03385,Application,Application
+1804.01259|5|457-506|1309.0261,Identification of the Originator,Identification of the Originator
+1804.01728|2|208-257|1709.01507,Background,Background
+1804.02142|23|1611-1660|1201.5338,Improvement/Modification,Improvement/Modification
+1804.02152|3|1520-1569|1608.03981,Comparison,Comparison
+1804.02391|33|790-839|1506.02640,Application,Application
+1804.02688|4|340-389|1504.06993,Background,Background
+1804.02967|7|68-117|1710.05956,Improvement/Modification,Basis
+1804.03308|3|458-507|1608.04644,Further Reading,Further Reading
+1804.03360|2|655-704|1501.00092,Comparison,Comparison
+1804.04483|14|629-678|1504.06066,Application,Basis
+1804.04749|42|677-726|1210.7959,Further Reading,Further Reading
+1804.04829|49|46-95|1412.6980,Application,Application
+1804.05181|0|1078-1127|1608.06993,Evidence,Background
+1804.05653|26|72-121|1604.05383,Basis,Basis
+1804.06353|34|1033-1082|1612.03365,Further Reading,Further Reading
+1805.00324|33|24-73|1512.04150,Basis,Basis
+1805.00655|20|812-861|1512.03385,Application,Application
+1805.01282|18|143-192|1506.01497,Application,Basis
+1805.02855|39|974-1023|1412.6622,Identification of the Originator,Identification of the Originator
+1805.03371|39|438-487|1707.02921,Evidence,Evidence
+1805.03869|0|2354-2403|1609.06591,Application,Application
+1805.04628|37|315-364|1505.04597,Improvement/Modification,Application
+1805.04720|27|162-211|1604.06968,Further Reading,Background
+1805.05373|2|769-818|1710.09288,Evidence,Evidence
+1805.05476|40|479-528|1503.03355,Improvement/Modification,Improvement/Modification
+1805.07193|2|802-851|1702.05693,Evidence,Evidence
+1805.07567|25|1082-1131|1803.06091,Further Reading,Further Reading
+1805.09408|109|626-675|1505.00412,Further Reading,Background
+1805.10445|1|1837-1886|1512.08086,Background,Background
+1805.10445|58|802-851|1603.09382,Evidence,Evidence
+1805.11022|0|530-579|1605.06593,Further Reading,Further Reading
+1805.12467|54|90-139|1512.03385,Improvement/Modification,Improvement/Modification
+1806.00631|0|356-405|1503.08909,Evidence,Evidence
+1806.01196|10|60-109|1512.03385,Improvement/Modification,Improvement/Modification
+1806.04202|16|100-149|1602.08254,Further Reading,Further Reading
+1806.05510|0|329-378|1511.07053,Background,Background
+1806.05724|4|706-755|1612.00593,Basis,Basis
+1806.06098|1|136-185|1609.04387,Background,Background
+1806.06193|7|1687-1736|1511.06789,Background,Background
+1806.06984|59|648-697|1501.02565,Comparison,Comparison
+1806.07226|7|307-356|1411.4038,Identification of the Originator,Identification of the Originator
+1806.08463|7|337-386|1512.03385,Basis,Basis
+1806.08472|29|1015-1064|1703.10593,Improvement/Modification,Improvement/Modification
+1806.08472|2|692-741|1603.08155,Evidence,Evidence
+1806.08978|85|236-285|1006.0234,Identification of the Originator,Identification of the Originator
+1806.10556|39|64-113|1505.04597,Application,Application
+1806.11269|14|379-428|1711.08362,Further Reading,Further Reading
+1806.11538|34|369-418|1512.03385,Improvement/Modification,Basis
+1807.00947|12|6-55|1804.04391,Identification of the Originator,Identification of the Originator
+1807.00959|10|481-530|1504.06852,Basis,Basis
+1807.02570|4|2699-2748|1612.01925,Basis,Basis
+1807.02804|11|76-125|1512.03385,Improvement/Modification,Basis
+1807.04686|22|219-268|1712.02327,Evidence,Evidence
+1807.06233|7|463-512|1705.09406,Further Reading,Further Reading
+1807.06779|3|668-717|1505.04597,Basis,Basis
+1807.07437|7|1260-1309|1603.08895,Background,Background
+1807.07716|0|1367-1416|1606.06650,Improvement/Modification,Improvement/Modification
+1807.07803|0|719-768|1505.04597,Identification of the Originator,Identification of the Originator
+1807.08556|32|546-595|1512.03385,Application,Application
+1807.08745|0|952-1001|1101.1902,Further Reading,Further Reading
+1807.09968|30|425-474|1512.03385,Basis,Basis
+1807.09986|30|234-283|1511.05234,Comparison,Comparison
+1807.10066|2|29-78|1705.07750,Basis,Basis
+1807.10378|31|12-61|1412.6980,Application,Application
+1807.11236|33|132-181|1611.06612,Comparison,Comparison
+1807.11332|9|576-625|1811.02307,Comparison,Background
+1807.11857|5|1201-1250|1512.02311,Identification of the Originator,Identification of the Originator
+1807.11869|8|264-313|1503.00278,Further Reading,Further Reading
+1808.00023|26|841-890|1701.08230,Basis,Basis
+1808.00157|5|96-145|1611.08272,Comparison,Comparison
+1808.00191|27|675-724|1711.11575,Evidence,Evidence
+1808.00671|1|100-149|1611.08974,Basis,Basis
+1808.00671|9|131-180|1612.00593,Identification of the Originator,Identification of the Originator
+1808.01097|1|1449-1498|1701.01619,Background,Background
+1808.01454|33|479-528|1505.04597,Application,Application
+1808.01562|12|393-442|1506.01497,Gap,Background
+1808.01571|43|700-749|1711.10658,Comparison,Comparison
+1808.01976|8|81-130|1602.02697,Further Reading,Background
+1808.02350|3|32-81|1612.08242,Improvement/Modification,Improvement/Modification
+1808.02631|1|96-145|1603.05279,Identification of the Originator,Identification of the Originator
+1808.03633|53|96-145|1108.2464,Further Reading,Evidence
+1808.04134|0|977-1026|1309.0261,Identification of the Originator,Identification of the Originator
+1808.04273|5|720-769|1411.6372,Gap,Gap
+1808.04359|8|2751-2800|1711.07613,Background,Comparison
+1808.04432|6|232-281|1612.01380,Comparison,Comparison
+1808.04754|14|258-307|1512.03385,Improvement/Modification,Improvement/Modification
+1808.05577|0|895-944|1512.03385,Evidence,Evidence
+1808.06601|1|1863-1912|1604.08610,Basis,Basis
+1808.06601|41|1901-1950|1705.07750,Application,Application
+1808.07456|3|455-504|1403.1840,Gap,Gap
+1808.08271|24|665-714|0903.3287,Further Reading,Further Reading
+1808.09670|112|441-490|1404.4805,Further Reading,Background
+1808.09714|11|127-176|1608.03981,Application,Application
+1808.10542|1|191-240|1612.01925,Background,Background
+1809.00110|30|108-157|1612.03144,Application,Background
+1809.00174|10|356-405|1809.00206,Evidence,Comparison
+1809.00665|4|330-379|1603.06812,Evidence,Evidence
+1809.00681|5|429-478|1506.04757,Application,Application
+1809.00778|1|252-301|1711.07240,Basis,Application
+1809.00903|43|312-361|1604.04382,Application,Application
+1809.00948|79|140-189|1412.2306,Further Reading,Further Reading
+1809.01361|16|620-669|1702.08658,Evidence,Evidence
+1809.01372|7|1029-1078|1612.07828,Gap,Gap
+1809.01844|22|251-300|1505.07818,Basis,Basis
+1809.03119|0|631-680|1506.04214,Background,Background
+1809.03782|1|251-300|1705.08781,Basis,Basis
+1809.04096|7|889-938|1412.0767,Gap,Gap
+1809.04320|5|2050-2099|1802.08817,Gap,Gap
+1809.06060|81|399-448|1412.6157,Basis,Background
+1809.06147|1|448-497|1801.02385,Gap,Gap
+1809.10200|2|574-623|1608.06993,Comparison,Comparison
+1809.10221|3|12-61|1411.4038,Identification of the Originator,Identification of the Originator
+1809.10243|7|66-115|1505.04597,Basis,Basis
+1810.02862|10|500-549|1512.03385,Evidence,Evidence
+1810.05424|0|337-386|1512.02134,Identification of the Originator,Basis
+1810.05591|4|185-234|1708.07969,Background,Comparison
+1810.05731|2|108-157|1501.00092,Identification of the Originator,Identification of the Originator
+1810.06339|713|9-58|1709.07857,Further Reading,Further Reading
+1810.06339|767|280-329|1612.00563,Further Reading,Background
+1810.07003|4|605-654|1512.00567,Improvement/Modification,Improvement/Modification
+1810.09343|1|198-247|1411.4038,Application,Identification of the Originator
+1810.09391|20|238-287|1807.05520,Further Reading,Further Reading
+1810.10193|9|122-171|1411.4038,Identification of the Originator,Background
+1810.10333|59|418-467|1411.1420,Comparison,Comparison
+1810.10352|67|402-451|1711.06077,Evidence,Evidence
+1810.10853|9|100-149|1505.04597,Improvement/Modification,Improvement/Modification
+1810.11610|0|367-416|1603.08155,Background,Background
+1810.12348|2|409-458|1709.01507,Evidence,Background
+1810.12535|27|772-821|1806.06422,Evidence,Evidence
+1811.00112|6|199-248|1706.04717,Further Reading,Further Reading
+1811.00201|1|713-762|1507.00448,Basis,Basis
+1811.00218|18|1854-1903|1509.05472,Further Reading,Further Reading
+1811.00684|2|287-336|1609.06377,Basis,Background
+1811.03384|11|46-95|1512.03385,Improvement/Modification,Improvement/Modification
+1811.04309|1|231-280|1311.5591,Comparison,Background
+1811.05419|2|807-856|1708.01101,Comparison,Comparison
+1811.05819|0|800-849|1610.08401,Evidence,Background
+1811.06128|52|1137-1186|1710.07035,Further Reading,Further Reading
+1811.07376|0|614-663|1704.02463,Background,Gap
+1811.08051|45|973-1022|1802.10171,Evidence,Evidence
+1811.08328|14|295-344|1703.10593,Application,Application
+1811.08495|3|811-860|1604.04004,Evidence,Evidence
+1811.08496|4|386-435|1705.07750,Improvement/Modification,Improvement/Modification
+1811.08674|33|625-674|1606.04797,Application,Application
+1811.08674|4|984-1033|1804.03348,Basis,Basis
+1811.08747|5|1295-1344|1612.03144,Evidence,Evidence
+1811.08815|2|925-974|1602.02995,Evidence,Gap
+1811.09058|1|238-287|1506.01497,Background,Background
+1811.09497|60|601-650|1512.03385,Application,Application
+1811.09916|5|100-149|1611.07004,Basis,Basis
+1811.10014|9|124-173|1510.07945,Identification of the Originator,Identification of the Originator
+1811.10052|48|1072-1121|1802.08406,Further Reading,Background
+1811.10052|53|988-1037|1503.03438,Further Reading,Evidence
+1811.10136|2|258-307|2012.05191,Evidence,Background
+1811.10180|8|512-561|1802.06898,Gap,Background
+1811.10464|21|26-75|1412.6980,Application,Application
+1811.10559|34|221-270|1512.03385,Application,Application
+1811.10716|51|582-631|1603.05027,Application,Application
+1811.10863|2|170-219|1606.09549,Gap,Gap
+1811.11405|40|19-68|1512.03385,Application,Application
+1811.11662|0|1025-1074|1511.06523,Evidence,Background
+1811.12039|8|654-703|1502.00717,Background,Background
+1811.12666|21|541-590|1611.07004,Identification of the Originator,Identification of the Originator
+1811.12670|28|483-532|1611.07004,Application,Application
+1811.12786|6|876-925|1801.02765,Background,Comparison
+1811.12786|7|947-996|1806.02559,Background,Background
+1812.00087|2|129-178|1708.01641,Gap,Gap
+1812.00324|37|619-668|1412.1526,Gap,Comparison
+1812.00940|25|734-783|1611.08974,Application,Application
+1812.01289|1|377-426|1604.01753,Background,Background
+1812.01402|9|281-330|1612.00593,Identification of the Originator,Identification of the Originator
+1812.01497|16|107-156|1603.08695,Application,Application
+1812.01677|22|474-523|1412.6980,Application,Application
+1812.01888|4|593-642|1505.04597,Background,Background
+1812.01936|17|1620-1669|1802.06713,Comparison,Comparison
+1812.01969|7|16-65|1605.08110,Identification of the Originator,Identification of the Originator
+1812.01969|8|215-264|1805.12174,Background,Background
+1812.02393|1|991-1040|1708.00953,Background,Background
+1812.02466|16|569-618|1706.07567,Evidence,Evidence
+1812.02466|4|694-743|1503.03832,Gap,Comparison
+1812.02899|6|659-708|1504.06852,Identification of the Originator,Identification of the Originator
+1812.03205|6|567-616|1809.10200,Evidence,Evidence
+1812.03500|7|1171-1220|1411.4038,Improvement/Modification,Improvement/Modification
+1812.03595|33|507-556|1412.6980,Application,Application
+1812.03828|14|205-254|1612.00593,Identification of the Originator,Identification of the Originator
+1812.04058|6|758-807|1503.03832,Background,Background
+1812.04246|8|892-941|1709.09121,Gap,Gap
+1812.04351|9|24-73|1712.02560,Application,Application
+1812.05538|2|975-1024|1712.05080,Improvement/Modification,Improvement/Modification
+1812.05586|5|769-818|1311.2524,Identification of the Originator,Identification of the Originator
+1812.07169|41|321-370|1406.2031,Application,Application
+1812.08933|4|286-335|1705.09275,Gap,Background
+1812.10016|9|20-69|1411.4038,Identification of the Originator,Identification of the Originator
+1812.10085|11|671-720|1511.04599,Application,Application
+1812.10477|2|353-402|1704.03915,Gap,Gap
+1812.10477|8|78-127|1802.08797,Basis,Identification of the Originator
+1812.10766|9|848-897|1806.01484,Background,Background
+1812.11788|9|545-594|1505.07427,Identification of the Originator,Identification of the Originator
+1901.00484|8|463-512|1604.06573,Application,Comparison
+1901.00488|32|65-114|1512.03385,Improvement/Modification,Improvement/Modification
+1901.01651|2|921-970|1511.06624,Improvement/Modification,Basis
+1901.02000|6|35-84|1805.00652,Improvement/Modification,Basis
+1901.02970|11|670-719|1611.08974,Background,Gap
+1901.02985|6|1951-2000|1807.10221,Comparison,Comparison
+1901.03760|7|351-400|1512.03385,Improvement/Modification,Application
+1901.04596|3|980-1029|1803.07728,Background,Background
+1901.05203|9|293-342|1605.02406,Basis,Basis
+1901.06651|11|587-636|1705.09914,Improvement/Modification,Improvement/Modification
+1901.07929|1|980-1029|1505.04597,Improvement/Modification,Improvement/Modification
+1901.08097|22|410-459|1512.03385,Improvement/Modification,Improvement/Modification
+1901.09287|21|313-362|1501.07304,Further Reading,Further Reading
+1901.09575|2|583-632|1803.04680,Evidence,Evidence
+1901.10002|42|488-537|1810.03993,Further Reading,Further Reading
+1901.10204|180|679-728|1209.1960,Further Reading,Further Reading
+1901.10422|41|478-527|1803.07728,Identification of the Originator,Identification of the Originator
+1901.11213|18|467-516|0711.0189,Further Reading,Further Reading
+1902.02304|21|610-659|1504.01836,Improvement/Modification,Improvement/Modification
+1902.02660|45|61-110|1601.04895,Further Reading,Further Reading
+1902.02752|24|391-440|1612.07828,Basis,Comparison
+1902.03051|42|488-537|1703.10593,Comparison,Comparison
+1902.04992|272|437-486|1612.05424,Basis,Basis
+1902.04992|98|39-88|1704.08082,Improvement/Modification,Basis
+1902.05408|7|659-708|1809.06130,Improvement/Modification,Background
+1902.06391|5|494-543|1110.1358,Further Reading,Further Reading
+1902.06854|24|359-408|1611.05431,Application,Application
+1902.07519|8|363-412|1805.07549,Background,Background
+1902.07588|9|63-112|1710.04461,Improvement/Modification,Basis
+1902.09085|58|693-742|1604.06573,Evidence,Evidence
+1902.09145|5|325-374|1501.02565,Identification of the Originator,Identification of the Originator
+1902.09516|9|111-160|1501.04158,Background,Background
+1902.10311|21|386-435|1711.10703,Basis,Basis
+1902.10528|10|166-215|1605.03259,Gap,Gap
+1902.11065|33|152-201|1410.1980,Identification of the Originator,Identification of the Originator
+1902.11123|18|926-975|1807.05520,Evidence,Comparison
+1903.00839|2|202-251|1804.06962,Evidence,Background
+1903.01045|38|286-335|0711.0189,Further Reading,Further Reading
+1903.01700|15|283-332|1409.4326,Identification of the Originator,Identification of the Originator
+1903.02120|61|45-94|1611.10080,Basis,Application
+1903.02240|10|715-764|1710.01992,Background,Comparison
+1903.02240|19|99-148|1512.03385,Basis,Basis
+1903.02330|7|878-927|1611.07828,Identification of the Originator,Identification of the Originator
+1903.02688|28|205-254|1704.07576,Application,Application
+1903.02974|16|123-172|1805.08974,Evidence,Evidence
+1903.03556|38|547-596|1210.0026,Basis,Basis
+1903.03560|0|2556-2605|1306.0207,Further Reading,Further Reading
+1903.03837|18|146-195|1611.07004,Improvement/Modification,Basis
+1903.04596|7|302-351|1803.04680,Application,Application
+1903.04752|3|390-439|1503.03832,Evidence,Background
+1903.04772|10|72-121|1512.03385,Application,Application
+1903.05784|31|386-435|1609.03677,Application,Basis
+1903.05784|52|269-318|1511.04491,Comparison,Background
+1903.06325|14|364-413|1503.03832,Evidence,Background
+1903.06549|67|151-200|1512.03385,Improvement/Modification,Improvement/Modification
+1903.06593|7|73-122|1511.06645,Identification of the Originator,Identification of the Originator
+1903.06864|26|830-879|1702.06332,Comparison,Comparison
+1903.07520|16|687-736|1803.04523,Identification of the Originator,Identification of the Originator
+1903.08536|10|357-406|1512.04150,Comparison,Comparison
+1903.08558|18|669-718|1502.07411,Application,Application
+1903.08817|8|646-695|1709.01507,Application,Application
+1903.09467|22|269-318|1804.06353,Further Reading,Further Reading
+1903.09708|11|49-98|1704.03296,Improvement/Modification,Improvement/Modification
+1903.09761|151|249-298|1611.08002,Comparison,Comparison
+1903.09776|7|2638-2687|1804.00216,Background,Gap
+1903.10176|16|708-757|1705.03239,Comparison,Comparison
+1903.10765|12|15-64|1612.05038,Background,Background
+1903.10869|15|928-977|1603.03925,Comparison,Comparison
+1903.12174|0|742-791|1506.01497,Identification of the Originator,Identification of the Originator
+1903.12529|33|227-276|1710.04026,Basis,Basis
+1904.00842|6|240-289|1505.04597,Improvement/Modification,Improvement/Modification
+1904.01326|31|159-208|1411.7766,Application,Application
+1904.01693|33|110-159|1512.03385,Improvement/Modification,Improvement/Modification
+1904.01693|36|377-426|1807.05520,Background,Comparison
+1904.01893|1|709-758|1506.08959,Background,Application
+1904.03280|36|72-121|1603.08695,Further Reading,Further Reading
+1904.03289|30|28-77|1512.03385,Improvement/Modification,Application
+1904.03349|1|720-769|1804.04694,Gap,Gap
+1904.03534|9|1223-1272|1409.4097,Further Reading,Further Reading
+1904.03895|6|782-831|1703.10593,Comparison,Comparison
+1904.04281|1|776-825|1808.10322,Gap,Gap
+1904.04281|8|590-639|1804.01495,Gap,Gap
+1904.04290|14|375-424|1710.08313,Comparison,Gap
+1904.04335|29|585-634|1502.01852,Application,Application
+1904.04452|2|669-718|1606.09549,Identification of the Originator,Identification of the Originator
+1904.04513|104|71-120|1302.3347,Improvement/Modification,Basis
+1904.04562|0|374-423|1602.01528,Evidence,Evidence
+1904.04571|44|110-159|1505.04597,Basis,Basis
+1904.04998|6|1808-1857|1807.08865,Comparison,Comparison
+1904.05065|23|118-167|1606.00915,Improvement/Modification,Improvement/Modification
+1904.05290|1|521-570|1612.01925,Comparison,Background
+1904.05290|1|8-57|1504.06852,Identification of the Originator,Identification of the Originator
+1904.05547|1|1531-1580|1702.02258,Identification of the Originator,Identification of the Originator
+1904.05586|0|565-614|1602.02697,Background,Background
+1904.05866|44|150-199|1712.03866,Comparison,Comparison
+1904.05876|12|1106-1155|1412.0767,Comparison,Comparison
+1904.05876|2|98-147|1806.08409,Background,Background
+1904.07073|12|619-668|1506.01497,Identification of the Originator,Identification of the Originator
+1904.07223|29|294-343|1512.03385,Improvement/Modification,Application
+1904.08128|29|2273-2322|1512.00567,Evidence,Evidence
+1904.08254|3|108-157|1709.01507,Application,Basis
+1904.08254|3|846-895|1512.00567,Background,Comparison
+1904.08364|41|364-413|1512.03385,Improvement/Modification,Application
+1904.08475|0|1232-1281|1711.06077,Further Reading,Evidence
+1904.08601|7|325-374|1505.04597,Comparison,Comparison
+1904.08755|15|430-479|1711.09869,Background,Background
+1904.08773|24|332-381|1807.06521,Application,Basis
+1904.09073|1|669-718|1807.08205,Evidence,Evidence
+1904.09284|14|2196-2245|1904.08255,Further Reading,Background
+1904.09288|28|70-119|1512.03385,Basis,Basis
+1904.09524|67|95-144|1502.01852,Application,Application
+1904.09571|6|150-199|1611.07004,Identification of the Originator,Identification of the Originator
+1904.09739|46|285-334|1612.01105,Application,Application
+1904.09853|22|606-655|1707.07012,Improvement/Modification,Basis
+1904.09882|1|858-907|1605.03170,Gap,Gap
+1904.10230|4|820-869|1712.04440,Basis,Basis
+1904.11238|34|287-336|1603.05027,Application,Application
+1904.11492|9|1086-1135|1811.11721,Comparison,Background
+1904.11617|11|92-141|1802.06474,Comparison,Comparison
+1904.12620|17|340-389|1512.00327,Further Reading,Further Reading
+1904.12894|13|186-235|1603.08155,Basis,Basis
+1904.12894|7|348-397|1611.07004,Gap,Gap
+1904.13079|51|155-204|1506.01497,Comparison,Comparison
+1905.00401|13|868-917|1606.00373,Background,Background
+1905.00641|32|1601-1650|1810.10220,Comparison,Comparison
+1905.00737|4|793-842|1902.03715,Comparison,Background
+1905.01273|23|826-875|1612.03242,Basis,Basis
+1905.01509|8|51-100|1708.03132,Basis,Basis
+1905.03003|3|411-460|1603.06937,Improvement/Modification,Improvement/Modification
+1905.03561|8|187-236|1506.02640,Comparison,Comparison
+1905.04149|5|255-304|1805.00789,Evidence,Background
+1905.04243|2|267-316|1802.03446,Gap,Gap
+1905.04525|29|207-256|1502.01852,Application,Application
+1905.04757|23|59-108|1604.02808,Basis,Basis
+1905.05352|2|3-52|1701.01480,Identification of the Originator,Identification of the Originator
+1905.05928|5|662-711|1512.03385,Improvement/Modification,Improvement/Modification
+1905.07387|4|1306-1355|1608.04644,Improvement/Modification,Improvement/Modification
+1905.07841|47|47-96|1412.6980,Application,Application
+1905.07853|8|75-124|1612.00593,Identification of the Originator,Identification of the Originator
+1905.07917|1|1542-1591|1703.08050,Background,Background
+1905.08616|36|816-865|1804.06120,Gap,Gap
+1905.08772|16|258-307|1107.1322,Identification of the Originator,Identification of the Originator
+1905.08955|14|747-796|1603.08155,Basis,Basis
+1905.09595|10|171-220|1111.6453,Further Reading,Further Reading
+1905.10089|4|452-501|1807.02758,Basis,Basis
+1905.10257|33|220-269|1609.03552,Basis,Basis
+1905.10346|30|84-133|1703.10155,Basis,Basis
+1905.11327|60|315-364|1503.01563,Further Reading,Further Reading
+1905.11358|1|884-933|1611.07709,Comparison,Comparison
+1905.11799|32|177-226|1803.04831,Comparison,Comparison
+1905.11877|1|91-140|1811.00999,Further Reading,Further Reading
+1905.12995|83|333-382|1406.1385,Further Reading,Further Reading
+1905.13302|1|587-636|1707.02485,Gap,Evidence
+1905.13445|8|237-286|1704.02901,Identification of the Originator,Identification of the Originator
+1906.00590|2|669-718|1506.01497,Application,Application
+1906.02467|11|137-186|1612.06890,Comparison,Comparison
+1906.02792|7|1326-1375|1412.0767,Gap,Gap
+1906.02859|14|768-817|1506.01497,Comparison,Comparison
+1906.04379|3|296-345|1709.01507,Basis,Basis
+1906.06059|30|596-645|1412.6980,Application,Application
+1906.06064|11|912-961|1711.10228,Evidence,Comparison
+1906.06148|11|656-705|1802.07088,Gap,Evidence
+1906.06543|17|32-81|1406.5670,Identification of the Originator,Identification of the Originator
+1906.06543|65|350-399|1707.07360,Further Reading,Further Reading
+1906.06579|2|335-384|1608.06993,Gap,Background
+1906.07165|24|256-305|1603.08155,Evidence,Evidence
+1906.08331|6|178-227|1606.00915,Improvement/Modification,Improvement/Modification
+1906.09108|9|267-316|1609.08326,Comparison,Comparison
+1906.10399|14|96-145|1803.05196,Identification of the Originator,Identification of the Originator
+1906.11884|24|79-128|1711.09250,Application,Application
+1906.11888|11|630-679|1703.06868,Application,Application
+1906.12328|0|681-730|1802.04291,Evidence,Background
+1907.00960|1|425-474|1612.00593,Identification of the Originator,Identification of the Originator
+1907.00960|9|1167-1216|1904.03751,Gap,Gap
+1907.00998|13|246-295|1801.06730,Evidence,Evidence
+1907.01342|36|468-517|1610.02357,Application,Improvement/Modification
+1907.01600|16|117-166|1507.00552,Further Reading,Background
+1907.01826|7|872-921|1612.05363,Comparison,Comparison
+1907.01869|3|1490-1539|1412.0767,Background,Background
+1907.01929|0|1152-1201|1708.02072,Further Reading,Further Reading
+1907.03069|30|19-68|1604.04994,Identification of the Originator,Identification of the Originator
+1907.03261|2|593-642|1610.02391,Comparison,Comparison
+1907.03395|1|780-829|1704.04394,Evidence,Background
+1907.03961|1|736-785|1602.00763,Comparison,Comparison
+1907.05008|0|500-549|1812.04202,Further Reading,Further Reading
+1907.05570|30|959-1008|1712.03878,Comparison,Background
+1907.05794|3|1086-1135|1610.07940,Comparison,Comparison
+1907.06038|6|865-914|1506.01497,Identification of the Originator,Identification of the Originator
+1907.06327|10|132-181|1406.5670,Identification of the Originator,Identification of the Originator
+1907.06358|7|11-60|1411.4038,Identification of the Originator,Identification of the Originator
+1907.06377|39|471-520|1604.00475,Further Reading,Further Reading
+1907.06777|3|1169-1218|1711.08488,Basis,Basis
+1907.06915|4|1176-1225|1411.4038,Background,Background
+1907.07210|15|9-58|1512.03385,Application,Evidence
+1907.07570|0|494-543|1512.05830,Gap,Gap
+1907.07640|2|362-411|1805.00932,Further Reading,Further Reading
+1907.08435|43|350-399|1711.09349,Application,Application
+1907.08719|35|100-149|1505.04597,Background,Application
+1907.09647|8|1259-1308|1908.01313,Background,Background
+1907.10156|54|960-1009|1611.05431,Application,Application
+1907.10516|75|352-401|1104.3913,Further Reading,Evidence
+1907.10915|10|505-554|1505.05192,Identification of the Originator,Identification of the Originator
+1907.11496|9|405-454|1611.00144,Evidence,Evidence
+1907.11770|13|83-132|1709.06158,Application,Background
+1907.12347|4|346-395|1505.04597,Basis,Improvement/Modification
+1907.12905|6|83-132|1505.00487,Gap,Gap
+1907.13391|38|55-104|1505.04597,Improvement/Modification,Improvement/Modification
+1907.13487|17|236-285|1708.01641,Application,Application
+1908.00024|3|293-342|1911.02620,Gap,Gap
+1908.00329|8|41-90|1512.03385,Basis,Basis
+1908.00669|6|925-974|1505.04597,Comparison,Comparison
+1908.01189|39|259-308|1412.0767,Application,Application
+1908.01301|28|287-336|1512.03385,Application,Application
+1908.01998|5|1062-1111|1311.2524,Identification of the Originator,Identification of the Originator
+1908.02711|0|325-374|1411.4038,Gap,Gap
+1908.02943|31|319-368|1611.05594,Evidence,Comparison
+1908.02996|0|1093-1142|1509.03150,Background,Background
+1908.02996|31|1112-1161|1704.08509,Improvement/Modification,Basis
+1908.03055|17|88-137|1703.10593,Application,Application
+1908.03701|54|763-812|1708.00153,Comparison,Comparison
+1908.03885|11|275-324|1711.09349,Improvement/Modification,Application
+1908.03963|22|995-1044|1701.07274,Further Reading,Further Reading
+1908.04345|2|89-138|1903.07788,Basis,Basis
+1908.04919|2|302-351|1903.12020,Evidence,Gap
+1908.05389|10|55-104|1707.03718,Background,Background
+1908.05389|4|563-612|1803.01207,Comparison,Comparison
+1908.05669|1|1210-1259|1707.07256,Background,Comparison
+1908.05794|33|854-903|1809.01649,Comparison,Comparison
+1908.06068|19|206-255|1303.2416,Improvement/Modification,Improvement/Modification
+1908.06290|1|502-551|1606.02894,Evidence,Evidence
+1908.06571|34|159-208|1710.07035,Further Reading,Further Reading
+1908.06837|10|1121-1170|1604.07379,Identification of the Originator,Identification of the Originator
+1908.06837|10|1403-1452|1611.09969,Background,Background
+1908.07262|1|132-181|1612.00523,Comparison,Background
+1908.08412|8|1646-1695|1806.11413,Comparison,Background
+1908.08530|10|10-59|1904.01766,Identification of the Originator,Identification of the Originator
+1908.08530|1|514-563|1811.10830,Gap,Gap
+1908.09101|20|2128-2177|1803.06091,Application,Comparison
+1908.09231|21|271-320|1612.03144,Basis,Basis
+1908.09346|19|268-317|1504.06375,Comparison,Comparison
+1908.09995|27|121-170|1709.01507,Basis,Basis
+1908.09999|1|780-829|1711.08229,Evidence,Gap
+1908.10009|3|1398-1447|1711.01124,Gap,Gap
+1908.10535|15|401-450|1512.03385,Application,Application
+1908.11069|47|1464-1513|1710.03958,Evidence,Evidence
+1908.11675|9|189-238|1411.4038,Identification of the Originator,Identification of the Originator
+1909.00169|119|33-82|1803.01534,Identification of the Originator,Identification of the Originator
+1909.00589|31|128-177|1606.00915,Application,Application
+1909.00597|25|280-329|1804.10427,Basis,Basis
+1909.00713|21|691-740|1411.4389,Basis,Basis
+1909.01802|9|1087-1136|1804.04777,Further Reading,Evidence
+1909.02293|2|404-453|1811.08883,Evidence,Gap
+1909.02651|25|850-899|1703.06211,Comparison,Comparison
+1909.03234|40|653-702|1801.06867,Basis,Basis
+1909.03354|25|680-729|2008.02312,Background,Background
+1909.03751|5|203-252|1512.02134,Identification of the Originator,Identification of the Originator
+1909.04412|2|1523-1572|1612.03144,Improvement/Modification,Improvement/Modification
+1909.05165|8|81-130|1411.4038,Identification of the Originator,Identification of the Originator
+1909.05704|33|595-644|1707.05740,Comparison,Comparison
+1909.05999|2|716-765|1610.02391,Application,Gap
+1909.06148|12|480-529|1701.05957,Identification of the Originator,Identification of the Originator
+1909.07074|29|1283-1332|1512.02134,Application,Basis
+1909.07454|2|598-647|1706.02055,Evidence,Evidence
+1909.08112|26|286-335|1603.08155,Improvement/Modification,Basis
+1909.08245|13|110-159|1505.05192,Identification of the Originator,Identification of the Originator
+1909.09272|26|887-936|1711.08496,Basis,Basis
+1909.09389|19|304-353|1509.01626,Further Reading,Further Reading
+1909.09716|4|46-95|1802.02611,Improvement/Modification,Improvement/Modification
+1909.09725|11|149-198|1802.02611,Improvement/Modification,Application
+1909.09725|25|425-474|1805.04096,Evidence,Background
+1909.10304|8|57-106|1505.04597,Improvement/Modification,Improvement/Modification
+1909.10798|5|907-956|1709.01507,Application,Application
+1909.11341|1|294-343|1808.07227,Background,Background
+1909.11348|20|124-173|1708.02843,Comparison,Comparison
+1909.11409|3|705-754|1901.07261,Gap,Background
+1909.12000|12|108-157|1605.08179,Background,Background
+1909.12929|9|519-568|1611.07715,Gap,Gap
+1909.12996|26|619-668|1612.01105,Basis,Basis
+1909.13080|4|514-563|1506.01497,Background,Background
+1909.13240|4|455-504|1608.06993,Improvement/Modification,Improvement/Modification
+1909.13247|8|277-326|1612.01925,Comparison,Comparison
+1909.13247|8|59-108|1806.09594,Comparison,Comparison
+1909.13522|4|1053-1102|1808.01356,Evidence,Background
+1910.00932|2|928-977|1811.08383,Evidence,Evidence
+1910.01210|4|402-451|1611.09978,Comparison,Comparison
+1910.01877|1|500-549|1901.10244,Improvement/Modification,Basis
+1910.02060|42|354-403|1506.07656,Gap,Gap
+1910.02190|37|540-589|1612.01925,Gap,Gap
+1910.02319|28|96-145|1403.6382,Application,Background
+1910.02354|1|1059-1108|1708.08559,Evidence,Evidence
+1910.02354|6|580-629|1703.08603,Gap,Gap
+1910.03119|34|352-401|1607.08221,Application,Application
+1910.03560|53|977-1026|1904.08502,Evidence,Further Reading
+1910.04149|0|97-146|1611.07004,Identification of the Originator,Identification of the Originator
+1910.04748|14|439-488|1512.03385,Application,Application
+1910.05545|1|238-287|1309.0261,Identification of the Originator,Identification of the Originator
+1910.08811|27|244-293|1806.08129,Application,Application
+1910.08853|19|115-164|1608.00367,Basis,Basis
+1910.08914|2|934-983|1801.02753,Gap,Gap
+1910.09217|32|395-444|1512.03385,Application,Application
+1910.09217|44|712-761|1804.09458,Comparison,Comparison
+1910.09430|19|231-280|1511.06452,Improvement/Modification,Improvement/Modification
+1910.09447|5|655-704|1705.02092,Background,Background
+1910.11645|39|308-357|1704.03976,Basis,Improvement/Modification
+1910.11671|48|1477-1526|1803.11320,Comparison,Comparison
+1910.12181|1|2489-2538|1710.06924,Gap,Gap
+1911.00962|20|548-597|1908.09822,Background,Background
+1911.02069|5|222-271|1710.07035,Further Reading,Further Reading
+1911.02319|37|501-550|1310.5796,Further Reading,Evidence
+1911.04731|1|1910-1959|1612.00593,Identification of the Originator,Identification of the Originator
+1911.04967|8|129-178|1512.03385,Improvement/Modification,Improvement/Modification
+1911.05371|12|786-835|1904.03148,Gap,Gap
+1911.06667|3|489-538|1904.09730,Improvement/Modification,Improvement/Modification
+1911.07023|38|90-139|1411.7766,Application,Application
+1911.07144|17|41-90|1512.03385,Basis,Basis
+1911.07423|22|157-206|1903.06874,Basis,Basis
+1911.07440|1|319-368|1701.02620,Evidence,Background
+1911.07732|0|816-865|1611.07709,Gap,Background
+1911.07732|8|1003-1052|1411.4038,Comparison,Comparison
+1911.09032|6|1559-1608|1802.09088,Further Reading,Further Reading
+1911.09071|0|1059-1108|1811.11553,Evidence,Gap
+1911.09104|5|1625-1674|1905.11958,Further Reading,Further Reading
+1911.09536|3|1526-1575|1605.06369,Background,Gap
+1911.09579|6|799-848|1612.04844,Identification of the Originator,Identification of the Originator
+1911.09963|3|435-484|1506.01497,Comparison,Comparison
+1911.09968|3|200-249|1809.05786,Improvement/Modification,Basis
+1911.09996|10|1106-1155|1810.04020,Further Reading,Further Reading
+1911.10375|10|230-279|1604.07379,Identification of the Originator,Identification of the Originator
+1911.10375|40|212-261|1603.08155,Identification of the Originator,Identification of the Originator
+1911.10517|100|833-882|1612.01340,Identification of the Originator,Identification of the Originator
+1911.10614|5|86-135|1311.2524,Identification of the Originator,Identification of the Originator
+1911.11033|21|1459-1508|1806.07572,Evidence,Evidence
+1911.11136|29|116-165|1709.01507,Basis,Basis
+1911.11394|4|136-185|1604.07379,Identification of the Originator,Identification of the Originator
+1911.11981|0|289-338|1606.00915,Gap,Gap
+1911.12236|0|1770-1819|1611.05009,Evidence,Gap
+1911.13287|1|283-332|1810.05424,Gap,Gap
+1912.00382|3|498-547|1511.07247,Basis,Basis
+1912.00790|1|9-58|1612.00593,Identification of the Originator,Identification of the Originator
+1912.00821|9|510-559|1612.00197,Evidence,Background
+1912.01001|1|36-85|1705.03098,Basis,Basis
+1912.01180|9|676-725|1612.00881,Identification of the Originator,Identification of the Originator
+1912.01394|18|578-627|1812.01593,Improvement/Modification,Basis
+1912.01394|6|554-603|1802.02611,Gap,Gap
+1912.01674|5|774-823|1702.05693,Application,Application
+1912.01839|23|725-774|1611.07004,Evidence,Evidence
+1912.01839|23|853-902|1809.10711,Application,Application
+1912.01991|52|247-296|1703.04044,Background,Background
+1912.02109|9|166-215|1512.03385,Improvement/Modification,Improvement/Modification
+1912.02155|11|71-120|1606.09549,Comparison,Comparison
+1912.02340|0|2025-2074|1512.01848,Application,Application
+1912.02854|1|1600-1649|1907.13242,Evidence,Background
+1912.03613|9|1655-1704|1909.06423,Comparison,Comparison
+1912.03663|10|9-58|1612.00593,Identification of the Originator,Identification of the Originator
+1912.04538|9|570-619|1904.05181,Identification of the Originator,Identification of the Originator
+1912.05019|0|1221-1270|1912.11570,Evidence,Evidence
+1912.05163|12|867-916|1711.06897,Basis,Basis
+1912.06354|10|571-620|2101.09745,Application,Application
+1912.06445|11|635-684|1612.03144,Basis,Basis
+1912.07010|20|1116-1165|1703.06211,Further Reading,Further Reading
+1912.07148|2|79-128|1911.07806,Comparison,Comparison
+1912.07148|9|1775-1824|1603.07442,Evidence,Background
+1912.08830|6|924-973|1904.09664,Background,Background
+1912.10280|18|728-777|1504.06375,Basis,Basis
+1912.10775|21|534-583|1711.07971,Improvement/Modification,Basis
+1912.10775|6|574-623|1611.05009,Background,Comparison
+1912.10867|40|481-530|1602.00763,Background,Application
+1912.12082|13|443-492|1904.08889,Background,Background
+1912.12385|87|1333-1382|1512.03385,Comparison,Comparison
+1912.12520|63|801-850|1412.6980,Application,Application
+1912.13192|1|1099-1148|1612.00593,Identification of the Originator,Background
+1912.13192|1|866-915|2012.12397,Background,Background
+1912.13200|1|862-911|1603.05279,Background,Comparison
+2001.01033|106|202-251|1711.11152,Gap,Gap
+2001.01306|8|360-409|1606.02228,Evidence,Evidence
+2001.01613|2|1012-1061|1701.02468,Evidence,Evidence
+2001.02915|24|364-413|1710.08092,Application,Application
+2001.03113|14|1162-1211|1809.08999,Evidence,Evidence
+2001.04069|42|262-311|1805.07036,Comparison,Comparison
+2001.04296|62|693-742|1512.00567,Application,Application
+2001.04627|16|695-744|1501.02741,Further Reading,Further Reading
+2001.05049|8|364-413|1806.04807,Comparison,Background
+2001.05488|10|104-153|1811.11283,Comparison,Background
+2001.05844|0|786-835|1807.07769,Background,Background
+2001.05847|58|219-268|1910.03854,Evidence,Background
+2001.06291|1|1072-1121|1606.02378,Gap,Gap
+2001.06303|4|178-227|1707.05972,Evidence,Gap
+2001.06564|49|1602-1651|1912.04958,Comparison,Comparison
+2001.06785|15|303-352|1505.04597,Improvement/Modification,Improvement/Modification
+2001.06891|55|126-175|1511.03745,Improvement/Modification,Improvement/Modification
+2001.07463|6|507-556|1705.02801,Further Reading,Further Reading
+2001.07793|19|431-480|1504.06375,Identification of the Originator,Identification of the Originator
+2001.08026|9|406-455|1505.04597,Basis,Basis
+2001.08740|62|199-248|1506.01497,Application,Improvement/Modification
+2001.08869|6|95-144|1312.4659,Identification of the Originator,Identification of the Originator
+2001.09067|13|471-520|1812.03828,Gap,Background
+2001.09650|16|1154-1203|1506.05274,Gap,Background
+2001.10111|17|616-665|1803.02758,Background,Background
+2001.10773|15|186-235|1904.06587,Application,Application
+2001.11194|37|151-200|1612.01105,Comparison,Comparison
+2001.11561|4|184-233|1506.04214,Improvement/Modification,Identification of the Originator
+2001.11658|4|515-564|1512.05227,Gap,Evidence
+2001.11715|17|148-197|1412.6980,Application,Application
+2002.00065|39|340-389|1512.03385,Application,Application
+2002.00667|17|162-211|1512.03385,Improvement/Modification,Improvement/Modification
+2002.00835|23|40-89|1502.06922,Improvement/Modification,Improvement/Modification
+2002.01008|5|334-383|1611.07004,Gap,Gap
+2002.01125|11|61-110|1411.4038,Identification of the Originator,Identification of the Originator
+2002.01205|4|692-741|1804.05197,Improvement/Modification,Improvement/Modification
+2002.01276|12|449-498|1609.06773,Comparison,Comparison
+2002.01625|3|336-385|1804.03487,Basis,Basis
+2002.02624|18|461-510|1803.03310,Evidence,Application
+2002.03138|7|1032-1081|1909.03850,Comparison,Gap
+2002.03264|7|824-873|1411.4038,Background,Background
+2002.03501|10|347-396|1904.03405,Basis,Identification of the Originator
+2002.03982|12|2077-2126|1612.06370,Identification of the Originator,Identification of the Originator
+2002.04600|2|1034-1083|1411.4038,Background,Background
+2002.04784|29|35-84|1511.04599,Improvement/Modification,Improvement/Modification
+2002.04831|20|202-251|1910.04562,Basis,Basis
+2002.05347|2|1054-1103|1906.03609,Evidence,Evidence
+2002.05518|21|1251-1300|1802.04181,Further Reading,Further Reading
+2002.06028|188|15-64|1402.2681,Application,Application
+2002.07371|9|836-885|1703.03130,Identification of the Originator,Identification of the Originator
+2002.08127|42|147-196|1707.06342,Comparison,Comparison
+2002.08312|2|501-550|1503.00278,Evidence,Background
+2002.08546|18|595-644|1904.06487,Comparison,Comparison
+2002.10200|11|243-292|1904.06535,Comparison,Background
+2002.10650|42|235-284|1803.04108,Basis,Application
+2002.11616|12|264-313|1812.02898,Basis,Basis
+2002.11880|4|885-934|1710.10592,Further Reading,Further Reading
+2002.12204|2|255-304|1707.07998,Gap,Gap
+2002.12319|3|2089-2138|1807.02570,Background,Background
+2002.12888|2|352-401|1612.00835,Gap,Gap
+2003.00188|19|1049-1098|1812.00287,Comparison,Comparison
+2003.00492|31|334-383|1712.06760,Application,Application
+2003.00529|8|25-74|1608.07711,Identification of the Originator,Identification of the Originator
+2003.00637|21|64-113|1505.04597,Basis,Basis
+2003.00711|22|173-222|1708.04943,Basis,Basis
+2003.00828|7|112-161|1512.03385,Improvement/Modification,Application
+2003.00867|56|466-515|1812.05418,Comparison,Comparison
+2003.00891|17|57-106|1811.10980,Identification of the Originator,Identification of the Originator
+2003.01446|6|411-460|1711.07027,Comparison,Comparison
+2003.01456|3|565-614|1905.03678,Evidence,Comparison
+2003.01663|0|1017-1066|1812.02122,Background,Background
+2003.02541|6|161-210|1903.04687,Further Reading,Further Reading
+2003.03530|1|2157-2206|1504.01561,Evidence,Gap
+2003.03771|2|104-153|1902.01831,Evidence,Evidence
+2003.03828|49|562-611|1905.02876,Improvement/Modification,Improvement/Modification
+2003.04583|4|384-433|1905.03244,Comparison,Comparison
+2003.04721|2|626-675|1608.03981,Gap,Gap
+2003.05128|0|176-225|1411.4038,Identification of the Originator,Identification of the Originator
+2003.05235|11|848-897|1512.05227,Evidence,Evidence
+2003.05326|2|425-474|1703.05020,Background,Gap
+2003.05597|6|220-269|1311.2524,Identification of the Originator,Identification of the Originator
+2003.06148|1|282-331|1912.04488,Evidence,Background
+2003.06537|1|262-311|1812.07003,Evidence,Evidence
+2003.06537|8|250-299|1710.07563,Identification of the Originator,Background
+2003.06788|48|26-75|1412.6980,Application,Application
+2003.06841|24|289-338|1611.04076,Improvement/Modification,Improvement/Modification
+2003.06845|1|137-186|1807.10418,Gap,Comparison
+2003.07111|5|202-251|0905.3964,Evidence,Evidence
+2003.07333|60|1022-1071|1806.03726,Further Reading,Further Reading
+2003.07540|1|8-57|1807.11590,Identification of the Originator,Identification of the Originator
+2003.07557|2|8-57|1807.11590,Identification of the Originator,Identification of the Originator
+2003.07581|5|1749-1798|1803.09722,Background,Background
+2003.07678|19|394-443|1907.02567,Further Reading,Further Reading
+2003.07685|30|170-219|1708.00786,Gap,Gap
+2003.08348|1|384-433|1707.09092,Evidence,Evidence
+2003.08375|4|901-950|1902.06057,Evidence,Gap
+2003.08744|30|714-763|1911.10868,Application,Comparison
+2003.08761|3|295-344|1512.03385,Improvement/Modification,Application
+2003.08890|67|486-535|1805.06846,Further Reading,Further Reading
+2003.08936|0|489-538|1903.07291,Background,Background
+2003.09053|3|337-386|1812.02713,Application,Application
+2003.09053|5|149-198|1612.00593,Identification of the Originator,Identification of the Originator
+2003.09149|3|840-889|1606.07536,Evidence,Further Reading
+2003.09282|77|743-792|1808.07182,Improvement/Modification,Improvement/Modification
+2003.09595|5|147-196|1506.01497,Identification of the Originator,Identification of the Originator
+2003.09689|40|14-63|1505.04597,Basis,Basis
+2003.09758|67|683-732|1908.09381,Further Reading,Further Reading
+2003.09763|53|376-425|1812.07179,Evidence,Evidence
+2003.10566|16|424-473|1412.6980,Application,Application
+2003.11089|1|266-315|1803.08103,Gap,Gap
+2003.11089|2|253-302|1711.08488,Basis,Basis
+2003.11315|1|1183-1232|1703.10593,Background,Background
+2003.11315|1|1599-1648|1711.07027,Gap,Gap
+2003.11904|2|453-502|1512.00567,Basis,Basis
+2003.12039|69|43-92|1912.06704,Application,Application
+2003.12041|3|971-1020|1802.06822,Gap,Gap
+2003.12783|122|58-107|1703.05868,Identification of the Originator,Identification of the Originator
+2003.13594|37|332-381|1604.01753,Comparison,Comparison
+2003.13630|33|452-501|1512.00567,Application,Application
+2003.13743|1|776-825|1811.11975,Comparison,Comparison
+2003.13903|1|566-615|1904.07475,Gap,Comparison
+2003.14034|43|91-140|1505.05641,Comparison,Comparison
+2003.14052|3|344-393|1707.08340,Evidence,Evidence
+2003.14414|3|583-632|1906.03173,Basis,Basis
+2004.00123|4|455-504|1903.12174,Comparison,Comparison
+2004.00161|4|1740-1789|1708.07860,Evidence,Application
+2004.00275|0|880-929|0803.0924,Further Reading,Background
+2004.00406|6|31-80|1504.06993,Identification of the Originator,Identification of the Originator
+2004.01095|1|1316-1365|1906.04402,Evidence,Gap
+2004.01658|1|497-546|1812.07003,Gap,Gap
+2004.01800|12|742-791|1904.05873,Improvement/Modification,Basis
+2004.02070|7|73-122|1603.03101,Identification of the Originator,Identification of the Originator
+2004.02693|8|94-143|1812.04244,Basis,Basis
+2004.02753|18|93-142|1503.03832,Basis,Basis
+2004.03164|1|725-774|1811.09751,Gap,Gap
+2004.03212|1|795-844|1604.07379,Identification of the Originator,Identification of the Originator
+2004.03327|17|70-119|1603.06937,Basis,Basis
+2004.03597|44|575-624|1906.11129,Basis,Basis
+2004.03627|41|218-267|1706.07567,Evidence,Evidence
+2004.03677|19|419-468|1903.07291,Application,Application
+2004.03879|7|130-179|1501.00092,Identification of the Originator,Identification of the Originator
+2004.04199|23|284-333|1512.00567,Basis,Basis
+2004.04312|2|395-444|1908.03557,Comparison,Comparison
+2004.04730|1|422-471|1711.07971,Comparison,Comparison
+2004.04807|2|1082-1131|1612.00197,Improvement/Modification,Improvement/Modification
+2004.04977|28|1860-1909|1606.00915,Application,Application
+2004.05834|1|1124-1173|1702.07432,Gap,Gap
+2004.06267|26|444-493|1908.10553,Basis,Basis
+2004.06518|29|434-483|1412.6980,Comparison,Comparison
+2004.06711|1|185-234|1606.09549,Identification of the Originator,Identification of the Originator
+2004.07150|36|53-102|1208.1237,Identification of the Originator,Identification of the Originator
+2004.07392|47|362-411|2003.12641,Comparison,Comparison
+2004.07485|57|287-336|1806.06157,Basis,Application
+2004.08222|12|167-216|1705.09914,Application,Application
+2004.08566|102|689-738|2005.06209,Gap,Gap
+2004.08745|5|1109-1158|2012.12397,Gap,Gap
+2004.08814|49|301-350|1707.07998,Application,Application
+2004.08814|9|506-555|1906.04464,Gap,Gap
+2004.09169|2|308-357|1905.08233,Gap,Gap
+2004.09305|11|1630-1679|1612.00496,Evidence,Evidence
+2004.09317|4|309-358|1504.06852,Identification of the Originator,Identification of the Originator
+2004.10335|2|44-93|1703.09771,Basis,Basis
+2004.10681|1|436-485|1908.10553,Gap,Gap
+2004.12070|2|541-590|1906.10770,Basis,Basis
+2004.12170|27|371-420|1411.4038,Application,Application
+2004.12847|20|575-624|1611.05431,Evidence,Evidence
+2004.13259|37|256-305|1012.0081,Application,Application
+2005.00134|98|96-145|1605.03045,Evidence,Evidence
+2005.00343|12|895-944|1905.10576,Evidence,Background
+2005.00631|66|926-975|1806.00069,Further Reading,Further Reading
+2005.00944|67|670-719|1602.06531,Further Reading,Background
+2005.01351|1|404-453|1809.03016,Gap,Gap
+2005.01939|1|114-163|1612.00603,Gap,Gap
+2005.01969|1|266-315|1811.08383,Basis,Basis
+2005.02971|3|617-666|1612.03542,Further Reading,Background
+2005.03804|38|519-568|1505.04803,Basis,Basis
+2005.03871|8|140-189|1612.00593,Identification of the Originator,Identification of the Originator
+2005.04623|27|532-581|1804.04610,Evidence,Evidence
+2005.04623|7|97-146|1905.03678,Comparison,Comparison
+2005.04757|3|478-527|1712.04440,Basis,Application
+2005.04813|25|476-525|1911.10782,Further Reading,Further Reading
+2005.05705|8|1452-1501|1804.01495,Further Reading,Further Reading
+2005.06542|51|434-483|1406.0516,Improvement/Modification,Improvement/Modification
+2005.06935|9|1086-1135|1804.04488,Further Reading,Further Reading
+2005.07572|6|245-294|1907.06430,Comparison,Comparison
+2005.07862|2|618-667|1908.05819,Gap,Gap
+2005.08088|0|529-578|1204.5721,Further Reading,Further Reading
+2005.08449|19|441-490|1608.05167,Application,Application
+2005.08551|5|847-896|1712.04440,Evidence,Evidence
+2005.09007|6|216-265|1501.02741,Comparison,Comparison
+2005.09147|1|764-813|1512.03385,Improvement/Modification,Improvement/Modification
+2005.09412|23|273-322|1704.04503,Application,Application
+2005.09544|33|8-57|1411.7766,Application,Background
+2005.09544|37|170-219|1708.03979,Application,Application
+2005.10511|54|81-130|1612.03144,Basis,Application
+2005.10940|4|532-581|1803.04022,Background,Background
+2005.10940|75|708-757|1512.03385,Evidence,Evidence
+2005.11043|2|219-268|1406.4729,Identification of the Originator,Identification of the Originator
+2005.12541|13|1404-1453|1612.00593,Identification of the Originator,Background
+2005.13053|5|623-672|1902.10421,Comparison,Comparison
+2005.13153|3|1193-1242|1907.11394,Evidence,Gap
+2005.13363|3|1514-1563|1612.01105,Improvement/Modification,Comparison
+2005.13691|17|651-700|2004.01732,Application,Application
+2005.13820|8|1428-1477|1511.06062,Background,Background
+2005.13983|7|1469-1518|2003.03849,Evidence,Evidence
+2005.14553|7|1170-1219|1707.09092,Background,Background
+2006.00212|9|269-318|1705.07750,Application,Application
+2006.02000|2|697-746|2003.05982,Gap,Gap
+2006.02708|18|979-1028|1909.09803,Evidence,Evidence
+2006.03817|5|1358-1407|1911.11227,Gap,Gap
+2006.03985|2|898-947|1702.08423,Gap,Gap
+2006.03985|7|263-312|1802.04636,Further Reading,Further Reading
+2006.04026|12|669-718|1902.04943,Background,Background
+2006.04080|16|813-862|1903.11027,Application,Comparison
+2006.04082|2|363-412|1907.12209,Gap,Evidence
+2006.04569|37|128-177|1608.06993,Comparison,Comparison
+2006.04648|28|141-190|1612.03144,Basis,Basis
+2006.04737|5|559-608|1707.00600,Application,Application
+2006.04924|0|1073-1122|1512.03385,Evidence,Evidence
+2006.04924|30|248-297|1905.02716,Basis,Basis
+2006.05187|3|496-545|1612.00593,Gap,Gap
+2006.06668|5|45-94|1711.11575,Identification of the Originator,Identification of the Originator
+2006.06882|6|86-135|1404.7828,Evidence,Further Reading
+2006.08021|7|499-548|1612.00593,Identification of the Originator,Identification of the Originator
+2006.08093|4|264-313|1705.02801,Gap,Gap
+2006.08586|11|76-125|1604.03901,Basis,Basis
+2006.08718|2|648-697|1802.04181,Further Reading,Further Reading
+2006.08848|7|3328-3377|1908.07873,Further Reading,Further Reading
+2006.09049|36|946-995|1806.01427,Comparison,Evidence
+2006.09661|4|297-346|2003.08934,Comparison,Comparison
+2006.10003|0|566-615|1404.4679,Background,Background
+2006.10199|45|200-249|1801.07698,Application,Application
+2006.10721|42|204-253|1702.00824,Application,Application
+2006.10721|7|1058-1107|1811.07628,Evidence,Comparison
+2006.10990|10|426-475|1606.00915,Basis,Basis
+2006.11341|0|849-898|2007.14808,Further Reading,Further Reading
+2006.11643|13|550-599|1903.11260,Gap,Gap
+2006.12210|39|35-84|1411.7766,Application,Application
+2006.12620|30|226-275|2002.09072,Further Reading,Further Reading
+2006.12683|3|393-442|1802.00752,Gap,Gap
+2006.13566|10|124-173|1505.04597,Basis,Basis
+2006.13717|16|152-201|1904.09527,Gap,Gap
+2006.14865|59|1320-1369|1903.03911,Gap,Gap
+2006.15553|6|523-572|1904.02701,Improvement/Modification,Basis
+2006.15561|58|490-539|1911.11130,Comparison,Comparison
+2006.15631|0|144-193|1904.08920,Background,Background
+2006.15631|22|264-313|1406.1078,Application,Application
+2006.16673|4|1795-1844|1704.02901,Basis,Basis
+2007.00653|9|113-162|1506.03365,Application,Application
+2007.00843|28|334-383|1612.08242,Evidence,Background
+2007.00959|8|1756-1805|1704.03264,Further Reading,Background
+2007.01152|25|17-66|1505.04597,Improvement/Modification,Improvement/Modification
+2007.01598|5|1492-1541|1905.08586,Evidence,Evidence
+2007.01711|1|492-541|1710.05174,Evidence,Background
+2007.02240|46|6-55|1311.2524,Identification of the Originator,Identification of the Originator
+2007.03241|1|922-971|1807.04686,Gap,Gap
+2007.03887|19|342-391|1703.02921,Evidence,Gap
+2007.03943|5|1190-1239|1906.07413,Evidence,Evidence
+2007.04023|0|1062-1111|1903.11027,Gap,Gap
+2007.04505|23|703-752|1611.07004,Application,Comparison
+2007.04525|4|402-451|1903.11741,Basis,Basis
+2007.04687|41|83-132|1807.10418,Basis,Application
+2007.05393|9|418-467|1709.01507,Application,Application
+2007.05500|8|316-365|1703.10593,Improvement/Modification,Improvement/Modification
+2007.05667|19|161-210|1712.07136,Basis,Basis
+2007.05706|4|886-935|1709.01507,Improvement/Modification,Improvement/Modification
+2007.05840|0|1505-1554|1505.00687,Further Reading,Further Reading
+2007.05946|31|227-276|1502.01852,Application,Application
+2007.06227|48|626-675|1611.05431,Application,Application
+2007.06443|40|223-272|1807.06521,Comparison,Application
+2007.06811|15|323-372|1711.07971,Basis,Basis
+2007.06887|40|398-447|1811.07628,Comparison,Comparison
+2007.06929|33|178-227|1411.7766,Application,Application
+2007.07075|2|479-528|1810.11120,Identification of the Originator,Identification of the Originator
+2007.07197|0|1371-1420|1707.07012,Evidence,Evidence
+2007.07396|3|761-810|1703.10593,Application,Application
+2007.07477|6|56-105|1807.05520,Background,Background
+2007.07563|2|1028-1077|1812.02713,Application,Comparison
+2007.07943|7|912-961|1804.10371,Background,Background
+2007.08224|2|1062-1111|1805.07036,Background,Background
+2007.08434|31|10-59|1804.01438,Application,Basis
+2007.08574|3|509-558|1505.05192,Evidence,Background
+2007.08751|9|617-666|1804.00819,Background,Background
+2007.08979|1|831-880|1810.05716,Evidence,Evidence
+2007.09202|79|1947-1996|1007.1841,Further Reading,Further Reading
+2007.09221|1|810-859|1908.07873,Gap,Background
+2007.09454|6|154-203|1501.00092,Identification of the Originator,Identification of the Originator
+2007.09592|2|78-127|1704.03493,Background,Background
+2007.09594|12|965-1014|1905.03304,Background,Background
+2007.09816|11|1005-1054|1605.05109,Improvement/Modification,Improvement/Modification
+2007.09886|2|500-549|1810.09091,Gap,Background
+2007.09943|7|1361-1410|1910.10895,Background,Comparison
+2007.10315|28|310-359|1512.03385,Improvement/Modification,Improvement/Modification
+2007.10570|2|2101-2150|2004.11540,Evidence,Evidence
+2007.10573|0|1003-1052|1505.07818,Evidence,Evidence
+2007.10937|33|87-136|2008.03546,Evidence,Background
+2007.10983|10|766-815|1908.10553,Gap,Background
+2007.11018|2|972-1021|1810.06543,Comparison,Comparison
+2007.11064|2|151-200|1901.09005,Basis,Basis
+2007.11684|3|1328-1377|1405.2878,Further Reading,Further Reading
+2007.11691|42|1045-1094|2001.02040,Application,Application
+2007.12099|27|605-654|1703.06211,Application,Improvement/Modification
+2007.12146|37|163-212|1506.01497,Application,Application
+2007.12211|26|984-1033|1911.11374,Further Reading,Further Reading
+2007.13092|1|2206-2255|2005.09007,Basis,Basis
+2007.13262|0|1965-2014|1902.09506,Background,Background
+2007.13344|2|1027-1076|1902.09852,Evidence,Evidence
+2007.13559|10|799-848|1703.05921,Identification of the Originator,Identification of the Originator
+2007.13666|3|400-449|1911.05722,Improvement/Modification,Improvement/Modification
+2007.13727|1|1074-1123|1809.08402,Gap,Gap
+2007.13970|1|85-134|1612.00496,Gap,Gap
+2007.14433|7|220-269|1712.02976,Background,Background
+2007.14772|7|247-296|1904.01355,Basis,Basis
+2007.14812|6|909-958|1704.07813,Comparison,Comparison
+2007.15589|88|1450-1499|1811.12361,Further Reading,Further Reading
+2008.00078|2|198-247|1905.03677,Basis,Basis
+2008.00188|1|927-976|1904.01326,Background,Background
+2008.00230|1|1640-1689|1607.03333,Identification of the Originator,Identification of the Originator
+2008.00394|2|162-211|1612.00593,Identification of the Originator,Identification of the Originator
+2008.00418|0|326-375|1809.00219,Background,Background
+2008.00965|41|370-419|1703.05593,Basis,Basis
+2008.00975|1|1254-1303|2009.14776,Improvement/Modification,Improvement/Modification
+2008.01405|14|320-369|1512.03385,Application,Application
+2008.01405|14|456-505|1606.00373,Application,Application
+2008.01421|14|78-127|1411.4038,Improvement/Modification,Basis
+2008.02792|10|2368-2417|1908.09257,Further Reading,Further Reading
+2008.03030|42|494-543|1412.6980,Application,Application
+2008.03087|7|453-502|1803.06091,Background,Background
+2008.03128|0|1385-1434|2003.08626,Background,Background
+2008.03404|14|417-466|1808.00671,Identification of the Originator,Identification of the Originator
+2008.03512|38|887-936|1611.09224,Comparison,Comparison
+2008.03713|2|525-574|1711.07399,Evidence,Evidence
+2008.03875|5|665-714|1703.09438,Comparison,Comparison
+2008.03915|35|109-158|1804.00518,Application,Application
+2008.04149|10|153-202|1612.01925,Background,Background
+2008.04451|1|711-760|1905.07259,Basis,Basis
+2008.04559|80|889-938|2008.04543,Background,Background
+2008.05149|1|61-110|1809.08495,Background,Background
+2008.05511|3|214-263|1906.08240,Comparison,Comparison
+2008.05763|7|1577-1626|1812.04948,Background,Background
+2008.06020|8|66-115|1910.04586,Application,Application
+2008.06266|2|760-809|1907.02248,Background,Background
+2008.06840|6|34-83|1411.4038,Identification of the Originator,Identification of the Originator
+2008.06843|16|476-525|2003.00696,Application,Application
+2008.06989|0|1003-1052|2002.00065,Evidence,Evidence
+2008.07404|0|1974-2023|2003.14111,Background,Gap
+2008.07714|0|2917-2966|1905.03678,Evidence,Evidence
+2008.07728|2|399-448|1703.03329,Identification of the Originator,Identification of the Originator
+2008.07783|28|11-60|1711.11585,Application,Basis
+2008.07989|17|918-967|1909.08848,Application,Application
+2008.08136|16|1136-1185|1512.02134,Application,Application
+2008.08136|5|647-696|1504.06852,Identification of the Originator,Identification of the Originator
+2008.08189|29|43-92|1503.03832,Comparison,Comparison
+2008.08220|1|1552-1601|1807.05248,Application,Application
+2008.09092|46|1273-1322|1910.07113,Comparison,Comparison
+2008.09397|12|306-355|1807.11590,Evidence,Evidence
+2008.09403|10|1492-1541|1804.08328,Background,Basis
+2008.09457|14|69-118|1512.03385,Application,Application
+2008.10032|1|67-116|1906.09756,Gap,Gap
+2008.10480|2|84-133|2003.11211,Basis,Basis
+2008.10480|8|351-400|1905.04899,Improvement/Modification,Improvement/Modification
+2008.10544|19|686-735|1512.03385,Comparison,Comparison
+2008.11363|23|804-853|1512.00567,Application,Application
+2008.11383|1|638-687|1908.00894,Evidence,Gap
+2008.11713|1|863-912|1707.05847,Background,Background
+2008.11894|4|922-971|1905.11001,Basis,Basis
+2008.11901|5|372-421|1612.00593,Identification of the Originator,Identification of the Originator
+2008.11946|1|143-192|1806.05573,Background,Background
+2008.12046|5|213-262|1608.04188,Further Reading,Further Reading
+2008.12165|9|200-249|1608.01807,Further Reading,Further Reading
+2008.12496|7|205-254|1612.04844,Identification of the Originator,Identification of the Originator
+2008.12520|3|178-227|1810.09617,Basis,Basis
+2008.12959|13|7-56|1703.05921,Identification of the Originator,Identification of the Originator
+2008.12962|2|82-131|1712.01381,Background,Background
+2008.12969|32|270-319|1903.11027,Application,Application
+2008.13426|0|1239-1288|1807.11293,Evidence,Evidence
+2008.13426|7|181-230|1902.06162,Further Reading,Further Reading
+2008.13629|8|111-160|1204.5721,Further Reading,Further Reading
+2009.00210|20|353-402|1709.01507,Gap,Gap
+2009.00702|17|57-106|1809.01396,Basis,Basis
+2009.01054|1|1734-1783|1809.02352,Further Reading,Further Reading
+2009.01729|12|262-311|2007.02684,Evidence,Evidence
+2009.01729|4|1237-1286|2007.03621,Gap,Evidence
+2009.02857|13|51-100|1908.00222,Application,Application
+2009.02918|14|8-57|1804.04458,Identification of the Originator,Identification of the Originator
+2009.03683|9|1945-1994|1708.07819,Comparison,Comparison
+2009.05254|15|164-213|1409.8403,Basis,Basis
+2009.05721|12|1964-2013|1808.00449,Application,Application
+2009.06138|5|273-322|1703.10631,Comparison,Comparison
+2009.06254|2|891-940|1801.06756,Background,Background
+2009.06902|9|197-246|1908.00821,Background,Background
+2009.07576|2|1626-1675|1502.04383,Further Reading,Further Reading
+2009.07899|8|1827-1876|1707.02038,Further Reading,Further Reading
+2009.07994|36|197-246|1512.03385,Application,Application
+2009.08688|26|152-201|1611.04076,Application,Application
+2009.08709|14|348-397|1904.03377,Application,Application
+2009.10181|2|701-750|2005.03106,Evidence,Evidence
+2009.10467|43|203-252|2001.08942,Application,Application
+2009.10713|254|208-257|2005.10815,Further Reading,Further Reading
+2009.10891|13|193-242|1512.03385,Basis,Basis
+2009.10939|0|847-896|1804.01622,Identification of the Originator,Background
+2009.11042|3|39-88|2005.10510,Evidence,Evidence
+2009.11195|1|1055-1104|1705.09406,Evidence,Gap
+2009.11232|1|110-159|1705.02101,Identification of the Originator,Identification of the Originator
+2009.11253|0|521-570|1904.05046,Further Reading,Further Reading
+2009.13044|8|168-217|1703.09039,Evidence,Evidence
+2009.13782|4|729-778|1604.01753,Application,Application
+2009.14085|7|63-112|1506.02640,Background,Background
+2010.00297|124|4286-4335|1110.2755,Further Reading,Background
+2010.00359|7|419-468|1405.1773,Further Reading,Further Reading
+2010.00747|16|106-155|1512.03385,Application,Application
+2010.00747|3|227-276|1911.05722,Background,Background
+2010.00820|9|66-115|1806.01069,Basis,Background
+2010.00947|11|42-91|1710.10916,Basis,Application
+2010.00970|10|2696-2745|1904.10915,Evidence,Further Reading
+2010.01114|20|98-147|1505.04597,Application,Comparison
+2010.01725|5|910-959|1609.05600,Gap,Gap
+2010.02893|42|576-625|1909.09051,Comparison,Comparison
+2010.03255|1|252-301|1612.07828,Evidence,Gap
+2010.03712|10|82-131|1411.4038,Identification of the Originator,Identification of the Originator
+2010.05302|1|139-188|1912.12290,Background,Background
+2010.05507|22|332-381|1802.02611,Application,Application
+2010.05783|10|1548-1597|2004.13408,Further Reading,Further Reading
+2010.05903|1|1494-1543|1801.05365,Gap,Gap
+2010.06323|39|557-606|1810.08393,Evidence,Evidence
+2010.06626|118|367-416|1610.06475,Comparison,Comparison
+2010.06626|28|685-734|1810.04093,Identification of the Originator,Identification of the Originator
+2010.06939|2|679-728|1908.06112,Gap,Gap
+2010.06969|17|901-950|1910.12391,Evidence,Evidence
+2010.07217|4|275-324|1903.07593,Comparison,Comparison
+2010.08045|5|1024-1073|1904.09117,Application,Basis
+2010.08243|16|1129-1178|1512.09049,Improvement/Modification,Basis
+2010.08243|1|122-171|2005.08139,Evidence,Evidence
+2010.08412|35|28-77|1406.1078,Improvement/Modification,Application
+2010.08412|51|115-164|1512.03385,Improvement/Modification,Improvement/Modification
+2010.09079|2|136-185|1612.00593,Identification of the Originator,Identification of the Originator
+2010.09334|33|1309-1358|1603.08155,Application,Identification of the Originator
+2010.09359|60|133-182|2006.06059,Further Reading,Further Reading
+2010.09522|115|518-567|1905.13648,Identification of the Originator,Background
+2010.09522|86|104-153|1406.1078,Gap,Gap
+2010.09978|3|1113-1162|1902.09130,Gap,Gap
+2010.09982|9|51-100|1701.02096,Identification of the Originator,Identification of the Originator
+2010.10052|17|21-70|1612.02177,Application,Application
+2010.10744|39|467-516|1602.01237,Application,Comparison
+2010.11083|34|536-585|1501.00092,Identification of the Originator,Comparison
+2010.11159|3|1154-1203|1501.06297,Identification of the Originator,Identification of the Originator
+2010.12126|0|1267-1316|1506.01497,Background,Application
+2010.12249|1|482-531|1501.00092,Gap,Gap
+2010.12353|4|620-669|1703.00048,Improvement/Modification,Improvement/Modification
+2010.12816|19|1810-1859|1802.06052,Further Reading,Further Reading
+2010.13357|11|1242-1291|1611.05594,Background,Comparison
+2010.13412|13|143-192|2001.05843,Background,Comparison
+2010.14592|10|385-434|2003.03934,Further Reading,Further Reading
+2010.15487|0|162-211|1202.2745,Background,Background
+2010.16417|45|733-782|1807.06587,Basis,Basis
+2011.00288|6|1453-1502|2004.05788,Further Reading,Further Reading
+2011.00527|0|2737-2786|1907.07980,Background,Background
+2011.00597|18|840-889|1606.08415,Application,Application
+2011.00597|33|318-367|1512.03385,Application,Application
+2011.00694|11|515-564|1604.06573,Comparison,Comparison
+2011.00912|3|978-1027|1512.03385,Evidence,Evidence
+2011.01627|39|1804-1853|1311.2147,Comparison,Comparison
+2011.02017|16|876-925|1908.06727,Further Reading,Further Reading
+2011.02265|0|304-353|1805.07029,Comparison,Comparison
+2011.02553|1|1320-1369|1711.06396,Identification of the Originator,Identification of the Originator
+2011.02553|6|169-218|1506.01497,Background,Background
+2011.02635|14|219-268|1612.00593,Identification of the Originator,Background
+2011.03091|3|252-301|2007.10000,Evidence,Evidence
+2011.03367|22|138-187|1612.06890,Application,Application
+2011.03677|13|503-552|1604.05383,Improvement/Modification,Improvement/Modification
+2011.03958|0|1161-1210|1501.02565,Comparison,Comparison
+2011.04263|24|158-207|1406.1078,Application,Application
+2011.04943|13|2198-2247|1905.06113,Further Reading,Further Reading
+2011.05003|16|104-153|1907.08451,Application,Application
+2011.05552|3|182-231|1812.03264,Background,Comparison
+2011.05669|8|53-102|1512.03385,Application,Application
+2011.07430|1|648-697|1609.09430,Identification of the Originator,Identification of the Originator
+2011.07631|22|512-561|1411.4038,Identification of the Originator,Identification of the Originator
+2011.07735|3|923-972|2003.07758,Basis,Basis
+2011.08332|9|115-164|1504.06852,Identification of the Originator,Identification of the Originator
+2011.08534|13|661-710|1810.03065,Improvement/Modification,Improvement/Modification
+2011.08634|19|540-589|1709.03128,Comparison,Comparison
+2011.08939|6|122-171|1612.03365,Further Reading,Further Reading
+2011.09157|1|1120-1169|1811.08883,Evidence,Evidence
+2011.09157|7|683-732|1911.09070,Gap,Background
+2011.09216|3|327-376|1905.05754,Background,Background
+2011.09300|1|54-103|1707.07012,Identification of the Originator,Identification of the Originator
+2011.09634|5|676-725|1808.01097,Evidence,Evidence
+2011.10142|21|913-962|1512.03385,Application,Application
+2011.10650|8|4-53|1906.02691,Further Reading,Further Reading
+2011.10670|27|1600-1649|1702.00824,Comparison,Comparison
+2011.10675|4|1033-1082|1603.05027,Gap,Gap
+2011.10857|2|321-370|1608.06993,Background,Background
+2011.10881|3|241-290|1612.03144,Improvement/Modification,Basis
+2011.10904|1|119-168|1707.07012,Comparison,Comparison
+2011.10927|11|1009-1058|1802.02611,Improvement/Modification,Improvement/Modification
+2011.11221|31|159-208|1412.6980,Application,Application
+2011.11260|0|388-437|1605.03344,Gap,Gap
+2011.11721|2|175-224|1809.07845,Improvement/Modification,Improvement/Modification
+2011.11872|10|1736-1785|1804.08281,Comparison,Comparison
+2011.11872|17|819-868|1801.07698,Improvement/Modification,Improvement/Modification
+2011.12077|1|1418-1467|1206.5533,Evidence,Evidence
+2011.12079|2|350-399|1612.00593,Identification of the Originator,Identification of the Originator
+2011.12430|1|1155-1204|2007.09217,Gap,Background
+2011.12745|7|80-129|1703.03130,Identification of the Originator,Identification of the Originator
+2011.12930|1|427-476|1804.04412,Background,Background
+2011.13046|34|1296-1345|2003.12039,Application,Application
+2011.13226|27|780-829|1411.4038,Application,Application
+2011.13526|105|621-670|1607.08221,Evidence,Comparison
+2011.13538|5|740-789|1712.03141,Further Reading,Further Reading
+2011.13550|29|611-660|1708.04218,Further Reading,Further Reading
+2011.13675|15|611-660|1812.10477,Comparison,Comparison
+2011.13705|0|765-814|1710.08864,Background,Background
+2011.14204|23|756-805|1612.03144,Application,Application
+2011.14638|15|331-380|1703.06211,Improvement/Modification,Improvement/Modification
+2011.14642|24|382-431|1512.03385,Application,Application
+2011.14761|4|270-319|2003.13017,Improvement/Modification,Improvement/Modification
+2012.00313|0|1131-1180|2005.10411,Evidence,Gap
+2012.00630|25|284-333|1803.11029,Comparison,Comparison
+2012.00630|8|973-1022|1312.4659,Identification of the Originator,Identification of the Originator
+2012.02047|1|218-267|1711.11585,Gap,Gap
+2012.02047|4|369-418|1901.09221,Basis,Basis
+2012.02109|4|550-599|1706.04261,Application,Application
+2012.02181|3|819-868|1609.05158,Application,Application
+2012.02371|2|69-118|1909.00713,Identification of the Originator,Background
+2012.02434|2|34-83|1404.4679,Gap,Gap
+2012.03085|8|1647-1696|1611.08097,Further Reading,Further Reading
+2012.03762|4|558-607|1904.01416,Application,Comparison
+2012.03762|7|299-348|1904.00699,Background,Background
+2012.04170|8|1509-1558|1908.09822,Comparison,Comparison
+2012.04746|14|628-677|1612.00603,Basis,Basis
+2012.04746|15|642-691|1808.10322,Application,Application
+2012.04846|2|155-204|1512.04150,Application,Application
+2012.04886|9|165-214|1802.02611,Basis,Basis
+2012.05225|58|670-719|1806.05622,Application,Application
+2012.05438|9|945-994|1902.01537,Comparison,Comparison
+2012.05715|76|571-620|1811.01122,Further Reading,Further Reading
+2012.06194|40|12-61|1603.08155,Basis,Basis
+2012.06508|7|969-1018|1910.04851,Basis,Basis
+2012.06567|37|81-130|1503.08909,Identification of the Originator,Identification of the Originator
+2012.07007|1|1258-1307|1804.07723,Evidence,Evidence
+2012.07297|3|745-794|1803.07728,Improvement/Modification,Basis
+2012.07498|5|1104-1153|1911.10414,Evidence,Basis
+2012.07881|19|129-178|1909.09153,Further Reading,Further Reading
+2012.07999|37|257-306|1603.08155,Application,Application
+2012.08143|13|132-181|1905.12512,Background,Background
+2012.08149|7|717-766|1311.2524,Identification of the Originator,Background
+2012.08197|23|185-234|1901.02970,Comparison,Comparison
+2012.08236|0|836-885|1807.10418,Background,Gap
+2012.08270|16|12-61|1707.01083,Basis,Basis
+2012.08624|0|585-634|1807.01688,Basis,Basis
+2012.08689|6|345-394|1311.2524,Identification of the Originator,Identification of the Originator
+2012.08859|59|417-466|1711.08141,Further Reading,Further Reading
+2012.09071|3|682-731|1712.06584,Comparison,Comparison
+2012.09890|2|620-669|1705.07750,Improvement/Modification,Improvement/Modification
+2012.10066|22|54-103|1512.02134,Application,Application
+2012.10467|39|1420-1469|1412.6980,Application,Application
+2012.10545|1|818-867|2012.10553,Evidence,Evidence
+2012.11002|2|1181-1230|2004.04807,Improvement/Modification,Basis
+2012.11400|25|1192-1241|1606.06235,Improvement/Modification,Basis
+2012.11704|28|860-909|2012.10992,Comparison,Comparison
+2012.11762|45|1068-1117|1904.03751,Application,Application
+2012.11806|8|559-608|1907.11346,Identification of the Originator,Identification of the Originator
+2012.12265|37|248-297|1609.03552,Gap,Application
+2012.12360|11|340-389|1704.03489,Background,Evidence
+2012.12884|4|1095-1144|2008.04524,Gap,Gap
+2012.12991|0|944-993|1908.03856,Gap,Gap
+2012.13078|1|135-184|2009.04787,Evidence,Gap
+2012.13078|4|193-242|1604.06318,Evidence,Evidence
+2012.13154|5|164-213|1608.04644,Background,Background
+2012.13726|25|432-481|1512.03385,Basis,Basis
+2012.13975|23|4-53|1611.08195,Further Reading,Further Reading
+2012.15028|10|1002-1051|2010.06935,Evidence,Evidence
+2012.15028|9|104-153|1904.07396,Comparison,Comparison
+2012.15370|28|226-275|1806.06098,Basis,Basis
+2012.15638|6|843-892|1406.5670,Gap,Gap
+2012.15838|21|607-656|1901.05103,Basis,Basis
+2101.00431|2|518-567|1904.06587,Background,Background
+2101.00431|2|768-817|1909.03943,Evidence,Gap
+2101.00522|59|133-182|1606.00915,Application,Application
+2101.00652|8|596-645|1902.02919,Evidence,Background
+2101.01433|6|765-814|1609.05787,Comparison,Comparison
+2101.01509|4|928-977|1905.04660,Further Reading,Background
+2101.02127|3|610-659|1606.00915,Comparison,Comparison
+2101.02143|7|37-86|1505.07427,Identification of the Originator,Identification of the Originator
+2101.02144|1|881-930|1901.07518,Gap,Gap
+2101.03036|2|129-178|1906.09610,Gap,Gap
+2101.03713|1|450-499|1901.02598,Evidence,Evidence
+2101.03713|33|153-202|1610.02391,Improvement/Modification,Improvement/Modification
+2101.03904|5|1364-1413|1711.08362,Further Reading,Further Reading
+2101.06021|68|717-766|1911.07410,Comparison,Comparison
+2101.06175|18|563-612|1406.4729,Identification of the Originator,Identification of the Originator
+2101.06175|4|470-519|1907.05740,Application,Background
+2101.06679|18|54-103|1902.06326,Improvement/Modification,Basis
+2101.07396|11|1330-1379|1411.4555,Identification of the Originator,Identification of the Originator
+2101.07988|31|191-240|1902.09212,Improvement/Modification,Improvement/Modification
+2101.08238|16|536-585|1711.07971,Basis,Basis
+2101.08750|71|367-416|1904.08926,Evidence,Comparison
+2101.09782|2|585-634|1311.2524,Evidence,Evidence
+2101.10531|0|1607-1656|1608.01807,Background,Background
+2101.10620|1|1126-1175|1805.04310,Gap,Gap
+2101.11299|16|33-82|1512.03385,Application,Application
+2101.11878|20|288-337|1709.01507,Improvement/Modification,Improvement/Modification
+2101.12050|12|77-126|1902.09212,Application,Application
+2102.00381|1|2291-2340|1904.04620,Gap,Gap
+2102.00411|4|1651-1700|1709.01507,Improvement/Modification,Improvement/Modification
+2102.00463|1|1034-1083|1612.00593,Identification of the Originator,Background
+2102.00713|23|631-680|1711.10703,Improvement/Modification,Basis
+2102.01063|8|84-133|2006.02903,Further Reading,Further Reading
+2102.01285|50|105-154|1610.02391,Improvement/Modification,Improvement/Modification
+2102.02783|1|675-724|1805.11773,Evidence,Evidence
+2102.02798|12|8-57|1904.02632,Identification of the Originator,Identification of the Originator
+2102.02808|1|1507-1556|1711.07319,Evidence,Background
+2102.03326|2|1706-1755|1809.08495,Improvement/Modification,Improvement/Modification
+2102.03550|20|536-585|1512.03385,Basis,Basis
+2102.03586|22|17-66|1406.1078,Application,Application
+2102.03826|64|1133-1182|1906.06826,Application,Application
+2102.04060|2|581-630|1802.05909,Application,Basis
+2102.04762|7|51-100|1904.04745,Basis,Basis
+2102.05314|12|2340-2389|1507.02189,Further Reading,Further Reading
+2102.06120|4|1332-1381|1603.08155,Application,Comparison
+2102.06386|11|488-537|2002.12169,Further Reading,Further Reading
+2102.06697|2|307-356|1912.12296,Comparison,Comparison
+2102.07074|9|1713-1762|2012.12556,Further Reading,Further Reading
+2102.07304|14|145-194|1611.07004,Basis,Basis
+2102.07448|0|392-441|2007.06676,Evidence,Background
+2102.07753|40|1606-1655|1908.02735,Comparison,Comparison
+2102.08120|2|436-485|1903.07293,Gap,Background
+2102.09150|1|906-955|2001.10601,Evidence,Evidence
+2102.09528|1|374-423|1902.04810,Gap,Gap
+2102.09528|8|394-443|1603.08152,Evidence,Evidence
+2102.09896|3|1237-1286|1811.09038,Background,Background
+2102.10854|7|687-736|1611.07709,Background,Background
+2102.10884|44|230-279|1904.01906,Application,Application
+2102.11050|14|1480-1529|1507.02615,Further Reading,Background
+2102.11859|3|735-784|1711.06969,Evidence,Gap
+2102.12145|3|1214-1263|2008.04582,Evidence,Evidence
+2102.13088|0|1027-1076|2004.05937,Further Reading,Further Reading
+2102.13326|25|357-406|1604.01146,Comparison,Background
+2103.01077|1|893-942|2007.09384,Comparison,Comparison
+2103.01468|9|745-794|1512.03385,Application,Application
+2103.01946|0|324-373|1608.04644,Evidence,Evidence
+2103.01946|1|722-771|1905.13736,Identification of the Originator,Background
+2103.02220|21|412-461|1704.08509,Comparison,Comparison
+2103.02236|60|436-485|1810.00826,Evidence,Evidence
+2103.02521|2|326-375|1705.03098,Improvement/Modification,Improvement/Modification
+2103.03387|15|0-49|1606.00915,Identification of the Originator,Identification of the Originator
+2103.03664|1|817-866|1505.04597,Improvement/Modification,Improvement/Modification
+2103.04011|22|884-933|1904.08739,Application,Comparison
+2103.04657|3|470-519|1505.04597,Improvement/Modification,Comparison
+2103.04680|2|219-268|1703.10664,Gap,Gap
+2103.04705|34|1381-1430|1904.06487,Comparison,Improvement/Modification
+2103.04846|2|159-208|1809.07041,Identification of the Originator,Identification of the Originator
+2103.05073|28|247-296|1712.00726,Basis,Basis
+2103.05227|1|1562-1611|1911.03462,Application,Basis
+2103.05465|19|224-273|1901.00063,Evidence,Gap
+2103.05465|2|698-747|1804.02085,Evidence,Evidence
+2103.05558|6|1173-1222|1809.02709,Basis,Basis
+2103.06498|3|400-449|1911.05722,Improvement/Modification,Improvement/Modification
+2103.06526|1|99-148|1901.02970,Identification of the Originator,Identification of the Originator
+2103.06564|9|406-455|2002.10120,Background,Background
+2103.06796|17|788-837|2003.07853,Further Reading,Further Reading
+2103.07138|23|80-129|1603.08155,Basis,Basis
+2103.07156|34|186-235|1512.03385,Application,Comparison
+2103.07362|5|168-217|1603.04992,Identification of the Originator,Identification of the Originator
+2103.07838|8|181-230|1703.10593,Basis,Basis
+2103.09096|2|1283-1332|1811.08180,Evidence,Evidence
+2103.09479|7|151-200|1902.11026,Gap,Gap
+2103.10284|27|381-430|1902.09630,Improvement/Modification,Improvement/Modification
+2103.10502|1|1883-1932|2003.05669,Evidence,Evidence
+2103.10607|6|260-309|1606.09549,Identification of the Originator,Identification of the Originator
+2103.10643|29|1056-1105|1807.06521,Basis,Basis
+2103.10643|6|1136-1185|1905.02188,Comparison,Comparison
+2103.10729|16|251-300|2001.05027,Comparison,Evidence
+2103.10729|23|166-215|1610.07940,Comparison,Comparison
+2103.10869|19|224-273|2007.05836,Improvement/Modification,Improvement/Modification
+2103.11139|62|599-648|1708.03979,Application,Application
+2103.11374|9|1356-1405|1611.08974,Gap,Background
+2103.11468|1|89-138|1505.07427,Identification of the Originator,Identification of the Originator
+2103.11471|2|146-195|1604.07446,Gap,Gap
+2103.11511|73|595-644|1812.01187,Application,Improvement/Modification
+2103.11681|70|707-756|1812.05050,Comparison,Comparison
+2103.11887|10|241-290|1704.06036,Evidence,Evidence
+2103.12091|0|561-610|1512.03385,Identification of the Originator,Identification of the Originator
+2103.12115|9|676-725|2012.09760,Background,Background
+2103.12209|0|3183-3232|2010.06626,Evidence,Evidence
+2103.12209|16|2057-2106|1505.07818,Application,Comparison
+2103.12424|12|72-121|1707.07012,Identification of the Originator,Identification of the Originator
+2103.12718|4|364-413|1808.01974,Background,Background
+2103.13044|0|767-816|1411.4038,Identification of the Originator,Identification of the Originator
+2103.13164|2|632-681|1908.07678,Basis,Basis
+2103.13413|10|387-436|1512.03385,Application,Background
+2103.13580|1|14-63|1501.04158,Evidence,Gap
+2103.13612|2|277-326|1911.05722,Basis,Basis
+2103.13630|32|124-173|1606.06160,Background,Background
+2103.13716|2|1312-1361|2005.09159,Background,Gap
+2103.13716|4|2473-2522|1912.11258,Evidence,Comparison
+2103.13725|9|135-184|1608.05842,Identification of the Originator,Identification of the Originator
+2103.13746|39|195-244|1311.2524,Improvement/Modification,Basis
+2103.13917|3|138-187|2011.03363,Comparison,Comparison
+2103.13933|10|150-199|1311.2524,Background,Background
+2103.14060|6|167-216|2004.05490,Further Reading,Further Reading
+2103.14172|14|303-352|1903.05157,Improvement/Modification,Improvement/Modification
+2103.14210|41|649-698|1512.00567,Application,Application
+2103.14338|17|686-735|1909.12224,Evidence,Comparison
+2103.14338|19|351-400|1712.06584,Background,Basis
+2103.14644|2|602-651|1912.11695,Gap,Gap
+2103.14968|6|44-93|1406.2661,Identification of the Originator,Identification of the Originator
+2103.14976|2|356-405|1810.03993,Comparison,Background
+2103.15027|1|897-946|1612.00593,Identification of the Originator,Identification of the Originator
+2103.15027|2|650-699|2102.01929,Evidence,Evidence
+2103.15290|34|38-87|1811.10515,Basis,Basis
+2103.15436|8|961-1010|1512.03385,Improvement/Modification,Improvement/Modification
+2103.15537|0|935-984|2005.12633,Gap,Gap
+2103.15573|14|428-477|1711.10684,Basis,Basis
+2103.15584|17|509-558|1612.03144,Comparison,Comparison
+2103.15686|10|1543-1592|1911.05722,Application,Basis
+2103.15954|2|613-662|1901.02985,Identification of the Originator,Identification of the Originator
+2103.16080|19|1208-1257|2010.11560,Further Reading,Further Reading
+2103.16086|21|657-706|1909.07829,Basis,Basis
+2103.16255|29|155-204|1809.05571,Evidence,Evidence
+2103.16255|8|1137-1186|2003.12039,Background,Background
+2103.16403|2|778-827|1711.09224,Background,Gap
+2103.16481|8|1032-1081|1705.07750,Identification of the Originator,Identification of the Originator
+2103.16483|3|377-426|1905.01235,Basis,Basis
+2103.16554|11|238-287|1904.03436,Background,Background
+2103.16694|33|122-171|1604.05383,Application,Application
+2103.16746|11|884-933|2007.09919,Gap,Gap
+2103.16889|1|402-451|1608.06993,Evidence,Evidence
+2103.17070|3|18-67|1807.05520,Improvement/Modification,Improvement/Modification
+2104.00239|2|271-320|1902.07473,Gap,Identification of the Originator
+2104.00272|7|938-987|1912.13344,Evidence,Evidence
+2104.00359|31|239-288|1704.00090,Application,Application
+2104.00670|1|418-467|2003.08934,Gap,Gap
+2104.00808|65|1171-1220|2007.07077,Comparison,Comparison
+2104.00848|11|665-714|1905.02716,Comparison,Comparison
+2104.00921|0|960-1009|2007.13467,Gap,Gap
+2104.01328|7|1406-1455|2011.10671,Further Reading,Further Reading
+2104.01534|8|1037-1086|1811.02804,Gap,Gap
+2104.01601|22|663-712|1612.01925,Application,Application
+2104.01888|28|35-84|1512.03385,Application,Application
+2104.01948|55|392-441|1109.5231,Evidence,Evidence
+2104.02057|18|10-59|1904.03436,Basis,Application
+2104.02096|27|1389-1438|1512.03385,Application,Application
+2104.02243|8|159-208|1612.00593,Identification of the Originator,Background
+2104.02527|53|276-325|1901.04780,Gap,Gap
+2104.02611|3|380-429|1709.01507,Improvement/Modification,Improvement/Modification
+2104.02633|0|361-410|1411.4038,Identification of the Originator,Identification of the Originator
+2104.02663|17|261-310|1910.02593,Evidence,Evidence
+2104.02663|2|466-515|1711.06077,Evidence,Evidence
+2104.02828|1|829-878|1811.06128,Further Reading,Further Reading
+2104.03114|41|379-428|1904.01828,Comparison,Comparison
+2104.03114|41|778-827|1704.06036,Comparison,Comparison
+2104.03313|5|173-222|1905.07259,Basis,Basis
+2104.03344|0|251-300|1506.01497,Background,Background
+2104.03501|2|708-757|1904.09742,Identification of the Originator,Background
+2104.03640|24|345-394|1711.08488,Basis,Application
+2104.03926|0|328-377|1501.00092,Identification of the Originator,Identification of the Originator
+2104.03926|38|646-695|1704.03264,Gap,Application
+2104.04160|5|1449-1498|1904.01175,Gap,Gap
+2104.04160|7|286-335|1703.10200,Gap,Gap
+2104.04382|7|801-850|2001.05868,Comparison,Comparison
+2104.04633|40|2010-2059|1412.6980,Application,Application
+2104.05036|39|793-842|2010.10197,Background,Gap
+2104.05166|19|244-293|1512.03385,Application,Application
+2104.05239|10|116-165|1411.4038,Identification of the Originator,Background
+2104.05940|1|697-746|1706.06982,Evidence,Gap
+2104.06118|14|277-326|1801.03454,Application,Application
+2104.06133|337|321-370|1410.6801,Further Reading,Further Reading
+2104.06148|21|84-133|1604.07528,Basis,Basis
+2104.06403|60|1081-1130|1903.03777,Comparison,Comparison
+2104.06456|180|351-400|1607.00730,Evidence,Evidence
+2104.06485|6|187-236|1807.06521,Application,Improvement/Modification
+2104.06490|32|786-835|1411.7766,Application,Application
+2104.06524|8|938-987|1804.02792,Application,Application
+2104.06595|0|547-596|1803.11097,Background,Background
+2104.06689|3|269-318|1709.01507,Evidence,Evidence
+2104.06703|9|300-349|1612.00593,Identification of the Originator,Identification of the Originator
+2104.06773|11|131-180|1711.11575,Comparison,Background
+2104.06773|4|37-86|2007.02355,Basis,Basis
+2104.06782|18|674-723|1511.06015,Basis,Basis
+2104.07256|4|250-299|1908.06112,Basis,Basis
+2104.07434|2|847-896|1612.08242,Gap,Gap
+2104.07767|22|799-848|1506.01497,Application,Background
+2104.07767|3|1095-1144|2006.06666,Comparison,Comparison
+2104.08126|42|536-585|1609.03677,Application,Application
+2104.08363|2|212-261|1912.04958,Improvement/Modification,Basis
+2104.09059|9|318-367|2006.02334,Application,Basis
+2104.09134|3|824-873|1612.02177,Application,Application
+2104.09441|1|792-841|1604.02531,Gap,Gap
+2104.09497|4|197-246|1501.00092,Identification of the Originator,Identification of the Originator
+2104.09497|5|685-734|1711.07971,Identification of the Originator,Identification of the Originator
+2104.09762|36|68-117|1506.04214,Improvement/Modification,Improvement/Modification
+2104.09762|36|684-733|1703.10593,Improvement/Modification,Comparison
+2104.09874|7|426-475|1610.02915,Improvement/Modification,Improvement/Modification
+2104.09958|2|12-61|1807.10712,Evidence,Evidence
+2104.10011|22|459-508|1412.6980,Application,Application
+2104.10011|2|518-567|1603.08155,Gap,Gap
+2104.10401|11|61-110|1711.09349,Basis,Basis
+2104.10609|7|305-354|1708.03760,Gap,Gap
+2104.10615|0|1507-1556|1907.08831,Basis,Basis
+2104.10858|0|549-598|2103.14899,Background,Background
+2104.11021|18|555-604|1611.07004,Improvement/Modification,Application
+2104.11181|10|686-735|1711.08848,Background,Background
+2104.11225|7|1875-1924|1904.08755,Background,Background
+2104.11536|43|719-768|1908.10357,Background,Comparison
+2104.11904|2|147-196|1812.09530,Evidence,Gap
+2104.12087|6|48-97|1909.00968,Basis,Basis
+2104.12229|59|721-770|1912.03207,Comparison,Comparison
+2104.12446|14|252-301|1406.1078,Application,Application
+2104.12673|2|387-436|1911.05722,Improvement/Modification,Improvement/Modification
+2104.12673|6|525-574|1905.08845,Background,Background
+2104.12766|4|528-577|1812.03443,Gap,Gap
+2104.13044|1|583-632|1612.00593,Identification of the Originator,Identification of the Originator
+2104.13053|2|642-691|1612.00593,Identification of the Originator,Identification of the Originator
+2104.13188|25|209-258|1807.10097,Basis,Basis
+2104.13366|6|332-381|1808.00671,Identification of the Originator,Identification of the Originator
+2104.13582|12|58-107|1512.03385,Application,Application
+2104.13586|4|940-989|2004.06704,Application,Application
+2104.13613|38|577-626|1609.02132,Evidence,Evidence
+2104.14169|66|420-469|1512.00567,Application,Application
+2104.14202|16|17-66|1505.04597,Application,Improvement/Modification
+2104.14207|64|966-1015|1707.08114,Further Reading,Further Reading
+2104.14526|27|1595-1644|2007.06753,Further Reading,Further Reading
+2104.14553|21|284-333|1506.02640,Basis,Basis
+2104.14764|0|313-362|1911.05722,Background,Background
+2104.14783|25|61-110|1712.04851,Application,Basis
+2104.14882|26|34-83|1903.07071,Application,Basis
+2105.00020|14|1170-1219|1707.00683,Comparison,Comparison
+2105.00261|6|712-761|2007.03858,Evidence,Background
+2105.00859|0|488-537|1606.00915,Background,Background
+2105.00957|6|288-337|1910.06962,Improvement/Modification,Basis
+2105.01388|3|205-254|1511.07212,Application,Improvement/Modification
+2105.01839|8|334-383|1511.04164,Identification of the Originator,Background
+2105.01922|33|1091-1140|1911.09070,Application,Application
+2105.02047|39|281-330|1708.01648,Gap,Gap
+2105.02103|0|1110-1159|1708.08197,Gap,Gap
+2105.02170|44|570-619|1905.01595,Comparison,Comparison
+2105.02725|0|564-613|1908.09635,Evidence,Further Reading
+2105.03155|0|1757-1806|1904.05046,Further Reading,Further Reading
+2105.03245|38|827-876|1706.04261,Application,Background
+2105.03342|5|973-1022|1907.11922,Background,Background
+2105.03582|0|2138-2187|1704.00710,Comparison,Comparison
+2105.04070|55|252-301|2006.10738,Background,Background
+2105.04070|55|365-414|1805.01677,Background,Background
+2105.04169|11|162-211|1411.4038,Identification of the Originator,Identification of the Originator
+2105.04313|28|747-796|1506.01186,Gap,Gap
+2105.04699|7|1127-1176|1801.06920,Further Reading,Further Reading
+2105.04932|22|58-107|2008.00951,Basis,Basis
+2105.05062|120|507-556|1402.0054,Further Reading,Background
+2105.05708|31|506-555|1711.04047,Background,Further Reading
+2105.06160|12|2086-2135|2010.09290,Background,Background
+2105.06371|66|493-542|1906.07437,Further Reading,Further Reading
+2105.06818|19|441-490|1903.06586,Basis,Basis
+2105.07387|21|87-136|2002.10857,Basis,Improvement/Modification
+2105.07391|22|283-332|2007.08883,Identification of the Originator,Identification of the Originator
+2105.07404|0|289-338|1705.07750,Gap,Background
+2105.07404|0|823-872|1703.07814,Gap,Gap
+2105.07474|57|75-124|1704.08614,Application,Application
+2105.07581|29|18-67|1805.00932,Evidence,Evidence
+2105.07581|4|208-257|1609.05158,Background,Identification of the Originator
+2105.07930|0|873-922|2102.07448,Background,Background
+2105.08141|1|1026-1075|1812.01289,Background,Gap
+2105.08237|4|550-599|1803.10081,Basis,Basis
+2105.08941|34|564-613|1908.02484,Background,Background
+2105.09124|5|1333-1382|1905.07375,Basis,Basis
+2105.09156|1|821-870|1809.10966,Evidence,Evidence
+2105.09544|22|338-387|1911.10967,Application,Application
+2105.10092|3|946-995|1311.2694,Background,Background
+2105.10288|16|389-438|1803.08607,Evidence,Evidence
+2105.10310|14|104-153|1505.04597,Application,Application
+2105.10465|1|192-241|1711.06526,Background,Background
+2105.11113|8|365-414|2007.08398,Comparison,Comparison
+2105.11352|2|824-873|1708.04398,Gap,Background
+2105.11587|13|249-298|1406.4729,Application,Application
+2105.11657|10|271-320|1709.01507,Comparison,Comparison
+2105.11657|1|667-716|1908.06955,Basis,Basis
+2105.11789|9|1333-1382|1510.06939,Background,Background
+2105.12272|5|407-456|1802.04181,Further Reading,Further Reading
+2105.12555|7|1572-1621|2009.11562,Background,Background
+2105.12723|56|48-97|1912.04958,Application,Application
+2105.13061|13|1106-1155|1703.10593,Comparison,Comparison
+2105.13061|5|242-291|2007.11983,Improvement/Modification,Improvement/Modification
+2105.13353|31|470-519|1811.04869,Comparison,Comparison
+2105.13502|48|9-58|1911.08712,Gap,Evidence
+2105.13994|8|1714-1763|1707.09593,Comparison,Comparison
+2105.14005|14|43-92|1902.09666,Improvement/Modification,Improvement/Modification
+2105.14065|1|423-472|1505.07427,Identification of the Originator,Identification of the Originator
+2105.14291|47|996-1045|1607.06038,Identification of the Originator,Identification of the Originator
+2105.14291|50|1709-1758|2001.08942,Identification of the Originator,Identification of the Originator
+2105.14300|15|2373-2422|1606.03556,Comparison,Comparison
+2105.14584|5|170-219|1809.00461,Gap,Gap
+2105.14638|0|1023-1072|1612.03144,Background,Background
+2105.14678|11|201-250|1704.03432,Background,Comparison
+2105.14727|2|404-453|1602.02697,Gap,Gap
+2105.14727|2|82-131|1511.07528,Gap,Gap
+2105.14797|33|1725-1774|1707.01213,Comparison,Comparison
+2105.15203|0|304-353|1411.4038,Identification of the Originator,Identification of the Originator
+2106.00318|1|1436-1485|2006.04902,Evidence,Gap
+2106.00394|16|701-750|2103.00083,Further Reading,Further Reading
+2106.00537|0|773-822|1909.13719,Evidence,Comparison
+2106.00677|3|888-937|2011.10566,Improvement/Modification,Improvement/Modification
+2106.01036|24|567-616|1304.2077,Further Reading,Further Reading
+2106.01544|41|337-386|1512.03385,Improvement/Modification,Improvement/Modification
+2106.01607|8|254-303|1612.06890,Improvement/Modification,Improvement/Modification
+2106.01615|1|261-310|1811.00661,Background,Background
+2106.02343|0|968-1017|2003.01826,Evidence,Evidence
+2106.02488|0|625-674|1702.08608,Further Reading,Further Reading
+2106.02637|12|46-95|1311.2524,Basis,Basis
+2106.02824|0|446-495|1805.04025,Evidence,Evidence
+2106.02864|4|974-1023|2010.06440,Comparison,Comparison
+2106.03259|50|66-115|1902.06162,Further Reading,Background
+2106.03330|0|618-667|1505.04803,Background,Background
+2106.03331|27|551-600|1502.07058,Application,Application
+2106.03645|29|165-214|1805.06530,Further Reading,Further Reading
+2106.04112|40|197-246|1603.03958,Improvement/Modification,Application
+2106.04403|1|850-899|1803.08006,Identification of the Originator,Identification of the Originator
+2106.04486|5|2143-2192|1404.4679,Further Reading,Further Reading
+2106.05036|21|49-98|1702.08658,Evidence,Evidence
+2106.05418|6|424-473|1904.05046,Further Reading,Background
+2106.05616|0|494-543|1705.03098,Gap,Gap
+2106.06007|36|315-364|1901.04366,Application,Application
+2106.06415|12|850-899|1709.01507,Improvement/Modification,Basis
+2106.06649|0|240-289|1905.04804,Identification of the Originator,Identification of the Originator
+2106.07411|15|262-311|1705.02498,Gap,Evidence
+2106.07852|18|1447-1496|1904.09658,Basis,Basis
+2106.07929|54|28-77|1704.03296,Evidence,Evidence
+2106.08148|19|171-220|1512.03385,Application,Background
+2106.08798|55|555-604|1904.01990,Comparison,Comparison
+2106.09244|12|948-997|1911.05722,Evidence,Evidence
+2106.09369|6|225-274|2001.06937,Further Reading,Further Reading
+2106.09681|27|628-677|1603.09382,Application,Application
+2106.09707|9|1074-1123|2007.06769,Gap,Gap
+2106.09973|58|150-199|2001.10742,Further Reading,Further Reading
+2106.10635|2|641-690|1905.03246,Comparison,Comparison
+2106.10923|2|297-346|1505.04597,Improvement/Modification,Application
+2106.11339|12|414-463|1611.05594,Comparison,Comparison
+2106.11482|25|913-962|1703.09784,Basis,Basis
+2106.11549|2|112-161|2006.15418,Basis,Comparison
+2106.12302|24|252-301|1905.02876,Gap,Background
+2106.13365|11|174-223|1609.06666,Identification of the Originator,Identification of the Originator
+2106.13488|46|10-59|2005.07310,Basis,Basis
+2106.14087|13|9-58|1901.10951,Identification of the Originator,Identification of the Originator
+2106.14133|7|146-195|1411.4038,Identification of the Originator,Identification of the Originator
+2106.14193|0|240-289|1901.04780,Gap,Gap
+2106.14366|2|628-677|1904.05160,Evidence,Evidence
+2106.14490|36|1942-1991|1911.07034,Background,Application
+2106.14706|3|84-133|2004.13985,Evidence,Evidence
+2106.14845|28|419-468|1910.01279,Application,Application
+2106.14952|41|1357-1406|1410.6801,Further Reading,Further Reading
+2106.15011|2|571-620|1903.07291,Gap,Background
+2106.15413|8|410-459|1611.08974,Identification of the Originator,Identification of the Originator
+2106.15754|2|626-675|1612.01105,Gap,Gap
+2106.15947|33|678-727|1901.02446,Basis,Basis
+2107.00057|6|30-79|1512.03385,Improvement/Modification,Improvement/Modification
+2107.00067|2|87-136|1510.02192,Background,Background
+2107.00346|5|153-202|1902.07830,Background,Background
+2107.00842|8|1086-1135|1904.11045,Gap,Gap
+2107.01086|0|530-579|1707.03502,Further Reading,Further Reading
+2107.01330|2|1678-1727|1808.03344,Evidence,Evidence
+2107.02174|51|297-346|1606.08415,Application,Evidence
+2107.02389|1|39-88|1612.00593,Identification of the Originator,Identification of the Originator
+2107.02909|9|173-222|1612.00593,Identification of the Originator,Identification of the Originator
+2107.03166|3|521-570|1703.06868,Improvement/Modification,Improvement/Modification
+2107.03216|6|26-75|1505.00468,Identification of the Originator,Identification of the Originator
+2107.03463|26|233-282|1611.09224,Comparison,Comparison
+2107.03552|29|621-670|1606.06650,Basis,Basis
+2107.03708|1|205-254|2008.05924,Comparison,Comparison
+2107.04020|3|92-141|2009.01376,Basis,Basis
+2107.04327|3|565-614|1912.04838,Identification of the Originator,Comparison
+2107.04481|8|370-419|1603.08155,Identification of the Originator,Identification of the Originator
+2107.04829|4|1494-1543|1911.11907,Background,Background
+2107.04914|9|193-242|2001.08381,Comparison,Comparison
+2107.05840|15|1036-1085|1805.02718,Gap,Comparison
+2107.05840|18|544-593|1812.01187,Application,Application
+2107.05945|30|645-694|1904.02701,Comparison,Comparison
+2107.06187|2|152-201|1706.07567,Gap,Gap
+2107.06383|13|620-669|1906.10770,Background,Background
+2107.06383|40|348-397|1512.04150,Evidence,Evidence
+2107.07919|62|12-61|1811.08489,Identification of the Originator,Background
+2107.08392|68|772-821|2007.10985,Identification of the Originator,Identification of the Originator
+2107.08394|55|562-611|1502.01852,Application,Application
+2107.09270|4|1169-1218|1704.04749,Basis,Basis
+2107.09293|27|45-94|1706.08612,Application,Application
+2107.10300|4|749-798|1705.00754,Background,Background
+2107.10990|4|692-741|1505.04597,Background,Identification of the Originator
+2107.11027|21|194-243|1611.07004,Improvement/Modification,Basis
+2107.11629|1|859-908|2008.12134,Gap,Gap
+2107.11646|19|556-605|1903.06586,Improvement/Modification,Basis
+2107.11646|6|914-963|2008.03713,Comparison,Comparison
+2107.12655|1|934-983|1904.07601,Evidence,Gap
+2107.12746|2|602-651|2001.03360,Gap,Gap
+2107.13492|72|727-776|cs/0102001,Further Reading,Further Reading
+2107.13576|24|516-565|1612.00593,Improvement/Modification,Improvement/Modification
+2107.13610|40|1894-1943|0711.0189,Further Reading,Further Reading
+2107.13637|14|288-337|2009.14139,Gap,Gap
+2107.13706|18|81-130|1608.00859,Improvement/Modification,Basis
+2107.13715|3|392-441|1803.07728,Basis,Basis
+2107.13931|36|1020-1069|2103.17202,Comparison,Comparison
+2107.14230|7|434-483|1612.00593,Identification of the Originator,Identification of the Originator
+2107.14476|5|105-154|1909.01804,Basis,Basis
+2108.00127|6|289-338|2001.05919,Basis,Basis
+2108.00202|7|646-695|1512.03385,Gap,Gap
+2108.00351|36|397-446|1412.6980,Application,Application
+2108.00516|1|446-495|1901.02970,Background,Background
+2108.01070|8|1234-1283|1802.03788,Comparison,Background
+2108.01361|34|619-668|1902.10740,Evidence,Evidence
+2108.01785|1|166-215|1512.04150,Identification of the Originator,Comparison
+2108.02147|1|22-71|1505.00487,Identification of the Originator,Identification of the Originator
+2108.02959|38|116-165|1512.03385,Application,Application
+2108.03257|1|948-997|1808.10322,Background,Background
+2108.03380|43|326-375|1905.12156,Evidence,Background
+2108.03380|4|2626-2675|1904.11934,Background,Background
+2108.03557|11|833-882|2006.08658,Comparison,Comparison
+2108.03637|52|1246-1295|1809.07845,Application,Application
+2108.03764|95|452-501|1808.00897,Application,Background
+2108.03766|2|647-696|1908.00073,Evidence,Evidence
+2108.04228|39|69-118|2001.11409,Application,Application
+2108.04476|7|221-270|1612.00593,Identification of the Originator,Background
+2108.04562|29|242-291|2004.02434,Evidence,Evidence
+2108.04562|7|48-97|1412.5687,Identification of the Originator,Identification of the Originator
+2108.04896|15|25-74|2103.17249,Background,Background
+2108.05158|12|148-197|1512.03385,Application,Background
+2108.05302|7|986-1035|1712.06087,Comparison,Comparison
+2108.05545|1|1016-1065|1611.05009,Gap,Gap
+2108.05570|7|151-200|1904.06487,Evidence,Evidence
+2108.06070|10|799-848|1911.04252,Comparison,Comparison
+2108.06230|8|649-698|1812.01784,Evidence,Evidence
+2108.06417|4|1817-1866|1904.08494,Background,Background
+2108.06421|9|546-595|1808.01974,Comparison,Background
+2108.06455|2|374-423|1903.01784,Identification of the Originator,Identification of the Originator
+2108.06649|1|236-285|2004.08514,Background,Background
+2108.06781|35|169-218|1512.03385,Application,Application
+2108.06983|37|1099-1148|1909.10788,Comparison,Comparison
+2108.07199|2|858-907|2001.00309,Basis,Basis
+2108.07920|2|1536-1585|1503.03832,Application,Application
+2108.08165|6|770-819|1512.03385,Basis,Basis
+2108.08236|3|785-834|2003.13886,Gap,Gap
+2108.08574|1|1285-1334|1703.07334,Background,Background
+2108.08623|1|302-351|1908.04422,Background,Background
+2108.08674|15|389-438|1505.04597,Comparison,Comparison
+2108.08771|1|157-206|1907.02545,Gap,Background
+2108.08771|4|572-621|2007.10467,Basis,Basis
+2108.08807|4|520-569|1912.03207,Comparison,Comparison
+2108.09041|19|1179-1228|1505.04597,Improvement/Modification,Application
+2108.09335|159|333-382|1810.06951,Comparison,Comparison
+2108.09432|3|737-786|2003.08325,Comparison,Comparison
+2108.09468|2|314-363|1612.08534,Identification of the Originator,Identification of the Originator
+2108.09603|51|910-959|1411.4038,Comparison,Comparison
+2108.09936|3|190-239|1711.06375,Evidence,Evidence
+2108.09964|8|486-535|1903.00179,Gap,Evidence
+2108.10696|31|314-363|1709.01507,Basis,Basis
+2108.10879|3|1200-1249|2008.10913,Evidence,Evidence
+2108.10879|9|468-517|1710.08864,Evidence,Evidence
+2108.11084|7|6-55|1501.00092,Identification of the Originator,Identification of the Originator
+2108.11098|15|549-598|1806.11430,Evidence,Evidence
+2108.11105|12|508-557|1807.11626,Gap,Evidence
+2108.11105|5|133-182|1806.11430,Comparison,Comparison
+2108.11179|10|1322-1371|1708.01682,Background,Background
+2108.11743|49|665-714|1704.03058,Comparison,Comparison
+2108.11743|8|717-766|1811.11168,Basis,Basis
+2108.11898|41|26-75|1811.08883,Evidence,Evidence
+2108.12863|33|688-737|2012.12397,Comparison,Comparison
+2108.13153|62|613-662|1904.02422,Comparison,Comparison
+2108.13341|2|332-381|2107.08391,Comparison,Comparison
+2108.13659|4|594-643|2104.14185,Further Reading,Evidence
+2109.00113|11|551-600|2003.06537,Evidence,Background
+2109.00452|2|71-120|2007.10985,Gap,Gap
+2109.01137|1|398-447|1808.03417,Gap,Background
+2109.01137|7|1640-1689|1909.00321,Gap,Gap
+2109.01235|2|284-333|1704.00390,Gap,Comparison
+2109.01305|13|142-191|1911.04252,Comparison,Comparison
+2109.01663|4|239-288|1512.04150,Evidence,Evidence
+2109.02220|1|404-453|1906.10771,Background,Background
+2109.02303|35|104-153|1512.03385,Improvement/Modification,Application
+2109.02357|10|1387-1436|1811.08737,Background,Background
+2109.02497|9|211-260|1711.08488,Identification of the Originator,Identification of the Originator
+2109.02618|15|784-833|1804.04732,Basis,Basis
+2109.02974|1|40-89|2007.10247,Identification of the Originator,Identification of the Originator
+2109.03156|0|574-623|1909.04412,Background,Background
+2109.03451|8|177-226|1807.02242,Identification of the Originator,Identification of the Originator
+2109.03492|2|362-411|2007.06600,Basis,Basis
+2109.03495|43|413-462|1811.11168,Application,Application
+2109.03501|11|370-419|1804.02422,Further Reading,Further Reading
+2109.03569|3|1556-1605|2008.10833,Improvement/Modification,Improvement/Modification
+2109.04075|7|1592-1641|2006.10408,Background,Gap
+2109.04275|1|803-852|1709.09426,Gap,Gap
+2109.04310|17|298-347|1605.03344,Application,Application
+2109.04379|28|563-612|1811.02629,Application,Application
+2109.04379|6|726-775|1906.08628,Background,Background
+2109.04409|18|165-214|1506.09215,Basis,Basis
+2109.05441|29|1012-1061|2008.10544,Comparison,Comparison
+2109.05633|0|520-569|2003.08624,Evidence,Background
+2109.05889|1|1407-1456|1606.01500,Identification of the Originator,Identification of the Originator
+2109.06363|9|297-346|1608.04644,Evidence,Evidence
+2109.06422|5|489-538|2101.10979,Comparison,Comparison
+2109.06422|6|226-275|1411.4038,Identification of the Originator,Identification of the Originator
+2109.06432|7|173-222|1411.4038,Identification of the Originator,Identification of the Originator
+2109.06467|0|1050-1099|1607.08221,Background,Background
+2109.06474|6|627-676|1506.04214,Background,Background
+2109.07001|6|2550-2599|1908.03852,Further Reading,Further Reading
+2109.07193|35|447-496|2005.09007,Application,Application
+2109.07547|12|132-181|1712.01039,Identification of the Originator,Identification of the Originator
+2109.07651|27|238-287|2010.13749,Improvement/Modification,Improvement/Modification
+2109.08203|11|155-204|2104.14294,Application,Application
+2109.08465|14|35-84|1707.03501,Evidence,Background
+2109.09808|55|313-362|1904.07172,Application,Application
+2109.09818|3|478-527|1505.07818,Basis,Basis
+2109.10432|56|62-111|2008.01883,Improvement/Modification,Improvement/Modification
+2109.10477|2|415-464|2006.09904,Evidence,Background
+2109.10852|18|808-857|1603.09382,Application,Application
+2109.11719|3|1499-1548|1703.06868,Basis,Basis
+2109.11747|0|1355-1404|1711.10872,Evidence,Gap
+2109.11747|0|1451-1500|1704.07809,Gap,Gap
+2109.12131|10|534-583|1505.07427,Comparison,Comparison
+2109.13157|16|16-65|1703.05921,Identification of the Originator,Identification of the Originator
+2109.13157|17|165-214|1802.09088,Identification of the Originator,Identification of the Originator
+2109.13788|3|29-78|2008.01449,Background,Background
+2109.14525|3|1111-1160|1406.4729,Basis,Basis
+2109.14821|9|126-175|1609.05130,Identification of the Originator,Identification of the Originator
+2109.15009|18|157-206|1907.05193,Application,Application
+2109.15177|0|593-642|1910.14667,Gap,Background
+2110.00085|109|568-617|1412.6980,Improvement/Modification,Improvement/Modification
+2110.00249|36|291-340|1908.09822,Basis,Basis
+2110.00434|1|382-431|1701.04851,Background,Evidence
+2110.01571|17|539-588|1503.02406,Basis,Basis
+2110.01571|53|323-372|1801.09414,Application,Application
+2110.01880|2|136-185|1809.00219,Gap,Gap
+2110.01931|12|268-317|1904.01355,Evidence,Evidence
+2110.02210|9|2001-2050|1708.01642,Comparison,Gap
+2110.02459|1|1259-1308|2009.08650,Gap,Gap
+2110.02521|0|451-500|1805.00932,Evidence,Evidence
+2110.02627|2|347-396|1901.07973,Improvement/Modification,Basis
+2110.03562|9|1135-1184|1712.02310,Evidence,Evidence
+2110.03680|31|358-407|1811.11127,Application,Application
+2110.03740|53|806-855|1611.10080,Application,Application
+2110.04004|20|1260-1309|1603.05027,Evidence,Evidence
+2110.04077|9|758-807|1701.06264,Evidence,Evidence
+2110.04318|8|215-264|1709.02508,Comparison,Comparison
+2110.04476|0|967-1016|2012.13912,Further Reading,Further Reading
+2110.04935|34|809-858|1206.5538,Further Reading,Further Reading
+2110.05055|31|125-174|1411.7766,Application,Application
+2110.05055|6|1539-1588|2006.06500,Gap,Gap
+2110.05060|0|891-940|1605.06489,Further Reading,Background
+2110.05074|0|1939-1988|2010.08145,Gap,Gap
+2110.05075|2|1029-1078|1903.11683,Gap,Gap
+2110.05839|1|211-260|1910.08898,Identification of the Originator,Identification of the Originator
+2110.05848|23|735-784|1704.08063,Application,Background
+2110.06014|1|1293-1342|2103.13517,Evidence,Evidence
+2110.06049|23|94-143|1912.05992,Application,Application
+2110.08192|6|68-117|1606.00373,Identification of the Originator,Background
+2110.08562|12|470-519|2002.06963,Identification of the Originator,Identification of the Originator
+2110.08855|33|371-420|1512.03385,Application,Application
+2110.08861|29|433-482|1812.03828,Comparison,Comparison
+2110.09481|15|47-96|1802.09975,Application,Application
+2110.09766|39|47-96|1412.6980,Application,Application
+2110.09903|49|1020-1069|2105.04834,Further Reading,Further Reading
+2110.10355|3|564-613|2103.14274,Comparison,Comparison
+2110.10494|0|778-827|2004.11563,Evidence,Evidence
+2110.10863|8|449-498|1710.07035,Further Reading,Further Reading
+2110.10898|5|413-462|1908.05900,Basis,Basis
+2110.10906|1|74-123|1612.00837,Evidence,Evidence
+2110.11062|14|644-693|1909.00532,Gap,Gap
+2110.11062|8|51-100|2108.06383,Basis,Basis
+2110.11636|9|8-57|1505.07427,Identification of the Originator,Identification of the Originator
+2110.12100|13|394-443|1903.07788,Basis,Basis
+2110.12486|16|127-176|1904.00229,Improvement/Modification,Improvement/Modification
+2110.12812|1|471-520|2001.09691,Evidence,Evidence
+2110.12812|3|649-698|1901.00976,Comparison,Comparison
+2110.13107|0|1212-1261|1912.04958,Comparison,Comparison
+2110.13107|4|435-484|1512.03385,Evidence,Background
+2110.13386|55|504-553|1705.07750,Improvement/Modification,Improvement/Modification
+2110.14076|1|925-974|1406.5670,Evidence,Gap
+2110.14143|1|811-860|2011.13922,Basis,Background
+2110.14795|4|66-115|2010.14925,Basis,Improvement/Modification
+2110.15255|40|661-710|1805.08974,Basis,Application
+2110.15267|5|165-214|2102.04306,Basis,Basis
+2110.15644|10|412-461|1506.01186,Evidence,Evidence
+2110.15681|4|193-242|1811.00648,Identification of the Originator,Identification of the Originator
+2111.00531|3|270-319|1610.02391,Application,Application
+2111.00648|1|1106-1155|1611.08097,Further Reading,Background
+2111.00931|3|209-258|1711.06897,Basis,Basis
+2111.00993|1|235-284|1803.01413,Gap,Background
+2111.02045|3|867-916|1604.07948,Application,Comparison
+2111.02333|1|106-155|1411.4038,Identification of the Originator,Background
+2111.02447|61|224-273|2012.09161,Comparison,Comparison
+2111.02741|12|136-185|1708.01641,Identification of the Originator,Background
+2111.02741|40|35-84|1604.01753,Identification of the Originator,Identification of the Originator
+2111.03221|7|108-157|1411.5123,Basis,Identification of the Originator
+2111.03414|17|138-187|1807.06521,Basis,Basis
+2111.03414|1|1052-1101|1908.03852,Gap,Gap
+2111.03615|1|691-740|1912.07150,Further Reading,Further Reading
+2111.03874|0|1058-1107|1901.05555,Evidence,Evidence
+2111.04982|5|697-746|1812.01866,Background,Background
+2111.05464|25|257-306|1606.08415,Application,Comparison
+2111.05468|0|697-746|1608.04644,Evidence,Background
+2111.06838|13|1000-1049|1712.07262,Identification of the Originator,Identification of the Originator
+2111.06849|1|245-294|2006.10738,Evidence,Evidence
+2111.06925|50|93-142|1910.09070,Application,Application
+2111.08755|27|34-83|1501.02565,Basis,Basis
+2111.08755|5|435-484|1512.02134,Improvement/Modification,Application
+2111.08913|9|438-487|2001.01536,Background,Background
+2111.09571|0|1100-1149|1901.10650,Evidence,Background
+2111.09779|35|393-442|2007.09115,Basis,Basis
+2111.09881|8|1820-1869|2104.14854,Further Reading,Further Reading
+2111.09996|1|122-171|2012.03065,Gap,Gap
+2111.10023|20|133-182|2106.09018,Basis,Basis
+2111.10023|26|729-778|1412.2306,Application,Application
+2111.10137|19|310-359|1903.02494,Comparison,Comparison
+2111.10337|2|311-360|2102.06183,Background,Background
+2111.10546|7|652-701|1903.07291,Background,Background
+2111.10866|3|1006-1055|1912.12180,Evidence,Evidence
+2111.10943|13|1472-1521|2007.02042,Evidence,Evidence
+2111.11114|48|99-148|1803.06791,Basis,Basis
+2111.11322|13|534-583|1909.01955,Gap,Gap
+2111.11433|13|1039-1088|1904.01766,Gap,Gap
+2111.11625|3|668-717|1911.08862,Comparison,Comparison
+2111.11709|11|264-313|1710.03811,Gap,Gap
+2111.11718|1|579-628|1704.03155,Gap,Gap
+2111.11783|20|27-76|1611.05705,Basis,Basis
+2111.11827|12|133-182|1512.03385,Basis,Basis
+2111.11834|15|396-445|1311.3899,Further Reading,Further Reading
+2111.11843|43|411-460|1811.01343,Evidence,Evidence
+2111.11862|1|595-644|1708.03985,Further Reading,Further Reading
+2111.12242|1|706-755|1908.04616,Evidence,Gap
+2111.12306|127|473-522|1703.00048,Further Reading,Further Reading
+2111.12602|28|64-113|1904.03278,Application,Background
+2111.12681|1|168-217|1906.03327,Gap,Gap
+2111.12702|7|1537-1586|2102.04014,Comparison,Background
+2111.12727|3|189-238|2002.08565,Gap,Gap
+2111.12853|2|433-482|1912.11370,Comparison,Comparison
+2111.12878|47|610-659|1912.04302,Improvement/Modification,Improvement/Modification
+2111.13074|22|144-193|1805.00655,Gap,Gap
+2111.13087|16|21-70|1612.03144,Evidence,Evidence
+2111.13157|1|776-825|1807.06521,Comparison,Comparison
+2111.13163|8|1807-1856|1907.11692,Evidence,Background
+2111.13279|1|281-330|1703.06868,Identification of the Originator,Identification of the Originator
+2111.13280|5|550-599|2106.08254,Comparison,Comparison
+2111.13285|8|2098-2147|1609.03773,Comparison,Comparison
+2111.13445|6|343-392|1512.03385,Application,Background
+2111.13679|33|44-93|2103.13415,Improvement/Modification,Improvement/Modification
+2111.14014|47|192-241|2108.02413,Comparison,Comparison
+2111.14014|47|910-959|2007.01546,Comparison,Comparison
+2111.14160|31|74-123|1504.06852,Basis,Basis
+2111.14646|19|285-334|1909.07061,Background,Comparison
+2111.14819|6|217-266|1908.04616,Application,Application
+2111.14824|1|237-286|2103.16507,Gap,Gap
+2111.15242|8|1731-1780|1911.12676,Gap,Gap
+2111.15400|3|8-57|1612.00593,Identification of the Originator,Identification of the Originator
+2111.15557|14|1023-1072|1608.03981,Improvement/Modification,Improvement/Modification
+2112.00180|10|771-820|2103.10428,Basis,Basis
+2112.00219|33|436-485|1705.07115,Evidence,Evidence
+2112.00374|2|658-707|2103.17249,Gap,Gap
+2112.00428|0|721-770|1511.07528,Evidence,Background
+2112.00665|20|678-727|1801.10041,Application,Application
+2112.00787|91|149-198|2110.11334,Further Reading,Further Reading
+2112.01085|19|13-62|1611.05267,Basis,Improvement/Modification
+2112.01473|1|102-151|2007.11571,Gap,Background
+2112.01554|47|493-542|2104.03978,Basis,Basis
+2112.01838|2|367-416|2012.06060,Improvement/Modification,Comparison
+2112.02219|37|1048-1097|1412.6980,Application,Application
+2112.02252|1|573-622|2006.01895,Background,Background
+2112.02379|2|238-287|1803.02077,Application,Basis
+2112.02379|31|121-170|1912.04958,Comparison,Comparison
+2112.02450|34|394-443|1802.03446,Evidence,Gap
+2112.03223|5|1209-1258|2007.09763,Gap,Gap
+2112.03241|87|169-218|1909.00589,Comparison,Comparison
+2112.03471|27|1090-1139|1708.07120,Application,Application
+2112.03905|41|84-133|1802.07898,Comparison,Comparison
+2112.03906|36|1675-1724|2104.14558,Comparison,Comparison
+2112.03917|20|38-87|1709.07871,Application,Identification of the Originator
+2112.04628|7|86-135|1612.00496,Identification of the Originator,Identification of the Originator
+2112.04974|1|595-644|1409.4326,Identification of the Originator,Identification of the Originator
+2112.04974|53|242-291|1704.07813,Comparison,Comparison
+2112.05121|2|179-228|1804.04412,Gap,Gap
+2112.05138|33|10-59|2010.07930,Application,Basis
+2112.05396|48|184-233|1505.04597,Improvement/Modification,Improvement/Modification
+2112.05396|7|310-359|1611.07004,Identification of the Originator,Identification of the Originator
+2112.05827|49|810-859|1710.08092,Application,Application
+2112.05872|25|188-237|2008.09165,Basis,Background
+2112.06150|16|342-391|1703.05593,Basis,Basis
+2112.06175|14|730-779|1611.05594,Comparison,Comparison
+2112.06175|1|1179-1228|1803.03345,Background,Gap
+2112.06180|10|114-163|1609.09270,Identification of the Originator,Background
+2112.06197|6|385-434|2105.08276,Evidence,Gap
+2112.07133|32|148-197|1610.02391,Improvement/Modification,Improvement/Modification
+2112.07701|7|169-218|2108.06266,Further Reading,Further Reading
+2112.07999|5|295-344|1505.04597,Background,Background
+2112.07999|9|707-756|1703.10593,Application,Application
+2112.08587|2|973-1022|2004.06165,Gap,Gap
+2112.08684|12|463-512|1906.03950,Gap,Gap
+2112.09130|5|57-106|1406.2661,Identification of the Originator,Background
+2112.09331|22|170-219|1905.04899,Gap,Background
+2112.09429|13|631-680|2107.06917,Further Reading,Further Reading
+2112.09647|2|451-500|2103.17154,Application,Application
+2112.09686|31|1090-1139|2006.10721,Further Reading,Further Reading
+2112.11037|26|563-612|1412.6980,Application,Application
+2112.11088|1|611-660|1812.07179,Background,Background
+2112.11133|11|698-747|1612.00593,Background,Background
+2112.11427|59|565-614|2004.03805,Further Reading,Further Reading
+2112.11427|9|524-573|2111.05849,Further Reading,Further Reading
+2112.11593|19|1724-1773|1612.05424,Evidence,Evidence
+2112.11685|12|732-781|2103.14030,Improvement/Modification,Improvement/Modification
+2112.11685|54|79-128|2102.12122,Background,Comparison
+2112.11846|9|689-738|1809.07845,Comparison,Comparison
+2112.11927|8|194-243|1811.06128,Further Reading,Further Reading
+2112.12027|67|872-921|1608.06800,Background,Gap
+2112.12175|8|720-769|1512.03385,Background,Comparison
+2112.12496|2|912-961|2003.06958,Evidence,Evidence
+2112.12786|1|712-761|2106.04263,Gap,Gap
+2112.12916|8|1053-1102|2106.03348,Comparison,Comparison
+2112.13608|1|127-176|1311.2524,Identification of the Originator,Identification of the Originator
+2201.00443|36|336-385|1702.07191,Evidence,Evidence
+2201.00520|26|982-1031|1603.09382,Application,Application
+2201.01297|2|23-72|1902.00749,Gap,Gap
+2201.01501|2|203-252|1804.00650,Background,Comparison
+2201.01636|10|85-134|1812.02427,Improvement/Modification,Basis
+2201.01883|19|1063-1112|2103.15597,Improvement/Modification,Basis
+2201.02279|2|1321-1370|2003.06473,Gap,Gap
+2201.02609|55|267-316|2103.06191,Further Reading,Further Reading
+2201.03176|19|933-982|1612.03144,Application,Application
+2201.03297|78|325-374|1906.10771,Comparison,Comparison
+2201.03808|2|334-383|1912.04958,Application,Application
+2201.04236|3|1373-1422|1708.03035,Background,Background
+2201.04236|6|356-405|1901.04277,Evidence,Gap
+2201.04623|5|297-346|2012.12247,Improvement/Modification,Improvement/Modification
+2201.05986|4|790-839|1505.04597,Improvement/Modification,Improvement/Modification
+2201.06889|3|242-291|2012.06722,Evidence,Background
+2201.06933|34|85-134|1808.01244,Application,Basis
+2201.07202|43|403-452|2110.06199,Application,Application
+2201.07366|3|610-659|1803.08495,Identification of the Originator,Identification of the Originator
+2201.07781|9|385-434|1811.11283,Application,Application
+2201.08157|7|337-386|1904.05046,Further Reading,Further Reading
+2201.08158|8|217-266|2105.00261,Gap,Comparison
+2201.08265|5|1338-1387|1812.04202,Further Reading,Further Reading
+2201.08633|33|483-532|1708.05628,Application,Application
+2201.09061|3|134-183|1406.2661,Identification of the Originator,Identification of the Originator
+2201.09296|5|92-141|1606.09549,Identification of the Originator,Identification of the Originator
+2201.09354|137|216-265|1812.05276,Background,Background
+2201.09548|65|1519-1568|1812.01601,Identification of the Originator,Identification of the Originator
+2201.09865|6|170-219|1604.07379,Identification of the Originator,Identification of the Originator
+2201.10107|0|842-891|1506.01497,Gap,Gap
+2201.10448|60|135-184|1911.04252,Application,Background
+2201.10700|76|351-400|1708.01692,Background,Application
+2201.11379|1|567-616|1905.03304,Background,Background
+2201.11739|7|77-126|1809.04356,Further Reading,Further Reading
+2201.12157|0|2007-2056|2012.06813,Gap,Gap
+2201.12769|2|13-62|1612.00593,Identification of the Originator,Identification of the Originator
+2201.12854|17|92-141|1104.5557,Further Reading,Further Reading
+2201.13178|48|285-334|1512.03385,Application,Application
+2201.13178|49|308-357|1512.00567,Application,Application
+2202.00046|1|657-706|2005.02671,Evidence,Evidence
+2202.00712|2|289-338|2004.07780,Background,Background
+2202.01537|19|463-512|2003.08934,Basis,Basis
+2202.03501|18|356-405|1504.06375,Gap,Gap
+2202.03501|21|93-142|1505.04597,Basis,Improvement/Modification
+2202.03868|2|159-208|2108.07399,Improvement/Modification,Improvement/Modification
+2202.03968|12|175-224|1901.08658,Application,Basis
+2202.04879|6|578-627|1703.02921,Background,Gap
+2202.05343|1|874-923|1903.06586,Evidence,Background
+2202.05400|18|956-1005|2109.11732,Improvement/Modification,Basis
+2202.05748|55|148-197|1411.4038,Identification of the Originator,Identification of the Originator
+2202.06198|4|440-489|1812.07603,Evidence,Evidence
+2202.06814|7|23-72|1209.5807,Identification of the Originator,Identification of the Originator
+2202.06851|5|1713-1762|1612.00137,Comparison,Comparison
+2202.07145|3|979-1028|2109.00162,Background,Background
+2202.07201|10|708-757|2012.10544,Further Reading,Further Reading
+2202.07201|3|738-787|1712.03141,Further Reading,Further Reading
+2202.07228|18|653-702|2008.09047,Application,Evidence
+2202.07549|167|109-158|2009.12867,Further Reading,Further Reading
+2202.08504|10|1862-1911|1507.08822,Improvement/Modification,Improvement/Modification
+2202.08553|4|451-500|1506.03365,Application,Application
+2202.08692|2|67-116|1603.08155,Identification of the Originator,Identification of the Originator
+2202.08821|2|134-183|2006.14779,Identification of the Originator,Identification of the Originator
+2202.09036|15|1475-1524|2007.07302,Further Reading,Background
+2202.09856|2|568-617|1604.07379,Identification of the Originator,Identification of the Originator
+2202.09895|1|116-165|1904.02743,Gap,Gap
+2202.10108|14|52-101|2106.03348,Basis,Basis
+2202.10277|3|106-155|1610.02357,Basis,Basis
+2202.10304|10|393-442|1703.01425,Background,Background
+2202.10320|71|1366-1415|1811.09310,Gap,Gap
+2202.10693|4|157-206|1805.10997,Identification of the Originator,Identification of the Originator
+2202.11456|33|428-477|1611.07004,Improvement/Modification,Basis
+2202.11456|36|310-359|1912.04958,Evidence,Gap
+2202.11542|53|583-632|1709.01507,Improvement/Modification,Application
+2202.11983|3|1014-1063|1704.04503,Basis,Basis
+2202.12417|3|516-565|1708.06519,Gap,Gap
+2202.12427|11|52-101|2002.11433,Improvement/Modification,Basis
+2202.12509|0|693-742|1604.06318,Background,Background
+2202.13664|6|957-1006|2004.03805,Further Reading,Further Reading
+2202.13687|2|1158-1207|2004.01547,Evidence,Evidence
+2202.14034|68|635-684|1903.07071,Application,Application
+2203.00048|2|439-488|1911.05722,Background,Background
+2203.01137|1|321-370|2105.08248,Gap,Gap
+2203.01217|1|28-77|2006.11339,Identification of the Originator,Identification of the Originator
+2203.01318|3|624-673|1801.09414,Gap,Gap
+2203.01914|20|366-415|1703.06868,Basis,Basis
+2203.01914|4|433-482|2101.01602,Gap,Gap
+2203.01924|1|940-989|2101.11517,Further Reading,Further Reading
+2203.01994|7|508-557|1807.11626,Evidence,Evidence
+2203.02112|9|260-309|1512.03385,Application,Application
+2203.02284|8|303-352|1810.07842,Application,Application
+2203.02355|12|490-539|1807.02044,Background,Background
+2203.02986|10|59-108|1707.07998,Basis,Basis
+2203.03821|5|388-437|1707.02968,Evidence,Evidence
+2203.03890|14|726-775|1904.08060,Background,Basis
+2203.03890|8|1559-1608|2103.02242,Comparison,Comparison
+2203.03911|24|781-830|2003.12294,Application,Application
+2203.03990|15|228-277|2102.06183,Comparison,Comparison
+2203.03990|40|524-573|1512.03385,Comparison,Comparison
+2203.04037|10|34-83|1411.4038,Identification of the Originator,Identification of the Originator
+2203.04287|4|499-548|1910.11006,Application,Application
+2203.04476|7|304-353|2103.09460,Application,Application
+2203.04537|4|226-275|1411.4038,Identification of the Originator,Identification of the Originator
+2203.04570|7|122-171|2104.08500,Comparison,Comparison
+2203.05118|8|558-607|1411.4038,Identification of the Originator,Identification of the Originator
+2203.05272|27|240-289|1904.02375,Basis,Basis
+2203.05789|5|1564-1613|1912.08521,Evidence,Evidence
+2203.06145|24|600-649|1909.13719,Basis,Basis
+2203.06424|9|215-264|1801.09823,Evidence,Evidence
+2203.06429|8|809-858|2104.09224,Comparison,Comparison
+2203.06451|2|245-294|2006.01964,Basis,Basis
+2203.06663|24|163-212|1812.03982,Evidence,Evidence
+2203.06953|6|89-138|1904.05046,Evidence,Background
+2203.06953|9|823-872|2006.16331,Background,Background
+2203.07098|6|2751-2800|1905.06113,Further Reading,Further Reading
+2203.07186|13|257-306|1904.00699,Gap,Background
+2203.07628|58|94-143|1612.00137,Application,Application
+2203.07667|4|2795-2844|2108.03673,Evidence,Background
+2203.08038|201|20-69|1411.4038,Identification of the Originator,Identification of the Originator
+2203.08219|11|1493-1542|1908.10937,Comparison,Comparison
+2203.08219|29|1114-1163|2001.03360,Gap,Gap
+2203.08942|47|60-109|1704.04503,Application,Application
+2203.09093|1|392-441|2103.01903,Background,Background
+2203.09215|2|335-384|1903.11027,Gap,Gap
+2203.09364|12|543-592|1512.03385,Improvement/Modification,Basis
+2203.09507|0|524-573|1506.01497,Comparison,Comparison
+2203.09510|24|388-437|2003.07540,Evidence,Evidence
+2203.09811|7|204-253|1704.03114,Gap,Gap
+2203.09887|15|843-892|2004.13621,Evidence,Background
+2203.10209|1|1044-1093|2105.03620,Evidence,Background
+2203.10209|2|200-249|1908.09231,Gap,Gap
+2203.10358|8|583-632|2003.09338,Background,Background
+2203.10489|31|1349-1398|2003.07064,Evidence,Evidence
+2203.10493|15|16-65|1807.06009,Identification of the Originator,Identification of the Originator
+2203.10537|41|29-78|1612.03144,Identification of the Originator,Identification of the Originator
+2203.10821|6|1458-1507|1801.02753,Evidence,Application
+2203.10866|1|301-350|1810.00826,Background,Background
+2203.11009|0|550-599|1601.01006,Evidence,Evidence
+2203.11009|4|1168-1217|1604.02808,Application,Application
+2203.11305|7|145-194|2107.01153,Further Reading,Further Reading
+2203.11432|25|842-891|1512.03385,Application,Application
+2203.11447|2|1030-1079|2110.01329,Gap,Gap
+2203.11797|17|36-85|1610.02357,Identification of the Originator,Identification of the Originator
+2203.11832|8|203-252|1802.03079,Background,Background
+2203.11878|5|58-107|2003.08111,Basis,Basis
+2203.12082|8|1729-1778|2104.00681,Comparison,Comparison
+2203.12121|24|101-150|1904.02639,Application,Comparison
+2203.12208|32|42-91|1610.02357,Improvement/Modification,Improvement/Modification
+2203.12338|25|242-291|1908.05641,Basis,Basis
+2203.12804|1|191-240|1704.07813,Basis,Basis
+2203.12829|6|837-886|1812.03595,Evidence,Background
+2203.12979|5|1040-1089|1908.02484,Gap,Gap
+2203.12979|5|446-495|1711.10228,Gap,Gap
+2203.13090|4|883-932|1904.08889,Application,Application
+2203.13249|8|522-571|2112.13762,Comparison,Comparison
+2203.13296|7|403-452|2007.13034,Comparison,Comparison
+2203.13608|5|437-486|2106.12442,Background,Background
+2203.13609|6|308-357|1811.08383,Background,Background
+2203.13880|31|239-288|1706.04261,Application,Application
+2203.14046|79|155-204|2107.04401,Background,Background
+2203.14216|6|511-560|2103.14030,Gap,Gap
+2203.14307|11|269-318|2004.09228,Gap,Gap
+2203.14307|32|263-312|1506.01497,Application,Application
+2203.14402|23|67-116|2012.15838,Comparison,Comparison
+2203.14448|4|445-494|1910.09777,Basis,Basis
+2203.14478|3|165-214|2003.08934,Basis,Basis
+2203.14499|0|310-359|1411.4555,Gap,Gap
+2203.14506|13|853-902|1905.04899,Improvement/Modification,Improvement/Modification
+2203.14508|10|540-589|1505.04597,Comparison,Comparison
+2203.14508|24|674-723|2107.14222,Improvement/Modification,Basis
+2203.14537|35|97-146|1803.02077,Basis,Basis
+2203.14564|21|790-839|1704.02463,Comparison,Comparison
+2203.14698|21|687-736|1812.07035,Evidence,Evidence
+2203.14807|78|683-732|2005.11650,Identification of the Originator,Identification of the Originator
+2203.14956|5|679-728|1611.07759,Identification of the Originator,Background
+2203.15143|2|1030-1079|1907.00945,Comparison,Comparison
+2203.15202|31|998-1047|1908.09822,Comparison,Comparison
+2203.15312|1|1327-1376|1903.07593,Gap,Gap
+2203.15350|9|505-554|1506.01497,Identification of the Originator,Identification of the Originator
+2203.15381|5|293-342|1707.00600,Comparison,Background
+2203.15401|18|53-102|1806.05622,Application,Application
+2203.15533|7|293-342|1506.02640,Gap,Gap
+2203.16202|0|236-285|1904.05866,Gap,Gap
+2203.16507|56|725-774|1901.01892,Improvement/Modification,Improvement/Modification
+2203.16682|3|353-402|1505.00468,Background,Background
+2203.16784|0|587-636|1708.01641,Gap,Gap
+2203.17219|29|45-94|2001.03615,Basis,Application
+2203.17266|3|2565-2614|2008.00951,Improvement/Modification,Improvement/Modification
+2204.00644|4|220-269|2012.09854,Basis,Basis
+2204.00746|1|1314-1363|2104.13682,Gap,Gap
+2204.00746|21|687-736|1704.07333,Basis,Basis
+2204.00920|2|562-611|1807.06010,Gap,Gap
+2204.01278|29|299-348|1807.11164,Application,Application
+2204.01429|2|1949-1998|1904.00523,Gap,Gap
+2204.01446|51|31-80|1512.03385,Improvement/Modification,Improvement/Modification
+2204.01586|19|12-61|2006.04082,Basis,Basis
+2204.01694|12|387-436|1503.08677,Comparison,Comparison
+2204.01807|5|120-169|1807.06521,Comparison,Comparison
+2204.02174|3|323-372|2103.16381,Gap,Gap
+2204.02219|39|221-270|1904.03278,Application,Application
+2204.02411|12|846-895|1912.04958,Improvement/Modification,Improvement/Modification
+2204.02481|0|1029-1078|2002.02175,Evidence,Evidence
+2204.02701|27|111-160|2011.14021,Application,Application
+2204.02874|1|1769-1818|1912.04487,Evidence,Comparison
+2204.02944|1|191-240|1612.00496,Basis,Application
+2204.03076|20|820-869|2106.06026,Further Reading,Background
+2204.03082|4|862-911|2101.08629,Further Reading,Further Reading
+2204.03101|13|57-106|1812.03982,Improvement/Modification,Application
+2204.03206|1|96-145|1512.04150,Background,Background
+2204.03475|3|1197-1246|2103.14030,Gap,Background
+2204.03636|5|402-451|1512.02134,Identification of the Originator,Identification of the Originator
+2204.04153|4|103-152|1512.02134,Basis,Application
+2204.04662|1|1010-1059|2103.16788,Evidence,Gap
+2204.05145|4|1578-1627|1806.04314,Application,Application
+2204.05154|11|452-501|2102.09679,Further Reading,Further Reading
+2204.05525|18|40-89|2103.11816,Basis,Application
+2204.05525|27|810-859|2105.15203,Application,Application
+2204.05532|9|663-712|2008.00455,Background,Background
+2204.05575|10|222-271|2008.07519,Identification of the Originator,Identification of the Originator
+2204.06107|8|971-1020|1504.06375,Comparison,Comparison
+2204.06326|28|1161-1210|1910.06278,Application,Application
+2204.06598|1|1518-1567|1604.03901,Evidence,Evidence
+2204.06828|5|235-284|1704.04503,Application,Comparison
+2204.06986|8|58-107|1411.4038,Identification of the Originator,Identification of the Originator
+2204.07061|11|127-176|1506.01497,Improvement/Modification,Improvement/Modification
+2204.07537|11|26-75|2112.00384,Basis,Application
+2204.07616|19|11-60|1911.11763,Comparison,Comparison
+2204.07791|28|76-125|1909.03943,Basis,Basis
+2204.07791|2|122-171|1905.02744,Identification of the Originator,Identification of the Originator
+2204.08027|0|1121-1170|1811.10830,Gap,Gap
+2204.08329|13|115-164|2006.10738,Evidence,Background
+2204.08412|2|667-716|2106.11963,Gap,Gap
+2204.08461|15|101-150|1608.08242,Identification of the Originator,Identification of the Originator
+2204.09186|1|4-53|1808.00671,Identification of the Originator,Identification of the Originator
+2204.09222|2|950-999|1707.00600,Background,Background
+2204.09290|21|649-698|1909.04743,Basis,Basis
+2204.09679|2|483-532|2106.04428,Gap,Background
+2204.09848|7|48-97|1901.02645,Improvement/Modification,Basis
+2204.09900|46|680-729|2012.02189,Evidence,Evidence
+2204.10068|9|96-145|1911.05722,Background,Background
+2204.10688|0|296-345|1511.07571,Identification of the Originator,Identification of the Originator
+2204.10750|2|1228-1277|2011.12745,Application,Basis
+2204.10973|28|72-121|1512.03385,Basis,Basis
+2204.11385|7|199-248|1511.04491,Identification of the Originator,Identification of the Originator
+2204.12055|91|889-938|2003.03600,Further Reading,Further Reading
+2204.12274|114|669-718|2105.06388,Evidence,Evidence
+2204.12322|54|137-186|2003.13678,Comparison,Comparison
+2204.12516|6|39-88|2003.12039,Basis,Basis
+2204.13091|4|1236-1285|1909.13719,Comparison,Comparison
+2204.13635|3|955-1004|1807.06521,Basis,Basis
+2204.13635|43|677-726|1709.07492,Application,Application
+2204.13873|10|422-471|1807.02758,Application,Application
+2204.14217|22|104-153|2006.03654,Evidence,Evidence
+2205.00275|0|834-883|1705.07750,Background,Gap
+2205.00303|20|512-561|1612.03144,Improvement/Modification,Basis
+2205.00312|23|188-237|2107.05617,Evidence,Evidence
+2205.01197|11|273-322|1511.03339,Evidence,Evidence
+2205.01614|9|931-980|1612.00593,Identification of the Originator,Identification of the Originator
+2205.02069|7|406-455|1909.00589,Background,Background
+2205.02162|1|168-217|2003.12056,Evidence,Evidence
+2205.02692|11|659-708|1809.02874,Comparison,Comparison
+2205.02692|12|1713-1762|1902.09212,Application,Application
+2205.03257|133|146-195|1908.09635,Further Reading,Further Reading
+2205.03536|1|72-121|1803.08103,Gap,Background
+2205.03553|5|1864-1913|2105.06086,Gap,Gap
+2205.03633|2|464-513|2009.02653,Gap,Gap
+2205.03710|240|228-277|1909.03478,Further Reading,Further Reading
+2205.04683|2|896-945|1908.09990,Basis,Basis
+2205.05065|0|254-303|1501.00092,Gap,Background
+2205.05476|25|360-409|1511.06452,Application,Application
+2205.07002|33|604-653|1905.01220,Application,Application
+2205.07056|1|616-665|1612.01105,Background,Background
+2205.07056|1|711-760|1612.03144,Identification of the Originator,Background
+2205.07428|88|374-423|1703.09518,Improvement/Modification,Improvement/Modification
+2205.07708|1|1018-1067|1506.02158,Evidence,Background
+2205.07763|37|5-54|2104.13530,Improvement/Modification,Background
+2205.07839|38|111-160|2011.01307,Improvement/Modification,Basis
+2205.08157|5|494-543|2003.14247,Background,Background
+2205.08473|23|59-108|1807.10221,Basis,Basis
+2205.08508|13|332-381|1904.03282,Basis,Basis
+2205.09111|7|1547-1596|2102.05644,Background,Background
+2205.09592|10|22-71|1610.02391,Basis,Basis
+2205.09592|4|1440-1489|2110.04887,Gap,Gap
+2205.09853|31|321-370|1411.4280,Identification of the Originator,Identification of the Originator
+2205.09956|8|346-395|1803.11029,Background,Background
+2205.10416|1|934-983|1908.00709,Further Reading,Further Reading
+2205.10450|0|56-105|1804.04527,Identification of the Originator,Background
+2205.10450|1|227-276|2104.06779,Gap,Gap
+2205.10528|1|119-168|1612.00593,Identification of the Originator,Identification of the Originator
+2205.10955|6|807-856|2203.13691,Further Reading,Further Reading
+2205.11169|1|454-503|1902.09506,Background,Background
+2205.11195|0|1554-1603|1807.11649,Evidence,Evidence
+2205.11487|19|104-153|2104.11222,Evidence,Gap
+2205.11722|42|116-165|1610.02391,Comparison,Comparison
+2205.11722|49|247-296|2001.06538,Background,Background
+2205.12021|6|250-299|2103.05180,Further Reading,Further Reading
+2205.12606|27|174-223|1512.00567,Application,Application
+2205.12753|17|351-400|1608.06993,Application,Background
+2205.13218|5|753-802|2112.12533,Further Reading,Further Reading
+2205.13313|10|835-884|1708.01246,Background,Background
+2205.13490|1|2463-2512|2101.01461,Gap,Background
+2205.13574|5|237-286|1104.3913,Further Reading,Further Reading
+2205.14058|8|169-218|2007.15651,Identification of the Originator,Identification of the Originator
+2205.14851|44|19-68|1512.03385,Application,Application
+2205.14886|10|964-1013|2008.04451,Basis,Comparison
+2205.14999|6|1410-1459|2104.10154,Identification of the Originator,Identification of the Originator
+2205.15448|7|738-787|2012.13392,Further Reading,Further Reading
+2205.15495|1|1074-1123|2012.15460,Background,Background
+2205.15517|19|733-782|2104.03953,Basis,Basis
+2205.15517|7|396-445|1904.01326,Gap,Gap
+2205.15658|3|126-175|1911.05722,Basis,Basis
+2205.15761|11|1433-1482|2105.08941,Application,Application
+2205.15836|11|24-73|2203.16414,Improvement/Modification,Basis
+2206.00344|11|371-420|1910.13302,Improvement/Modification,Improvement/Modification
+2206.02288|0|1774-1823|1904.06487,Gap,Gap
+2206.02288|0|476-525|2107.13467,Evidence,Gap
+2206.02539|9|127-176|1802.05591,Improvement/Modification,Improvement/Modification
+2206.03367|2|818-867|1512.04150,Application,Application
+2206.03410|6|213-262|2203.07858,Further Reading,Further Reading
+2206.04041|121|527-576|2201.08924,Further Reading,Further Reading
+2206.04125|5|1246-1295|1904.12760,Evidence,Evidence
+2206.04401|2|401-450|1406.4216,Gap,Gap
+2206.04403|0|462-511|2011.14503,Identification of the Originator,Identification of the Originator
+2206.04564|3|786-835|2203.04135,Evidence,Gap
+2206.04636|1|101-150|2106.08254,Basis,Basis
+2206.04665|14|284-333|1406.5670,Gap,Gap
+2206.04670|22|333-382|2106.05304,Evidence,Evidence
+2206.04670|26|452-501|2105.01288,Comparison,Comparison
+2206.04854|0|1654-1703|1708.02412,Evidence,Evidence
+2206.04854|8|248-297|2009.09399,Evidence,Gap
+2206.05836|77|680-729|1606.08415,Application,Application
+2206.06270|8|863-912|2106.09973,Improvement/Modification,Improvement/Modification
+2206.06619|9|53-102|2104.08541,Basis,Basis
+2206.07298|11|176-225|2003.13328,Basis,Basis
+2206.08172|12|449-498|2109.05534,Gap,Gap
+2206.08186|11|547-596|1808.07471,Background,Application
+2206.08638|0|787-836|1502.01852,Evidence,Evidence
+2206.08646|11|309-358|1812.08664,Improvement/Modification,Improvement/Modification
+2206.08655|2|97-146|1411.4038,Background,Background
+2206.08781|21|652-701|1708.05866,Further Reading,Further Reading
+2206.08920|13|113-162|1812.05784,Improvement/Modification,Improvement/Modification
+2206.09474|139|222-271|1911.10150,Identification of the Originator,Identification of the Originator
+2206.09474|24|262-311|1812.04244,Identification of the Originator,Identification of the Originator
+2206.09664|9|1338-1387|2112.00050,Background,Background
+2206.09683|1|208-257|1909.13776,Gap,Gap
+2206.10059|40|66-115|1412.6980,Application,Application
+2206.10146|13|518-567|1904.01169,Basis,Basis
+2206.10711|0|1148-1197|2001.01629,Evidence,Gap
+2206.11253|2|475-524|2012.09841,Comparison,Comparison
+2206.11610|2|317-366|2203.02764,Evidence,Evidence
+2206.12648|2|107-156|1803.01534,Improvement/Modification,Improvement/Modification
+2206.12694|0|834-883|1702.05931,Evidence,Evidence
+2206.12849|11|260-309|2003.07758,Improvement/Modification,Improvement/Modification
+2206.13381|12|269-318|1506.01497,Background,Background
+2206.13673|3|898-947|1906.07165,Background,Background
+2206.13858|7|621-670|1711.06396,Identification of the Originator,Background
+2206.14381|1|121-170|1809.06181,Background,Gap
+2206.14381|1|301-350|1908.03477,Gap,Gap
+2206.14475|12|1261-1310|1707.00600,Basis,Basis
+2206.14477|6|294-343|2012.04987,Improvement/Modification,Improvement/Modification
+2207.00050|4|356-405|2207.12598,Basis,Basis
+2207.00068|1|357-406|2001.00138,Background,Background
+2207.00170|35|549-598|1412.6980,Application,Application
+2207.00419|18|413-462|1705.07750,Background,Background
+2207.00838|3|716-765|2103.00710,Improvement/Modification,Improvement/Modification
+2207.00865|8|1605-1654|2106.01178,Gap,Background
+2207.01029|129|247-296|1801.05946,Identification of the Originator,Identification of the Originator
+2207.01342|36|312-361|1710.10400,Application,Application
+2207.01443|2|38-87|2110.02634,Improvement/Modification,Basis
+2207.01452|7|1210-1259|2103.15086,Improvement/Modification,Evidence
+2207.01452|8|101-150|1412.5687,Identification of the Originator,Identification of the Originator
+2207.01610|24|364-413|2110.09415,Basis,Basis
+2207.02204|19|684-733|2101.07448,Basis,Basis
+2207.02204|3|259-308|2001.04296,Evidence,Evidence
+2207.02247|15|1877-1926|1512.00567,Improvement/Modification,Basis
+2207.02279|7|472-521|1806.07772,Comparison,Comparison
+2207.02349|15|754-803|1912.11370,Evidence,Evidence
+2207.02437|15|504-553|2105.15203,Basis,Basis
+2207.02437|5|221-270|1905.08094,Improvement/Modification,Basis
+2207.02519|40|634-683|1512.03385,Improvement/Modification,Application
+2207.02805|2|1323-1372|1904.03167,Evidence,Evidence
+2207.03132|1|698-747|2108.09682,Comparison,Comparison
+2207.04044|46|646-695|1610.02357,Background,Comparison
+2207.04403|1|844-893|1802.02611,Gap,Background
+2207.04512|11|1476-1525|2105.09396,Background,Improvement/Modification
+2207.04675|2|946-995|1911.06258,Improvement/Modification,Improvement/Modification
+2207.04858|22|457-506|2104.02057,Improvement/Modification,Improvement/Modification
+2207.04969|0|471-520|2007.15036,Evidence,Background
+2207.05080|23|80-129|1512.03385,Improvement/Modification,Application
+2207.05375|10|1274-1323|1812.07035,Application,Application
+2207.05957|2|314-363|2203.16041,Background,Background
+2207.06079|18|46-95|2103.11402,Improvement/Modification,Improvement/Modification
+2207.06167|2|277-326|2006.10645,Gap,Background
+2207.06180|7|276-325|2009.14082,Basis,Basis
+2207.06324|1|29-78|1612.00593,Identification of the Originator,Identification of the Originator
+2207.06345|26|335-384|1809.08573,Comparison,Comparison
+2207.06555|1|732-781|2106.11895,Gap,Gap
+2207.06555|6|784-833|1812.04948,Background,Background
+2207.06603|8|1356-1405|1612.00593,Background,Gap
+2207.07243|23|499-548|1612.07600,Background,Background
+2207.07619|0|888-937|2002.08718,Background,Background
+2207.07739|4|939-988|1909.00169,Background,Evidence
+2207.08002|7|141-190|2102.08061,Further Reading,Further Reading
+2207.08132|0|677-726|2003.08934,Evidence,Evidence
+2207.08656|12|312-361|1912.07372,Gap,Gap
+2207.08674|4|113-162|1905.02716,Improvement/Modification,Improvement/Modification
+2207.08782|2|202-251|1910.04851,Gap,Gap
+2207.08954|24|804-853|1712.00726,Comparison,Comparison
+2207.09313|3|381-430|1908.11221,Background,Background
+2207.09352|18|306-355|2006.07778,Improvement/Modification,Improvement/Modification
+2207.09646|5|479-528|1911.02620,Application,Application
+2207.09686|5|113-162|1901.05103,Identification of the Originator,Identification of the Originator
+2207.10025|7|1103-1152|1710.08092,Application,Improvement/Modification
+2207.10025|7|964-1013|1607.08221,Application,Improvement/Modification
+2207.10150|26|462-511|1801.05599,Basis,Basis
+2207.10157|6|515-564|1503.03832,Background,Background
+2207.10400|11|361-410|2203.13609,Comparison,Background
+2207.10660|6|2428-2477|2103.12605,Comparison,Comparison
+2207.10859|15|172-221|2007.12107,Basis,Basis
+2207.10866|4|262-311|2103.14030,Improvement/Modification,Improvement/Modification
+2207.10988|4|466-515|2104.07434,Basis,Basis
+2207.11025|6|196-245|1611.07004,Identification of the Originator,Identification of the Originator
+2207.11464|9|17-66|2107.01889,Improvement/Modification,Improvement/Modification
+2207.11805|46|576-625|1704.06228,Application,Comparison
+2207.11838|8|31-80|1705.00754,Identification of the Originator,Identification of the Originator
+2207.11860|13|124-173|2111.11418,Comparison,Comparison
+2207.12032|13|19-68|1903.04025,Basis,Basis
+2207.12622|1|318-367|1803.07485,Gap,Gap
+2207.12661|14|745-794|1812.03982,Basis,Basis
+2207.12995|1|1226-1275|2007.10787,Gap,Gap
+2207.13035|2|452-501|1406.6909,Basis,Basis
+2207.13037|15|374-423|1512.03385,Basis,Basis
+2207.13037|26|767-816|1903.07071,Evidence,Evidence
+2207.13085|1|2166-2215|2012.03544,Evidence,Gap
+2207.13297|6|42-91|1505.07818,Identification of the Originator,Identification of the Originator
+2207.13320|21|2001-2050|1908.03835,Comparison,Comparison
+2207.13479|10|1120-1169|1812.03982,Application,Application
+2207.13663|11|750-799|2001.02316,Background,Background
+2207.13798|13|221-270|2002.09905,Evidence,Evidence
+2207.13975|10|139-188|2007.08199,Further Reading,Further Reading
+2207.14096|90|684-733|2103.14030,Comparison,Comparison
+2207.14273|49|592-641|1912.10088,Application,Application
+2207.14288|7|179-228|1805.01677,Evidence,Evidence
+2207.14498|0|578-627|1604.07379,Identification of the Originator,Identification of the Originator
+2208.00116|17|107-156|1612.03144,Application,Background
+2208.00147|28|202-251|2011.10566,Basis,Basis
+2208.00160|4|716-765|1906.03950,Application,Comparison
+2208.00785|8|2018-2067|1811.10066,Evidence,Evidence
+2208.00946|14|438-487|1904.00607,Identification of the Originator,Identification of the Originator
+2208.01817|3|365-414|2106.02022,Basis,Basis
+2208.01840|17|806-855|1901.09054,Application,Evidence
+2208.02470|7|1456-1505|2105.05640,Evidence,Evidence
+2208.02843|10|1496-1545|1809.00219,Application,Application
+2208.02947|8|182-231|1908.06112,Basis,Basis
+2208.03444|0|282-331|1604.06573,Gap,Gap
+2208.03974|59|651-700|2103.14030,Comparison,Comparison
+2208.04076|0|368-417|1803.11097,Gap,Gap
+2208.04160|9|1272-1321|1802.02556,Evidence,Evidence
+2208.04215|1|313-362|1808.02559,Gap,Gap
+2208.04410|13|1593-1642|2105.03759,Further Reading,Further Reading
+2208.04441|21|180-229|2012.09841,Basis,Basis
+2208.05864|16|1214-1263|1904.06505,Background,Background
+2208.06677|67|521-570|1907.11692,Further Reading,Further Reading
+2208.06710|6|340-389|2111.05849,Further Reading,Further Reading
+2208.06973|16|514-563|1503.03832,Improvement/Modification,Basis
+2208.07365|38|700-749|1712.02560,Comparison,Comparison
+2208.07576|1|569-618|1511.02853,Gap,Evidence
+2208.08519|27|342-391|1703.07815,Comparison,Comparison
+2208.08597|9|159-208|2007.10595,Background,Background
+2208.09198|4|233-282|1803.02284,Identification of the Originator,Identification of the Originator
+2208.09579|49|1639-1688|2104.00239,Background,Background
+2208.09885|0|1557-1606|2012.09550,Background,Evidence
+2208.09885|2|499-548|2012.00364,Basis,Background
+2208.10056|10|274-323|1506.01497,Comparison,Comparison
+2208.10422|35|558-607|1506.03365,Application,Application
+2208.10652|1|571-620|2008.03713,Evidence,Background
+2208.10753|5|665-714|1908.09257,Further Reading,Further Reading
+2208.10925|4|336-385|2101.10994,Basis,Basis
+2208.10976|33|63-112|1912.05992,Basis,Basis
+2208.11011|15|647-696|1506.01497,Improvement/Modification,Application
+2208.11436|7|1153-1202|1612.07767,Comparison,Comparison
+2208.12294|31|66-115|1606.07792,Improvement/Modification,Improvement/Modification
+2208.12462|6|258-307|1612.01105,Improvement/Modification,Improvement/Modification
+2208.12483|18|363-412|2112.14368,Further Reading,Further Reading
+2208.12903|246|480-529|1802.05522,Improvement/Modification,Comparison
+2208.13975|1|1408-1457|2103.15808,Background,Background
+2208.14023|1|310-359|2109.07531,Gap,Gap
+2208.14093|44|985-1034|1608.03981,Comparison,Application
+2208.14307|21|1130-1179|1904.07911,Further Reading,Background
+2208.14796|2|195-244|1612.00593,Identification of the Originator,Identification of the Originator
+2208.14871|34|51-100|1412.6980,Application,Application
+2208.14889|26|705-754|2011.10566,Basis,Basis
+2208.14889|7|638-687|1703.10593,Identification of the Originator,Background
+2209.00381|5|85-134|1606.00915,Identification of the Originator,Background
+2209.00773|1|70-119|1812.07101,Background,Background
+2209.00860|2|776-825|1903.01784,Identification of the Originator,Identification of the Originator
+2209.00949|6|248-297|1612.00593,Identification of the Originator,Identification of the Originator
+2209.01147|59|1093-1142|1712.02913,Evidence,Evidence
+2209.01534|2|563-612|2112.05760,Comparison,Comparison
+2209.02136|13|610-659|2007.09278,Background,Background
+2209.02136|1|1826-1875|1808.04859,Gap,Gap
+2209.02397|1|269-318|1604.06646,Background,Background
+2209.02522|9|160-209|1910.04562,Background,Background
+2209.02952|57|701-750|1807.06009,Comparison,Gap
+2209.02976|0|187-236|1506.02640,Identification of the Originator,Background
+2209.03694|14|266-315|1505.05192,Basis,Comparison
+2209.03953|11|874-923|2012.03308,Comparison,Comparison
+2209.03953|2|175-224|1912.04958,Application,Application
+2209.04840|10|767-816|2104.12229,Comparison,Comparison
+2209.04861|1|1070-1119|1904.05160,Evidence,Evidence
+2209.04862|22|2093-2142|1811.06128,Further Reading,Further Reading
+2209.05324|92|301-350|1910.13302,Improvement/Modification,Improvement/Modification
+2209.05700|33|100-149|1812.02707,Identification of the Originator,Background
+2209.06351|37|849-898|2004.01314,Application,Application
+2209.06395|1|390-439|1903.01784,Identification of the Originator,Identification of the Originator
+2209.06585|9|260-309|2108.07049,Basis,Basis
+2209.07105|10|129-178|1609.03677,Basis,Basis
+2209.07220|11|1192-1241|1905.03397,Evidence,Evidence
+2209.07729|82|49-98|2011.06530,Evidence,Further Reading
+2209.07953|3|93-142|2008.00951,Application,Basis
+2209.08709|4|1132-1181|2101.11517,Further Reading,Further Reading
+2209.08747|20|342-391|1703.06211,Application,Application
+2209.08747|8|104-153|1803.03893,Identification of the Originator,Identification of the Originator
+2209.08759|5|271-320|1801.02294,Comparison,Application
+2209.09068|4|582-631|2012.00063,Gap,Gap
+2209.09574|35|834-883|1512.04150,Application,Application
+2209.09882|76|63-112|2111.08819,Improvement/Modification,Improvement/Modification
+2209.10691|19|108-157|2103.14274,Basis,Basis
+2209.10839|50|102-151|2103.11636,Gap,Gap
+2209.11224|2|462-511|1703.10593,Background,Background
+2209.11475|6|1213-1262|2104.11178,Background,Background
+2209.11677|3|1082-1131|2103.14024,Gap,Background
+2209.12354|3|631-680|2008.11200,Gap,Gap
+2209.12400|53|450-499|1909.13719,Application,Comparison
+2209.13232|67|274-323|1704.02901,Identification of the Originator,Identification of the Originator
+2209.13232|83|226-275|2007.02578,Gap,Gap
+2209.13351|2|438-487|2008.05457,Evidence,Evidence
+2209.13502|22|408-457|1803.09502,Evidence,Evidence
+2209.13674|28|416-465|2106.14917,Application,Basis
+2209.14575|38|794-843|1412.6980,Application,Application
+2209.14831|3|343-392|2008.02450,Comparison,Comparison
+2209.14890|8|1444-1493|1604.07379,Identification of the Originator,Identification of the Originator
+2209.15106|5|168-217|1904.05526,Further Reading,Further Reading
+2209.15190|6|303-352|1910.03193,Further Reading,Further Reading
+2209.15264|8|534-583|2112.11641,Gap,Gap
+2209.15517|7|944-993|2204.03610,Basis,Basis
+2210.00379|0|225-274|2003.08934,Identification of the Originator,Identification of the Originator
+2210.00411|33|369-418|1804.03492,Basis,Basis
+2210.00627|1|1748-1797|2108.07845,Gap,Gap
+2210.00828|5|93-142|1802.03680,Comparison,Background
+2210.00895|7|435-484|1805.05071,Further Reading,Further Reading
+2210.01069|43|710-759|1802.07412,Application,Application
+2210.01346|8|730-779|1712.02294,Identification of the Originator,Identification of the Originator
+2210.01676|1|1039-1088|1906.03950,Evidence,Evidence
+2210.01787|9|1494-1543|2210.07394,Further Reading,Background
+2210.01973|15|177-226|2101.11517,Basis,Application
+2210.02579|5|373-422|2109.15102,Improvement/Modification,Basis
+2210.02755|18|1513-1562|1903.07291,Basis,Basis
+2210.02755|9|703-752|2003.00418,Gap,Gap
+2210.03102|11|916-965|2203.16518,Background,Background
+2210.03102|1|686-735|2003.12058,Background,Background
+2210.03461|25|79-128|2108.00946,Improvement/Modification,Application
+2210.03551|20|558-607|1606.04797,Improvement/Modification,Application
+2210.03954|42|285-334|1904.05866,Application,Application
+2210.03974|1|24-73|1808.00671,Identification of the Originator,Identification of the Originator
+2210.04217|1|38-87|2003.08934,Identification of the Originator,Identification of the Originator
+2210.04240|11|457-506|1912.12180,Improvement/Modification,Basis
+2210.05063|1|32-81|2011.09157,Basis,Basis
+2210.05130|9|208-257|1709.01507,Improvement/Modification,Improvement/Modification
+2210.05280|6|700-749|2010.09982,Gap,Gap
+2210.05738|4|231-280|1511.04031,Comparison,Comparison
+2210.05742|10|1138-1187|2103.14586,Background,Evidence
+2210.05766|27|408-457|1710.08092,Application,Application
+2210.06006|3|913-962|1506.02640,Basis,Basis
+2210.06361|6|493-542|1410.5926,Background,Gap
+2210.06680|0|530-579|1808.00023,Further Reading,Further Reading
+2210.06908|9|983-1032|2203.07615,Background,Background
+2210.07122|62|313-362|1908.03245,Application,Application
+2210.07239|0|772-821|1512.04412,Background,Background
+2210.07363|10|176-225|1711.05469,Further Reading,Further Reading
+2210.07577|3|1542-1591|2108.08829,Improvement/Modification,Improvement/Modification
+2210.07681|45|573-622|2012.15460,Application,Application
+2210.07848|60|628-677|2101.04869,Basis,Basis
+2210.08164|16|384-433|1709.01507,Basis,Basis
+2210.08164|2|861-910|2202.06258,Comparison,Comparison
+2210.08290|2|410-459|2010.05210,Gap,Background
+2210.08336|4|672-721|1704.03296,Gap,Gap
+2210.08389|19|325-374|1908.09442,Basis,Basis
+2210.08529|2|561-610|1911.08217,Evidence,Evidence
+2210.08860|9|423-472|1703.06868,Application,Background
+2210.08988|6|644-693|2003.00872,Comparison,Comparison
+2210.09486|0|1040-1089|1904.06487,Gap,Background
+2210.09486|0|901-950|2007.09375,Gap,Gap
+2210.09782|46|597-646|2012.06815,Comparison,Comparison
+2210.10426|12|890-939|1908.06112,Improvement/Modification,Improvement/Modification
+2210.10770|1|684-733|2008.02004,Gap,Gap
+2210.10956|1|1036-1085|2203.02106,Gap,Gap
+2210.11718|0|462-511|1711.10006,Evidence,Evidence
+2210.11909|0|689-738|2001.08972,Background,Background
+2210.12196|13|369-418|1904.03189,Improvement/Modification,Improvement/Modification
+2210.12234|12|320-369|1904.06373,Comparison,Comparison
+2210.12444|13|244-293|1906.03327,Basis,Application
+2210.12593|10|289-338|1901.05103,Identification of the Originator,Identification of the Originator
+2210.12785|19|337-386|2108.13062,Evidence,Evidence
+2210.12785|2|639-688|1804.06534,Application,Application
+2210.13440|2|325-374|2003.11339,Comparison,Comparison
+2210.13552|23|347-396|1802.08797,Evidence,Evidence
+2210.13552|5|339-388|1810.01109,Application,Evidence
+2210.13605|2|774-823|2103.15691,Basis,Application
+2210.13704|0|543-592|1505.04366,Background,Evidence
+2210.13704|0|880-929|1711.05766,Evidence,Background
+2210.13801|1|772-821|2112.13491,Gap,Gap
+2210.13984|7|874-923|1909.04656,Comparison,Comparison
+2210.14164|29|517-566|1511.04902,Further Reading,Further Reading
+2210.14164|6|9-58|1612.00593,Identification of the Originator,Identification of the Originator
+2210.14571|0|1433-1482|2104.02617,Gap,Background
+2210.14601|10|545-594|2012.15460,Comparison,Comparison
+2210.14748|6|1103-1152|1710.05381,Background,Background
+2210.15134|6|1089-1138|1812.04948,Improvement/Modification,Improvement/Modification
+2210.16519|1|260-309|2203.01859,Further Reading,Further Reading
+2210.16788|5|317-366|1610.09334,Background,Background
+2210.16847|11|144-193|1412.6980,Application,Application
+2210.17067|38|435-484|1710.06924,Application,Background
+2211.00385|17|1420-1469|2111.14973,Background,Background
+2211.00385|17|2699-2748|2008.09092,Evidence,Evidence
+2211.00525|19|586-635|1610.08401,Basis,Basis
+2211.00525|28|765-814|1708.07120,Application,Application
+2211.00807|1|1448-1497|1512.03385,Evidence,Evidence
+2211.00829|18|21-70|2103.09504,Application,Basis
+2211.00829|6|461-510|2103.04174,Basis,Basis
+2211.00837|0|938-987|2103.13660,Evidence,Gap
+2211.00837|9|216-265|1912.07150,Further Reading,Further Reading
+2211.01152|15|617-666|1312.6680,Further Reading,Further Reading
+2211.01785|6|685-734|2101.03697,Application,Application
+2211.01785|7|390-439|2205.08534,Comparison,Comparison
+2211.01930|2|712-761|1911.11544,Evidence,Evidence
+2211.02048|3|975-1024|2103.03467,Comparison,Comparison
+2211.02145|43|999-1048|1903.06048,Comparison,Comparison
+2211.02707|68|394-443|2005.09635,Application,Application
+2211.03151|0|493-542|1901.04111,Evidence,Gap
+2211.04393|0|215-264|1708.07819,Evidence,Evidence
+2211.04753|14|117-166|1812.03828,Basis,Basis
+2211.04753|4|886-935|1912.04958,Improvement/Modification,Improvement/Modification
+2211.05052|38|50-99|2111.06077,Further Reading,Further Reading
+2211.05565|28|1312-1361|2004.08656,Background,Application
+2211.05778|17|543-592|1610.02357,Basis,Basis
+2211.06163|8|1280-1329|2012.04733,Gap,Gap
+2211.06649|22|784-833|1611.07004,Evidence,Evidence
+2211.07275|7|204-253|1707.07998,Identification of the Originator,Identification of the Originator
+2211.08005|33|861-910|2210.05791,Further Reading,Further Reading
+2211.08252|6|753-802|1503.08909,Gap,Background
+2211.08287|19|271-320|2107.14160,Basis,Basis
+2211.08887|4|154-203|2205.14141,Comparison,Comparison
+2211.09120|7|186-235|2203.17248,Background,Comparison
+2211.09446|5|910-959|1804.06208,Comparison,Comparison
+2211.09643|23|466-515|2104.02057,Basis,Basis
+2211.09663|2|117-166|1903.11027,Background,Background
+2211.10253|12|626-675|2201.04924,Evidence,Evidence
+2211.10551|7|170-219|2004.08566,Further Reading,Further Reading
+2211.10622|14|723-772|2105.02358,Application,Application
+2211.10641|1|1175-1224|1604.03540,Improvement/Modification,Application
+2211.10856|23|382-431|1908.09257,Further Reading,Further Reading
+2211.11133|10|921-970|1512.03385,Further Reading,Further Reading
+2211.11190|6|785-834|2003.06576,Comparison,Comparison
+2211.11319|16|256-305|2112.10741,Background,Background
+2211.11320|0|964-1013|2003.08934,Identification of the Originator,Basis
+2211.11320|4|486-535|1911.10127,Application,Application
+2211.11324|28|25-74|2108.12995,Basis,Basis
+2211.11446|10|411-460|1904.04289,Background,Background
+2211.11687|12|266-315|2103.14030,Improvement/Modification,Improvement/Modification
+2211.11743|19|388-437|1505.04597,Improvement/Modification,Improvement/Modification
+2211.11743|19|983-1032|1512.03385,Improvement/Modification,Improvement/Modification
+2211.11797|1|165-214|2006.02963,Background,Background
+2211.12048|19|522-571|2105.01288,Improvement/Modification,Basis
+2211.12112|4|300-349|2208.01618,Background,Background
+2211.12148|53|166-215|1411.5726,Application,Background
+2211.12193|10|275-324|1612.00593,Identification of the Originator,Identification of the Originator
+2211.12244|9|446-495|1612.03144,Basis,Basis
+2211.12254|1|604-653|2205.14929,Gap,Gap
+2211.12371|1|1394-1443|2204.02569,Gap,Gap
+2211.12498|3|599-648|2205.05072,Improvement/Modification,Improvement/Modification
+2211.12824|2|507-556|2104.14806,Comparison,Comparison
+2211.12853|1|537-586|2201.05989,Background,Background
+2211.12870|25|1349-1398|1908.10335,Application,Application
+2211.12879|2|1189-1238|2205.09445,Gap,Background
+2211.13171|19|429-478|1511.04599,Evidence,Evidence
+2211.13185|6|443-492|2204.04238,Basis,Basis
+2211.13206|5|917-966|1908.05932,Gap,Gap
+2211.13409|7|766-815|1708.07819,Evidence,Background
+2211.13483|20|131-180|1612.03144,Further Reading,Background
+2211.13928|1|60-109|1411.4038,Comparison,Comparison
+2211.13984|19|215-264|2003.05664,Basis,Basis
+2211.14052|16|507-556|1812.08008,Comparison,Comparison
+2211.14052|5|1678-1727|2204.01046,Gap,Comparison
+2211.14487|0|757-806|1707.07012,Gap,Background
+2211.14513|17|207-256|2012.15840,Gap,Gap
+2211.14513|51|488-537|2110.03477,Comparison,Comparison
+2211.14745|10|340-389|1912.07200,Background,Background
+2211.14768|8|142-191|1204.5721,Further Reading,Further Reading
+2211.15215|3|434-483|2001.06782,Improvement/Modification,Basis
+2211.15393|7|261-310|1706.04261,Application,Application
+2211.15479|12|517-566|1904.03629,Identification of the Originator,Identification of the Originator
+2211.15595|13|323-372|1411.4038,Identification of the Originator,Identification of the Originator
+2211.15595|14|732-781|2012.15840,Background,Comparison
+2211.15654|2|710-759|2202.11094,Background,Background
+2211.15843|21|1679-1728|1511.06773,Further Reading,Further Reading
+2211.16231|0|912-961|2103.08273,Gap,Gap
+2211.16487|2|912-961|1908.09257,Comparison,Comparison
+2211.16487|5|380-429|1712.06584,Comparison,Comparison
+2211.16860|102|2374-2423|1302.3347,Further Reading,Further Reading
+2211.16886|48|172-221|2203.01255,Further Reading,Further Reading
+2211.17042|1|882-931|2101.05224,Evidence,Evidence
+2212.00226|42|388-437|2108.07422,Comparison,Comparison
+2212.00272|1|1888-1937|1710.00935,Background,Background
+2212.00280|9|90-139|1611.06949,Comparison,Background
+2212.00281|20|135-184|2203.16527,Application,Application
+2212.00435|21|1004-1053|1612.05872,Comparison,Comparison
+2212.00595|11|511-560|1711.07971,Improvement/Modification,Improvement/Modification
+2212.00715|10|112-161|1505.00468,Identification of the Originator,Background
+2212.01165|4|12-61|1905.03677,Basis,Basis
+2212.01231|5|202-251|1612.00496,Background,Background
+2212.01322|29|376-425|1612.03144,Application,Application
+2212.01982|8|756-805|1611.09026,Identification of the Originator,Identification of the Originator
+2212.02047|14|176-225|2012.03520,Comparison,Comparison
+2212.02127|0|493-542|1804.06655,Gap,Gap
+2212.02127|12|789-838|2201.04011,Improvement/Modification,Improvement/Modification
+2212.02400|33|179-228|2110.05474,Application,Application
+2212.02400|3|1347-1396|1603.09246,Identification of the Originator,Basis
+2212.02499|33|534-583|2204.00987,Comparison,Comparison
+2212.02648|0|204-253|1812.06707,Evidence,Gap
+2212.02763|6|595-644|2106.04067,Gap,Gap
+2212.03063|37|12-61|1706.07522,Application,Background
+2212.03490|0|2370-2419|1906.09756,Comparison,Gap
+2212.03759|0|546-595|1804.01079,Evidence,Evidence
+2212.04126|13|1454-1503|1611.09224,Comparison,Comparison
+2212.04126|1|520-569|1901.01015,Gap,Gap
+2212.04155|2|91-140|1806.01810,Basis,Basis
+2212.04665|13|221-270|2103.14030,Improvement/Modification,Improvement/Modification
+2212.04701|5|1499-1548|2112.03907,Background,Background
+2212.04869|2|296-345|1810.08462,Identification of the Originator,Background
+2212.04884|12|445-494|2003.13678,Comparison,Comparison
+2212.05136|0|3533-3582|1903.07256,Evidence,Background
+2212.05136|26|544-593|1711.07971,Application,Application
+2212.05199|23|327-376|2209.14792,Comparison,Comparison
+2212.05404|21|895-944|2109.01134,Evidence,Evidence
+2212.05867|19|126-175|1901.05103,Identification of the Originator,Identification of the Originator
+2212.05897|2|665-714|2105.14804,Gap,Gap
+2212.05909|15|198-247|1905.13545,Evidence,Evidence
+2212.05909|30|365-414|1908.03826,Comparison,Comparison
+2212.05973|1|902-951|2112.10741,Background,Background
+2212.06278|0|1173-1222|1907.03338,Evidence,Evidence
+2212.06593|45|57-106|1612.03144,Application,Improvement/Modification
+2212.06826|6|635-684|1612.02646,Gap,Gap
+2212.06870|50|512-561|2007.13866,Basis,Basis
+2212.07207|7|541-590|1612.00593,Identification of the Originator,Basis
+2212.07292|15|556-605|2105.15203,Evidence,Evidence
+2212.07413|27|463-512|2007.15646,Basis,Basis
+2212.07422|32|604-653|2209.03254,Improvement/Modification,Basis
+2212.07560|31|879-928|2104.10956,Application,Application
+2212.07579|10|369-418|1406.5549,Background,Background
+2212.07626|4|171-220|2209.08468,Gap,Gap
+2212.07766|10|247-296|1712.07629,Identification of the Originator,Identification of the Originator
+2212.08013|45|101-150|2205.06230,Application,Application
+2212.09035|5|531-580|1608.04644,Background,Background
+2212.09360|30|54-103|1708.06733,Identification of the Originator,Identification of the Originator
+2212.10124|3|363-412|2104.02057,Background,Background
+2212.10957|10|12-61|1910.04851,Basis,Basis
+2212.11473|18|579-628|1803.02735,Basis,Basis
+2212.11565|8|216-265|2104.14806,Identification of the Originator,Identification of the Originator
+2212.12324|10|1493-1542|2204.04668,Gap,Background
+2212.12326|18|14-63|1604.07379,Identification of the Originator,Identification of the Originator
+2212.12402|1|708-757|1612.00593,Identification of the Originator,Identification of the Originator
+2212.12649|2|773-822|1704.08063,Background,Background
+2212.12902|0|2118-2167|1904.03167,Evidence,Gap
+2212.13425|51|396-445|1902.06162,Further Reading,Further Reading
+2212.13525|8|662-711|1611.05250,Identification of the Originator,Identification of the Originator
+cs/0506004|2|420-469|cs/0606093,Further Reading,Further Reading
+cs/0602093|299|2462-2511|cs/0602062,Further Reading,Further Reading

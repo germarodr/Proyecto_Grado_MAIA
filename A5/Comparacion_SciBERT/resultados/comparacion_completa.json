@@ -1,0 +1,763 @@
+{
+  "n": 2968,
+  "same_ids_and_human_references": true,
+  "scientific_metrics": [
+    {
+      "model": "SciBERT base",
+      "condition": "base",
+      "n": 2968,
+      "accuracy": 0.7921159029649596,
+      "f1_macro": 0.7967277989778669,
+      "precision_macro": 0.8180641883165563,
+      "recall_macro": 0.7929702007936787,
+      "precision_micro": 0.7921159029649596,
+      "recall_micro": 0.7921159029649596,
+      "f1_micro": 0.7921159029649596,
+      "per_class": {
+        "Background": {
+          "precision": 0.5311871227364185,
+          "recall": 0.8,
+          "f1": 0.6384522370012091,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.77491961414791,
+          "recall": 0.7774193548387097,
+          "f1": 0.7761674718196458,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.745945945945946,
+          "recall": 0.8571428571428571,
+          "f1": 0.7976878612716762,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.7715877437325905,
+          "recall": 0.8849840255591054,
+          "f1": 0.8244047619047619,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8262032085561497,
+          "recall": 0.7725,
+          "f1": 0.7984496124031008,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.8994708994708994,
+          "recall": 0.6343283582089553,
+          "f1": 0.7439824945295405,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.8823529411764706,
+          "recall": 0.6606217616580311,
+          "f1": 0.7555555555555554,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.9657534246575342,
+          "recall": 0.8703703703703703,
+          "f1": 0.9155844155844156,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9651567944250871,
+          "recall": 0.8793650793650793,
+          "f1": 0.920265780730897,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-generic-few",
+      "n": 2968,
+      "accuracy": 0.7324797843665768,
+      "f1_macro": 0.7216753584282278,
+      "precision_macro": 0.7499983880520776,
+      "recall_macro": 0.7304067927657881,
+      "precision_micro": 0.7324797843665768,
+      "recall_micro": 0.7324797843665768,
+      "f1_micro": 0.7324797843665768,
+      "per_class": {
+        "Background": {
+          "precision": 0.5851648351648352,
+          "recall": 0.6454545454545455,
+          "f1": 0.6138328530259366,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.7909604519774012,
+          "recall": 0.45161290322580644,
+          "f1": 0.5749486652977412,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.7168674698795181,
+          "recall": 0.3695652173913043,
+          "f1": 0.4877049180327869,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.821656050955414,
+          "recall": 0.8242811501597445,
+          "f1": 0.8229665071770336,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8125,
+          "recall": 0.8125,
+          "f1": 0.8125,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.5436241610738255,
+          "recall": 0.9067164179104478,
+          "f1": 0.6797202797202798,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.6911764705882353,
+          "recall": 0.8523316062176166,
+          "f1": 0.7633410672853828,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.7994428969359332,
+          "recall": 0.8858024691358025,
+          "f1": 0.8404099560761348,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9885931558935361,
+          "recall": 0.8253968253968254,
+          "f1": 0.8996539792387543,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-generic-zero",
+      "n": 2968,
+      "accuracy": 0.6714959568733153,
+      "f1_macro": 0.663532436093469,
+      "precision_macro": 0.7151527206014325,
+      "recall_macro": 0.6674742142231834,
+      "precision_micro": 0.6714959568733153,
+      "recall_micro": 0.6714959568733153,
+      "f1_micro": 0.6714959568733153,
+      "per_class": {
+        "Background": {
+          "precision": 0.41196581196581195,
+          "recall": 0.7303030303030303,
+          "f1": 0.526775956284153,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.7863247863247863,
+          "recall": 0.2967741935483871,
+          "f1": 0.4309133489461358,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.6567164179104478,
+          "recall": 0.40993788819875776,
+          "f1": 0.5047801147227533,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.7987012987012987,
+          "recall": 0.7859424920127795,
+          "f1": 0.7922705314009663,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8493150684931506,
+          "recall": 0.775,
+          "f1": 0.8104575163398693,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.5767326732673267,
+          "recall": 0.8694029850746269,
+          "f1": 0.6934523809523809,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.6792452830188679,
+          "recall": 0.8393782383419689,
+          "f1": 0.7508690614136732,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.6906474820143885,
+          "recall": 0.5925925925925926,
+          "f1": 0.6378737541528239,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9867256637168141,
+          "recall": 0.707936507936508,
+          "f1": 0.8243992606284658,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-specific-few",
+      "n": 2968,
+      "accuracy": 0.8012129380053908,
+      "f1_macro": 0.795297922695181,
+      "precision_macro": 0.8150415300078848,
+      "recall_macro": 0.7995357984304148,
+      "precision_micro": 0.8012129380053908,
+      "recall_micro": 0.8012129380053908,
+      "f1_micro": 0.8012129380053908,
+      "per_class": {
+        "Background": {
+          "precision": 0.7129629629629629,
+          "recall": 0.7,
+          "f1": 0.7064220183486237,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.8214285714285714,
+          "recall": 0.7419354838709677,
+          "f1": 0.7796610169491526,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.8383233532934131,
+          "recall": 0.43478260869565216,
+          "f1": 0.5725971370143149,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.8857142857142857,
+          "recall": 0.792332268370607,
+          "f1": 0.8364249578414839,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8365853658536585,
+          "recall": 0.8575,
+          "f1": 0.8469135802469137,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.6116751269035533,
+          "recall": 0.8992537313432836,
+          "f1": 0.72809667673716,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.7122448979591837,
+          "recall": 0.9041450777202072,
+          "f1": 0.7968036529680365,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.9519230769230769,
+          "recall": 0.9166666666666666,
+          "f1": 0.9339622641509433,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.964516129032258,
+          "recall": 0.9492063492063492,
+          "f1": 0.9567999999999999,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-specific-zero",
+      "n": 2968,
+      "accuracy": 0.796832884097035,
+      "f1_macro": 0.7925451688762484,
+      "precision_macro": 0.8131532211521496,
+      "recall_macro": 0.7952573168525826,
+      "precision_micro": 0.796832884097035,
+      "recall_micro": 0.796832884097035,
+      "f1_micro": 0.796832884097035,
+      "per_class": {
+        "Background": {
+          "precision": 0.6465753424657534,
+          "recall": 0.7151515151515152,
+          "f1": 0.6791366906474819,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.8467153284671532,
+          "recall": 0.7483870967741936,
+          "f1": 0.7945205479452054,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.8414634146341463,
+          "recall": 0.42857142857142855,
+          "f1": 0.5679012345679012,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.8763636363636363,
+          "recall": 0.7699680511182109,
+          "f1": 0.8197278911564626,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8357843137254902,
+          "recall": 0.8525,
+          "f1": 0.844059405940594,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.6240208877284595,
+          "recall": 0.8917910447761194,
+          "f1": 0.7342549923195085,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.7538461538461538,
+          "recall": 0.8886010362694301,
+          "f1": 0.8156956004756243,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.9233128834355828,
+          "recall": 0.9290123456790124,
+          "f1": 0.9261538461538461,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9702970297029703,
+          "recall": 0.9333333333333333,
+          "f1": 0.9514563106796117,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-generic-few",
+      "n": 2968,
+      "accuracy": 0.6469002695417789,
+      "f1_macro": 0.6421885909068096,
+      "precision_macro": 0.6946030368737545,
+      "recall_macro": 0.6521118454466196,
+      "precision_micro": 0.6469002695417789,
+      "recall_micro": 0.6469002695417789,
+      "f1_micro": 0.6469002695417789,
+      "per_class": {
+        "Background": {
+          "precision": 0.36698717948717946,
+          "recall": 0.693939393939394,
+          "f1": 0.48008385744234805,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.6627906976744186,
+          "recall": 0.18387096774193548,
+          "f1": 0.2878787878787879,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.6207865168539326,
+          "recall": 0.6863354037267081,
+          "f1": 0.6519174041297936,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.8090277777777778,
+          "recall": 0.744408945686901,
+          "f1": 0.7753743760399333,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8674698795180723,
+          "recall": 0.54,
+          "f1": 0.6656394453004623,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.5737704918032787,
+          "recall": 0.7835820895522388,
+          "f1": 0.6624605678233437,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.7188498402555911,
+          "recall": 0.582901554404145,
+          "f1": 0.6437768240343348,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.6560364464692483,
+          "recall": 0.8888888888888888,
+          "f1": 0.7549148099606815,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9757085020242915,
+          "recall": 0.765079365079365,
+          "f1": 0.8576512455516014,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-generic-zero",
+      "n": 2968,
+      "accuracy": 0.5808625336927223,
+      "f1_macro": 0.5820748692556784,
+      "precision_macro": 0.6416777485128841,
+      "recall_macro": 0.5880470985287909,
+      "precision_micro": 0.5808625336927223,
+      "recall_micro": 0.5808625336927223,
+      "f1_micro": 0.5808625336927223,
+      "per_class": {
+        "Background": {
+          "precision": 0.3886363636363636,
+          "recall": 0.5181818181818182,
+          "f1": 0.44415584415584414,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.7131782945736435,
+          "recall": 0.2967741935483871,
+          "f1": 0.41913439635535304,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.4065281899109792,
+          "recall": 0.4254658385093168,
+          "f1": 0.4157814871016692,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.7735849056603774,
+          "recall": 0.7859424920127795,
+          "f1": 0.7797147385103012,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.8691099476439791,
+          "recall": 0.415,
+          "f1": 0.5617597292724196,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.432712215320911,
+          "recall": 0.7798507462686567,
+          "f1": 0.5565912117177098,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.6554621848739496,
+          "recall": 0.6062176165803109,
+          "f1": 0.629878869448183,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.5508130081300813,
+          "recall": 0.8364197530864198,
+          "f1": 0.6642156862745099,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9850746268656716,
+          "recall": 0.6285714285714286,
+          "f1": 0.7674418604651162,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-specific-few",
+      "n": 2968,
+      "accuracy": 0.7102425876010782,
+      "f1_macro": 0.7138875279687728,
+      "precision_macro": 0.7700432991498576,
+      "recall_macro": 0.709269474616486,
+      "precision_micro": 0.7102425876010782,
+      "recall_micro": 0.7102425876010782,
+      "f1_micro": 0.7102425876010782,
+      "per_class": {
+        "Background": {
+          "precision": 0.38950276243093923,
+          "recall": 0.8545454545454545,
+          "f1": 0.5351043643263756,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.8014705882352942,
+          "recall": 0.35161290322580646,
+          "f1": 0.4887892376681615,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.7275449101796407,
+          "recall": 0.7546583850931677,
+          "f1": 0.7408536585365854,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.8409090909090909,
+          "recall": 0.5910543130990416,
+          "f1": 0.6941838649155724,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.9041533546325878,
+          "recall": 0.7075,
+          "f1": 0.7938288920056101,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.6877192982456141,
+          "recall": 0.7313432835820896,
+          "f1": 0.7088607594936709,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.8024691358024691,
+          "recall": 0.6735751295336787,
+          "f1": 0.732394366197183,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.800524934383202,
+          "recall": 0.941358024691358,
+          "f1": 0.8652482269503545,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9760956175298805,
+          "recall": 0.7777777777777778,
+          "f1": 0.8657243816254417,
+          "support": 315
+        }
+      }
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-specific-zero",
+      "n": 2968,
+      "accuracy": 0.7476415094339622,
+      "f1_macro": 0.7480726733518752,
+      "precision_macro": 0.7645034655435873,
+      "recall_macro": 0.7520706673896245,
+      "precision_micro": 0.7476415094339622,
+      "recall_micro": 0.7476415094339622,
+      "f1_micro": 0.7476415094339622,
+      "per_class": {
+        "Background": {
+          "precision": 0.5578231292517006,
+          "recall": 0.7454545454545455,
+          "f1": 0.6381322957198444,
+          "support": 330
+        },
+        "Gap": {
+          "precision": 0.7923728813559322,
+          "recall": 0.603225806451613,
+          "f1": 0.684981684981685,
+          "support": 310
+        },
+        "Basis": {
+          "precision": 0.7228464419475655,
+          "recall": 0.5993788819875776,
+          "f1": 0.6553480475382003,
+          "support": 322
+        },
+        "Comparison": {
+          "precision": 0.8419243986254296,
+          "recall": 0.7827476038338658,
+          "f1": 0.8112582781456953,
+          "support": 313
+        },
+        "Application": {
+          "precision": 0.889261744966443,
+          "recall": 0.6625,
+          "f1": 0.7593123209169055,
+          "support": 400
+        },
+        "Improvement/Modification": {
+          "precision": 0.5368956743002544,
+          "recall": 0.7873134328358209,
+          "f1": 0.6384266263237518,
+          "support": 268
+        },
+        "Evidence": {
+          "precision": 0.8264984227129337,
+          "recall": 0.6787564766839378,
+          "f1": 0.7453769559032717,
+          "support": 386
+        },
+        "Identification of the Originator": {
+          "precision": 0.7573529411764706,
+          "recall": 0.9537037037037037,
+          "f1": 0.8442622950819672,
+          "support": 324
+        },
+        "Further Reading": {
+          "precision": 0.9555555555555556,
+          "recall": 0.9555555555555556,
+          "f1": 0.9555555555555556,
+          "support": 315
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "model": "SciBERT base",
+      "condition": "base",
+      "n": 2968,
+      "f1_macro": 0.7967277989778669,
+      "f1_micro": 0.7921159029649596,
+      "coverage": 1.0,
+      "invalid": 0,
+      "delta_macro_vs_scibert": 0.0,
+      "delta_ci95_low": 0.0,
+      "delta_ci95_high": 0.0,
+      "paired_difference_excludes_zero": false
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-generic-few",
+      "n": 2968,
+      "f1_macro": 0.7216753584282278,
+      "f1_micro": 0.7324797843665768,
+      "coverage": 0.9993261455525606,
+      "invalid": 2,
+      "delta_macro_vs_scibert": -0.07505244054963911,
+      "delta_ci95_low": -0.0947693202942388,
+      "delta_ci95_high": -0.056129269052573406,
+      "paired_difference_excludes_zero": true
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-generic-zero",
+      "n": 2968,
+      "f1_macro": 0.663532436093469,
+      "f1_micro": 0.6714959568733153,
+      "coverage": 0.9976415094339622,
+      "invalid": 7,
+      "delta_macro_vs_scibert": -0.13319536288439793,
+      "delta_ci95_low": -0.15379823053537395,
+      "delta_ci95_high": -0.11292618560059599,
+      "paired_difference_excludes_zero": true
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-specific-few",
+      "n": 2968,
+      "f1_macro": 0.795297922695181,
+      "f1_micro": 0.8012129380053908,
+      "coverage": 0.9996630727762803,
+      "invalid": 1,
+      "delta_macro_vs_scibert": -0.0014298762826859823,
+      "delta_ci95_low": -0.019741117568336082,
+      "delta_ci95_high": 0.016228490642308642,
+      "paired_difference_excludes_zero": false
+    },
+    {
+      "model": "gpt-6-luna",
+      "condition": "base-specific-zero",
+      "n": 2968,
+      "f1_macro": 0.7925451688762484,
+      "f1_micro": 0.796832884097035,
+      "coverage": 0.9949460916442049,
+      "invalid": 15,
+      "delta_macro_vs_scibert": -0.004182630101618567,
+      "delta_ci95_low": -0.022303597824311933,
+      "delta_ci95_high": 0.012223026824392528,
+      "paired_difference_excludes_zero": false
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-generic-few",
+      "n": 2968,
+      "f1_macro": 0.6421885909068096,
+      "f1_micro": 0.6469002695417789,
+      "coverage": 1.0,
+      "invalid": 0,
+      "delta_macro_vs_scibert": -0.15453920807105737,
+      "delta_ci95_low": -0.1742973014771743,
+      "delta_ci95_high": -0.13527335606629176,
+      "paired_difference_excludes_zero": true
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-generic-zero",
+      "n": 2968,
+      "f1_macro": 0.5820748692556784,
+      "f1_micro": 0.5808625336927223,
+      "coverage": 0.9932614555256065,
+      "invalid": 20,
+      "delta_macro_vs_scibert": -0.21465292972218852,
+      "delta_ci95_low": -0.23559939274994535,
+      "delta_ci95_high": -0.19540883073803345,
+      "paired_difference_excludes_zero": true
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-specific-few",
+      "n": 2968,
+      "f1_macro": 0.7138875279687728,
+      "f1_micro": 0.7102425876010782,
+      "coverage": 1.0,
+      "invalid": 0,
+      "delta_macro_vs_scibert": -0.08284027100909419,
+      "delta_ci95_low": -0.10074932424333602,
+      "delta_ci95_high": -0.06530669151451621,
+      "paired_difference_excludes_zero": true
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "condition": "base-specific-zero",
+      "n": 2968,
+      "f1_macro": 0.7480726733518752,
+      "f1_micro": 0.7476415094339622,
+      "coverage": 0.9993261455525606,
+      "invalid": 2,
+      "delta_macro_vs_scibert": -0.048655125625991724,
+      "delta_ci95_low": -0.0668913303015737,
+      "delta_ci95_high": -0.031140578366967306,
+      "paired_difference_excludes_zero": true
+    }
+  ],
+  "source_run_scibert": "g15_scibert_test_B_final_01",
+  "commercial_runs": {
+    "gpt-6-luna": "a5_luna_test_01",
+    "gemini-3.5-flash-lite": "a5_gemini_3_5_flash_lite_test_01"
+  },
+  "source_sha256": {
+    "base/data_audit.json": "28aa44c88e250fb18041777dcdf638f357e8b2131be6a7cbecf2d2f5b4b52672",
+    "base/evaluation_protocol.json": "a9c41eea1ba16b083ac4bf9dec75cc3fab1fd56e9b2df80abe86bf16a36600c5",
+    "base/FINAL_COMPLETE.json": "856ef6707a3548d1308a1334ac10c2f56915d9a3f4a8157777f97aaad5fca267",
+    "base/PREDICTIONS_COMPLETE.json": "a5bb1661d303dec7b64946bd294a160f418bd9cb035a82db71637e5d0dcb5575",
+    "base/test_classification_report.json": "9088f0e6c063b5a04293b75842f73963a396b01140fe5d6d125070f62c76a059",
+    "base/test_instances.csv": "82b4a3bba303b4e04708725ad8dd9f9ce598699825389571dbd5bfcab66e57b6",
+    "base/test_predictions.csv": "5c7b314d11c54b0ec9fd4027e6adbd253bdba8c3c68e1a00128f0c9ca4d3827d",
+    "comerciales/predictions_gpt-6-luna.csv": "7faa3319dcf8bc00de383a9dbdf43b95825331dbed696af4cf226d3d31c3781a",
+    "comerciales/predictions_gemini-3_5-flash-lite.csv": "a450199bf0fa17759262ed1151d060104c7d799c7872518892e8ce300f35916c"
+  },
+  "bootstrap": {
+    "repetitions": 2000,
+    "seed": 20261113,
+    "unit": "citing_paper_id",
+    "groups": 2764,
+    "paired": true,
+    "interval": "percentile_95",
+    "multiple_comparisons_adjusted": false
+  },
+  "api_called": false
+}

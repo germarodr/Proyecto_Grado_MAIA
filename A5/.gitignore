@@ -11,3 +11,7 @@ __pycache__/
 .venv_mlflow/
 MLflow_Respaldo_A4/
 tracking/
+
+# Entradas privadas; resultados compartidos para A6 y A7
+/Comparacion_SciBERT/*
+!/Comparacion_SciBERT/resultados/

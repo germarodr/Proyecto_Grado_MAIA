@@ -15,7 +15,7 @@ import tempfile
 import uuid
 import zipfile
 
-VERSION = "a5-tracking-v1"
+VERSION = "a5-tracking-gemini-v2"
 MLFLOW_VERSION = "3.17.2"
 CANONICAL_ROOT = "/opt/maia/a4_tracking"
 EXPERIMENT = "G15_A5_Comerciales"
@@ -222,6 +222,60 @@ def load_results(folder):
             "hashes": {n: sha(folder / n) for n in required}}
 
 
+def consolidate_consumption(predictions, events, cfg, summary):
+    """Consolida respuestas sin fabricar eventos ni sustituir el diario original."""
+    keys = {p["request_key"] for p in predictions}
+    outcomes = [e for e in events if e["event"] == "outcome"]
+    terminal = {e["request_key"]: e for e in outcomes if e.get("terminal")}
+    starts = {(e["request_key"], e["attempt"]) for e in events if e["event"] == "start"}
+    ends = {(e["request_key"], e["attempt"]) for e in outcomes}
+    complete = set(terminal) == keys and not (starts - ends)
+    records, totals = [], {}
+    for p in predictions:
+        usage = p.get("usage") or {}
+        tokens = [usage.get("prompt_tokens"), usage.get("completion_tokens")]
+        if not p.get("cost_known") or any(type(v) is not int or v < 0 for v in tokens):
+            raise ValueError("La consolidacion requiere tokens completos por respuesta")
+        cost = (tokens[0] * cfg["input_usd_per_million"] +
+                tokens[1] * cfg["output_usd_per_million"]) / 1_000_000
+        saved = p.get("estimated_cost_usd")
+        if type(saved) not in (int, float) or not math.isfinite(saved) or not math.isclose(cost, saved, abs_tol=1e-10):
+            raise ValueError("El consumo guardado no coincide con tokens y tarifas")
+        if p["request_key"] in terminal:
+            parsed = terminal[p["request_key"]]["parsed"]
+            if any(parsed.get(k) != p.get(k) for k in
+                   ("usage", "response_text", "returned_model", "valid", "scores", "predicted_label")):
+                raise ValueError("El diario y las predicciones discrepan")
+        records.append({"request_key": p["request_key"], "condition": p["condition"],
+                        "input_tokens": tokens[0], "output_tokens": tokens[1],
+                        "calculated_cost_usd": cost})
+        values = totals.setdefault(p["condition"], {"responses_processed": 0,
+            "input_tokens": 0, "output_tokens": 0, "calculated_cost_usd": 0.0})
+        values["responses_processed"] += 1
+        values["input_tokens"] += tokens[0]
+        values["output_tokens"] += tokens[1]
+        values["calculated_cost_usd"] += cost
+    total = math.fsum(r["calculated_cost_usd"] for r in records)
+    # Con diario parcial no se infieren llamadas adicionales ni sus horas/costos.
+    if not complete:
+        if any(p.get("attempts") != 1 for p in predictions):
+            raise ValueError("Reintentos fuera del diario: revisar consumo antes de consolidar")
+        ledger = summary.get("ledger", {})
+        if ledger.get("unknown_cost_attempts") != 0 or not math.isclose(
+                total, ledger.get("estimated_known_cost_usd", -1), abs_tol=1e-8):
+            raise ValueError("El resumen final y el consumo de respuestas discrepan")
+    return {"records": records, "by_condition": totals,
+            "provenance": {"source": "predictions.json", "attempt_log_complete": complete,
+                "responses_processed": len(predictions), "recorded_outcomes": len(outcomes),
+                "missing_terminal_records": len(keys - set(terminal)),
+                "open_attempt_records": len(starts - ends),
+                "calculation": "prompt_tokens * input_rate + completion_tokens * output_rate; per million",
+                "input_usd_per_million": cfg["input_usd_per_million"],
+                "output_usd_per_million": cfg["output_usd_per_million"],
+                "original_attempt_log_preserved": True,
+                "is_original_call_journal": False}}
+
+
 def flat_metrics(values, prefix=""):
     out = {}
     for name, value in values.items():
@@ -236,6 +290,7 @@ def flat_metrics(values, prefix=""):
 def import_results(client, experiment_id, data):
     """Una ejecución MLflow por condición. Repetir una importación no la duplica."""
     cfg = data["config"]
+    consolidated = consolidate_consumption(data["predictions"], data["events"], cfg, data["summary"])
     bundle_hash = digest(data["hashes"])
     imported = []
     for metric in data["metrics"]:
@@ -266,11 +321,18 @@ def import_results(client, experiment_id, data):
             values = flat_metrics(metric)
             keys = {p["request_key"] for p in data["predictions"] if p["condition"] == condition}
             outcomes = [e for e in data["events"] if e["event"] == "outcome" and e["request_key"] in keys]
-            values.update(attempts=len(outcomes),
+            if consolidated["provenance"]["attempt_log_complete"]:
+                values.update(attempts=len(outcomes),
                           cost_known_attempts_usd=sum(e["parsed"].get("estimated_cost_usd") or 0 for e in outcomes),
                           unknown_cost_attempts=sum(not e["parsed"].get("cost_known", False) for e in outcomes),
                           input_tokens=sum((e["parsed"].get("usage") or {}).get("prompt_tokens", 0) for e in outcomes),
-                          output_tokens=sum((e["parsed"].get("usage") or {}).get("completion_tokens", 0) for e in outcomes))
+                              output_tokens=sum((e["parsed"].get("usage") or {}).get("completion_tokens", 0) for e in outcomes))
+            response_values = consolidated["by_condition"][condition]
+            values.update(responses_processed=response_values["responses_processed"],
+                          calculated_cost_usd=response_values["calculated_cost_usd"])
+            if not consolidated["provenance"]["attempt_log_complete"]:
+                values.update(input_tokens=response_values["input_tokens"],
+                              output_tokens=response_values["output_tokens"])
             for name, value in values.items():
                 client.log_metric(rid, name, float(value))
             returned = sorted({str(p.get("returned_model")) for p in data["predictions"] if p["condition"] == condition})
@@ -281,6 +343,12 @@ def import_results(client, experiment_id, data):
                 write(report, {"condition": condition, "metrics": metric, "ledger": values,
                                "source_file_hashes": data["hashes"], "importer_version": VERSION})
                 client.log_artifact(rid, str(report), artifact_path="reports")
+                consumption = Path(tmp) / "consumption_records.json"
+                write(consumption, [r for r in consolidated["records"] if r["condition"] == condition])
+                client.log_artifact(rid, str(consumption), artifact_path="reports")
+                provenance = Path(tmp) / "consumption_provenance.json"
+                write(provenance, {**consolidated["provenance"], "source_file_hashes": data["hashes"]})
+                client.log_artifact(rid, str(provenance), artifact_path="reports")
             matrix = data["folder"] / ("confusion_" + condition + ".csv")
             if matrix.is_file() and matrix.parent == data["folder"]:
                 client.log_artifact(rid, str(matrix), artifact_path="reports")

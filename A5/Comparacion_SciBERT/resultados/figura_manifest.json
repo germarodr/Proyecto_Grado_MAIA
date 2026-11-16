@@ -1,0 +1,19 @@
+{
+  "source_csv": "comparacion_metricas.csv",
+  "source_sha256": "8d4782872af765f384e98e349754b713d14b75ecfe4dacc9f5ec60179c97bbfc",
+  "cases_per_configuration": 2968,
+  "configurations": 9,
+  "metrics": [
+    "f1_macro",
+    "f1_micro"
+  ],
+  "axis_limits": [
+    0,
+    1
+  ],
+  "files": {
+    "Comparacion_Metricas_A5.png": "11aa2b2ecff9e89ab4973503413fbb79b9b9adafb28ad54ccd19ad43fd0c313e",
+    "Comparacion_Metricas_A5.pdf": "813c55b0973dad0a77f7101639a0f0507086fff76758af8e1ca35bee38f64f34"
+  },
+  "api_called": false
+}
