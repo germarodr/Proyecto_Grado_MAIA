@@ -70,7 +70,7 @@
 | 11 | **Declaración de uso de IA** (recomendación de los profesores). | Un párrafo breve al final del informe; ver la propuesta de GR. | Incluida antes de las Referencias (GR, 11-nov). |
 | 13 | **Clasificadores del demostrador** (guía 5.3: tres opciones). | **Encoder fine-tuned:** un solo SciBERT, el de mayor F1 macro en T_B (fijar la regla antes de abrir T_B). **Model Open-Weight** (Llama 3.1 8B o Qwen 8B) y **Modelo Comercial vía API** (GPT o Gemini): prompt de la condición principal de A5 + la misma entrada del SciBERT elegido. Confirmar la versión exacta de Qwen. | Definido por GR (11-nov) |
 | 14 | **Fuente del demostrador.** | **Acordado (11-nov):** los 40 ejemplos de T_B son la única fuente; no se calcula similitud en ejecución, se muestra el Top-3 guardado de cada ejemplo (`a2_top3`). Resúmenes ya agregados; sin Originator. Falta agregar el texto y la sección de los 3 fragmentos de cada ejemplo. | Acordado |
-| 12 | **Responsables y fechas.** | A4: ST · A5: JA · despliegue: CB/ST · A6 y A7: GR, con los insumos de ST y JA · borrador del informe final: GR. Insumos listos el 17-nov. | |
+| 12 | **Responsables y fechas.** | A4: ST · A5: JA · despliegue: CB · A6 y A7: GR, con los insumos de ST y JA · borrador del informe final: GR. Insumos listos el 17-nov. | |
 
 ## A4 — Clasificador SciBERT (ST)
 
@@ -119,14 +119,14 @@ Alimenta la TABLA VII y las Figs. 3 y 4.
 | A7-2 | Por configuración de SciBERT: ms por ejemplo, hardware, tamaño de lote, número de ejemplos medidos y si incluye la tokenización. | — |
 | A7-3 | Costo total facturado por cada proveedor en las 4 condiciones, para contrastarlo con `costo_usd`. | A5-3 |
 
-## D — Despliegue (CB/ST)
+## D — Despliegue (CB)
 
 Diseño acordado: el usuario elige una cita de los **40 ejemplos de T_B**, la única fuente del demostrador; la app muestra el Top-3 ya guardado para ese ejemplo (sin cálculo de similitud), clasifica con la opción elegida (Encoder fine-tuned: el mejor entre SciBERT base y SciBERT Top-3; Open-Weight: Llama 3.1 8B o Qwen 8B; Comercial: GPT o Gemini) y muestra la función, el puntaje de las 9 funciones, los 3 fragmentos con su sección y la etiqueta humana. Detalle en las notas, §7 III-H.
 
 | Código | Qué necesitamos |
 |---|---|
-| D-1 | Arquitectura en AWS y su diagrama (Fig. 2). |
-| D-2 | Backend FastAPI: endpoints y carga de los modelos de la decisión 13 (dos SciBERT, dos Open-Weight y llamadas a dos API comerciales). Ya existe el índice de la demo (`a8_index.py`): fragmentos precalculados con vectores SciBERT, como recomendó el experto el 6-nov. Resúmenes de los 40 ejemplos ya agregados por GR (`examples_TB_con_resumen.jsonl`, en Drive o compartido en privado). Sin Identification of the Originator (T_B no tiene ejemplos). |
-| D-3 | Frontend Next.js: flujo de usuario y una captura con un ejemplo real (Fig. 5). |
-| D-4 | Latencia medida de la API por clasificador. |
+| D-1 | **Arquitectura de software de ML** y su diagrama (Fig. 2): componentes y flujo de datos (ejemplo → Top-3 precalculado → política de entrada compartida con el entrenamiento, con recorte a 512 tokens → clasificador elegido → puntajes de las nueve funciones), dónde vive cada artefacto (pesos, tokenizador, `label_mapping.json`, `input_policy.json`, prompts e índice de la demo), cómo se cargan y versionan los modelos y cómo se consulta cada modelo comercial con el prompt de la condición principal y la validación de la respuesta. **No hace falta detallar la infraestructura** (indicación del experto), aunque sí **nombrar en una frase el servicio donde se despliega**: la guía del curso pide "arquitectura y servicio utilizado" y la rúbrica, "entorno de despliegue". El alcance de 40 ejemplos con Top-3 precalculado, en lugar de entrada libre, **ya lo aceptó el experto**; III-H solo lo describe. |
+| D-2 | Backend FastAPI: módulos de inferencia y endpoints, carga de los modelos de la decisión 13 (dos SciBERT, dos Open-Weight y llamadas a dos API comerciales), manejo de respuestas inválidas y **modelo de pesos abiertos elegido con su identificador exacto** (Hugging Face y revisión) para la referencia. Ya existe el índice de la demo (`a8_index.py`): fragmentos precalculados con vectores SciBERT, como recomendó el experto el 6-nov. Resúmenes de los 40 ejemplos ya agregados por GR (`examples_TB_con_resumen.jsonl`, en Drive o compartido en privado). Sin Identification of the Originator (T_B no tiene ejemplos). |
+| D-3 | Frontend Next.js: flujo de usuario (elegir uno de los 40 ejemplos → ver el Top-3 → elegir clasificador → ver función y puntajes), para describirlo en III-H. Ya no se necesita captura: la Fig. 5 se eliminó (16-nov). |
+| D-4 | Opcional: latencia medida en la aplicación por clasificador. |
 | D-5 | URL pública y repositorios que se pueden enlazar (sin texto de unarXive). |

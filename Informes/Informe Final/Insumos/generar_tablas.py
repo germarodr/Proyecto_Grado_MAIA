@@ -31,12 +31,15 @@ ANCHO = {"1": 3.5 * PT_POR_PULGADA, "2": 7.16 * PT_POR_PULGADA}
 # sumo MAX_LINEAS líneas; si no, va en doble columna. Estos conjuntos fuerzan
 # la elección.
 DOBLE_COLUMNA = {"V"}
-UNA_COLUMNA = set()
+UNA_COLUMNA = {"I", "III"}
 MAX_LINEAS = 3
 
 TAM = 8
 INTERLINEA = TAM * 1.15
-PAD_X, PAD_Y = 4.0, 2.2
+PAD_X_BASE, PAD_Y = 4.0, 2.2
+PAD_X = PAD_X_BASE
+# Margen horizontal menor para tablas que solo caben así en una columna.
+PAD_X_TABLA = {"III": 2.0, "X": 2.0}
 DPI = 600
 FUENTE = "Times New Roman"
 HUECO = "#fff2a8"
@@ -135,6 +138,8 @@ def cabe(filas, ancho_total):
 
 
 def dibujar(num, filas, alinear, ruta):
+    global PAD_X
+    PAD_X = PAD_X_TABLA.get(num, PAD_X_BASE)
     if num in DOBLE_COLUMNA:
         columnas = "2"
     elif num in UNA_COLUMNA:
