@@ -55,6 +55,6 @@ exportación, predicciones y matriz de confusión de validación.
 Referencias: [comparación anterior](Comparacion_Reparto_vs_Pesos.md),
 [estudio fuente en Drive](https://drive.google.com/drive/folders/1UvtcwLFYgN48_atCVkB5XECjW24dvXu6),
 [métricas finales históricas](../M%C3%A9tricas.md) y
-[guía universitaria A4, pp. 7–8](../../../Papers/Propuesta_Proyecto%20PLN.pdf).
+[guía universitaria A4, pp. 7–8](https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Papers/Propuesta_Proyecto%20PLN.pdf).
 La hipótesis no cambia las dos entradas de la propuesta; esta prueba examina
 únicamente la regularización de la entrada base.

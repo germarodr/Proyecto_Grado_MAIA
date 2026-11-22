@@ -346,15 +346,15 @@ Los autores usaron asistentes de inteligencia artificial generativa como apoyo e
 
 [14] J. R. Landis y G. G. Koch, "The measurement of observer agreement for categorical data," *Biometrics*, vol. 33, no. 1, pp. 159–174, 1977, doi: 10.2307/2529310.
 
-[15] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: entrenamiento final de SciBERT," notebook de Jupyter, GitHub, 2026. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/A4/Final/SciBERT_Entrenamiento_Final.ipynb
+[15] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: entrenamiento y experimentos de SciBERT," repositorio de código, GitHub, 2026, commit 58f0bb8. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/tree/58f0bb8/A4/Final
 
 [16] OpenAI, "GPT-6 Luna (gpt-6-luna)," documentación de la API de OpenAI, 2026. [En línea]. Disponible: https://developers.openai.com/api/docs/models/gpt-6-luna (consultado el 14 de noviembre de 2026).
 
 [17] Google, "Gemini 3.5 Flash-Lite (gemini-3.5-flash-lite)," documentación de la API de Gemini, 2026. [En línea]. Disponible: https://aistudio.google.com/docs/models/gemini-3.5-flash-lite (consultado el 16 de noviembre de 2026).
 
-[18] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: clasificación con GPT-6 Luna," notebook de Jupyter, GitHub, 2026. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/A5/A5_Modelo_Comercial_G15.ipynb
+[18] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: clasificación con GPT-6 Luna," notebook de Jupyter, GitHub, 2026, commit 58f0bb8. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/A5/A5_Modelo_Comercial_G15.ipynb
 
-[19] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: clasificación con Gemini 3.5 Flash-Lite," notebook de Jupyter, GitHub, 2026. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/main/A5/Gemini/A5_Gemini_G15.ipynb
+[19] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: clasificación con Gemini 3.5 Flash-Lite," notebook de Jupyter, GitHub, 2026, commit 58f0bb8. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/A5/Gemini/A5_Gemini_G15.ipynb
 
 [20] Meta, "Llama-3.1-8B-Instruct," Hugging Face, 2024. [En línea]. Disponible: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
 
@@ -370,7 +370,7 @@ Los autores usaron asistentes de inteligencia artificial generativa como apoyo e
 
 [26] W. Kwon *et al.*, "Efficient memory management for large language model serving with PagedAttention," en *Proc. 29th Symp. Operating Systems Principles (SOSP)*, Koblenz, Alemania, 2023, pp. 611–626, doi: 10.1145/3600006.3613165.
 
-[27] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: demostrador y API," repositorio de código, GitHub, 2026. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA
+[27] C. Bejarano, G. Rodríguez, J. Arteaga y S. Toro, "CiteScope: demostrador y API," repositorio de código, GitHub, 2026, commit 58f0bb8. [En línea]. Disponible: https://github.com/germarodr/Proyecto_Grado_MAIA/tree/58f0bb8
 
 [28] A. Singh, M. D'Arcy, A. Cohan, D. Downey y S. Feldman, "SciRepEval: A multi-format benchmark for scientific document representations," en *Proc. 2023 Conf. Empirical Methods in Natural Language Processing (EMNLP)*, Singapur, 2023, pp. 5548–5566, doi: 10.18653/v1/2023.emnlp-main.338.
 

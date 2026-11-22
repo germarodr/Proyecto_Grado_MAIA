@@ -1,6 +1,6 @@
 """Vuelca Informe_Final_v*.md en la plantilla IEEE de Word.
 
-Parte de la plantilla (respaldo en Others/), conserva el marco del título, la nota
+Parte de la plantilla (respaldo en Old/Informes/Informe Final/Others/), conserva el marco del título, la nota
 al pie sin numerar de los autores (si el Markdown la trae), los estilos y la numeración automática de
 secciones y referencias, y reemplaza todo el contenido. Las tablas se insertan
 como las imágenes de Insumos/tablas/ y las figuras desde sus rutas del Markdown.
@@ -25,7 +25,8 @@ from docx.shared import Inches, Pt
 AQUI = Path(__file__).resolve().parent
 BASE = AQUI.parent
 INFORME = sorted(BASE.glob("Informe_Final_v*.md"))[-1]
-PLANTILLA = BASE / "Others" / "Informe Final IEEE_respaldo_2026-11-17.docx"
+# La plantilla no se publica: queda en Old/ (fuera de git), con su ruta original.
+PLANTILLA = BASE.parent.parent / "Old" / "Informes" / "Informe Final" / "Others" / "Informe Final IEEE_respaldo_2026-11-17.docx"
 SALIDA = BASE / "Informe Final IEEE.docx"
 TABLAS = AQUI / "tablas"
 ECUACIONES = AQUI / "figuras"

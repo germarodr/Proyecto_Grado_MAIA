@@ -137,7 +137,7 @@ conjunto se consultan en los reportes de cada corrida.
 
 ## Documentos consultados
 
-[U]: <../../Papers/Propuesta_Proyecto PLN.pdf#page=7>
+[U]: <https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Papers/Propuesta_Proyecto%20PLN.pdf#page=7>
 [P]: ../../Informes/PropuestaProyectoGrado.md
 [C]: https://drive.google.com/file/d/1X7JXN5ZvoYJodhRxdT5Y-8wOaDlXwRXi/view
 [I1]: Historico/Iteracion_01_2026-11-11/SciBERT_Entrenamiento_Final.ipynb
