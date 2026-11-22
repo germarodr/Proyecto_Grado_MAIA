@@ -19,7 +19,7 @@ Fuentes del resultado: [test_comparison.csv](https://drive.google.com/file/d/1EZ
 | Test humano con dos anotadores y Kappa/Alpha | pp. 6–7 | Las referencias proceden del cierre A3. Sus métricas de acuerdo deben citarse desde A3; F1 del clasificador no mide acuerdo interanotador. |
 | Demostrador: recuperar Top-3, mostrar secciones y permitir seleccionar clasificador | pp. 8–9 | A4 entrega el clasificador. La recuperación y la aplicación integrada son componentes adicionales; el exportado no recupera fragmentos por sí solo. |
 
-**Fuente de la tabla 1:** [guía universitaria, pp. 6–9](https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Papers/Propuesta_Proyecto%20PLN.pdf), contrastada con [nuestra propuesta](../../Informes/PropuestaProyectoGrado.md), objetivo 4 y fase F4; evidencia técnica: [protocolo del test](https://drive.google.com/file/d/1Vclg6zlOQ82m1twDdVt2dtI4bGtYO80Q/view?usp=drivesdk) y [contrato de entradas/salidas](Modelos_Entradas_Salidas.md). Las diferencias de alcance y el uso cruzado de etiquetas requieren acuerdo con el asesor; este documento no declara su aprobación.
+**Fuente de la tabla 1:** [guía universitaria, pp. 6–9](https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Papers/Propuesta_Proyecto%20PLN.pdf), contrastada con [nuestra propuesta](https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Informes/PropuestaProyectoGrado.md), objetivo 4 y fase F4; evidencia técnica: [protocolo del test](https://drive.google.com/file/d/1Vclg6zlOQ82m1twDdVt2dtI4bGtYO80Q/view?usp=drivesdk) y [contrato de entradas/salidas](Modelos_Entradas_Salidas.md). Las diferencias de alcance y el uso cruzado de etiquetas requieren acuerdo con el asesor; este documento no declara su aprobación.
 
 ## 2. Qué datos utilizamos
 
