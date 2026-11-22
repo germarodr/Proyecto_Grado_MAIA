@@ -1,7 +1,7 @@
 """Vuelca Informe_Final_v*.md en la plantilla IEEE de Word.
 
 Parte de la plantilla (respaldo en Others/), conserva el marco del título, la nota
-al pie sin numerar de los autores, los estilos y la numeración automática de
+al pie sin numerar de los autores (si el Markdown la trae), los estilos y la numeración automática de
 secciones y referencias, y reemplaza todo el contenido. Las tablas se insertan
 como las imágenes de Insumos/tablas/ y las figuras desde sus rutas del Markdown.
 Las tablas y figuras de más de una columna van en una sección de una columna.
@@ -17,7 +17,7 @@ import re
 from pathlib import Path
 
 import docx
-from docx.enum.text import WD_COLOR_INDEX
+from docx.enum.text import WD_COLOR_INDEX, WD_TAB_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
@@ -32,6 +32,8 @@ ECUACIONES = AQUI / "figuras"
 
 ANCHO_COLUMNA = 3.5  # pulgadas
 ANCHO_PAGINA = 7.16
+ESPACIO_FIGURA = Pt(10)  # aire antes de la figura y después de su pie
+ESPACIO_TABLA_ANCHA = Pt(10)  # aire antes de toda tabla y después de las tablas a doble columna
 INLINE = re.compile(r"(\[\[.+?\]\]|\*\*.+?\*\*|`[^`]+`|\$[^$]+\$|\*[^*\s][^*]*?\*)")
 
 
@@ -141,6 +143,12 @@ def ecuacion(doc, latex, numero):
     fig.savefig(ruta, dpi=600, bbox_inches="tight", pad_inches=0.02, transparent=True)
     plt.close(fig)
     p = doc.add_paragraph(style=estilo(doc, "Equation"))
+    # Fórmula centrada en la columna y número alineado a la derecha.
+    p.paragraph_format.alignment = 0
+    ancho_col = (ANCHO_PAGINA - 0.2) / 2  # columna real: página menos 0,2 in de separación
+    p.paragraph_format.tab_stops.add_tab_stop(Inches(3.5), WD_TAB_ALIGNMENT.CLEAR)
+    p.paragraph_format.tab_stops.add_tab_stop(Inches(ancho_col / 2), WD_TAB_ALIGNMENT.CENTER)
+    p.paragraph_format.tab_stops.add_tab_stop(Inches(ancho_col), WD_TAB_ALIGNMENT.RIGHT)
     p.add_run("\t")
     p.add_run().add_picture(str(ruta), height=Inches(0.42))
     p.add_run(f"\t({numero})")
@@ -181,8 +189,40 @@ def actualizar_nota(doc, nota):
             parte._blob = etree.tostring(xml, xml_declaration=True, encoding="UTF-8", standalone=True)
 
 
+def sin_numeracion_automatica(p):
+    """El número del título va como texto: la numeración heredada (legacy) de la plantilla
+    se reinicia en Word tras los saltos de sección de las figuras y tablas a doble columna."""
+    numPr = p._p.get_or_add_pPr().get_or_add_numPr()
+    numPr.get_or_add_numId().val = 0
+
+
+def quitar_marca_clasificacion(doc):
+    """Quita la marca "Cisco Confidential" que Office añadió a los pies de página de la plantilla."""
+    from lxml import etree
+
+    for parte in doc.part.package.parts:
+        nombre = str(parte.partname)
+        if nombre.startswith("/word/footer"):
+            xml = parte._element if hasattr(parte, "_element") else etree.fromstring(parte.blob)
+            for r in list(xml.iter(qn("w:r"))):
+                if r.getparent() is not None and "Cisco Confidential" in etree.tostring(r, encoding="unicode") \
+                        and r.find(".//" + qn("w:txbxContent")) is not None:
+                    r.getparent().remove(r)
+            if not hasattr(parte, "_element"):
+                parte._blob = etree.tostring(xml, xml_declaration=True, encoding="UTF-8", standalone=True)
+        elif nombre == "/docProps/custom.xml":
+            xml = etree.fromstring(parte.blob)
+            for prop in list(xml):
+                if prop.get("name", "").startswith("ClassificationContentMarking"):
+                    xml.remove(prop)
+            parte._blob = etree.tostring(xml, xml_declaration=True, encoding="UTF-8", standalone=True)
+
+
 def main():
     doc = docx.Document(str(PLANTILLA))
+    quitar_marca_clasificacion(doc)
+    for nombre in ("Heading 1", "Heading 2", "Reference Head"):
+        doc.styles[nombre].font.bold = True
     vineta = numeracion_vinetas(doc)
     md = INFORME.read_text(encoding="utf-8")
     md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
@@ -191,7 +231,7 @@ def main():
 
     titulo = next(l[2:].strip() for l in lineas if l.startswith("# "))
     autores = next(l.strip("* ") for l in lineas if l.startswith("**") and "Bejarano" in l)
-    nota = next(l[2:].strip() for l in lineas if l.startswith("> Documento recibido"))
+    nota = next((l[2:].strip() for l in lineas if l.startswith("> Documento recibido")), None)
 
     cuerpo = list(doc.element.body.iterchildren())
     poner_texto_parrafo(cuerpo[1], titulo)
@@ -199,11 +239,20 @@ def main():
     for el in cuerpo[3:]:
         if el.tag != qn("w:sectPr"):
             doc.element.body.remove(el)
-    actualizar_nota(doc, nota)
+    if nota:
+        actualizar_nota(doc, nota)
+    else:
+        # Sin nota de autores en el Markdown: se quita la llamada a la nota al pie de la plantilla.
+        for ref in list(cuerpo[0].iter(qn("w:footnoteReference"))):
+            run = ref.getparent()
+            run.getparent().remove(run)
     sp_final = doc.element.body.find(qn("w:sectPr"))
     tipo = OxmlElement("w:type")
     tipo.set(qn("w:val"), "continuous")
     sp_final.find(qn("w:pgSz")).addprevious(tipo)
+    # Sin encabezado de la plantilla (título corto y número de página).
+    for ref in sp_final.findall(qn("w:headerReference")):
+        sp_final.remove(ref)
 
     sin_numero = {"Apéndices", "Declaración de uso de IA", "Referencias"}
     i = next(k for k, l in enumerate(lineas) if l.startswith("**Resumen—**"))
@@ -227,13 +276,17 @@ def main():
                 p = doc.add_paragraph(style=estilo(doc, "ReferenceHead"))
                 p.add_run(nombre)
                 en_referencias = nombre == "Referencias"
+                if nombre == "Apéndices":
+                    p.paragraph_format.page_break_before = True
             else:
                 p = doc.add_paragraph(style=estilo(doc, "Heading1"))
-                p.add_run(re.sub(r"^[IVX]+\.\s*", "", nombre))
+                sin_numeracion_automatica(p)
+                p.add_run(nombre)
             continue
         if l.startswith("### "):
             p = doc.add_paragraph(style=estilo(doc, "Heading2"))
-            p.add_run(re.sub(r"^[A-Z]\.\s*", "", l[4:].strip()))
+            sin_numeracion_automatica(p)
+            p.add_run(l[4:].strip())
             continue
         if l.startswith("$$"):
             m = re.search(r"\((\d+)\)\s*\$\$$", l)
@@ -251,9 +304,14 @@ def main():
                 def poner(ancho, num=num, tit=tit, ruta=ruta):
                     p = doc.add_paragraph(style=estilo(doc, "TableTitle"))
                     p.add_run(f"TABLA {num}")
+                    p.paragraph_format.space_before = ESPACIO_TABLA_ANCHA
+                    p.paragraph_format.keep_with_next = True
                     p = doc.add_paragraph(style=estilo(doc, "TableTitle"))
                     agregar_texto(p, tit.rstrip("."))
+                    p.paragraph_format.keep_with_next = True
                     imagen(doc, ruta, ancho)
+                    if ancho == ANCHO_PAGINA:
+                        doc.paragraphs[-1].paragraph_format.space_after = ESPACIO_TABLA_ANCHA
 
                 bloque(doc, es_ancha(ruta), poner)
                 pendiente_tabla = None
@@ -270,11 +328,13 @@ def main():
 
             def poner(ancho, ruta=ruta, pie=pie):
                 imagen(doc, ruta, ancho)
+                doc.paragraphs[-1].paragraph_format.space_before = ESPACIO_FIGURA
                 if pie:
                     mm = re.match(r"\*\*(Fig\. \d+\.)\*\*\s*(.*)", pie)
                     p = doc.add_paragraph(style=estilo(doc, "FigureCaption"))
                     p.add_run(mm.group(1) + " ")
                     agregar_texto(p, mm.group(2))
+                doc.paragraphs[-1].paragraph_format.space_after = ESPACIO_FIGURA
 
             bloque(doc, es_ancha(ruta), poner)
             continue

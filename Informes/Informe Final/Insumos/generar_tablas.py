@@ -39,7 +39,7 @@ INTERLINEA = TAM * 1.15
 PAD_X_BASE, PAD_Y = 4.0, 2.2
 PAD_X = PAD_X_BASE
 # Margen horizontal menor para tablas que solo caben así en una columna.
-PAD_X_TABLA = {"III": 2.0, "X": 2.0}
+PAD_X_TABLA = {"III": 2.0}
 DPI = 600
 FUENTE = "Times New Roman"
 HUECO = "#fff2a8"
@@ -199,8 +199,8 @@ def main():
         huecos = sum("[[" in t for f in filas for t, _, _ in f)
         tipo = "una columna" if columnas == "1" else "doble columna"
         print(f"TABLA {num}: {ruta.name}  {tipo}, {cm:.1f} cm" + (f"  ({huecos} celdas con huecos)" if huecos else ""))
-    if "X" not in tablas:
-        print("TABLA X: sin filas en el informe todavía (se generará cuando existan).")
+    if "IX" not in tablas:
+        print("TABLA IX: sin filas en el informe todavía (se generará cuando existan).")
 
 
 if __name__ == "__main__":
