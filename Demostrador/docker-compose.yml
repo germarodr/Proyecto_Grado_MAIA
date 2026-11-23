@@ -1,0 +1,103 @@
+name: demo-citas-prd
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-citas}
+      POSTGRES_USER: ${POSTGRES_USER:-citas}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-citas}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-citas} -d ${POSTGRES_DB:-citas}"]
+      interval: 5s
+      retries: 5
+
+  model-init:
+    image: python:3.11-slim
+    volumes:
+      - ./models:/models
+    environment:
+      TOP3_GDRIVE_ID: ${TOP3_GDRIVE_ID:-1Y6_RADwbvXl9VY5OLfpaOY8BL77syUrd}
+    command: >
+      sh -c '
+        if [ -f /models/top3/inference.py ]; then echo "top3: ya presente, se omite.";
+        else pip install --no-cache-dir -q gdown==6.4.0 &&
+             gdown "$$TOP3_GDRIVE_ID" -O /tmp/top3.zip && python -m zipfile -e /tmp/top3.zip /models/top3;
+        fi
+      '
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    environment:
+      OLLAMA_CONTEXT_LENGTH: 8192
+      OLLAMA_KEEP_ALIVE: 30m
+      OLLAMA_NUM_PARALLEL: 1
+      OLLAMA_LOAD_TIMEOUT: 15m
+    volumes:
+      - ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      retries: 5
+
+  ollama-pull:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      OPEN_WEIGHT_MODEL: ${OPEN_WEIGHT_MODEL:-hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M}
+    entrypoint: ["/bin/sh", "-c", "ollama pull \"$$OPEN_WEIGHT_MODEL\""]
+
+  api:
+    build: ./api
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    depends_on:
+      db:
+        condition: service_healthy
+      model-init:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-citas}:${POSTGRES_PASSWORD:-citas}@db:5432/${POSTGRES_DB:-citas}
+      ENCODER_DIR: /app/models/top3
+      OLLAMA_URL: http://ollama:11434
+      OPEN_WEIGHT_MODEL: ${OPEN_WEIGHT_MODEL:-hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M}
+    volumes:
+      - ./models:/app/models:ro
+    ports:
+      - "127.0.0.1:${API_PORT:-8002}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/examples', timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 10
+      start_period: 90s
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "${FRONTEND_PORT:-3001}:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  pgdata:
+  ollama:

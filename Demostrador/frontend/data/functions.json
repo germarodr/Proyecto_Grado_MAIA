@@ -1,0 +1,56 @@
+[
+ {
+  "code": "Background",
+  "nameEs": "Antecedentes",
+  "description": "Da contexto, resume antecedentes generales de un tema de investigación o traza la historia de un campo o idea.",
+  "color": "#1677e8"
+ },
+ {
+  "code": "Gap",
+  "nameEs": "Vacío de investigación",
+  "description": "Ayuda a identificar vacíos o áreas inexploradas, justificando la elección del tema al contrastarlo con el trabajo existente.",
+  "color": "#d97706"
+ },
+ {
+  "code": "Basis",
+  "nameEs": "Fundamento",
+  "description": "Sirve como punto de partida intelectual: la investigación actual construye, continúa o expande el trabajo citado.",
+  "color": "#7c3aed"
+ },
+ {
+  "code": "Comparison",
+  "nameEs": "Comparación",
+  "description": "Compara el trabajo actual con el citado, o trabajos citados entre sí: métodos, hallazgos, algoritmos, datos o conceptos.",
+  "color": "#0891b2"
+ },
+ {
+  "code": "Application",
+  "nameEs": "Aplicación",
+  "description": "Emplea directamente un método, técnica, herramienta o dato del trabajo citado, sin modificarlo.",
+  "color": "#059669"
+ },
+ {
+  "code": "Improvement/Modification",
+  "nameEs": "Mejora / modificación",
+  "description": "Adapta, extiende o modifica un método o herramienta del trabajo citado para nuevas condiciones u objetivos.",
+  "color": "#16a34a"
+ },
+ {
+  "code": "Evidence",
+  "nameEs": "Evidencia",
+  "description": "Apoya afirmaciones, hipótesis, decisiones de diseño o hallazgos de la investigación actual.",
+  "color": "#dc2626"
+ },
+ {
+  "code": "Identification of the Originator",
+  "nameEs": "Identificación del originador",
+  "description": "Reconoce la fuente original de una idea, concepto, método o teoría, dándole crédito de prioridad.",
+  "color": "#db2777"
+ },
+ {
+  "code": "Further Reading",
+  "nameEs": "Lectura adicional",
+  "description": "Dirige al lector hacia literatura adicional o complementaria para profundizar.",
+  "color": "#64748b"
+ }
+]
