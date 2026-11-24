@@ -1,5 +1,7 @@
 # A4 · Prueba exploratoria V2
 
+> Esta guía corresponde a una iteración exploratoria anterior a la selección final. El cierre del trabajo se consulta en [Métricas de A4](Final/M%C3%A9tricas.md).
+
 **RUN_ID:** `g15_a4_v2_seed42_mlflow_01`.
 **Notebook:** [A4_SciBERT_G15_V2_Colab_A100.ipynb](A4_SciBERT_G15_V2_Colab_A100.ipynb).
 **Copia para ejecutar:** [corrida5_VSCode](pruebascolab/A4_SciBERT_G15_V2_corrida5_VSCode.ipynb).

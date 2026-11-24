@@ -58,3 +58,17 @@ Referencias: [comparación anterior](Comparacion_Reparto_vs_Pesos.md),
 [guía universitaria A4, pp. 7–8](https://github.com/germarodr/Proyecto_Grado_MAIA/blob/58f0bb8/Papers/Propuesta_Proyecto%20PLN.pdf).
 La hipótesis no cambia las dos entradas de la propuesta; esta prueba examina
 únicamente la regularización de la entrada base.
+
+## Conclusiones
+
+Los nueve ensayos seleccionaron checkpoints de las épocas 2–3 por menor pérdida
+de validación. El control obtuvo pérdida FP32 media 0,4574, frente a 0,4714 con
+dropout 0,20 y 0,4620 con weight decay 0,20. El aumento de dropout mejoró
+ligeramente el F1 medio, pero empeoró la pérdida; no se interpretó como una mejora
+general del modelo.
+
+En los nueve ensayos, la pérdida final de validación superó su mínimo. La selección
+temprana recuperó checkpoints anteriores, pero persistieron señales de sobreajuste.
+Las [conclusiones completas](Conclusiones_Regularizacion.md) delimitan estos
+resultados a la validación interna: no se reevaluó el test ni se sustituyeron los
+modelos finales.

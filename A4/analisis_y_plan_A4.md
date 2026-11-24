@@ -2,9 +2,10 @@
 
 Fecha de revisión: **29 de octubre de 2026**. Equipo: **Grupo 15**, prueba **T_B**.
 
-El siguiente paso es ajustar **SciBERT** para asignar una sola de nueve funciones a cada
-cita. La propuesta, el informe y el plan usan SciBERT; interpreto «SeBERT» del pedido
-como una referencia a ese mismo modelo. El notebook generado es
+Este análisis inicial definió el ajuste de **SciBERT** para asignar una de nueve
+funciones a cada cita. Las observaciones corresponden a la preparación de la
+primera iteración; los resultados finales están en [Métricas de A4](Final/M%C3%A9tricas.md).
+El notebook de esa iteración es
 [A4_SciBERT_G15_Colab_A100.ipynb](A4_SciBERT_G15_Colab_A100.ipynb).
 
 ## 1. Contexto revisado y estado real

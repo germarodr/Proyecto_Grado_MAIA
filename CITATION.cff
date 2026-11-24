@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Si utilizas este repositorio, cita el proyecto con estos datos y consulta el informe final para referenciar su metodología y resultados."
+type: software
+title: "CiteScope: Clasificación de la función de citas en Computer Science con modelos de lenguaje y recuperación semántica del artículo citado"
+authors:
+  - given-names: "Camilo"
+    family-names: "Bejarano"
+  - given-names: "Germán"
+    family-names: "Rodríguez"
+  - given-names: "José"
+    family-names: "Arteaga"
+  - given-names: "Sebastián"
+    family-names: "Toro"
+repository-code: "https://github.com/germarodr/Proyecto_Grado_MAIA"
+url: "https://github.com/germarodr/Proyecto_Grado_MAIA"
+keywords:
+  - "función de cita"
+  - "procesamiento de lenguaje natural"
+  - "SciBERT"
+  - "recuperación semántica"
+  - "unarXive"

@@ -1,6 +1,6 @@
 # Experimentos de A4: reparto del texto e importancia de las clases
 
-Estos dos notebooks continúan las pruebas con training v2 y el mismo aislamiento
+Estos estudios comparan alternativas con training v2 y el mismo aislamiento
 por documento de la corrida final. Conservan únicamente las dos entradas de la
 propuesta: **contexto + título + abstract**, y **contexto + Top-3 + secciones**.
 El test humano propio no participa en el aprendizaje ni en la selección.
@@ -53,8 +53,8 @@ La pérdida sigue siendo entropía cruzada; no hay sobremuestreo ni ejemplos nue
 2. Conecta **cada notebook a un servidor distinto**. No basta abrir dos pestañas
    del mismo servidor. La primera celda comprueba la GPU requerida y BF16.
 3. Autoriza Drive en cada servidor cuando aparezca la solicitud.
-4. Ejecuta las secciones en orden, con un solo responsable de iniciar las celdas.
-   Si Codex las supervisa, no uses «Run All» en paralelo en esa misma pestaña.
+4. Ejecuta las secciones en orden. Mantén una sola ejecución activa por estudio
+   para evitar peticiones duplicadas y escrituras simultáneas.
 5. Ante una desconexión, recupera ese notebook en una sola sesión y ejecuta desde
    la primera sección. Los resultados completos se verifican antes de reutilizarse;
    un entrenamiento incompleto continúa desde un checkpoint válido.
@@ -93,10 +93,24 @@ Archivos útiles al terminar:
 - `selected_models.json` y los dos ZIP: modelos de las condiciones seleccionadas.
 - `validation_review.json`: verificación de hashes, referencias y métricas
   recalculadas desde las predicciones, sin otra inferencia.
-- `conclusiones.md`: tres párrafos generados únicamente con las cifras obtenidas.
+- `conclusiones.md`: resultados de la comparación y límites de su interpretación.
 - `STUDY_COMPLETE.json`: cierre del estudio y huellas de sus reportes.
 
 Cuando termine cada ejecución, se guarda el notebook con sus salidas desde el
 editor y se conserva una copia en el histórico junto con los reportes y sus hashes.
 Los notebooks actuales y el histórico anterior se mantienen como evidencia de
 sus respectivas corridas.
+
+## Conclusiones de los estudios
+
+Ninguna alternativa de reparto ni de ponderación superó el F1 macro medio del
+control de su entrada. Conservamos contexto de hasta 192 tokens y pérdida sin
+pesos por clase. Las medias del control fueron 0,832861 para base y 0,826120 para
+Top-3. Ambos estudios seleccionaron los mismos pesos de modelo, por lo que sus
+controles coincidentes no constituyen evidencia independiente adicional.
+
+El cierre de reparto está en el notebook de recuperación; el archivo original
+conserva una sesión interrumpida. Las [conclusiones de reparto](Conclusiones_Reparto_Tokens.md)
+y la [comparación con ponderación](Comparacion_Reparto_vs_Pesos.md) recogen los
+resultados completos. Los modelos seleccionados se evaluaron después en el
+[test humano](../../Evaluacion_Final/README.md).

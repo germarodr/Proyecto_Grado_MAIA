@@ -44,7 +44,8 @@ de pesos por clase. No se utiliza Top-1.
    después de terminar; el kernel remoto no puede guardar por sí solo el archivo
    abierto en el equipo local.
 
-Si el asistente está ejecutando las celdas, no pulses otro **Run All** en paralelo.
+Mantén una sola ejecución activa para este estudio y evita iniciar la misma
+secuencia de celdas en paralelo.
 La GPU local no se utiliza en esta evaluación: se mantiene el entorno acordado.
 
 ## Entradas que ya están en Drive
@@ -129,8 +130,8 @@ protocolo detecta cambios y evita mezclar resultados incompatibles.
   excluyendo carga del modelo y E/S. Los percentiles describen esos promedios,
   no peticiones individuales cronometradas. Las reanudaciones conservan el ID
   de sesión de cada medición.
-- Las causas de los errores se revisan leyendo los casos; no se fabrican
-  explicaciones automáticas. Las conclusiones numéricas tienen tres párrafos.
+- Las causas de los errores se examinan mediante lectura de los casos. Las
+  conclusiones distinguen los resultados medidos de sus posibles explicaciones.
 - El test no se utiliza para escoger parámetros. La escasez de varias clases
   respecto al requisito de 2.000 ejemplos se declara aparte; evaluar no resuelve
   esa limitación ni acredita automáticamente el cumplimiento del requisito.

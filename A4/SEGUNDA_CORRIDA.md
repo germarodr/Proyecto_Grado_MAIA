@@ -1,5 +1,7 @@
 # Continuar A4: comparar base y fragmentos
 
+> Procedimiento histórico de continuación y evaluación de las primeras corridas. Los modelos de la entrega final y sus resultados están en [Métricas de A4](Final/M%C3%A9tricas.md).
+
 La primera corrida de `base` terminó en A100: cuatro épocas, F1 macro de Trainer
 0,846065 y F1 macro del modelo recargado 0,847831. Estas métricas provienen de
 validación con preetiquetas, no del test humano T_B.

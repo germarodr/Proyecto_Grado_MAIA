@@ -1,13 +1,13 @@
 # A4 · Modelos, entradas y salidas
 
-**Revisado: 11 de noviembre de 2026.** Las variantes del clasificador parten de
+Las variantes del clasificador parten de
 `allenai/scibert_scivocab_uncased` y se ajustan por separado para nueve clases.
 La diferencia principal es la información del artículo citado que reciben.
 
-La primera corrida comparó **base y Top-3**. El notebook actual ya ejecutó la
-comparación **Top-1 y Top-3**, reutilizando los Top-3 guardados. Por tanto, los dos
-modelos de la comparación actual reciben el contexto de la cita y fragmentos;
-la entrada con título y resumen corresponde a la variante base de la primera corrida.
+La entrega final compara **base y Top-3**, seleccionados en los estudios de
+reparto y ponderación y evaluados sobre el mismo test humano. Top-1 se conserva
+como exploración de una iteración anterior. Los ejemplos de esa exploración se
+identifican en su propia sección y no describen los modelos finales.
 
 ## 1. Qué recibe y devuelve cada variante
 
@@ -79,7 +79,21 @@ sobre un conjunto de citas; `predict` devuelve la clasificación de una cita con
 ## 4. Parámetros de entrenamiento
 
 Estos ajustes entrenan los pesos; son distintos de los textos que se envían al
-pedir una predicción.
+pedir una predicción. La selección final utiliza los siguientes valores:
+
+| Modelo final | Ritmo de aprendizaje | Weight decay | Semilla principal | Mejor época |
+|---|---:|---:|---:|---:|
+| Base | `3e-5` | `0.1` | 42 | 5 |
+| Top-3 | `3e-5` | `0.1` | 42 | 7 |
+
+Fuente: [selección congelada](../Evaluacion_Final/seleccion_congelada.json) y
+[métricas finales](M%C3%A9tricas.md). Ambos modelos conservan contexto de hasta
+192 tokens y pérdida sin pesos por clase.
+
+### Parámetros de las iteraciones exploratorias
+
+La tabla siguiente corresponde a las primeras comparaciones y a la exploración
+Top-1; no identifica los modelos finales de la tabla anterior.
 
 | Variante | Ritmo de aprendizaje | Regularización | Épocas y semillas | Fuente de los valores |
 |---|---|---|---|---|

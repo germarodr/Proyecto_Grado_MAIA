@@ -12,14 +12,14 @@ Los dos estudios terminaron: 28 entrenamientos y 18 resultados comparables por e
 
 Ninguna alternativa superó el F1 macro medio del control de su entrada. Los pesos raíz inversa e inversa limitada cambiaron el F1 de base en −0,45 y −0,58 puntos porcentuales; en Top-3, −0,13 y −1,08 puntos. Esto no implica que ninguna clase individual mejore. Ambos estudios seleccionan los mismos pesos de modelo, verificados por SHA-256, y los controles coincidentes no constituyen evidencia independiente adicional. La media de tres semillas describe estabilidad; no es un intervalo de confianza.
 
-Es viable cerrar la selección y preparar el test final, sin más búsqueda sobre su resultado. Se congelan los dos modelos de semilla 42 del estudio de reparto: contexto 192, pérdida sin pesos, LR 3e-5 y weight decay 0,1 en ambos; mejores épocas 5 (base) y 7 (Top-3). Su F1 macro individual de validación es 0,830298 y 0,830071, distinto de la media entre semillas. Antes de inferir se validan los hashes y las 2.968 instancias evaluables de T_B, se reconstruyen ambas entradas y se comprueba ausencia de documentos compartidos con train/validación. El test se utiliza para la evaluación final, no para elegir parámetros. La insuficiencia respecto de 2.000 ejemplos por clase debe declararse y acordarse con el asesor; evaluar no subsana ese requisito.
+La selección conservó los dos modelos de semilla 42 del estudio de reparto: contexto 192, pérdida sin pesos, LR 3e-5 y weight decay 0,1 en ambos; mejores épocas 5 (base) y 7 (Top-3). Su F1 macro individual de validación fue 0,830298 y 0,830071, distinto de la media entre semillas. Después se evaluaron los modelos congelados sobre 2.968 citas humanas: base alcanzó F1 macro 0,796728 y Top-3 0,799951. El intervalo del 95 % de la diferencia fue [−0,75; +1,39] puntos porcentuales, sin una ventaja concluyente. El test no se utilizó para elegir parámetros. La escasez de varias categorías continúa siendo una limitación de los datos.
 
-## Entrega para A6
+## Entrega para la evaluación comparativa
 
-1. Congelar IDs de modelos, hashes, preparación del texto, nueve etiquetas y lista de instancias de test.
-2. Ejecutar únicamente inferencia de base y Top-3 sobre las mismas instancias, con etiquetas humanas como referencia.
-3. Exportar predicciones, nueve probabilidades y latencia; P/R/F1 macro y micro, métricas por clase y matrices de confusión.
-4. Calcular la diferencia de F1 con bootstrap pareado por artículo citante, conservar errores representativos y entregar los CSV a A6.
-5. No retocar los modelos según el test. Cualquier experimento posterior se identifica como tal y no reemplaza la medición final.
+La [evaluación final](../../Evaluacion_Final/README.md) conserva los identificadores
+de los modelos, las particiones, las predicciones, los nueve puntajes, las métricas
+por clase, las matrices de confusión y el bootstrap pareado por artículo citante.
+Los modelos permanecieron congelados durante esa medición. El diagnóstico posterior
+de regularización se documentó por separado y no reemplazó los resultados del test.
 
 Fuentes: MAIA_TESIS/a4/g15_scibert_{reparto,pesos}_v2_01/{condition_summary.csv,selected_models.json,validation_review.json,STUDY_COMPLETE.json}; auditoría cruzada guardada junto a este documento.

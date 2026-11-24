@@ -23,7 +23,7 @@ Fuentes del resultado: [test_comparison.csv](https://drive.google.com/file/d/1EZ
 
 ## 2. Qué datos utilizamos
 
-Partimos de la entrega training v2. Los textos se reconstruyen desde los lotes originales de A2, unidos por identificador; las etiquetas humanas elegibles corrigen las preetiquetas. “Datos sintéticos” en la conversación se refiere aquí a **preetiquetas automáticas**: no afirmamos que los textos de los artículos hayan sido generados artificialmente.
+Partimos de la entrega training v2. Los textos se reconstruyen desde los lotes originales de A2, unidos por identificador; las etiquetas humanas elegibles corrigen las preetiquetas. Los textos proceden de los artículos del corpus; las etiquetas combinan **preetiquetas automáticas** y anotaciones humanas según la partición.
 
 | Etapa de preparación | Ejemplos |
 |---|---:|

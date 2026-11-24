@@ -1,5 +1,7 @@
 # Primera corrida de SciBERT con MLflow
 
+> Procedimiento histórico de la primera corrida con preetiquetas. Sus instrucciones y conteos corresponden a esa versión. La selección y evaluación final se documentan en [Métricas de A4](Final/M%C3%A9tricas.md) y [Evaluación final](Evaluacion_Final/README.md).
+
 La primera corrida de base ya está completada y su notebook se conserva en
 `pruebascolab/`. Para continuar con la comparación y la evaluación versionada,
 usa [SEGUNDA_CORRIDA.md](SEGUNDA_CORRIDA.md).

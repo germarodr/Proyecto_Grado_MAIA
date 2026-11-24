@@ -48,7 +48,7 @@ Como resume la Tabla I, ningún trabajo revisado combina tres elementos: las nue
 
 La metodología sigue el ciclo de aprendizaje automático en cuatro fases (Fig. 1): construcción de los datos, modelado, evaluación y despliegue. En la figura, los recuadros oscuros señalan los controles sobre los datos: limpieza, muestreo dirigido a las funciones escasas y aislamiento por documento para evitar fuga de información. La línea discontinua indica que el Test solo se usa en la evaluación, y la caja discontinua marca los modelos sin ajuste.
 
-![Fig. 1](Insumos/GR_Fig1_arquitectura.png)
+![Fig. 1](../assets/informe/figura-1-arquitectura.png)
 
 **Fig. 1.** Arquitectura general de CiteScope.
 
@@ -85,7 +85,7 @@ Anotar desde cero decenas de miles de citas no era viable. Por eso, tres modelos
 
 La selección de jueces y del prompt se hizo sobre una muestra de desarrollo de 60 instancias, sesgada a propósito hacia casos difíciles. Incluyó 20 casos en que los jueces confundían Further Reading con Background e Improvement/Modification con Application, y 5 de cada una de cinco funciones escasas, buscadas por señales léxicas (Identification of the Originator, Further Reading, Evidence, Gap y Comparison). Las 15 restantes se eligieron al azar. Su tamaño se limitó a lo que ambos grupos podían anotar a ciegas en una sesión, por lo que diferencias de uno o dos aciertos se consideran empates. Sus artículos citantes se excluyeron de Training, Validation y Test.
 
-![Fig. 2](Insumos/figuras/GR_Fig2_hoja_anotacion.png)
+![Fig. 2](../assets/informe/figura-2-anotacion.png)
 
 **Fig. 2.** Hoja de anotación del Test: (a) cita y etiquetas; (b) artículo citado.
 
@@ -181,7 +181,7 @@ Los experimentos se formularon como hipótesis con una métrica de decisión (Ta
 
 El demostrador es una aplicación web de cuatro contenedores Docker (Fig. 3): la interfaz, la API, el servidor del modelo de pesos abiertos y la base de datos, orquestados con Docker Compose en una instancia EC2 r7i.large de AWS (2 vCPU, 16 GiB), sin GPU. Trabaja sobre 40 ejemplos del Test con licencia CC BY y el Top-3 precalculado, un alcance acordado con el experto del proyecto. En la interfaz, desarrollada con Next.js, el usuario elige un ejemplo, revisa el contexto y los tres fragmentos con su sección y elige un clasificador.
 
-![Fig. 3](Insumos/CB_Fig3_arquitectura_demostrador_EC2.png)
+![Fig. 3](../assets/informe/figura-3-despliegue.png)
 
 **Fig. 3.** Arquitectura de software del demostrador de CiteScope.
 
@@ -232,13 +232,13 @@ GPT-6 Luna obtuvo prácticamente el mismo F1 macro que SciBERT base, con un inte
 
 El error más frecuente de SciBERT, en ambas configuraciones, es predecir Background, que es la función con menor precisión (0,53) y menor F1. Le siguen las confusiones de Improvement/Modification con Basis y de Evidence con Gap. Con fragmentos, el F1 sube en seis funciones y baja en tres (Fig. 4), diferencias que son solo descriptivas.
 
-![Fig. 4](Insumos/figuras/GR_Fig3_f1_por_funcion.png)
+![Fig. 4](../assets/informe/figura-4-f1-por-funcion.png)
 
 **Fig. 4.** F1 por función sobre el Test.
 
 Los modelos comerciales se equivocan de forma distinta (Fig. 5). GPT-6 Luna presenta la confusión inversa a la de SciBERT: asigna Improvement/Modification a más de un tercio de las instancias de Basis, su función más débil. En cambio, supera a SciBERT en Background y Evidence. Gemini 3.5 Flash-Lite acentúa el sesgo hacia Background, al que asigna la mitad de las instancias de Gap. GPT-6 Luna y SciBERT base aciertan en instancias distintas: al menos uno de los dos acierta en el 93,0 %.
 
-![Fig. 5](Insumos/figuras/GR_Fig4_matrices_confusion.png)
+![Fig. 5](../assets/informe/figura-5-matrices-confusion.png)
 
 **Fig. 5.** Matrices de confusión sobre el Test.
 
@@ -267,7 +267,7 @@ Dos errores de SciBERT ilustran sus confusiones más frecuentes, y en ambos fall
 
 Los modelos comerciales aciertan en casos en que SciBERT base falla, como el siguiente. El citante presenta "a novel background selective whitening (BSW) loss function, inspired by" el trabajo citado, que propone una función de pérdida de blanqueo selectivo por instancia. SciBERT base predice Basis, mientras que GPT-6 Luna y Gemini 3.5 Flash-Lite asignan Improvement/Modification, la etiqueta humana, porque el citante adapta la pérdida del citado a otro problema. Este caso es uno de los 40 ejemplos del demostrador, cuya interfaz se muestra en la Fig. 6.
 
-![Fig. 6](Insumos/CB_Fig5_demostrador.png)
+![Fig. 6](../assets/informe/figura-6-demostrador.png)
 
 **Fig. 6.** Demostrador de CiteScope.
 

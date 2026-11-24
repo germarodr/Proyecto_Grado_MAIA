@@ -1,5 +1,7 @@
 # Prueba adicional: un fragmento frente a tres
 
+> Este documento conserva una exploración Top-1 y su procedimiento. La comparación final del proyecto utiliza base y Top-3: [Métricas de A4](Final/M%C3%A9tricas.md).
+
 **RUN_ID:** `g15_a4_v0_seed42_top1_01`.
 **Configuración:** `fragmentos_top1`.
 **Notebook:** [A4_SciBERT_G15_Top1_Colab_A100.ipynb](A4_SciBERT_G15_Top1_Colab_A100.ipynb).

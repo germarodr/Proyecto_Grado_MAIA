@@ -1,5 +1,7 @@
 # A4 · Nueva corrida con los datos v2 y las correcciones humanas
 
+> Esta guía conserva el procedimiento de una iteración con training v2 y etiquetas humanas. Sus conclusiones se limitan a esa validación. La evaluación posterior está en [Evaluación final](Evaluacion_Final/README.md).
+
 Vamos a entrenar de nuevo las dos entradas de SciBERT para ver cómo se comportan
 con las reservas recuperadas y las etiquetas revisadas de T_A. Conservamos la
 separación V2 y los ajustes anteriores. Esta corrida termina en validación;

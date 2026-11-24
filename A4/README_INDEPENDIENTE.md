@@ -1,5 +1,7 @@
 # A4 independiente · Grupo 15
 
+> Esta guía documenta la variante independiente y las decisiones de aislamiento utilizadas en esa iteración. La selección posterior y el test humano están en [Métricas de A4](Final/M%C3%A9tricas.md).
+
 **Alcance de nuestros datos.** Trabajamos con la entrega preparada para el Grupo 15,
 con las exclusiones acordadas en A1–A3. Aprendemos y validamos con las etiquetas
 automáticas de A2. Nuestro conjunto humano T_B contiene 2.968 citas válidas para
