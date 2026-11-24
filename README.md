@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/Universidad-de-los-Andes-logo.png" alt="Universidad de los Andes" width="250">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-uniandes-oscuro.svg">
+    <img src="assets/Universidad-de-los-Andes-logo.png" alt="Universidad de los Andes" width="50%">
+  </picture>
 </p>
 
 # CiteScope
@@ -106,9 +109,7 @@ Los notebooks e históricos conservan el avance de los experimentos. Para reutil
 
 El corpus completo y los pesos se distribuyen mediante los recursos enlazados, no dentro del código. Las claves, configuraciones privadas y respaldos de seguimiento tampoco forman parte de la entrega pública. Los textos de los artículos conservan sus condiciones de licencia y atribución; para los ejemplos del demostrador, consulta la [documentación de procedencia y licencias](A3/Demostrador/README.md).
 
-## Citar y ampliar
-
-Para citar este repositorio [CITATION.cff](CITATION.cff) contiene los autores y el título del proyecto
+[👉 Cita este repositorio](CITATION.cff)
 
 --------------------------------------------------------
 
