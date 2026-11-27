@@ -72,7 +72,7 @@ Una lección del trabajo es que **incorporar más evidencia no garantiza una mej
 
 ## Modelos e inferencia
 
-Los modelos finales ya están entrenados; puedes descargarlos sin repetir los experimentos.
+Los modelos finales ya están entrenados; puedes descargarlos sin repetir los experimentos. El [inventario de modelos](Modelos/README.md) documenta sus tamaños, procedencia, descarga mediante Git LFS y uso para inferencia. Drive se conserva como alternativa de distribución.
 
 | Modelo | Qué recibe | Dónde encontrarlo |
 |---|---|---|
@@ -101,13 +101,14 @@ La aplicación permite elegir entre **40 ejemplos con etiquetas humanas**, revis
 ├── A3/                      # construcción de datos: A1, A2 y A3
 ├── A4/                      # entrenamiento, experimentos y evaluación SciBERT
 ├── A5/                      # modelos comerciales y comparación de resultados
+├── Modelos/                 # paquetes finales mediante Git LFS y documentación
 ├── Demostrador/             # aplicación web, API y guía de instalación
 └── CITATION.cff              # datos para citar el repositorio
 ```
 
 Los notebooks e históricos conservan el avance de los experimentos. Para reutilizar la entrega, comienza por las métricas finales y la selección congelada; las variantes exploratorias no sustituyen automáticamente los modelos finales.
 
-El corpus completo y los pesos se distribuyen mediante los recursos enlazados, no dentro del código. Las claves, configuraciones privadas y respaldos de seguimiento tampoco forman parte de la entrega pública. Los textos de los artículos conservan sus condiciones de licencia y atribución; para los ejemplos del demostrador, consulta la [documentación de procedencia y licencias](A3/Demostrador/README.md).
+El corpus completo se distribuye mediante los recursos enlazados. Los paquetes de modelos se gestionan con Git LFS y sus enlaces alternativos se conservan en Drive. Las claves, configuraciones privadas y respaldos de seguimiento no forman parte de la entrega pública. Los textos de los artículos conservan sus condiciones de licencia y atribución; para los ejemplos del demostrador, consulta la [documentación de procedencia y licencias](A3/Demostrador/README.md).
 
 [👉 Cita este repositorio](CITATION.cff)
 
