@@ -43,7 +43,7 @@ El demostrador utiliza ejemplos fijos y sus **Top-3 precalculados**. No realiza 
 | Alternativa | Modelo por defecto | Entrada | Salida y validación |
 |---|---|---|---|
 | Encoder | SciBERT Top-3 ajustado en A4 | Contexto de la cita y tres fragmentos del artículo citado, con sus secciones. | Categoría predicha, nueve puntajes softmax y auditoría de tokens. |
-| Open-weight | Llama 3.1 8B Instruct, GGUF Q4_K_M, mediante Ollama | Contexto, título y resumen del citado, alineados con la política de SciBERT base; prompt v11.1 de A5, condición `base-specific-zero`. | Nueve puntajes sujetos al validador de A5. Una suma inválida produce un error; el código actual no renormaliza la respuesta. |
+| Open-weight | Llama 3.1 8B Instruct, GGUF Q4_K_M, mediante Ollama | Contexto, título y resumen del citado, alineados con la política de SciBERT base; prompt v11.1 de A5, condición `base-specific-zero`. | Nueve puntajes sujetos al validador de A5, con temperatura 0 y semilla 42. Si la única falla es la suma, los puntajes se dividen por su total y el ajuste queda registrado en Monitoreo; la función predicha no cambia. |
 | Comercial | Gemini 3.5 Flash-Lite, mediante API | La misma representación y condición de prompt de la alternativa open-weight. | Nueve puntajes sujetos al validador de A5. Una suma inválida produce un error. |
 
 La API recibe texto plano. SciBERT aplica su tokenizador para obtener identificadores y máscaras; no requiere embeddings precalculados como entrada. Los LLM reciben mensajes de texto. La etiqueta humana se utiliza para contrastar la predicción y no forma parte de la entrada enviada al modelo.
@@ -56,7 +56,7 @@ La API recibe texto plano. SciBERT aplica su tokenizador para obtener identifica
 
 La selección y evaluación se documentan en [Métricas de A4](../A4/Final/M%C3%A9tricas.md), [modelos, entradas y salidas](../A4/Final/Modelos_Entradas_Salidas.md) y el [notebook de evaluación final](../A4/Evaluacion_Final/SciBERT_Evaluacion_Final.ipynb).
 
-La configuración actual de los LLM no fija temperatura 0 ni semilla 42. Una modificación de estos parámetros o de la validación debe reflejarse en la implementación antes de documentarse como comportamiento disponible.
+Llama se consulta con temperatura 0 y semilla 42, es decir, con decodificación determinista. Gemini conserva la configuración con la que se evaluó en A5.
 
 ## 3. Organización del directorio
 
@@ -229,7 +229,7 @@ Monitoreo permite filtrar registros y consultar exactitud frente a las referenci
 
 ### Validación de los LLM
 
-En la implementación disponible, **Gemini y Llama utilizan el mismo validador de A5**: se exigen nueve categorías exactas, valores finitos entre 0 y 1 y suma 1 con tolerancia de **±0,001**. Una respuesta que incumple estas condiciones queda registrada como error. No se aplica renormalización automática ni se añade un aviso de renormalización en Monitoreo.
+**Gemini y Llama utilizan el validador de A5**: se exigen nueve categorías exactas, valores finitos entre 0 y 1 y suma 1 con tolerancia de **±0,001**. En Gemini, una respuesta que incumple cualquiera de estas condiciones queda registrada como error. En Llama, que no se evaluó sobre el test, una respuesta que solo incumple la suma se renormaliza: cada puntaje se divide por el total, la función predicha no cambia y el detalle de la inferencia muestra la suma original. Las demás fallas de Llama también quedan registradas como error.
 
 Al reiniciar la API, las solicitudes que quedaron `pending` se marcan como interrumpidas; no se reanudan automáticamente.
 
@@ -240,7 +240,7 @@ Al reiniciar la API, las solicitudes que quedaron `pending` se marcan como inter
 | SciBERT no carga | Verificar la extracción completa y la ubicación directa de `models/top3/inference.py`. |
 | Ollama no está disponible | Consultar `docker compose logs --tail 60 ollama` y el estado del servicio. |
 | Falta el modelo de lenguaje | Consultar los logs de `ollama-pull` y comparar `OPEN_WEIGHT_MODEL` con `docker compose exec ollama ollama list`. |
-| Los puntajes no suman 1 | El validador rechaza la respuesta tanto para Gemini como para Llama. Revisar el detalle y la respuesta original en Monitoreo. |
+| Los puntajes no suman 1 | En Gemini, la respuesta queda registrada como error. En Llama, los puntajes se renormalizan y el detalle en Monitoreo muestra la suma original y la respuesta del modelo. |
 | La solicitud permanece en curso | Los límites de espera son 600 segundos para Ollama y 90 para Gemini. Consultar la misma solicitud antes de enviarla nuevamente. |
 | Gemini falla aunque figura disponible | Revisar el error del proveedor, la clave, los permisos y la cuota. |
 | Puerto ocupado | Modificar `FRONTEND_PORT` o `API_PORT` y recrear los servicios. |

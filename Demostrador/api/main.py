@@ -37,13 +37,15 @@ LLMS = {
                 "input_usd_per_million": 0.30, "output_usd_per_million": 2.50},
     },
     ModelType.OPEN_WEIGHT: {
-        "key": "ollama", "key_name": None,
-        "cfg": {**A5_PARAMS, "endpoint": f"{OLLAMA_URL}/v1/chat/completions",
+        "key": "ollama", "key_name": None, "renormalize": True,
+        "cfg": {**A5_PARAMS, "temperature": 0.0, "extra_body": {"seed": 42},
+                "endpoint": f"{OLLAMA_URL}/v1/chat/completions",
                 "model": os.getenv("OPEN_WEIGHT_MODEL", "hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M"),
                 "output_token_parameter": "max_tokens", "timeout_seconds": int(os.getenv("OPEN_WEIGHT_TIMEOUT", "600")),
                 "input_usd_per_million": 0.0, "output_usd_per_million": 0.0},
     },
 }
+SUM_ERROR = "Los puntajes no suman 1 dentro de la tolerancia"
 RAW_MARKER = re.compile(r"\{\{(cite|formula|table|figure):[^}]*\}\}")
 
 examples = {}
@@ -117,6 +119,15 @@ def a5_messages(ex):
     return a5_runtime.build_messages(aligned, CONDITION, snapshot, [], {}, aligned=True), audits[0]
 
 
+def renormalize(text, log):
+    scores = json.loads(text)["scores"]
+    total = sum(scores.values())
+    if total <= 0:
+        raise ValueError("Respuesta inválida según A5: todos los puntajes son cero.")
+    log.error_detail = f"Puntajes renormalizados a suma 1 (el modelo devolvió una suma de {total:.3f}); la función predicha no cambia."
+    return a5_runtime.validate_scores(json.dumps({"scores": {k: v / total for k, v in scores.items()}}))
+
+
 def classify_llm(ex, llm, log):
     if not llm["key"]:
         raise ValueError(f"Configura {llm['key_name']} en .env.")
@@ -129,6 +140,8 @@ def classify_llm(ex, llm, log):
     log.raw_response = parsed["response_text"] or result.get("raw_body")
     if not result["ok"]:
         raise ConnectionError(f"HTTP {result['status_code']} ({result.get('error_type')}) de {cfg['model']}")
+    if not parsed["valid"] and parsed["error"] == SUM_ERROR and llm.get("renormalize"):
+        parsed = renormalize(parsed["response_text"], log)
     if not parsed["valid"]:
         raise ValueError(f"Respuesta inválida según A5: {parsed['error']}")
     return parsed["scores"], parsed["predicted_label"]
