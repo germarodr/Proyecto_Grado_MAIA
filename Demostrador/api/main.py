@@ -124,7 +124,7 @@ def renormalize(text, log):
     total = sum(scores.values())
     if total <= 0:
         raise ValueError("Respuesta inválida según A5: todos los puntajes son cero.")
-    log.error_detail = f"Puntajes renormalizados a suma 1 (el modelo devolvió una suma de {total:.3f}); la función predicha no cambia."
+    log.error_detail = (log.error_detail + " " if log.error_detail else "") + f"Puntajes renormalizados a suma 1 (el modelo devolvió una suma de {total:.3f}); la función predicha no cambia."
     return a5_runtime.validate_scores(json.dumps({"scores": {k: v / total for k, v in scores.items()}}))
 
 
@@ -137,6 +137,11 @@ def classify_llm(ex, llm, log):
     cfg = llm["cfg"]
     result = a5_runtime.http_call(a5_runtime.payload_for({"messages": messages}, cfg), cfg, llm["key"])
     parsed = a5_runtime.unpack_response(result, cfg)
+    if llm.get("renormalize") and parsed["error"] == SUM_ERROR and not sum(json.loads(parsed["response_text"])["scores"].values()):
+        cfg = {**cfg, "temperature": 0.7}
+        result = a5_runtime.http_call(a5_runtime.payload_for({"messages": messages}, cfg), cfg, llm["key"])
+        parsed = a5_runtime.unpack_response(result, cfg)
+        log.error_detail = "Con temperatura 0 todos los puntajes fueron cero; se repitió con temperatura 0,7 y semilla 42."
     log.raw_response = parsed["response_text"] or result.get("raw_body")
     if not result["ok"]:
         raise ConnectionError(f"HTTP {result['status_code']} ({result.get('error_type')}) de {cfg['model']}")

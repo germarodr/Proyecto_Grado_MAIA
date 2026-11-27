@@ -229,7 +229,7 @@ Monitoreo permite filtrar registros y consultar exactitud frente a las referenci
 
 ### Validación de los LLM
 
-**Gemini y Llama utilizan el validador de A5**: se exigen nueve categorías exactas, valores finitos entre 0 y 1 y suma 1 con tolerancia de **±0,001**. En Gemini, una respuesta que incumple cualquiera de estas condiciones queda registrada como error. En Llama, que no se evaluó sobre el test, una respuesta que solo incumple la suma se renormaliza: cada puntaje se divide por el total, la función predicha no cambia y el detalle de la inferencia muestra la suma original. Las demás fallas de Llama también quedan registradas como error.
+**Gemini y Llama utilizan el validador de A5**: se exigen nueve categorías exactas, valores finitos entre 0 y 1 y suma 1 con tolerancia de **±0,001**. En Gemini, una respuesta que incumple cualquiera de estas condiciones queda registrada como error. En Llama, que no se evaluó sobre el test, una respuesta que solo incumple la suma se renormaliza: cada puntaje se divide por el total, la función predicha no cambia y el detalle de la inferencia muestra la suma original. Si con temperatura 0 los nueve puntajes son cero, la consulta se repite una vez con temperatura 0,7 y semilla 42, y el detalle lo indica. Las demás fallas de Llama también quedan registradas como error.
 
 Al reiniciar la API, las solicitudes que quedaron `pending` se marcan como interrumpidas; no se reanudan automáticamente.
 
