@@ -18,7 +18,6 @@ Los dos modelos proceden del estudio `g15_scibert_reparto_v2_01`, cuyo cierre es
 | Evidencia | Referencia |
 |---|---|
 | Selección de modelos y archivos de origen | [Selección congelada](../A4/Evaluacion_Final/seleccion_congelada.json) |
-| Identificadores, tamaños y huellas de los paquetes | [Manifiesto de distribución](modelos_manifest.json) |
 | Inferencia sobre el test humano | [Notebook de evaluación final](../A4/Evaluacion_Final/SciBERT_Evaluacion_Final.ipynb) |
 | Métricas, limitaciones y archivos de resultados | [Métricas de A4](../A4/Final/M%C3%A9tricas.md) |
 
@@ -70,8 +69,6 @@ El contexto debe contener exactamente un marcador `[[TARGET]]` para identificar 
 
 Los contratos completos y los ejemplos se documentan en [Modelos, entradas y salidas](../A4/Final/Modelos_Entradas_Salidas.md). Para utilizar una API HTTP y la interfaz de consulta, seguir la [documentación del demostrador](../Demostrador/README.md).
 
-## 5. Verificación de los paquetes
-
-El archivo `modelos_manifest.json` conserva los tamaños y SHA-256 de los ZIP y de los pesos seleccionados. Estas huellas permiten identificar los modelos evaluados y detectar una descarga incompleta o una sustitución accidental. El manifiesto reproduce la selección congelada de A4; no se recalculan ni se modifican los modelos al distribuirlos.
+## 5. Resultados de evaluación
 
 La evaluación final obtuvo F1 macro **0,7967** para base y **0,8000** para Top-3. La diferencia no fue concluyente: el intervalo de confianza incluye cero. Estas cifras corresponden al test humano del proyecto y no garantizan el mismo desempeño en otros corpus.

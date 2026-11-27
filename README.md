@@ -31,6 +31,8 @@ El proyecto recorre la construcción del corpus, la recuperación de fragmentos,
 | Planteamiento del problema, metodología y conclusiones | [Informe final del proyecto](Documents/Informe%20Final%20G15.md). |
 | Construcción y validación del conjunto de datos | [A1](A3/A1_Recuperacion/), [A2](A3/A2_Preetiquetado/) y [A3](A3/A3_Validacion/). |
 | Diseño experimental y resultados de SciBERT | [Métricas de A4](A4/Final/M%C3%A9tricas.md) y [experimentos](A4/Final/Experimentos/README.md). |
+| Cuadernos de análisis, entrenamiento y evaluación | [Notebooks](Notebooks/README.md). |
+| Muestra y estructura de los datos | [Datos](Datos/README.md). |
 | Evaluación comparativa con modelos comerciales | [Análisis de A5](A5/Analisis_Final_A5.md) y [comparación de métricas](A5/Comparacion_SciBERT/resultados/Comparacion_Final.md). |
 | Modelos entrenados e integración de la inferencia | [Modelos e inferencia](#modelos-e-inferencia). |
 | Instalación y uso de la aplicación web | [Guía del demostrador](Demostrador/README.md). |
@@ -98,6 +100,8 @@ La aplicación permite elegir entre **40 ejemplos con etiquetas humanas**, revis
 ```text
 ├── README.md                 # recorrido general del proyecto
 ├── Documents/               # metodología, resultados y conclusiones
+├── Notebooks/               # cuadernos de análisis, entrenamiento y evaluación
+├── Datos/                   # muestra de citas, estructura y atribución
 ├── A3/                      # construcción de datos: A1, A2 y A3
 ├── A4/                      # entrenamiento, experimentos y evaluación SciBERT
 ├── A5/                      # modelos comerciales y comparación de resultados
